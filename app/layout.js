@@ -1,0 +1,53 @@
+import { Lora, Manrope } from "next/font/google";
+import 'remixicon/fonts/remixicon.css'
+import "../assets/css/bootstrap.min.css";
+import "../assets/css/style.css";
+import "../assets/css/responsive.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import UIEffects from "./components/UIEffects";
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-lora",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+});
+
+async function getSiteSettings() {
+  try {
+    const res = await fetch("https://www.viblo.in/api/setting-data", {
+      next: { revalidate: 3600 }, // Cache settings for 1 hour
+    });
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    console.error("Failed to fetch settings:", error);
+    return null;
+  }
+}
+
+export const metadata = {
+  title: "Vallum | Invest With Discipline",
+  description: "A research-driven PMS built on GARP and risk discipline.",
+};
+
+export default async function RootLayout({ children }) {
+  const settingsData = await getSiteSettings();
+  return (
+    <html lang="en">
+      <body className={`${lora.variable} ${manrope.variable}`}>
+        <main>
+        <Header />
+        {children}
+        <Footer settingsData={settingsData} />
+        </main>
+        <UIEffects />
+      </body>
+    </html>
+  );
+}

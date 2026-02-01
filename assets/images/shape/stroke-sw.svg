@@ -1,0 +1,8 @@
+<svg id="ejmKlpDfueV1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 143 7" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="143" height="7"><style><![CDATA[#ejmKlpDfueV2 {
+           animation-name: ejmKlpDfueV2_s_do, ejmKlpDfueV2_s_da;
+           animation-duration: 2142.8571428571427ms;
+           animation-fill-mode: forwards;
+           animation-timing-function: linear;
+           animation-direction: normal;
+           animation-iteration-count: infinite;  
+        }@keyframes ejmKlpDfueV2_s_do { 0% {stroke-dashoffset: 289.840000} 100% {stroke-dashoffset: 0}}@keyframes ejmKlpDfueV2_s_da { 0% {stroke-dasharray: 144.920000} 100% {stroke-dasharray: 144.920000}}]]></style><path id="ejmKlpDfueV2" d="M141.500000,3.549070C138.461000,5.058320,130.649000,7.171270,123.717000,3.549070C116.785000,-0.073121,109.351000,2.039830,106.500000,3.549070C103.461000,5.058320,95.648900,7.171270,88.716800,3.549070C81.784800,-0.073121,74.350600,2.039830,71.500000,3.549070C68.460600,5.058320,60.648900,7.171270,53.716800,3.549070C46.784800,-0.073121,39.350600,2.039830,36.500000,3.549070C33.460600,5.058320,25.648900,7.171270,18.716800,3.549070C11.784800,-0.073121,4.350590,2.039830,1.500000,3.549070" transform="matrix(-1 0 0 -1 143 7.10626125000000)" fill="none" stroke="rgb(255,47,103)" stroke-width="2" stroke-linecap="round" stroke-dashoffset="289.840000" stroke-dasharray="144.920000"/></svg>
