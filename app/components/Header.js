@@ -14,7 +14,7 @@ export default function Header() {
             <nav className="navbar navbar-expand-lg">
               <ul className="navbar-nav d-flex flex-row gap-4">
                 <li className="nav-item active"> <a className="nav-link" href="/">Home</a> </li>
-                <li className="nav-item"> <a className="nav-link" href="#">About Us</a> </li>
+                <li className="nav-item"> <a className="nav-link" href="#">About Uss</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="#">Investor Corner</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="#">Our Products</a> </li>
               </ul>
