@@ -16,7 +16,7 @@ export default function Header() {
                 <li className="nav-item active"> <a className="nav-link" href="/">Home</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="/about-us">About Us</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="#">Investor Corner</a> </li>
-                <li className="nav-item"> <a className="nav-link" href="#">Our Productss</a> </li>
+                <li className="nav-item"> <a className="nav-link" href="#">Our Productsss</a> </li>
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Prespectives</a>
                   <ul className="dropdown-menu signledropdown">
