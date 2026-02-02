@@ -12,11 +12,20 @@ export default function Header() {
           </div>
           <div className="sw-nav">
             <nav className="navbar navbar-expand-lg">
-              <ul className="navbar-nav d-flex flex-row gap-4">
+              <ul className="navbar-nav d-flex flex-row">
                 <li className="nav-item active"> <a className="nav-link" href="/">Home</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="/about-us">About Us</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="#">Investor Corner</a> </li>
-                <li className="nav-item"> <a className="nav-link" href="#">Our Products</a> </li>
+                <li className="nav-item"> <a className="nav-link" href="#">Our Productss</a> </li>
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Prespectives</a>
+                  <ul className="dropdown-menu signledropdown">
+                      <li><a className="dd-item" href="#">Blogs</a></li>
+                      <li><a className="dd-item" href="#">Stakeholders Letter</a></li>
+                      <li><a className="dd-item" href="#">Media</a></li>
+                      <li><a className="dd-item" href="#">Weekend Reading</a></li>
+                  </ul>
+                </li> 
               </ul>
             </nav>
           </div>

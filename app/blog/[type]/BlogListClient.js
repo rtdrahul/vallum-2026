@@ -16,10 +16,10 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
   const paginationLinks = initialData?.blogsData?.links || [];
   // Navigation items for the top bar (The 4 Main Types)
   const mainTypes = [
-    { label: "All", slug: "all" },
     { label: "Blogs", slug: "blog" }, 
     { label: "Media", slug: "media" },
     { label: "Stakeholders Letters", slug: "stakeholders-letters" },
+    { label: "Vallum Weekend Reading", slug: "weekend-reading" },
   ];
 
   const getPaginationUrl = (url) => {
@@ -31,18 +31,26 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
 
   return (
     <>
-      <div className="head-section bg-white headbg">
-        <div className="container">
-          <div className="row justify-content-between">
-            <div className="col-lg-12">
-              <div className="headconent paragraph">
-                <h2 className="mb30">Articles & Perspectives</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="contactblocks pt-5 pb-0">
 
+         <div className="container">
+
+            <div className="row justify-content-between align-items-center mt-5">
+
+               <div className="col-lg-8">
+                  <div className="blogcotact">
+                     <h2>Reflections on markets, decisions, and long-term thinking</h2>
+                     <p className="mt10">A research-driven PMS built on GARP, cycle awareness, and risk discipline - designed for HNIs, NRIs, and Family Offices who value clarity over speculation.</p>
+                  </div>
+               </div>
+               <div className="col-lg-4 mmt40">
+                  <div className="about-img blogcotact-img"><img src="https://www.viblo.in/public/img/uploads/media/1770023897.jpg" className="w-100" /></div>
+               </div>
+            </div>            
+
+         </div>
+
+      </div>
       <section className="sec-pad">
         <div className="container">
           <div className="row event-row">
