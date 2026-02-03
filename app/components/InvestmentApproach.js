@@ -13,7 +13,9 @@ export default function InvestmentApproach() {
       reverse: true,
     },
     {
-      title: "Vallum Principles Approach",
+      titleStart: "Vallum",
+      titleEnd: "Principles Approach",
+      showLogo: true,
       description: "Focus on investing in equity and equity-linked securities of Indian companies with strong growth potential and sustainable business models. The strategy aims to identify quality businesses with above-average prospects for long-term value creation, backed by sound research and cycle awareness.",
       image: "/assets/images/common/temple.webp",
       reverse: false,
@@ -38,7 +40,20 @@ export default function InvestmentApproach() {
             {/* Text Column */}
             <div className={`col-lg-6 col-sm-12 ${item.reverse ? "order-lg-2" : "order-lg-1"}`}>
               <div className="position-stick">
-                <h3 className="mb15">{item.title}</h3>
+                <h3 className="mb15 d-flex align-items-center gap-2 flex-wrap">{item.showLogo ? (
+                  <>
+                    {item.titleStart}
+                    <img
+                      src="https://www.viblo.in/public/img/uploads/media/1770088614.png"
+                      alt="JAN Logo"
+                      className="jan-logo"
+                    />
+                    {item.titleEnd}
+                  </>
+                ) : (
+                  item.title
+                )}
+                </h3>
                 <p className="mt15 color-black">{item.description}</p>
                 <button className="client-button mt-5">
                   <span>Learn More</span>

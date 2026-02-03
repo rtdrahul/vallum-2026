@@ -823,7 +823,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
     display: flex;
     padding: 4px 0;
     opacity: .8;
-    grid-gap: 10px;
+    grid-gap: 8px;
     align-items: baseline;
 }
 .footer-links-list i {
@@ -1738,6 +1738,13 @@ body .vertical-centered-box {
     font-size: 50px;
     line-height: 56px;
     padding-bottom: 10px;
+}
+.jan-logo{
+    width: 62px;
+    margin-bottom: 4px;
+}
+.jan-white-14{
+    width: 32px!important;
 }
 .blogcotact p{
     font-size: 16px;

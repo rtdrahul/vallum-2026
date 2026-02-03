@@ -27,7 +27,11 @@ export default function Footer({ settingsData }) {
                 <ul className="footer-links-list">
                   <li><Link href="/vallum-india-discovery">Vallum India Discovery</Link></li>
                   <li><Link href="/vallum-multi-activa">Vallum India Multi-Activa</Link></li>
-                  <li><Link href="/vallum-jan-principle">Vallum JAN Principles</Link></li>
+                  <li><Link href="/vallum-jan-principle">Vallum <img
+                      src="https://www.viblo.in/public/img/uploads/media/1770089775.png"
+                      alt="JAN Logo"
+                      className="jan-white-14"
+                    /> Principles</Link></li>
                 </ul>
               </div>
 

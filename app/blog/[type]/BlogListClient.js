@@ -28,7 +28,29 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
    const pageNum = urlObj.searchParams.get("page");
    return `/blog/${currentType}?page=${pageNum}`;
  };
+const breadcrumbData = {
+  blog: {
+    title: "Articles & Perspectives",
+    img: "https://www.viblo.in/public/img/uploads/media/1770087115.webp",
+  },
+  "weekend-reading": {
+    title: "Articles & Perspectives",
+    img: "https://www.viblo.in/public/img/uploads/media/1770087115.webp",
+  },
+  media: {
+    title: "In Conversation With the Markets",
+    img: "https://www.viblo.in/public/img/uploads/media/1770086970.jpg",
+  },
+  "stakeholders-letters": {
+    title: "Reflections on markets, decisions, and long-term thinking",
+    desc:
+      "A research-driven PMS built on GARP, cycle awareness, and risk discipline – designed for HNIs, NRIs, and Family Offices who value clarity over speculation.",
+    img: "https://www.viblo.in/public/img/uploads/media/1770023897.jpg",
+  },
+};
 
+const data = breadcrumbData[currentType];
+ 
   return (
     <>
       <div className="contactblocks pt-5 pb-0">
@@ -36,16 +58,21 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
          <div className="container">
 
             <div className="row justify-content-between align-items-center mt-5">
-
-               <div className="col-lg-8">
-                  <div className="blogcotact">
-                     <h2>Reflections on markets, decisions, and long-term thinking</h2>
-                     <p className="mt10">A research-driven PMS built on GARP, cycle awareness, and risk discipline - designed for HNIs, NRIs, and Family Offices who value clarity over speculation.</p>
+              {data && (
+                <>
+                  <div className="col-lg-8">
+                    <div className="blogcotact">
+                      <h2>{data.title}</h2>
+                      {data.desc && <p className="mt10">{data.desc}</p>}
+                    </div>
                   </div>
-               </div>
-               <div className="col-lg-4 mmt40">
-                  <div className="about-img blogcotact-img"><img src="https://www.viblo.in/public/img/uploads/media/1770023897.jpg" className="w-100" /></div>
-               </div>
+                  <div className="col-lg-4 mmt40">
+                    <div className="about-img blogcotact-img">
+                      <img src={data.img} className="w-100" alt="" />
+                    </div>
+                  </div>
+                </>
+              )}
             </div>            
 
          </div>
