@@ -16,14 +16,14 @@ export default function Header() {
                 <li className="nav-item active"> <a className="nav-link" href="/">Home</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="/about-us">About Us</a> </li>
                 <li className="nav-item"> <a className="nav-link" href="#">Investor Corner</a> </li>
-                <li className="nav-item"> <a className="nav-link" href="#">Our Productsss</a> </li>
+                <li className="nav-item"> <a className="nav-link" href="#">Our Products</a> </li>
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Prespectives</a>
                   <ul className="dropdown-menu signledropdown">
-                      <li><a className="dd-item" href="#">Blogs</a></li>
-                      <li><a className="dd-item" href="#">Stakeholders Letter</a></li>
-                      <li><a className="dd-item" href="#">Media</a></li>
-                      <li><a className="dd-item" href="#">Weekend Reading</a></li>
+                      <li><a className="dd-item" href="/blog/blog">Blogs</a></li>
+                      <li><a className="dd-item" href="/blog/stakeholders-letters">Stakeholders Letter</a></li>
+                      <li><a className="dd-item" href="/blog/media">Media</a></li>
+                      <li><a className="dd-item" href="/blog/weekend-reading">Weekend Reading</a></li>
                   </ul>
                 </li> 
               </ul>

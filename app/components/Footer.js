@@ -15,8 +15,8 @@ export default function Footer({ settingsData }) {
                 <h5>Company</h5>
                 <ul className="footer-links-list">
                   <li><Link href="/about-us">About Us</Link></li>
-                  <li><Link href="/philosophy">Philosophy</Link></li>
-                  <li><Link href="/blog/all">Insights</Link></li>
+                  <li><Link href="/contact-us">Contact Us</Link></li>
+                  <li><Link href="/blog/blog">Insights</Link></li>
                   <li><Link href="/career">Career</Link></li>
                 </ul>
               </div>
@@ -25,9 +25,9 @@ export default function Footer({ settingsData }) {
               <div className="col-lg-3 mt30">
                 <h5>Products</h5>
                 <ul className="footer-links-list">
-                  <li><Link href="/products/discovery">Vallum India Discovery</Link></li>
-                  <li><Link href="/products/multi-activa">Vallum India Multi-Activa</Link></li>
-                  <li><Link href="/products/jan-principles">Vallum JAN Principles</Link></li>
+                  <li><Link href="/vallum-india-discovery">Vallum India Discovery</Link></li>
+                  <li><Link href="/vallum-multi-activa">Vallum India Multi-Activa</Link></li>
+                  <li><Link href="/vallum-jan-principle">Vallum JAN Principles</Link></li>
                 </ul>
               </div>
 
