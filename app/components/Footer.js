@@ -20,7 +20,6 @@ export default function Footer({ settingsData }) {
                   <li><Link href="/career">Careers</Link></li>
                 </ul>
               </div>
-
               {/* Products Links */}
               <div className="col-lg-3 mt30">
                 <h5>Products</h5>
