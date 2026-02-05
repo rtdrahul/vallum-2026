@@ -5,7 +5,6 @@ export default function Features() {
     { title: "Temperament Drives Returns", desc: "Staying consistent through market cycles following a steady process." },
     { title: "25+ Years of Experience", desc: "Led by Manish Bhandari - recognized as one of the Wizards of Dalal Street." }
   ];
-
   return (
     <section className="sec-pad dotcirclebg">
       <div className="container">
