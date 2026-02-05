@@ -17,7 +17,7 @@ export default function Footer({ settingsData }) {
                   <li><Link href="/about-us">About Us</Link></li>
                   <li><Link href="/contact-us">Contact Us</Link></li>
                   <li><Link href="/blog/blog">Insights</Link></li>
-                  <li><Link href="/career">Careers</Link></li>
+                  <li><Link href="/career">Career</Link></li>
                 </ul>
               </div>
               {/* Products Links */}
