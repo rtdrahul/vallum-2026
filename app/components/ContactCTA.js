@@ -8,9 +8,7 @@ export default function ContactCTA() {
             </div>
             <div className="col-lg-6 paragraph text-center insights justify-content-center">
               <p className="mt-2">
-                If you’re an HNI, NRI, or Family Office seeking a research-driven PMS 
-                anchored in discipline, transparency, and founder-led investing - 
-                we’d be glad to connect.
+                If you represent a Family Office, Institution, Corporate Treasury or are an HNI or NRI seeking a process driven PMS, we would be glad to connect and understand your objectives before proposing a mandate.
               </p>
               <button className="client-button mt-3" style={{ display: 'inline' }}>
                 <span>Get in Touch</span>

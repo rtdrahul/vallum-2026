@@ -454,10 +454,38 @@ ease-in-out 1s infinite alternate;
     opacity: 1;
     visibility: visible;     
 }
+.watermark-wrapper, .jan-watermark-wrapper {
+  position: relative;
+}
+.jan-watermark-wrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://www.viblo.in/public/img/uploads/media/1770537206.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 480px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 9999;
+}
+.watermark-wrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://www.viblo.in/public/img/uploads/media/1770536531.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 480px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 9999;
+}
+
 .dd-item {
     color: #484848;
     font-size: 15px;
-    line-height: 1;
+    line-height: 2;
 }
 .heading-main{
     font-size: 50px;
@@ -836,7 +864,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
 
 .footer-end {
     padding: 20px 0;
-    border-top: 1px solid #373846;
+    border-top: 1px solid #dfdfff;
     margin: 20px 0 0 0;
 }
 
@@ -1135,7 +1163,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
     font-size: 20px;
 }
 .socialmedia li a {
-    padding:15px;
+    padding:5px;
 }
 .footer-logo{
     width: 200px;
@@ -1155,6 +1183,9 @@ select:focus {
 }
 .infobblk{
     margin-top: 10px;
+}
+.infobblk .socialmedia li a img{
+    width: 30px;
 }
 .infobblk + .infobblk{margin-top: 15px;}
 
@@ -1332,7 +1363,8 @@ body .vertical-centered-box {
     }
   }
 
-  .ft-linkz{text-align: right; font-size: 19px;}
+  .ft-linkz{text-align: right; font-size: 16px;}
+  .ft-linkz a{color:white;}
   .ft-linkz a + a{margin-left: 10px;}
 
 
@@ -1437,7 +1469,7 @@ body .vertical-centered-box {
 
 .typewriter {
     font-size: 42px;
-    width: 549px;
+    width: 100%;
     color:#3E3E8A;
     word-spacing: -6px;
     /* line-height: 48px; */

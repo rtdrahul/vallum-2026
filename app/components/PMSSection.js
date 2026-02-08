@@ -16,15 +16,14 @@ export default function PMSSection() {
   
             <div className="col-lg-6 mmt40 px-5 py-3 pms-div">
               <p className="mt20">
-                A long-only, research-driven equity PMS focused on mid and small-cap businesses with durable potential.
+                Vallum PMS offers Equity and Multi Asset strategies based on research depth, valuation discipline and structured risk management.
+                </p>
+              <p className="mt20">
+                Our process integrates bottom up company analysis with top down macro assessment so that portfolio construction reflects both business quality and market cycles.
               </p>
               <p className="mt20">
-                We combine bottom-up research with cycle awareness, valuation discipline, and thoughtful risk management - 
-                building portfolios meant to grow steadily over time.
+                Decisions are guided by defined position sizing, continuous review and a long term investment horizon.
               </p>
-              <button className="client-button mt-3">
-                <span>Explore PMS Strategy</span>
-              </button>
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ export default function Footer({ settingsData }) {
                   <li><Link href="/about-us">About Us</Link></li>
                   <li><Link href="/contact-us">Contact Us</Link></li>
                   <li><Link href="/blog/blog">Insights</Link></li>
-                  <li><Link href="/career">Career</Link></li>
+                  <li><Link href="/contact-us">Career</Link></li>
                 </ul>
               </div>
               {/* Products Links */}
@@ -38,9 +38,9 @@ export default function Footer({ settingsData }) {
               <div className="col-lg-3 mt30">
                 <h5>Investors</h5>
                 <ul className="footer-links-list">
-                  <li><Link href="/faqs">FAQs</Link></li>
-                  <li><Link href="/disclosure">Disclosure Document</Link></li>
-                  <li><a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer">SCORES</a></li>
+                  <li><Link target="_blank" href="https://www.viblo.in/public/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQs</Link></li>
+                  <li><Link target="_blank" href="https://www.viblo.in/public/img/uploads/pdfs/Disclosure-Document.pdf">Disclosure Document</Link></li>
+                  <li><a href="https://www.viblo.in/public/img/uploads/pdfs/SCORES.pdf" target="_blank">SCORES</a></li>
                   <li><Link href="/upi-id">UPI Id</Link></li>
                 </ul>
               </div>
@@ -64,16 +64,16 @@ export default function Footer({ settingsData }) {
                 <div className="infobblk">
                   <ul className="socialmedia">
                     {/* Only show icons if the URL is provided in the API and is not "#" */}
-                    {settings?.linkedin_url && settings.linkedin_url !== "#" && (
+                    {settings?.linkedin_url && settings.linkedin_url !== "" && (
                       <li><a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/Linkedin.png" alt="Linkedin" /></a></li>
                     )}
-                    {settings?.instagram_url && settings.instagram_url !== "#" && (
+                    {settings?.instagram_url && settings.instagram_url !== "" && (
                       <li><a href={settings.instagram_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/Instagram.png" alt="Instagram" /></a></li>
                     )}
-                    {settings?.youtube_url && settings.youtube_url !== "#" && (
+                    {settings?.youtube_url && settings.youtube_url !== "" && (
                       <li><a href={settings.youtube_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/youtube.png" alt="Youtube" /></a></li>
                     )}
-                    {settings?.twitter_url && settings.twitter_url !== "#" && (
+                    {settings?.twitter_url && settings.twitter_url !== "" && (
                       <li><a href={settings.twitter_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/X.png" alt="X" /></a></li>
                     )}
                   </ul>
@@ -84,7 +84,7 @@ export default function Footer({ settingsData }) {
         </div>
 
         {/* Legal and Grievances Section */}
-        <div className="row justify-content-between pb-5">
+        <div className="row justify-content-between">
           <div className="col-lg-7 fthead">
             <div className="row">
               <div className="col-lg-12 mt30">
@@ -101,10 +101,7 @@ export default function Footer({ settingsData }) {
                   <li>c. Benefits: i. Effective Communication ii. Speedy redressal of the grievances</li>
                   <li>d. For online dispute resolution platform - <a href="https://smartodr.in/" target="_blank" className="text-white text-decoration-underline">Smart ODR</a></li>
                 </ul>
-                <p className="mt30 small opacity-50">
-                  © {new Date().getFullYear()} {settings?.site_title || "Vallum Capital Advisors"}. All Rights Reserved.<br />
-                  Securities markets are subject to market risks.
-                </p>
+                
               </div>
             </div>
           </div>
@@ -136,7 +133,7 @@ export default function Footer({ settingsData }) {
                 <img className="footer-logo mb-3" src="/assets/images/Sebi.png" style={{ width: "125px" }} alt="Sebi" />
                 <div className="footercompanyinfo">
                   <ul className="footer-links-list contactlistx small opacity-75">
-                    <li>Local Office Address: Securities and Exchange Board of India Southern Regional Office, Overseas Towers, 7th floor, 756-L Anna Salai, Chennai - 600 002.</li>
+                    <li>Local Office Address: Securities and Exchange Board of India SEBI Bhavan, Plot No. C4-A, G Block, Bandra Kurla Complex, Bandra (East), Mumbai – 400051</li>
                   </ul>
                 </div>
               </div>
@@ -144,6 +141,26 @@ export default function Footer({ settingsData }) {
           </div>
         </div>
       </div>
+      <div className="footer-end">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-7">
+							<div className="ft-copyright">
+								<p className="small opacity-50">
+                  © {new Date().getFullYear()} {settings?.site_title || "Vallum Capital Advisors"}. All Rights Reserved. Securities markets are subject to market risks.
+                </p>
+							</div>
+						</div>
+						<div className="col-lg-5">
+							<div className="ft-linkz">                    
+								<a href="/terms-conditions">Terms and Conditions </a>                   
+								<a href="/privacy-policy">Privacy Policy </a>                                          
+								<a href="/disclaimer">Disclaimer </a>                                          
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
     </footer>
   );
 }

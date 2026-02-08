@@ -1,12 +1,12 @@
 export default function Features() {
   const cards = [
-    { title: "Evidence Over Emotion", desc: "We study businesses, cycles & leadership quality with forensic clarity." },
-    { title: "Clarity Builds Trust", desc: "Every significant decision comes with clear reasoning and audited statements." },
-    { title: "Temperament Drives Returns", desc: "Staying consistent through market cycles following a steady process." },
-    { title: "25+ Years of Experience", desc: "Led by Manish Bhandari - recognized as one of the Wizards of Dalal Street." }
+    { title: "Evidence Over Emotion", desc: "Decisions based on business quality, valuation and cycle analysis. Opinions are tested with data before capital is committed." },
+    { title: "Clarity Builds Trust", desc: "Rationale is documented for every entry, sizing and exit. Clients can follow how the portfolio evolves over time." },
+    { title: "Temperament Drives Returns", desc: "Consistency through market cycles with low portfolio churn. We act when risk reward changes, not on market noise." },
+    { title: "25+ Years of Experience", desc: "Led by Manish Bhandari, featured on CNBC TV18 Wizards of Dalal Street. Team experience across research, risk and operations." }
   ];
   return (
-    <section className="sec-pad dotcirclebg">
+    <section className="sec-pad dotcirclebg pb-0">
       <div className="container">
         <div className="row justify-content-between align-items-center">
           <div className="col-lg-6">
