@@ -1,66 +1,127 @@
+"use client"
+import React, { useState } from 'react';
+import { Offcanvas } from 'react-bootstrap';
+
+const navData = [
+  { id: 1, label: 'Home', link: '/', type: 'link' },
+  { id: 2, label: 'About Us', link: '/about-us', type: 'link' },
+  { id: 3, label: 'Investor Corner', link: 'https://www.viblo.in/public/img/uploads/pdfs/Investor_Charter_PMS.pdf', type: 'external' },
+  {
+    id: 4,
+    label: 'Our Products',
+    type: 'dropdown',
+    children: [
+      { label: 'Vallum India Discovery', link: '/vallum-india-discovery' },
+      { label: 'Vallum India Multi-Activa', link: '/vallum-multi-activa' },
+      { label: 'Vallum Principles', link: '/vallum-jan-principle', imgSrc: 'https://www.viblo.in/public/img/uploads/media/1770088614.png' },
+    ]
+  },
+  {
+    id: 5,
+    label: 'Perspectives',
+    type: 'dropdown',
+    children: [
+      { label: 'Blogs', link: '/blog/blog' },
+      { label: 'Stakeholders Letter', link: '/blog/stakeholders-letters' },
+      { label: 'Media', link: '/blog/media' },
+      { label: 'Weekend Reading', link: '/blog/weekend-reading' },
+    ]
+  }
+];
+
 export default function Header() {
+  const [show, setShow] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const handleClose = () => {
+    setShow(false);
+    setActiveDropdown(null);
+  };
+  const handleShow = () => setShow(true);
+
   return (
-    <header className="sw-header fixed-top animation">
-      <div className="container-fluid">
-        <div className="menu-header">
-          <div className="menu-logo">
-            <div className="desktop-logo">
+    <>
+      <header className="sw-header fixed-top animation" style={{ background: '#fff', borderBottom: '1px solid #eee', minHeight: '70px', zIndex: 1030 }}>
+        <div className="container-fluid">
+          <div className="menu-header d-flex align-items-center justify-content-between" style={{ padding: '10px 0' }}>
+            
+            {/* Logo */}
+            <div className="menu-logo">
               <a className="nav-brand" href="/">
-                <img src="/assets/images/logo.png" alt="Logo" className="sw-logo logo-dark" />
+                <img src="/assets/images/logo.png" alt="Logo" style={{ maxHeight: '50px' }} />
               </a>
             </div>
-          </div>
-          <div className="sw-nav">
-            <nav className="navbar navbar-expand-lg">
-              <div className="container-fluid">       
-                <div className="offcanvas offcanvas-start-lg" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                  <div className="offcanvas-header d-flex d-lg-none">
 
-                      <div className="offcanvas-title" id="offcanvasExampleLabel"><img src="/assets/images/logo.png" alt="Logo" /></div>
+            {/* Desktop Navigation */}
+            <div className="sw-nav d-none d-lg-block">
+              <ul className="navbar-nav d-flex flex-row gap-4">
+                {navData.map((item) => (
+                  <li key={item.id} className="nav-item">
+                    <a className="nav-link" href={item.link} style={{ color: '#000', fontWeight: '500' }}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-                      <a href="javascript:void(0)" className="sidebarclostbtn p-0" data-bs-dismiss="offcanvas" aria-label="close">✖︎</a>
-                  </div>
-                  <div className="offcanvas-body p-lg-0">
-                    <ul className="navbar-nav d-flex flex-row">
-                    <li className="nav-item active"> <a className="nav-link" href="/">Home</a> </li>
-                    <li className="nav-item"> <a className="nav-link" href="/about-us">About Us</a> </li>
-                    <li className="nav-item"> <a className="nav-link" href="https://www.viblo.in/public/img/uploads/pdfs/Investor_Charter_PMS.pdf">Investor Corner</a> </li>
-                    <li className="nav-item dropdown">
-                      <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Our Products</a>
-                      <ul className="dropdown-menu signledropdown">
-                        <li><a className="dd-item" href="/vallum-india-discovery">Vallum India Discovery</a></li>
-                        <li><a className="dd-item" href="/vallum-multi-activa">Vallum India Multi-Activa</a></li>
-                        <li><a className="dd-item d-flex align-items-center" href="/vallum-jan-principle">Vallum <img
-                          src="https://www.viblo.in/public/img/uploads/media/1770088614.png"
-                          alt="JAN Logo"
-                          className="jan-white-14 mx-1"
-                        /> Principles</a></li>
-                      </ul>
-                    </li>
-                    <li className="nav-item dropdown">
-                      <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Prespectives</a>
-                      <ul className="dropdown-menu signledropdown">
-                          <li><a className="dd-item" href="/blog/blog">Blogs</a></li>
-                          <li><a className="dd-item" href="/blog/stakeholders-letters">Stakeholders Letter</a></li>
-                          <li><a className="dd-item" href="/blog/media">Media</a></li>
-                          <li><a className="dd-item" href="/blog/weekend-reading">Weekend Reading</a></li>
-                      </ul>
-                    </li> 
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </div>
-          <div className="sw-nav-cta">
-            <ul className="sw-menu-sw-set d-flex align-items-center list-unstyled gap-3">
-              <li><a href="#" className="onboard d-none d-sm-none d-lg-block d-md-block">Direct Onboarding</a></li>
-              <li><a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" target="_blank" rel="noopener noreferrer"><button className="client-button"><span>Client Login</span></button></a></li>
-              <li className="libtn menuright"><a href="#" className="r-g-btn r-g-btn-2 btn-head" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"> <i className="ri-menu-line"></i> </a> </li>
-            </ul>
+            {/* Right Buttons & Mobile Trigger */}
+            <div className="sw-nav-cta">
+              <ul className="d-flex align-items-center list-unstyled gap-3 mb-0">
+                <li className="d-none d-lg-block"><a href="#" className="onboard">Direct Onboarding</a></li>
+                <li>
+                  <a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" target="_blank" rel="noreferrer">
+                    <button className="client-button btn btn-primary btn-sm">Client Login</button>
+                  </a>
+                </li>
+                {/* Burger Menu Button - ONLY VISIBLE ON MOBILE */}
+                <li className="d-lg-none">
+                  <button className="btn p-0" onClick={handleShow} style={{ fontSize: '24px' }}>
+                    <i className="ri-menu-line"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Offcanvas Menu for Mobile */}
+      <Offcanvas show={show} onHide={handleClose} placement="start">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>
+            <img src="/assets/images/logo.png" alt="Logo" style={{ maxHeight: '40px' }} />
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <ul className="list-unstyled">
+            {navData.map((item) => (
+              <li key={item.id} className="py-2 border-bottom">
+                {item.type === 'dropdown' ? (
+                  <div>
+                    <strong onClick={() => setActiveDropdown(activeDropdown === item.id ? null : item.id)} style={{ cursor: 'pointer' }}>
+                      {item.label} {activeDropdown === item.id ? '−' : '+'}
+                    </strong>
+                    {activeDropdown === item.id && (
+                      <ul className="list-unstyled ms-3 mt-2">
+                        {item.children.map((child, i) => (
+                          <li key={i} className="py-1">
+                            <a href={child.link} onClick={handleClose} className="text-decoration-none text-dark">{child.label}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ) : (
+                  <a href={item.link} onClick={handleClose} className="text-decoration-none text-dark font-weight-bold">
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
   );
 }
