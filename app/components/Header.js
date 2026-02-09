@@ -16,7 +16,7 @@ export default function Header() {
                 <div className="offcanvas offcanvas-start-lg" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                   <div className="offcanvas-header d-flex d-lg-none">
 
-                      <div className="offcanvas-title" id="offcanvasExampleLabel"><img src="images/logo.png" alt="Logo" /></div>
+                      <div className="offcanvas-title" id="offcanvasExampleLabel"><img src="/assets/images/logo.png" alt="Logo" /></div>
 
                       <a href="javascript:void(0)" className="sidebarclostbtn p-0" data-bs-dismiss="offcanvas" aria-label="close">✖︎</a>
                   </div>
