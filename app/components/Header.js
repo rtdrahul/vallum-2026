@@ -1,13 +1,13 @@
 "use client"
 import React, { useState } from 'react';
-import { Offcanvas } from 'react-bootstrap';
+import { Offcanvas, Dropdown, Nav, Container } from 'react-bootstrap';
 
+// 1. Centralized Data
 const navData = [
   { id: 1, label: 'Home', link: '/', type: 'link' },
   { id: 2, label: 'About Us', link: '/about-us', type: 'link' },
-  { id: 3, label: 'Investor Corner', link: 'https://www.viblo.in/public/img/uploads/pdfs/Investor_Charter_PMS.pdf', type: 'external' },
   {
-    id: 4,
+    id: 3,
     label: 'Our Products',
     type: 'dropdown',
     children: [
@@ -17,7 +17,7 @@ const navData = [
     ]
   },
   {
-    id: 5,
+    id: 4,
     label: 'Perspectives',
     type: 'dropdown',
     children: [
@@ -26,102 +26,155 @@ const navData = [
       { label: 'Media', link: '/blog/media' },
       { label: 'Weekend Reading', link: '/blog/weekend-reading' },
     ]
-  }
+  },
+  { id: 5, label: 'Investor Corner', link: 'https://www.viblo.in/public/img/uploads/pdfs/Investor_Charter_PMS.pdf', type: 'external' },
 ];
 
 export default function Header() {
-  const [show, setShow] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [hoveredDropdown, setHoveredDropdown] = useState(null);
 
-  const handleClose = () => {
-    setShow(false);
-    setActiveDropdown(null);
-  };
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShowOffcanvas(false);
+  const handleShow = () => setShowOffcanvas(true);
 
   return (
     <>
-      <header className="sw-header fixed-top animation" style={{ background: '#fff', borderBottom: '1px solid #eee', minHeight: '70px', zIndex: 1030 }}>
-        <div className="container-fluid">
-          <div className="menu-header d-flex align-items-center justify-content-between" style={{ padding: '10px 0' }}>
+      <style>{`
+        /* 1. Desktop Hover bridge gap: prevents menu closing when moving mouse from toggle to menu */
+        .nav-item .dropdown-menu {
+          margin-top: 0; 
+          border-radius: 8px;
+        }
+
+        /* 2. Z-Index Fix: Ensures Offcanvas is on top of the fixed header */
+        .offcanvas {
+          z-index: 9999 !important; 
+        }
+        .offcanvas-backdrop {
+          z-index: 9998 !important;
+        }
+
+        /* 3. Custom Close Button styling for Mobile */
+        .btn-close-mobile {
+          background: #f8f9fa;
+          border: 1px solid #dee2e6;
+          border-radius: 4px;
+          padding: 5px 12px;
+          font-size: 20px;
+          line-height: 1;
+          color: #333;
+          cursor: pointer;
+        }
+        
+        .sw-header {
+            z-index: 1030; /* Standard Bootstrap fixed-top z-index */
+        }
+      `}</style>
+
+      <header className="sw-header fixed-top animation bg-white border-bottom">
+        <Container fluid>
+          <div className="menu-header d-flex align-items-center justify-content-between py-2">
             
-            {/* Logo */}
+            {/* --- LOGO --- */}
             <div className="menu-logo">
-              <a className="nav-brand" href="/">
-                <img src="/assets/images/logo.png" alt="Logo" style={{ maxHeight: '50px' }} />
+              <a href="/">
+                <img src="/assets/images/logo.png" alt="Logo" style={{ height: '45px' }} />
               </a>
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="sw-nav d-none d-lg-block">
-              <ul className="navbar-nav d-flex flex-row gap-4">
+            {/* --- DESKTOP NAV (Hover Logic) --- */}
+            <nav className="d-none d-lg-block">
+              <ul className="nav d-flex align-items-center gap-3">
                 {navData.map((item) => (
                   <li key={item.id} className="nav-item">
-                    <a className="nav-link" href={item.link} style={{ color: '#000', fontWeight: '500' }}>
-                      {item.label}
-                    </a>
+                    {item.type === 'dropdown' ? (
+                      <Dropdown 
+                        show={hoveredDropdown === item.id}
+                        onMouseEnter={() => setHoveredDropdown(item.id)}
+                        onMouseLeave={() => setHoveredDropdown(null)}
+                      >
+                        <Dropdown.Toggle as="a" className="nav-link dropdown-toggle" style={{ cursor: 'pointer', color: '#000', textDecoration: 'none' }}>
+                          {item.label}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="signledropdown shadow border-0">
+                          {item.children.map((child, idx) => (
+                            <Dropdown.Item key={idx} href={child.link} className="dd-item">
+                              {child.imgSrc ? (
+                                <span className="d-flex align-items-center">
+                                  Vallum <img src={child.imgSrc} alt="icon" className="mx-1" style={{height:'14px'}} /> Principles
+                                </span>
+                              ) : child.label}
+                            </Dropdown.Item>
+                          ))}
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    ) : (
+                      <a href={item.link} className="nav-link" style={{ color: '#000', textDecoration: 'none' }}>{item.label}</a>
+                    )}
                   </li>
                 ))}
               </ul>
+            </nav>
+
+            {/* --- RIGHT SECTION & MOBILE TOGGLE --- */}
+            <div className="sw-nav-cta d-flex align-items-center gap-3">
+              <a href="#" className="onboard d-none d-md-block text-decoration-none" style={{ color: '#000' }}>Direct Onboarding</a>
+              <a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" target="_blank" rel="noreferrer">
+                <button className="client-button btn btn-dark">Client Login</button>
+              </a>
+              
+              {/* Mobile Burger Icon */}
+              <button className="btn d-lg-none p-0 border-0" onClick={handleShow}>
+                <span style={{ fontSize: '28px', lineHeight: '1' }}>☰</span>
+              </button>
             </div>
 
-            {/* Right Buttons & Mobile Trigger */}
-            <div className="sw-nav-cta">
-              <ul className="d-flex align-items-center list-unstyled gap-3 mb-0">
-                <li className="d-none d-lg-block"><a href="#" className="onboard">Direct Onboarding</a></li>
-                <li>
-                  <a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" target="_blank" rel="noreferrer">
-                    <button className="client-button btn btn-primary btn-sm">Client Login</button>
-                  </a>
-                </li>
-                {/* Burger Menu Button - ONLY VISIBLE ON MOBILE */}
-                <li className="d-lg-none">
-                  <button className="btn p-0" onClick={handleShow} style={{ fontSize: '24px' }}>
-                    <i className="ri-menu-line"></i>
-                  </button>
-                </li>
-              </ul>
-            </div>
           </div>
-        </div>
+        </Container>
       </header>
 
-      {/* Offcanvas Menu for Mobile */}
-      <Offcanvas show={show} onHide={handleClose} placement="start">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>
-            <img src="/assets/images/logo.png" alt="Logo" style={{ maxHeight: '40px' }} />
-          </Offcanvas.Title>
-        </Offcanvas.Header>
+      {/* --- MOBILE OFFCANVAS --- */}
+      <Offcanvas show={showOffcanvas} onHide={handleClose} placement="start">
+        {/* Custom Header to ensure visibility and z-index priority */}
+        <div className="d-flex align-items-center justify-content-between p-3 border-bottom">
+            <img src="/assets/images/logo.png" alt="Logo" style={{ height: '40px' }} />
+            <button className="btn-close-mobile" onClick={handleClose}>
+                ✕
+            </button>
+        </div>
+        
         <Offcanvas.Body>
-          <ul className="list-unstyled">
+          <Nav className="flex-column gap-2">
             {navData.map((item) => (
-              <li key={item.id} className="py-2 border-bottom">
-                {item.type === 'dropdown' ? (
-                  <div>
-                    <strong onClick={() => setActiveDropdown(activeDropdown === item.id ? null : item.id)} style={{ cursor: 'pointer' }}>
-                      {item.label} {activeDropdown === item.id ? '−' : '+'}
-                    </strong>
-                    {activeDropdown === item.id && (
-                      <ul className="list-unstyled ms-3 mt-2">
-                        {item.children.map((child, i) => (
-                          <li key={i} className="py-1">
-                            <a href={child.link} onClick={handleClose} className="text-decoration-none text-dark">{child.label}</a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ) : (
-                  <a href={item.link} onClick={handleClose} className="text-decoration-none text-dark font-weight-bold">
-                    {item.label}
-                  </a>
-                )}
-              </li>
+              item.type === 'dropdown' ? (
+                <div key={item.id} className="py-2">
+                  <div className="fw-bold mb-2 text-muted small text-uppercase" style={{ letterSpacing: '1px' }}>{item.label}</div>
+                  <ul className="list-unstyled ms-3">
+                    {item.children.map((child, idx) => (
+                      <li key={idx} className="py-2">
+                        <a href={child.link} onClick={handleClose} className="text-decoration-none text-dark d-block">
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <a key={item.id} href={item.link} onClick={handleClose} className="nav-link text-dark py-3 border-bottom">
+                  {item.label}
+                </a>
+              )
             ))}
-          </ul>
+          </Nav>
+          
+          <div className="mt-4 d-grid gap-2">
+             <a href="#" className="btn btn-outline-dark w-100">Direct Onboarding</a>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
+
+      {/* Main Content Spacer */}
+      <div style={{ marginTop: '80px' }}></div>
     </>
   );
 }
