@@ -14,7 +14,7 @@ const Hero = () => (
             </div>
           </div>
           <div className="col-xl-7 col-lg-6">
-            <img src="/assets/images/common/hero-banner.webp" alt="Hero" className="w-100" style={{ height: '548px' }} />
+            <img src="/assets/images/common/hero-banner.webp" alt="Hero" className="hero-img w-100" style={{ height: '100%' }} />
           </div>
         </div>
       </div>

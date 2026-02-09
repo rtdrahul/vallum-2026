@@ -1,4 +1,5 @@
 import { Lora, Manrope } from "next/font/google";
+import Script from "next/script";
 import 'remixicon/fonts/remixicon.css'
 import "../assets/css/bootstrap.min.css";
 import "../assets/css/style.css";
@@ -47,6 +48,7 @@ export default async function RootLayout({ children }) {
         <Footer settingsData={settingsData} />
         </main>
         <UIEffects />
+        <Script src="/assets/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );
