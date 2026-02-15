@@ -56,11 +56,12 @@ export default function Header() {
 
         /* 3. Custom Close Button styling for Mobile */
         .btn-close-mobile {
-          background: #f8f9fa;
+          background: #ffffff;
+          box-shadow: 1px 1px 2px #c9d4c9;
           border: 1px solid #dee2e6;
-          border-radius: 4px;
-          padding: 5px 12px;
-          font-size: 20px;
+          border-radius: 50%;
+          padding: 9px;
+          font-size: 16px;
           line-height: 1;
           color: #333;
           cursor: pointer;
@@ -144,14 +145,14 @@ export default function Header() {
         </div>
         
         <Offcanvas.Body>
-          <Nav className="flex-column gap-2">
+          <Nav className="flex-column">
             {navData.map((item) => (
               item.type === 'dropdown' ? (
-                <div key={item.id} className="py-2">
+                <div key={item.id} className="p-3">
                   <div className="fw-bold mb-2 text-muted small text-uppercase" style={{ letterSpacing: '1px' }}>{item.label}</div>
                   <ul className="list-unstyled ms-3">
                     {item.children.map((child, idx) => (
-                      <li key={idx} className="py-2">
+                      <li key={idx} className="p-2">
                         <a href={child.link} onClick={handleClose} className="text-decoration-none text-dark d-block">
                           {child.label}
                         </a>
