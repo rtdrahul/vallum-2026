@@ -57,7 +57,7 @@ const data = breadcrumbData[currentType];
 
          <div className="container">
 
-            <div className="row justify-content-between align-items-center mt-5">
+            <div className="row justify-content-between align-items-center">
               {data && (
                 <>
                   <div className="col-lg-8">
@@ -78,7 +78,7 @@ const data = breadcrumbData[currentType];
          </div>
 
       </div>
-      <section className="sec-pad">
+      <section className="sec-pad pt-5">
         <div className="container">
           <div className="row event-row">
             <div className="col-lg-5">
@@ -87,7 +87,7 @@ const data = breadcrumbData[currentType];
             <div className="col-lg-7">
               <ul className="events-ul">
                 {mainTypes.map((item) => (
-                  <li key={item.slug} className={currentType === item.slug ? "li-active" : ""}>
+                  <li key={item.slug} className={currentType === item.slug ? "li-active li-div" : "li-div"}>
                     <Link href={`/blog/${item.slug}`} className={currentType === item.slug ? "active" : ""}>
                       {item.label}
                     </Link>
@@ -140,9 +140,9 @@ const data = breadcrumbData[currentType];
               {blogs.length > 0 ? (
                 blogs.map((blog) => (
                   <div className="sw--card shadow" key={blog.blog_id}>
-                    <Link href={`/blog/${currentType}/${blog.blog_slug}`} className="fulllinksw--card"></Link>
 
                     <div className="sw--card-img">
+                    <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
                       <img 
                         src={blog.blog_image} 
                         alt={blog.blog_name} 
@@ -150,20 +150,14 @@ const data = breadcrumbData[currentType];
                         style={{ objectFit: 'cover', height: '100%' }}
                         onError={(e) => { e.target.src = "/assets/images/blogs/placeholder.png"; }} 
                       />
+                      </Link>
                     </div>
 
-                    <div className="sw--card-content">
-                      {/* <div className="d-flex justify-content-between align-items-center mb-2">
-                         <h5 className="text-primary m-0">{blog.blog_type.toUpperCase()}</h5>
-                         {categories.find(c => c.category_id == blog.blog_category_id) && (
-                           <span className="small text-muted">
-                             Category: {categories.find(c => c.category_id == blog.blog_category_id).category_name}
-                           </span>
-                         )}
-                      </div> */}
-                      
+                    <div className="sw--card-content"> 
+                      <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
                       <h3 className="mb10 btitle">{blog.blog_name}</h3>
-                      <p>{blog.blog_short_description}</p>
+                      </Link>                     
+                      <p className="sw--card-desc">{blog.blog_short_description}</p>
                       
                       <div className="timeanddate">
                         <span>
@@ -177,10 +171,11 @@ const data = breadcrumbData[currentType];
                           <i className="ri-user-follow-line"></i> Vallum Capital
                         </span>
                       </div>
-                      
-                      <button className="client-button">
-                        <span>Read More</span>
-                      </button>
+                      <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
+                        <button className="client-button">
+                          <span>Read More</span>
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 ))

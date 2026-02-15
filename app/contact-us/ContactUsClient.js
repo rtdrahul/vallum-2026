@@ -76,7 +76,7 @@ export default function ContactUsClient() {
 
 <div className="container">
 
-   <div className="row justify-content-between mt-5">
+   <div className="row justify-content-between">
 
       <div className="col-lg-6">
 
@@ -186,7 +186,7 @@ export default function ContactUsClient() {
    </div>
    <div className="row justify-content-center mt30">
 
-      <div className="col-lg-4 col-md-6 mt30">
+      <div className="col-lg-4 col-md-6 col-6 mt30">
 
          <div className="iconblockcard ">
 
@@ -205,7 +205,7 @@ export default function ContactUsClient() {
          </div>
 
       </div>
-      <div className="col-lg-4 col-md-6 mt30">
+      <div className="col-lg-4 col-md-6 col-6 mt30">
 
          <div className="iconblockcard ">
 
@@ -224,7 +224,7 @@ export default function ContactUsClient() {
          </div>
 
       </div>
-      <div className="col-lg-4 col-md-6 mt30">
+      <div className="col-lg-4 col-md-6 col-6 mt30">
 
          <div className="iconblockcard ">
 

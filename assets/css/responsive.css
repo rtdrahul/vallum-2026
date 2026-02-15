@@ -284,6 +284,24 @@
     .shadow-box p, .shadow-box p, .about-shadow-box p{
         text-align: justify;
     }
+    .blogcotact h2{
+        font-size: 45px;
+        line-height: 52px;
+        padding-bottom: 10px;
+    }
+    .timeanddate{
+        display: block;
+    }
+    .sw--card-desc{
+        display: none;
+    }
+    .sw--card-img img {
+        width: 100px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+        object-position: center;   
+    }
     .quickcotact h5{
         font-size: 22px;
         line-height: 28px;

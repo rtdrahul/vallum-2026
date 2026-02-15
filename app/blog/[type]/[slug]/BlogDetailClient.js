@@ -9,26 +9,25 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
   return (
     <>
       {/* Header Section */}
-      <div className="head-section bg-white headbg">
+      <div className="py-4 bg-white headbg">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="headconent paragraph">
+              <div className="paragraph">
                 <nav aria-label="breadcrumb">
-                  <ol className="breadcrumb bg-transparent p-0 mb-3">
+                  <ol className="breadcrumb bg-transparent p-0 mb-0">
                     <li className="breadcrumb-item"><Link href="/blog/all">Blog</Link></li>
                     <li className="breadcrumb-item"><Link href={`/blog/${type || 'all'}`}>{type?.toUpperCase() || 'Category'}</Link></li>
                     <li className="breadcrumb-item active" aria-current="page">{blogData.blog_name}</li>
                   </ol>
                 </nav>
-                <h1 className="mb30">{blogData.blog_name}</h1>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <section className="sec-pad">
+      <section className="sec-pad pt-4">
         <div className="container">
           <div className="row">
             {/* Main Content */}
@@ -45,15 +44,15 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                 </div>
 
                 {/* Meta Info */}
-                <div className="timeanddate mb-4 pb-3 border-bottom d-flex gap-4">
+                <h1>{blogData.blog_name}</h1>
+                <div className="timeanddate pb-3 border-bottom d-flex gap-4">
                   <span><i className="ri-calendar-line"></i> {new Date(blogData.created_at).toLocaleDateString()}</span>
                   <span><i className="ri-user-follow-line"></i> Vallum Capital</span>
-                  <span><i className="ri-price-tag-3-line"></i> {blogData.blog_type.toUpperCase()}</span>
                 </div>
 
                 {/* Article Content - Rendering HTML Safely */}
                 <div 
-                  className="blog-content-body mt-4" 
+                  className="blog-content-body" 
                   dangerouslySetInnerHTML={{ __html: blogData.blog_desc }} 
                 />
               </div>
@@ -61,42 +60,50 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
 
             {/* Sidebar: Related Posts */}
             <div className="col-lg-4">
-              <div className="sidebar-sticky" style={{ position: 'sticky', top: '20px' }}>
-                <h4 className="mb-4">Related Articles</h4>
+              <div className="sidebar-sticky" style={{ position: 'sticky', top: '120px' }}>
                 {relatedBlogs && relatedBlogs.length > 0 ? (
-                  relatedBlogs.map((rel) => (
-                    <div className="card mb-3 border-0 shadow-sm overflow-hidden" key={rel.blog_id}>
-                       <div className="row g-0">
+                  <>
+                    <h4 className="mb-4">Related Articles</h4>
+
+                    {relatedBlogs.map((rel) => (
+                      <div
+                        className="card mb-3 border-0 shadow-sm overflow-hidden"
+                        key={rel.blog_id}
+                      >
+                        <div className="row g-0">
                           <div className="col-4">
-                             <img 
-                                src={rel.blog_image} 
-                                className="img-fluid h-100" 
-                                alt={rel.blog_name} 
-                                style={{ objectFit: 'cover' }}
-                             />
+                            <img
+                              src={rel.blog_image}
+                              className="img-fluid h-100"
+                              alt={rel.blog_name}
+                              style={{ objectFit: "cover" }}
+                            />
                           </div>
                           <div className="col-8">
-                             <div className="card-body p-2">
-                                <Link href={`/blog/${type || 'all'}/${rel.blog_slug}`} className="text-decoration-none text-dark">
-                                   <h6 className="card-title mb-1 small fw-bold text-truncate-2">
-                                      {rel.blog_name}
-                                   </h6>
-                                </Link>
-                                <p className="card-text small text-muted m-0">
-                                   {new Date(rel.created_at).toLocaleDateString()}
-                                </p>
-                             </div>
+                            <div className="card-body p-2">
+                              <Link
+                                href={`/blog/${type || "all"}/${rel.blog_slug}`}
+                                className="text-decoration-none text-dark"
+                              >
+                                <h6 className="card-title mb-1 small fw-bold text-truncate-2">
+                                  {rel.blog_name}
+                                </h6>
+                              </Link>
+                              <p className="card-text small text-muted m-0">
+                                {new Date(rel.created_at).toLocaleDateString()}
+                              </p>
+                            </div>
                           </div>
-                       </div>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-muted">No related articles found.</p>
-                )}
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                ) : null}
+
                 
                 <div className="mt-5 p-4 bg-light rounded text-center">
                    <h5>Need more info?</h5>
-                   <p className="small">Contact us for professional investment advice.</p>
+                   <p className="small mb-2">Contact us for professional investment advice.</p>
                    <Link href="/contact-us" className="btn btn-primary btn-sm px-4 rounded-pill">Contact Us</Link>
                 </div>
               </div>
