@@ -185,7 +185,6 @@ export default function ContactUsClient() {
       </div>
    </div>
    <div className="row justify-content-center mt30">
-
       <div className="col-lg-4 col-md-6 col-6 mt30">
 
          <div className="iconblockcard ">
