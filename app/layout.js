@@ -4,10 +4,11 @@ import 'remixicon/fonts/remixicon.css'
 import "../assets/css/bootstrap.min.css";
 import "../assets/css/style.css";
 import "../assets/css/responsive.css";
-import "../assets/css/responsive.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import UIEffects from "./components/UIEffects";
+import AccessibilityWidget from "./components/AccessibilityWidget";
+import UX4GWidget from "./components/UX4GWidget";
 const lora = Lora({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -49,6 +50,8 @@ export default async function RootLayout({ children }) {
         <Footer settingsData={settingsData} />
         </main>
         <UIEffects />
+        <UX4GWidget />
+        {/* <AccessibilityWidget></AccessibilityWidget> */}
         <Script src="/assets/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
       </body>
     </html>
