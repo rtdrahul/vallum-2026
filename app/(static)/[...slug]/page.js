@@ -5,7 +5,7 @@ import DynamicPageClient from './DynamicPageClient';
 // SERVER-SIDE: Fetch data and generate metadata
 async function fetchPageData(slug) {
   try {
-    const response = await fetch(`https://www.viblo.in/api/common-meta-data/${slug}`, {
+    const response = await fetch(`https://badmin.vallum.in/api/common-meta-data/${slug}`, {
       headers: { Accept: "application/json" },
       next: { revalidate: 3600 }, // Cache for 1 hour
     });
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }){
   const defaultMetadata = {
     title: "VALLUM CAPITAL ADVISORS | SEBI Registered Investment Advisors",
     description: "VALLUM CAPITAL ADVISORS | SEBI Registered Investment Advisors",
-    image: "https://www.viblo.in/assets/images/logo/logo.webp",
+    image: "https://badmin.vallum.in/assets/images/logo/logo.webp",
     url: "https://www.viblo.in",
   };
 

@@ -23,7 +23,7 @@ const manrope = Manrope({
 
 async function getSiteSettings() {
   try {
-    const res = await fetch("https://www.viblo.in/api/setting-data", {
+    const res = await fetch("https://badmin.vallum.in/api/setting-data", {
       next: { revalidate: 3600 }, // Cache settings for 1 hour
     });
     if (!res.ok) return null;

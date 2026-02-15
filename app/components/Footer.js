@@ -27,7 +27,7 @@ export default function Footer({ settingsData }) {
                   <li><Link href="/vallum-india-discovery">Vallum India Discovery</Link></li>
                   <li><Link href="/vallum-multi-activa">Vallum India Multi-Activa</Link></li>
                   <li><Link href="/vallum-jan-principle">Vallum <img
-                      src="https://www.viblo.in/public/img/uploads/media/1770089775.png"
+                      src="https://badmin.vallum.in/public/img/uploads/media/1770089775.png"
                       alt="JAN Logo"
                       className="jan-white-14"
                     /> Principles</Link></li>
@@ -40,9 +40,9 @@ export default function Footer({ settingsData }) {
               <div className="col-lg-3 mt30">
                 <h5>Investors</h5>
                 <ul className="footer-links-list">
-                  <li><Link target="_blank" href="https://www.viblo.in/public/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQs</Link></li>
-                  <li><Link target="_blank" href="https://www.viblo.in/public/img/uploads/pdfs/Disclosure-Document.pdf">Disclosure Document</Link></li>
-                  <li><a href="https://www.viblo.in/public/img/uploads/pdfs/SCORES.pdf" target="_blank">SCORES</a></li>
+                  <li><Link target="_blank" href="https://badmin.vallum.in/public/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQs</Link></li>
+                  <li><Link target="_blank" href="https://badmin.vallum.in/public/img/uploads/pdfs/Disclosure-Document.pdf">Disclosure Document</Link></li>
+                  <li><a href="https://badmin.vallum.in/public/img/uploads/pdfs/SCORES.pdf" target="_blank">SCORES</a></li>
                   <li><Link href="/upi-id">UPI Id</Link></li>
                 </ul>
               </div>

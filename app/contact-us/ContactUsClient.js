@@ -29,7 +29,7 @@ export default function ContactUsClient() {
     try {
       // Create FormData to send as multipart/form-data or JSON depending on API preference
       // Here we use JSON which is standard for modern Next.js apps
-      const response = await fetch("https://www.viblo.in/api/contact-us-process", {
+      const response = await fetch("https://badmin.vallum.in/api/contact-us-process", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",

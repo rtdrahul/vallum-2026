@@ -31,21 +31,21 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
 const breadcrumbData = {
   blog: {
     title: "Articles & Perspectives",
-    img: "https://www.viblo.in/public/img/uploads/media/1770087115.webp",
+    img: "https://badmin.vallum.in/public/img/uploads/media/1770087115.webp",
   },
   "weekend-reading": {
     title: "Articles & Perspectives",
-    img: "https://www.viblo.in/public/img/uploads/media/1770087115.webp",
+    img: "https://badmin.vallum.in/public/img/uploads/media/1770087115.webp",
   },
   media: {
     title: "In Conversation With the Markets",
-    img: "https://www.viblo.in/public/img/uploads/media/1770086970.jpg",
+    img: "https://badmin.vallum.in/public/img/uploads/media/1770086970.jpg",
   },
   "stakeholders-letters": {
     title: "Reflections on markets, decisions, and long-term thinking",
     desc:
       "A research-driven PMS built on GARP, cycle awareness, and risk discipline – designed for HNIs, NRIs, and Family Offices who value clarity over speculation.",
-    img: "https://www.viblo.in/public/img/uploads/media/1770023897.jpg",
+    img: "https://badmin.vallum.in/public/img/uploads/media/1770023897.jpg",
   },
 };
 

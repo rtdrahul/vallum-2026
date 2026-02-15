@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 // SERVER-SIDE: Fetch blog data
 async function getBlogData(slug) {
   try {
-    const response = await fetch(`https://www.viblo.in/api/blog-details/${slug}`, {
+    const response = await fetch(`https://badmin.vallum.in/api/blog-details/${slug}`, {
       headers: { Accept: "application/json" },
       next: { revalidate: 3600 }, // Cache for 1 hour
     });
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
   const defaultMeta = {
     title: "VALLUM CAPITAL ADVISORS",
     description: "SEBI Registered Investment Advisors",
-    image: "https://www.viblo.in/assets/images/logo/logo.webp",
+    image: "https://badmin.vallum.in/assets/images/logo/logo.webp",
   };
 
   if (!res || !res.data) {
