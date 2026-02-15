@@ -21,7 +21,7 @@ export default function Features() {
             <div key={i} className="col-lg-6 col-md-12 mt30">
               <div className="r-g-card">
                 <div className="icondata">
-                  <h4 className="mb-2">{card.title}</h4>
+                  <h4 className="icondata-title mb-2">{card.title}</h4>
                   <p>{card.desc}</p>
                 </div>
               </div>

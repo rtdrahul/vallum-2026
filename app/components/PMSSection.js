@@ -14,7 +14,7 @@ export default function PMSSection() {
               </div>
             </div>
   
-            <div className="col-lg-6 mmt40 px-5 py-3 pms-div">
+            <div className="col-lg-6 mmt40 px-3 py-3 pms-div">
               <p className="mt20">
                 Vallum PMS offers Equity and Multi Asset strategies based on research depth, valuation discipline and structured risk management.
                 </p>

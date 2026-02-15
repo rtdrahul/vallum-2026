@@ -29,7 +29,7 @@ export default function InvestmentApproach() {
         <div className="row justify-content-center text-center">
           <div className="col-xl-8 co-md-8 col-sm-12">
             <div className="cta-heading">
-              <h2 className="mb20">Investment Approach</h2>
+              <h2 className="mb20 heading-main">Investment Approach</h2>
             </div>
           </div>
         </div>
@@ -38,6 +38,16 @@ export default function InvestmentApproach() {
         {approaches.map((item, index) => (
           <div key={index} className="row justify-content-between vcenter mt-5">
             {/* Text Column */}
+            <div className={`col-lg-6 col-sm-12 ${item.reverse ? "order-lg-1" : "order-lg-2"}`}>
+              <div className="roundimg my-4">
+                <img 
+                  className={item.reverse ? "" : "text-end"} 
+                  src={item.image} 
+                  alt={item.title} 
+                  style={{ width: '100%', borderRadius: '15px' }}
+                />
+              </div>
+            </div>
             <div className={`col-lg-6 col-sm-12 ${item.reverse ? "order-lg-2" : "order-lg-1"}`}>
               <div className="position-stick">
                 <h3 className="mb15 d-flex align-items-center gap-2 flex-wrap">{item.showLogo ? (
@@ -55,23 +65,14 @@ export default function InvestmentApproach() {
                 )}
                 </h3>
                 <p className="mt15 color-black">{item.description}</p>
-                <button className="client-button mt-5">
+                <button className="client-button mt-4">
                   <span>Explore the Investment Approach</span>
                 </button>
               </div>
             </div>
 
             {/* Image Column */}
-            <div className={`col-lg-6 col-sm-12 ${item.reverse ? "order-lg-1" : "order-lg-2"}`}>
-              <div className="roundimg">
-                <img 
-                  className={item.reverse ? "" : "text-end"} 
-                  src={item.image} 
-                  alt={item.title} 
-                  style={{ width: '100%', borderRadius: '15px' }}
-                />
-              </div>
-            </div>
+            
           </div>
         ))}
       </div>

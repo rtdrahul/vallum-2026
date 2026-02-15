@@ -244,14 +244,49 @@
 
     .floatbox {
 
-        padding: 40px;
+        padding: 30px;
 
-        border-radius: 40px;      
+        /* border-radius: 40px;       */
 
         grid-gap: 40px;       
 
         grid-template-columns: auto;
 
+    }
+    .heading-main {
+        font-size: 47px;
+        line-height: 50px;
+        margin-bottom: 10px;
+    }
+    .icondata-title {
+        font-size: 24px;
+        line-height: 28px;
+    }
+    .p-heading{
+        margin-block: 20px;
+    }
+    .position-stick h2{
+        font-size: 38px;
+        line-height: 48px;
+    }
+    .about-shadow-box h4{
+        font-size: 27px;
+        line-height: 35px;
+    }
+    .quickcotact h2{
+        font-size: 44px;
+        line-height: 52px;
+    }
+    .structured-heading{
+        font-size: 31px;
+        line-height: 40px;
+    }
+    .shadow-box p, .shadow-box p, .about-shadow-box p{
+        text-align: justify;
+    }
+    .quickcotact h5{
+        font-size: 22px;
+        line-height: 28px;
     }
 
     .floatrightbox {
@@ -459,11 +494,18 @@
 }
 
 @media only screen and (max-width: 575px) {
+    .sw-header{
+        padding: 0 30px 0 20px;
+    }
+    .big-info{
+        font-size: 42px;
+    }
     .sw-header .sw-nav{
         display: none;
     }
     .hero-img{
         padding-top: 20px;
+        height: 100%;
     }
     h1 {  font-size: 30px;    line-height: 40px;    }
 
@@ -533,7 +575,7 @@
 
         grid-template-columns: repeat(1, 1fr);
 
-        grid-gap: 40px;
+        grid-gap: 20px;
 
     }
 

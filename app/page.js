@@ -27,7 +27,7 @@ export default function Home() {
                   </div>
                   <div className="pointswithimganddata col-lg-4">
                     <h2 className="big-info">3</h2>
-                    <p>Distinct Investment Approach</p>
+                    <p>Investment Approach</p>
                   </div>
                   <div className="pointswithimganddata col-lg-4">
                     <h2 className="big-info">500+</h2>

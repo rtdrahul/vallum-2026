@@ -13,10 +13,10 @@ export default function WhoWeServe() {
           <h2 className="heading-main text-center mb-5">Who We Serve</h2>
           <div className="row justify-content-center">
             {items.map((item, i) => (
-              <div key={i} className="col-lg-4 col-md-6 mt30">
+              <div key={i} className="col-lg-4 col-md-6 col-6 mt30">
                 <div className="iconblockcard text-center">
                   <div className="iconblock">
-                    <img src={item.img} alt={item.name} className="img-fluid" />
+                    <img src={item.img} alt={item.name} className="img-fluid iconblock-img" />
                   </div>
                   <div className="icondata mt20">
                     <h4>{item.name}</h4>

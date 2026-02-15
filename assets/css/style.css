@@ -278,7 +278,8 @@ html .pb150{padding-bottom: 150px;}
 .about-shadow-box{
     background: #fff;
     padding: 25px 20px;
-    height: 184px;
+    height: -webkit-fill-available;
+    gap:10px;
     box-shadow: 0px 0px 29px #0000000D;
 }
 .p-heading{
@@ -911,7 +912,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
 
 /*inner page*/ 
 .head-section{
-    padding: 85px 0 30px 0;
+    padding: 60px 0;
     position: relative;  
     background-color: #F6F0E4; 
     background-position: 50% 50%;
@@ -974,9 +975,9 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
     position: sticky;
     top: 100px;
 }
-.position-stick p{
+/* .position-stick p{
     text-align: justify;
-}
+} */
 
 .timeline__content .yr{
     margin-bottom: 10px;
@@ -1242,10 +1243,11 @@ select:focus {
 }
 
 .hero-img {
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
     right: 0;
     width: 750px;
+    height: 400px;
     z-index: 9;
 }
 
