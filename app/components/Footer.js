@@ -31,7 +31,7 @@ export default function Footer({ settingsData }) {
                       alt="JAN Logo"
                       className="jan-white-14"
                     /> Principles</Link></li>
-                  <li><Link href="/pms-calculator">PMS Calculator</Link></li>
+                  {/* <li><Link href="/pms-calculator">PMS Calculator</Link></li> */}
 
                 </ul>
               </div>
