@@ -43,7 +43,7 @@ export async function generateMetadata({ params }){
     title: "VALLUM CAPITAL ADVISORS | SEBI Registered Investment Advisors",
     description: "VALLUM CAPITAL ADVISORS | SEBI Registered Investment Advisors",
     image: "https://badmin.vallum.in/assets/images/logo/logo.webp",
-    url: "https://www.viblo.in",
+    url: "https://vallum.in",
   };
 
   const meta = pageData.metaData;
