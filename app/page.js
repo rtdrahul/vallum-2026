@@ -29,10 +29,10 @@ export default function Home() {
                     <h2 className="big-info">3</h2>
                     <p>Investment Approach</p>
                   </div>
-                  <div className="pointswithimganddata col-lg-4">
+                  {/* <div className="pointswithimganddata col-lg-4">
                     <h2 className="big-info">500+</h2>
                     <p>Investors</p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

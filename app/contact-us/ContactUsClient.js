@@ -176,76 +176,7 @@ export default function ContactUsClient() {
 </div>
 
 </div>
-<section className="pt-0 sec-pad dotcirclebg ">
 
-<div className="container">
-   <div className="row justify-content-center ">
-      <div className="col-lg-12">
-         <h2 className="heading-main text-center">Who We Serve</h2>  
-      </div>
-   </div>
-   <div className="row justify-content-center mt30">
-      <div className="col-lg-4 col-md-6 col-6 mt30">
-
-         <div className="iconblockcard ">
-
-            <div className="iconblock">
-
-               <img src="/assets/images/feather.webp" alt="img"/>
-
-            </div>
-
-            <div className="icondata mt20">
-
-               <p className="mb-3 contact-p">Removes pressure</p>                  
-
-            </div>
-
-         </div>
-
-      </div>
-      <div className="col-lg-4 col-md-6 col-6 mt30">
-
-         <div className="iconblockcard ">
-
-            <div className="iconblock">
-
-               <img src="/assets/images/river.webp" alt="img"/>
-
-            </div>
-
-            <div className="icondata mt20">
-
-               <p className="mb-3 contact-p">Signals selectivity</p>                      
-
-            </div>
-
-         </div>
-
-      </div>
-      <div className="col-lg-4 col-md-6 col-6 mt30">
-
-         <div className="iconblockcard ">
-
-            <div className="iconblock">
-
-              <img src="/assets/images/tea.webp" alt="img"/>
-
-            </div>
-
-            <div className="icondata mt20">
-
-               <p className="mb-3 contact-p">Feels human, not salesy</p>                      
-
-            </div>
-
-         </div>
-
-      </div>
-   </div>
-</div>
-
-</section>
 <div className="contactblocks sec-pad pt-0">
 
 <div className="container">

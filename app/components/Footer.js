@@ -42,6 +42,7 @@ export default function Footer({ settingsData }) {
                 <ul className="footer-links-list">
                   <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQs</Link></li>
                   <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Disclosure-Document.pdf">Disclosure Document</Link></li>
+                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Investor_Charter_PMS.pdf">Investor Charter</Link></li>
                   <li><a href="https://badmin.vallum.in/img/uploads/pdfs/SCORES.pdf" target="_blank">SCORES</a></li>
                   <li><Link href="/upi-id">UPI Id</Link></li>
                 </ul>

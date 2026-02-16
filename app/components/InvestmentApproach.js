@@ -4,12 +4,14 @@ export default function InvestmentApproach() {
       title: "Vallum India Discovery Strategy",
       description: "Focus on investing in equity and equity-linked securities of Indian companies with strong growth potential and sustainable business models. The strategy aims to identify quality businesses with above-average prospects for long-term value creation, backed by sound research and fundamental analysis.",
       image: "/assets/images/common/approach.webp",
+      url: "/vallum-india-discovery",
       reverse: false,
     },
     {
       title: "Vallum India Multi-Activa Strategy",
       description: "A diversified investment approach designed to achieve long-term capital appreciation by dynamically allocating across multiple asset classes based on market conditions. The strategy seeks to optimise risk-adjusted returns through active and flexible asset allocation within the regulatory framework.",
       image: "https://badmin.vallum.in/img/uploads/media/1769971331.webp",
+      url: "/vallum-multi-activa",
       reverse: true,
     },
     {
@@ -18,6 +20,7 @@ export default function InvestmentApproach() {
       showLogo: true,
       description: "Focus on investing in equity and equity-linked securities of Indian companies with strong growth potential and sustainable business models. The strategy aims to identify quality businesses with above-average prospects for long-term value creation, backed by sound research and cycle awareness.",
       image: "/assets/images/common/temple.webp",
+      url: "/vallum-jan-principle",
       reverse: false,
     }
   ];
@@ -65,9 +68,11 @@ export default function InvestmentApproach() {
                 )}
                 </h3>
                 <p className="mt15 color-black">{item.description}</p>
+                <a href={item.url}>
                 <button className="client-button mt-4">
                   <span>Explore the Investment Approach</span>
                 </button>
+                </a>
               </div>
             </div>
 

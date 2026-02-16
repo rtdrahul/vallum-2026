@@ -27,7 +27,6 @@ const navData = [
       { label: 'Weekend Reading', link: '/blog/weekend-reading' },
     ]
   },
-  { id: 5, label: 'Investor Corner', link: 'https://badmin.vallum.in/img/uploads/pdfs/Investor_Charter_PMS.pdf', type: 'external' },
 ];
 
 export default function Header() {
