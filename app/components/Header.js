@@ -79,13 +79,13 @@ export default function Header() {
             {/* --- LOGO --- */}
             <div className="menu-logo">
               <a href="/">
-                <img src="/assets/images/logo.png" alt="Logo" style={{ height: '45px' }} />
+                <img src="/assets/images/logo.png" alt="Logo"/>
               </a>
             </div>
 
             {/* --- DESKTOP NAV (Hover Logic) --- */}
             <nav className="d-none d-lg-block">
-              <ul className="nav d-flex align-items-center gap-3">
+              <ul className="nav d-flex align-items-center gap-1">
                 {navData.map((item) => (
                   <li key={item.id} className="nav-item">
                     {item.type === 'dropdown' ? (
