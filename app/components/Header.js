@@ -13,7 +13,7 @@ const navData = [
     children: [
       { label: 'Vallum India Discovery', link: '/vallum-india-discovery' },
       { label: 'Vallum India Multi-Activa', link: '/vallum-multi-activa' },
-      { label: 'Vallum Principles', link: '/vallum-jan-principle', imgSrc: 'https://badmin.vallum.in/public/img/uploads/media/1770088614.png' },
+      { label: 'Vallum Principles', link: '/vallum-jan-principle', imgSrc: 'https://badmin.vallum.in/img/uploads/media/1770088614.png' },
     ]
   },
   {
@@ -27,7 +27,7 @@ const navData = [
       { label: 'Weekend Reading', link: '/blog/weekend-reading' },
     ]
   },
-  { id: 5, label: 'Investor Corner', link: 'https://badmin.vallum.in/public/img/uploads/pdfs/Investor_Charter_PMS.pdf', type: 'external' },
+  { id: 5, label: 'Investor Corner', link: 'https://badmin.vallum.in/img/uploads/pdfs/Investor_Charter_PMS.pdf', type: 'external' },
 ];
 
 export default function Header() {

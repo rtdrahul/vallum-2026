@@ -6,7 +6,7 @@ import BlogListClient from "./BlogListClient";
 async function fetchBlogs(type) {
   try {
     // Dynamically inserting the 'type' into your API endpoint
-    const response = await fetch(`https://badmin.vallum.in/public/api/blog-list/${type}`, {
+    const response = await fetch(`https://badmin.vallum.in/api/blog-list/${type}`, {
       headers: { Accept: "application/json" },
       next: { revalidate: 3600 }, // Cache for 1 hour
     });
@@ -92,7 +92,7 @@ export default async function BlogPage({ params, searchParams }) {
   const currentPage = page || 1;
 
   // Update fetch to include the page number
-  const response = await fetch(`https://badmin.vallum.in/public/api/blog-list/${type}?page=${currentPage}`, {
+  const response = await fetch(`https://badmin.vallum.in/api/blog-list/${type}?page=${currentPage}`, {
     next: { revalidate: 3600 }
   });
   const blogData = await response.json();

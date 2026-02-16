@@ -9,7 +9,7 @@ export default function InvestmentApproach() {
     {
       title: "Vallum India Multi-Activa Strategy",
       description: "A diversified investment approach designed to achieve long-term capital appreciation by dynamically allocating across multiple asset classes based on market conditions. The strategy seeks to optimise risk-adjusted returns through active and flexible asset allocation within the regulatory framework.",
-      image: "https://badmin.vallum.in/public/img/uploads/media/1769971331.webp",
+      image: "https://badmin.vallum.in/img/uploads/media/1769971331.webp",
       reverse: true,
     },
     {
@@ -54,7 +54,7 @@ export default function InvestmentApproach() {
                   <>
                     {item.titleStart}
                     <img
-                      src="https://badmin.vallum.in/public/img/uploads/media/1770088614.png"
+                      src="https://badmin.vallum.in/img/uploads/media/1770088614.png"
                       alt="JAN Logo"
                       className="jan-logo"
                     />
