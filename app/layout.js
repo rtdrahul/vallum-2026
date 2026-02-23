@@ -51,7 +51,7 @@ export default async function RootLayout({ children }) {
         </main>
         <UIEffects />
         {/* <UX4GWidget /> */}
-        {/* <AccessibilityWidget></AccessibilityWidget> */}
+        <AccessibilityWidget></AccessibilityWidget>
         <Script src="/assets/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
       </body>
     </html>
