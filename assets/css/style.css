@@ -323,7 +323,7 @@ html .pb150{padding-bottom: 150px;}
 .sw-header.sticky {
     height: auto;
     position: fixed;
-    top: 27px;
+    top: 0!important;
     z-index: 99999999;
     background: #fff;
     -webkit-box-shadow: 0 15px 20px 0 rgb(0 10 70 / 10%) !important;
