@@ -7,7 +7,6 @@ async function fetchFilteredBlogs(type, categorySlug) {
     // Adjust this URL to match your backend's filtering logic
     const response = await fetch(`https://badmin.vallum.in/api/blog-list/${type}?category=${categorySlug}`, {
       headers: { Accept: "application/json" },
-      next: { revalidate: 3600 },
     });
 
     if (!response.ok) return null;

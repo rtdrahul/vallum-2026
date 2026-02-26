@@ -6,7 +6,6 @@ async function getBlogData(slug) {
   try {
     const response = await fetch(`https://badmin.vallum.in/api/blog-details/${slug}`, {
       headers: { Accept: "application/json" },
-      next: { revalidate: 3600 }, // Cache for 1 hour
     });
 
     if (!response.ok) return null;
