@@ -6,8 +6,7 @@ import DynamicPageClient from './DynamicPageClient';
 async function fetchPageData(slug) {
   try {
     const response = await fetch(`https://badmin.vallum.in/api/common-meta-data/${slug}`, {
-      headers: { Accept: "application/json" },
-      next: { revalidate: 3600 }, // Cache for 1 hour
+      headers: { Accept: "application/json" }
     });
     
     if (!response.ok) return null;
