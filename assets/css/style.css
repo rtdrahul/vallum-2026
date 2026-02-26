@@ -534,6 +534,9 @@ ease-in-out 1s infinite alternate;
     padding-right: 15px;
     padding-left: 20px;
 }
+.menu-logo {
+        padding-bottom: 5px;
+    }
 .menu-logo img{
         height: 35px;
     }
