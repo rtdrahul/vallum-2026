@@ -150,7 +150,7 @@ export default function Footer({ settingsData }) {
 						<div className="col-lg-7">
 							<div className="ft-copyright">
 								<p className="small opacity-50">
-                  © {new Date().getFullYear()} {settings?.site_title || "Vallum Capital Advisors"}. All Rights Reserved. Securities markets are subject to market risks.
+                  © {new Date().getFullYear()} {settings?.site_title || "Vallum Capital Advisors Pvt Ltd"}. All Rights Reserved. Securities markets are subject to market risks.
                 </p>
 							</div>
 						</div>
