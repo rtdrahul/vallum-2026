@@ -857,7 +857,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
     color: #fff;
     display: flex;
     padding: 4px 0;
-    opacity: .8;
+    /* opacity: .8; */
     grid-gap: 8px;
     align-items: baseline;
 }
@@ -968,7 +968,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
     font-weight: 500;
     line-height: 55px;
     color: #fff;}
-.company-stat .counterdiv p{opacity: .8;} 
+/* .company-stat .counterdiv p{opacity: .8;}  */
 .featurelist {
     border: 1px solid #f5f5f5;
     padding: 20px;
@@ -1892,7 +1892,7 @@ body .vertical-centered-box {
     background: #fff;
     border-radius: 7px;
     padding: 0 10px;
-    opacity: .8;
+    /* opacity: .8; */
 }
 /**/
 .readmore-btn{

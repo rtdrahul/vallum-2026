@@ -42,9 +42,11 @@ export default function Footer({ settingsData }) {
                 <ul className="footer-links-list">
                   <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQs</Link></li>
                   <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Disclosure-Document.pdf">Disclosure Document</Link></li>
-                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Investor_Charter_PMS.pdf">Investor Charter</Link></li>
-                  <li><a href="https://badmin.vallum.in/img/uploads/pdfs/SCORES.pdf" target="_blank">SCORES</a></li>
-                  <li><Link href="/upi-id">UPI Id</Link></li>
+                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Investor_Charter_with_Digital_Accessibility.pdf">Investor Charter</Link></li>
+                  <li><a href="https://badmin.vallum.in/img/uploads/pdfs/February2026.pdf" target="_blank">INVESTOR COMPLIANTS DATA</a></li>
+                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/FAQonUPI.pdf">UPI Id</Link></li>
+                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/Master_Circular_for_Online_Dispute_Resolution.pdf">SEBI Master Circular</Link></li>
+                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/SOP-for-Centralized-Demise-information.pdf">SOP for Centralized Mechanism</Link></li>
                 </ul>
               </div>
 
@@ -99,10 +101,10 @@ export default function Footer({ settingsData }) {
                 </p>
                 <p className="fw-bold">Filling complaints on SCORES - Easy & Quick</p>
                 <ul className="footer-links-list small opacity-75">
-                  <li>a. Register on SCORES portal</li>
+                  <li className="d-flex align-items-center">a. Register on &nbsp;<a href="https://scores.sebi.gov.in/" target="_blank" className="text-white text-decoration-underline">SCORES</a> &nbsp;portal</li>
                   <li>b. Mandatory details for filling complaints on SCORES: Name, PAN, Address, Mobile Number, E-mail ID</li>
                   <li>c. Benefits: i. Effective Communication ii. Speedy redressal of the grievances</li>
-                  <li>d. For online dispute resolution platform - <a href="https://smartodr.in/" target="_blank" className="text-white text-decoration-underline">Smart ODR</a></li>
+                  <li className="d-flex align-items-center">d. For online dispute resolution platform - <a href="https://smartodr.in/" target="_blank" className="text-white text-decoration-underline">&nbsp;Smart ODR</a></li>
                 </ul>
                 
               </div>
