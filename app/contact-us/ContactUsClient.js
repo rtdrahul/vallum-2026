@@ -194,7 +194,7 @@ export default function ContactUsClient() {
       </div>
 
       <div className="col-lg-6 mmt40">
-         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.2121535639444!2d72.84617171438617!3d19.05440765760353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c92126514ae3%3A0x39b0138830cba053!2sKala+Nagar+Society%2C+Bandra+Kurla+Complex+Road%2C+Kala+Nagar%2C+Bandra+East%2C+Mumbai%2C+Maharashtra+400051!5e0!3m2!1sen!2sin!4v1476451507022" frameBorder="0" allowFullScreen="" style={{border: '0px', pointerEvents: 'none', width: '100%', height: '400px'}}></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.827797267082!2d72.85875567368157!3d19.115208982097435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9213e321aa3%3A0xa293d8a0155390ed!2sVallum%20Capital%20Advisors%20Private%20Limited!5e0!3m2!1sen!2sin!4v1772627530765!5m2!1sen!2sin"  frameBorder="0" allowFullScreen="" style={{border: '0px', pointerEvents: 'none', width: '100%', height: '400px'}}></iframe>
       </div>
 
    </div>            
