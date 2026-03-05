@@ -72,7 +72,7 @@ export default function Header() {
       `}</style>
 
       <header className="sw-header fixed-top animation bg-white border-bottom">
-        <Container fluid>
+        <Container>
           <div className="menu-header d-flex align-items-center justify-content-between py-2">
             
             {/* --- LOGO --- */}
@@ -118,7 +118,7 @@ export default function Header() {
 
             {/* --- RIGHT SECTION & MOBILE TOGGLE --- */}
             <div className="sw-nav-cta d-flex align-items-center gap-3">
-              <a href="#" className="onboard d-none d-md-block text-decoration-none" style={{ color: '#000' }}>Direct Onboarding</a>
+              <a href="/contact-us" className="onboard d-none d-md-block text-decoration-none" style={{ color: '#000' }}>Direct Onboarding</a>
               <a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" target="_blank" rel="noreferrer">
                 <button className="client-button btn btn-dark">Client Login</button>
               </a>

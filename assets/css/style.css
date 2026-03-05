@@ -1491,7 +1491,7 @@ body .vertical-centered-box {
     color:#3E3E8A;
     word-spacing: -6px;
     /* line-height: 48px; */
-    font-weight: 500;
+    font-weight: bold;
 }
 .left-feature-img{
     display: flex;
@@ -1561,11 +1561,16 @@ body .vertical-centered-box {
 /**/
 .big-info{
     font-size: 54px;
+    color: #D4B892;
     margin-bottom: 16px;
 }
 .fs-2429{
     font-size: 24px;
-        line-height: 29px;
+    line-height: 29px;
+}
+.fs-36{
+    font-size: 36px;
+    line-height: 50px;
 }
 .floatbox {
     padding: 15px 20px;
@@ -2226,6 +2231,9 @@ body .vertical-centered-box {
 
 .client-button:hover i {
   fill: #fff;
+}
+.client-button a {
+  color: #fff;
 }
 
 .uw-widget-custom-trigger{

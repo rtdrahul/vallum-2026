@@ -86,7 +86,6 @@ export default function ContactUsClient() {
 
             <p className="mt10">Choosing an investment manager is a long-term decision. If you’d like to understand how we work, ask questions, or explore alignment, we welcome a measured discussion.</p>
             <p className="mt20">There is no obligation - only clarity.</p>
-            <button className="client-button mt-3"><span>Get in Touch</span></button>
          </div>
 
       </div>
