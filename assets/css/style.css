@@ -807,7 +807,7 @@ position: relative;
 }
 
 /*footer*/
-footer p, footer a{ font-weight: 300; opacity: .9;}
+footer p, footer a{ font-weight: 300;}
 
 .form-body {
     padding: 30px;
@@ -849,7 +849,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
     border-radius: 4px;
 } 
 
-.fthead h5{margin: 0 0 15px 0;color:#fff; font-size: 16px;}
+.fthead h5{margin: 0 0 5px 0;color:#fff; font-size: 16px;}
 .fthead h6{color:#fff;}
 
 .footer-links-list a {
@@ -867,7 +867,7 @@ footer p, footer a{ font-weight: 300; opacity: .9;}
 }
 .form-head h4{margin-bottom: 30px;}
 
-.ft-copyright p{  font-size: 15px;    line-height: 22px; opacity: .9;}
+.ft-copyright p{  font-size: 15px;    line-height: 22px;}
 
 .footer-end {
     padding: 20px 0;
@@ -1729,7 +1729,7 @@ body .vertical-centered-box {
     text-shadow: -1px -1px 0 #010101, 1px -1px 0 #010101, -1px 1px 0 #010101, 1px 1px 0 #010101;
     text-transform: uppercase;
     font-weight: bolder;
-    opacity: .4;
+    /* opacity: .4; */
 }
 .countercard:hover .counternumber {
     opacity: 1;

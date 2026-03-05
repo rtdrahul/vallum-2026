@@ -40,13 +40,13 @@ export default function Footer({ settingsData }) {
               <div className="col-lg-3 mt30">
                 <h5>Investors</h5>
                 <ul className="footer-links-list">
-                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQs</Link></li>
+                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQ on Investment in PMS</Link></li>
                   <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Disclosure-Document.pdf">Disclosure Document</Link></li>
                   <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Investor_Charter_with_Digital_Accessibility.pdf">Investor Charter</Link></li>
-                  <li><a href="https://badmin.vallum.in/img/uploads/pdfs/February2026.pdf" target="_blank">INVESTOR COMPLIANTS DATA</a></li>
-                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/FAQonUPI.pdf">UPI Id</Link></li>
-                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/Master_Circular_for_Online_Dispute_Resolution.pdf">SEBI Master Circular</Link></li>
-                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/SOP-for-Centralized-Demise-information.pdf">SOP for Centralized Mechanism</Link></li>
+                  <li><a href="https://badmin.vallum.in/img/uploads/pdfs/February2026.pdf" target="_blank">Investor Complaints Data</a></li>
+                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/FAQonUPI.pdf">FAQ on SEBI Validated UPI ID</Link></li>
+                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/Master_Circular_for_Online_Dispute_Resolution.pdf">SEBI Master Circular for Online Resolution of Disputes</Link></li>
+                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/SOP-for-Centralized-Demise-information.pdf">Centralised Reporting Mechanism for Demised Investor</Link></li>
                 </ul>
               </div>
 
@@ -65,7 +65,7 @@ export default function Footer({ settingsData }) {
                     </a>
                   </li>
                 </ul>
-                <h6 className="mt-4">Reach us on Social Media</h6>
+                <h6 className="mt-2">Reach us on Social Media</h6>
                 <div className="infobblk">
                   <ul className="socialmedia">
                     {/* Only show icons if the URL is provided in the API and is not "#" */}
@@ -95,12 +95,12 @@ export default function Footer({ settingsData }) {
               <div className="col-lg-12 mt30">
                 <h5>Investor Grievances</h5>
                 <p className="mb-2">For any grievances, email to <strong>{settings?.admin_support_email || "pms.grievances@vallum.in"}</strong></p>
-                <p className="mb-2">
+                <p className="my-4">
                   In case the grievance is not redressed the investor can take up the matter 
                   with SEBI through SCORES (SEBI COMPLAINTS REDRESS SYSTEM)
                 </p>
-                <p className="fw-bold">Filling complaints on SCORES - Easy & Quick</p>
-                <ul className="footer-links-list small opacity-75">
+                <p>Filling complaints on SCORES - Easy & Quick</p>
+                <ul className="footer-links-list small ">
                   <li className="d-flex align-items-center">a. Register on &nbsp;<a href="https://scores.sebi.gov.in/" target="_blank" className="text-white text-decoration-underline">SCORES</a> &nbsp;portal</li>
                   <li>b. Mandatory details for filling complaints on SCORES: Name, PAN, Address, Mobile Number, E-mail ID</li>
                   <li>c. Benefits: i. Effective Communication ii. Speedy redressal of the grievances</li>
@@ -121,6 +121,9 @@ export default function Footer({ settingsData }) {
                 </Link>
                 <div className="footercompanyinfo">
                   <ul className="footer-links-list contactlistx">
+                    <li style={{ fontSize: "16px" }}>
+                      <strong>Vallum Capital Advisors Pvt Ltd.</strong>
+                    </li>
                     <li>
                       <strong>CIN: U67190MH2010PTC206628 <br /> SEBI PMS Reg. No: INP000007650</strong>
                     </li>
@@ -135,9 +138,9 @@ export default function Footer({ settingsData }) {
             <div className="row justify-content-between">
               <div className="col-lg-12 mt30 ps-lg-5 border-top pt-4">
                 {/* Static Sebi Logo */}
-                <img className="footer-logo mb-3" src="/assets/images/Sebi.png" style={{ width: "125px" }} alt="Sebi" />
+                <img className="footer-logo mb-3" src="/assets/images/Sebi.png" style={{ width: "75px" }} alt="Sebi" />
                 <div className="footercompanyinfo">
-                  <ul className="footer-links-list contactlistx small opacity-75">
+                  <ul className="footer-links-list contactlistx small ">
                     <li>Local Office Address: Securities and Exchange Board of India SEBI Bhavan, Plot No. C4-A, G Block, Bandra Kurla Complex, Bandra (East), Mumbai – 400051</li>
                   </ul>
                 </div>
@@ -149,14 +152,14 @@ export default function Footer({ settingsData }) {
       <div className="footer-end">
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-7">
+						<div className="col-lg-8">
 							<div className="ft-copyright">
-								<p className="small opacity-50">
+								<p className="small">
                   © {new Date().getFullYear()} {settings?.site_title || "Vallum Capital Advisors Pvt Ltd"}. All Rights Reserved. Securities markets are subject to market risks.
                 </p>
 							</div>
 						</div>
-						<div className="col-lg-5">
+						<div className="col-lg-4">
 							<div className="ft-linkz">                    
 								<a href="/terms-conditions">Terms and Conditions </a>                   
 								<a href="/privacy-policy">Privacy Policy </a>                                          
