@@ -68,7 +68,7 @@ const data = breadcrumbData[currentType];
                   </div>
                   <div className="col-lg-4 mmt40">
                     <div className="about-img blogcotact-img">
-                      <img src={data.img} className="w-100" alt="" />
+                      <img src={data.img || "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"} className="w-100" alt="" />
                     </div>
                   </div>
                 </>
