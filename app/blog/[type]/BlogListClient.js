@@ -68,7 +68,7 @@ const data = breadcrumbData[currentType];
                   </div>
                   <div className="col-lg-4 mmt40">
                     <div className="about-img blogcotact-img">
-                      <img src={data.img || "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"} className="w-100" alt="" />
+                      <img src={data.img} className="w-100" alt="" />
                     </div>
                   </div>
                 </>
@@ -144,11 +144,11 @@ const data = breadcrumbData[currentType];
                     <div className="sw--card-img">
                     <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
                       <img 
-                        src={blog.blog_image} 
+                        src={blog?.blog_image || "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"}
                         alt={blog.blog_name} 
                         className="img-fluid"
                         style={{ objectFit: 'cover', height: '100%' }}
-                        onError={(e) => { e.target.src = "/assets/images/blogs/placeholder.png"; }} 
+                        onError={(e) => { e.target.src = "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"; }} 
                       />
                       </Link>
                     </div>
