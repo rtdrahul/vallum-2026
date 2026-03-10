@@ -120,7 +120,7 @@ export default function Header() {
             <div className="sw-nav-cta d-flex align-items-center gap-3">
               <a href="/contact-us" className="onboard d-none d-md-block text-decoration-none" style={{ color: '#000' }}>Direct Onboarding</a>
               <a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" target="_blank" rel="noreferrer">
-                <button className="client-button btn btn-dark">Client Login</button>
+                <button className="client-button btn btn-dark d-none d-md-block">Client Login</button>
               </a>
               
               {/* Mobile Burger Icon */}
@@ -168,7 +168,8 @@ export default function Header() {
           </Nav>
           
           <div className="mt-4 d-grid gap-2">
-             <a href="#" className="btn btn-outline-dark w-100">Direct Onboarding</a>
+             <a href="/contact-us" className="btn btn-outline-dark w-100">Direct Onboarding</a>
+             <a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" className="btn btn-outline-dark w-100">Client Login</a>
           </div>
         </Offcanvas.Body>
       </Offcanvas>
