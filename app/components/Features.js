@@ -13,7 +13,7 @@ export default function Features() {
             <h2 className="heading-main">Built on Clarity. <br/>Guided by Discipline.</h2>
           </div>
           <div className="col-lg-6">
-            <p className="fs-2429">We follow a structured investment process rooted in research depth and valuation realism.</p>
+            <p className="fs-2429">We follow a structured investment process rooted in research depth, valuation realism, and steady judgment — helping portfolios remain grounded.</p>
           </div>
         </div>
         <div className="row justify-content-center mt30">

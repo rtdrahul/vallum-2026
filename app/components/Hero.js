@@ -5,10 +5,10 @@ const Hero = () => (
           <div className="col-xl-5 col-lg-6">
             <div className="paragraph">
               <h1 className="typewriter text-start">
-                <span>Invest With Discipline. Build Wealth That Endures.</span>
+                Invest With Discipline. <br></br>Build Wealth That Endures.
               </h1>
               <p className="color-black text-start">
-                A research-driven PMS built on GARP, cycle awareness, and risk discipline...
+                A research-driven PMS built on GARP, cycle awareness, and risk discipline - designed for HNIs, NRIs, and Family Offices who value clarity over speculation.
               </p>
               <a href="/contact-us">
               <button className="client-button"><span>Get in Touch</span></button>

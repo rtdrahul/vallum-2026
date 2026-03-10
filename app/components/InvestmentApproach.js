@@ -53,7 +53,7 @@ export default function InvestmentApproach() {
             </div>
             <div className={`col-lg-6 col-sm-12 ${item.reverse ? "order-lg-2" : "order-lg-1"}`}>
               <div className="position-stick">
-                <h3 className="mb15 d-flex align-items-center gap-2 flex-wrap">{item.showLogo ? (
+                <h3 className="d-flex align-items-center gap-2 flex-wrap">{item.showLogo ? (
                   <>
                     {item.titleStart}
                     <img
@@ -67,7 +67,7 @@ export default function InvestmentApproach() {
                   item.title
                 )}
                 </h3>
-                <p className="mt15 color-black">{item.description}</p>
+                <p className="color-black">{item.description}</p>
                 <a href={item.url}>
                 <button className="client-button mt-4">
                   <span>Explore the Investment Approach</span>

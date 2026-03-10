@@ -22,7 +22,7 @@ const navData = [
     type: 'dropdown',
     children: [
       { label: 'Blogs', link: '/blog/blog' },
-      { label: 'Stakeholders Letter', link: '/blog/stakeholders-letters' },
+      { label: 'Letter to Stakeholders', link: '/blog/stakeholders-letters' },
       { label: 'Media', link: '/blog/media' },
       { label: 'Weekend Reading', link: '/blog/weekend-reading' },
     ]

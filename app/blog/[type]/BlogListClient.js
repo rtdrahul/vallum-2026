@@ -18,7 +18,7 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
   const mainTypes = [
     { label: "Blogs", slug: "blog" }, 
     { label: "Media", slug: "media" },
-    { label: "Stakeholders Letters", slug: "stakeholders-letters" },
+    { label: "Letter to Stakeholders", slug: "stakeholders-letters" },
     { label: "Vallum Weekend Reading", slug: "weekend-reading" },
   ];
 
