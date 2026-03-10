@@ -16,7 +16,7 @@ export default function Home() {
       
       {/* Floating Stats Bar */}
       <div className="float-bnr">
-        <div className="container-fluid px-0">
+        <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="floatbox text-white">
