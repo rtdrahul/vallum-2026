@@ -67,7 +67,7 @@ export default function InvestmentApproach() {
                   item.title
                 )}
                 </h3>
-                <p className="color-black">{item.description}</p>
+                <p >{item.description}</p>
                 <a href={item.url}>
                 <button className="client-button mt-4">
                   <span>Explore the Investment Approach</span>

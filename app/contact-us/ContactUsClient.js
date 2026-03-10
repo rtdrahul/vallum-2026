@@ -17,11 +17,23 @@ export default function ContactUsClient() {
 
   const [status, setStatus] = useState({ loading: false, message: "", type: "" });
 
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  // };
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const { name, value } = e.target;
 
+  if (name === "contact_profile" && value !== "1" && value !== "2") {
+    setFormData((prev) => ({
+      ...prev,
+      contact_profile: value,
+      business: ""
+    }));
+  } else {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ loading: true, message: "Submitting your request...", type: "info" });
@@ -91,84 +103,107 @@ export default function ContactUsClient() {
       </div>
 
       <div className="col-lg-6 mmt40">
-              <div className="form-block border mob-t30">
-                <div className="form-body p-4">
-                  <form onSubmit={handleSubmit}>
-                    <div className="fieldsets row">
-                      <div className="col-md-6 mb-3">
-                        <input 
-                          type="text" 
-                          placeholder="Full Name" 
-                          name="contact_name" 
-                          value={formData.contact_name} 
-                          onChange={handleChange} 
-                          required 
-                        />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <input 
-                          type="email" 
-                          placeholder="Email Address" 
-                          name="contact_email" 
-                          value={formData.contact_email} 
-                          onChange={handleChange} 
-                          required 
-                        />
-                      </div>
+          <div className="form-block border mob-t30">
+            <div className="form-body p-4">
+              <form onSubmit={handleSubmit}>
+                <div className="fieldsets row">
+                  <div className="col-md-6 mb-3">
+                    <select 
+                      name="contact_profile" 
+                      value={formData.contact_profile} 
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="" >Select Visitor Type</option>
+                      <option value="1">Prospective Client</option>
+                      <option value="2">Distributor / Partner</option>
+                      <option value="3">Vendor</option>
+                      <option value="4">Internship / Job Candidate</option>
+                    </select>
+                  </div>
+                  {(formData.contact_profile === "1" || formData.contact_profile === "2") && (
+                    <div className="col-md-6 mb-3">
+                      <select 
+                        name="business" 
+                        value={formData.business} 
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select Investment Strategy</option>
+                        <option value="Vallum India Discovery Strategy (VDIS)">
+                          Vallum India Discovery Strategy (VDIS)
+                        </option>
+                        <option value="Vallum J.A.N. Principles">
+                          Vallum J.A.N. Principles
+                        </option>
+                        <option value="Vallum India Multi-Activa">
+                          Vallum India Multi-Activa
+                        </option>
+                      </select>
                     </div>
-
-                    <div className="fieldsets row">
-                      <div className="col-md-6 mb-3">
-                        <input 
-                          type="text" 
-                          placeholder="Contact Number" 
-                          name="contact_mobile" 
-                          value={formData.contact_mobile} 
-                          onChange={handleChange} 
-                          required 
-                        />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <select 
-                          name="contact_profile" 
-                          value={formData.contact_profile} 
-                          onChange={handleChange}
-                          required
-                        >
-                          <option value="Select Your Profile" disabled>Select Your Profile</option>
-                          <option value="Business">Business</option>
-                          <option value="Working Professional">Working Professional</option>
-                        </select>
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <input type="text" placeholder="City" name="contact_city" value={formData.contact_city} onChange={handleChange} />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <input type="text" placeholder="State" name="contact_state" value={formData.contact_state} onChange={handleChange} />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <input type="text" placeholder="Country" name="contact_country" value={formData.contact_country} onChange={handleChange} />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <input type="text" placeholder="Nature of Business" name="business" value={formData.business} onChange={handleChange} />
-                      </div>
-                    </div>
-
-                    <div className="fieldsets d-flex flex-column align-items-center">
-                      <button className="client-button mt-3" type="submit" disabled={status.loading}>
-                        <span>{status.loading ? "Processing..." : "Let's Connect"}</span>
-                      </button>
-                      
-                      {status.message && (
-                        <div className={`mt-3 p-2 rounded small ${status.type === 'success' ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'}`}>
-                          {status.message}
-                        </div>
-                      )}
-                    </div>
-                  </form>
+                  )}
+                  </div>
+                  <div className="fieldsets row">
+                  <div className="col-md-6 mb-3">
+                    <input 
+                      type="text" 
+                      placeholder="Full Name" 
+                      name="contact_name" 
+                      value={formData.contact_name} 
+                      onChange={handleChange} 
+                      required 
+                    />
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <input 
+                      type="email" 
+                      placeholder="Email Address" 
+                      name="contact_email" 
+                      value={formData.contact_email} 
+                      onChange={handleChange} 
+                      required 
+                    />
+                  </div>
                 </div>
-              </div>
+
+                <div className="fieldsets row">
+                  <div className="col-md-6 mb-3">
+                    <input 
+                      type="text" 
+                      placeholder="Contact Number" 
+                      name="contact_mobile" 
+                      value={formData.contact_mobile} 
+                      onChange={handleChange} 
+                      required 
+                    />
+                  </div>
+                  
+                  <div className="col-md-6 mb-3">
+                    <input type="text" placeholder="City" name="contact_city" value={formData.contact_city} onChange={handleChange} />
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <input type="text" placeholder="State" name="contact_state" value={formData.contact_state} onChange={handleChange} />
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <input type="text" placeholder="Country" name="contact_country" value={formData.contact_country} onChange={handleChange} />
+                  </div>
+                </div>
+
+                <div className="fieldsets d-flex flex-column align-items-center">
+                  <button className="client-button mt-3 d-block w-100" type="submit" disabled={status.loading}>
+                    <span>{status.loading ? "Processing..." : "Let's Connect"}</span>
+                  </button>
+                  
+                  {status.message && (
+                    <div className={`mt-3 p-2 rounded small ${status.type === 'success' ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'}`}>
+                      {status.message}
+                    </div>
+                  )}
+                </div>
+              </form>
             </div>
+          </div>
+        </div>
 
    </div>            
 
