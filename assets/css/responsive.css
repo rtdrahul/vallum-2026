@@ -512,9 +512,9 @@
 }
 
 @media only screen and (max-width: 575px) {
-    .sw-header{
+    /* .sw-header{
         padding: 0 30px 0 20px;
-    }
+    } */
     .big-info{
         font-size: 42px;
     }
@@ -541,8 +541,14 @@
 
     body {font-size: 19px; }
 
-
-
+    .heading-main{
+        font-size: 36px;
+        line-height: 43px;
+    }
+    .fs-2429 {
+        font-size: 22px;
+        line-height: 29px;
+    }
    .mmobt40{margin-top: 40px;}  
 
 
