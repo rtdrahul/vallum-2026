@@ -545,6 +545,23 @@
         font-size: 32px;
         line-height: 40px;
     }
+    .iconblockcard h4 {
+        font-size: 20px;
+    }
+    .icondata p {
+        text-align: justify;
+        font-size: 14px;
+    }
+    .pms-div p {
+        text-align: justify;
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .iconblock img {
+        width: 175px;
+        height: 175px;
+        margin-block: 10px;
+    }
     .typewriter {
         font-size: 32px;
         line-height: 40px;

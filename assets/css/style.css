@@ -493,6 +493,7 @@ ease-in-out 1s infinite alternate;
     font-size: 15px;
     line-height: 2;
 }
+p {   font-size: 18px;  line-height: 25px;}
 .heading-main{
     font-size: 54px;
     line-height: 62px;
