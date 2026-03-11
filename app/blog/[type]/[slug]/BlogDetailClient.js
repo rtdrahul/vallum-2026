@@ -36,7 +36,7 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                 {/* Featured Image */}
                 <div className="mb-4 text-center">
                   <img 
-                    src={blogData?.blog_image || "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"}
+                    src={blogData?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
                     alt={blogData.blog_name} 
                     className="img-fluid rounded w-100"
                     style={{ maxHeight: '500px', objectFit: 'cover' }}
@@ -44,9 +44,13 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                 </div>
 
                 {/* Meta Info */}
-                <h1>{blogData.blog_name}</h1>
+                <h1 className="blog-title">{blogData.blog_name}</h1>
                 <div className="timeanddate pb-3 border-bottom d-flex gap-4">
-                  <span><i className="ri-calendar-line"></i> {new Date(blogData.created_at).toLocaleDateString()}</span>
+                  <span><i className="ri-calendar-line"></i> {new Date(blogData.blog_start_date ? blogData.blog_start_date : blogData.created_at).toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric'
+})}</span>
                   <span><i className="ri-user-follow-line"></i> Vallum Capital</span>
                 </div>
 
@@ -73,7 +77,7 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                         <div className="row g-0">
                           <div className="col-4">
                             <img
-                              src={rel?.blog_image || "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"}
+                              src={rel?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
                               className="img-fluid h-100"
                               alt={rel.blog_name}
                               style={{ objectFit: "cover" }}

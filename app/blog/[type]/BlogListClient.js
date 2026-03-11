@@ -139,16 +139,15 @@ const data = breadcrumbData[currentType];
             <div className="col-lg-9">
               {blogs.length > 0 ? (
                 blogs.map((blog) => (
-                  <div className="sw--card shadow" key={blog.blog_id}>
+                  <div className="sw--card blog-card shadow" key={blog.blog_id}>
 
                     <div className="sw--card-img">
                     <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
                       <img 
-                        src={blog?.blog_image || "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"}
+                        src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
                         alt={blog.blog_name} 
                         className="img-fluid"
-                        style={{ objectFit: 'cover', height: '100%' }}
-                        onError={(e) => { e.target.src = "https://badmin.vallum.in/public/img/uploads/media/1772871903.png"; }} 
+                        onError={(e) => { e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png"; }} 
                       />
                       </Link>
                     </div>
@@ -161,11 +160,11 @@ const data = breadcrumbData[currentType];
                       
                       <div className="timeanddate">
                         <span>
-                          <i className="ri-calendar-line"></i> {new Date(blog.blog_start_date).toLocaleDateString('en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric'
-                          })}
+                          <i className="ri-calendar-line"></i> {new Date(blog.blog_start_date ? blog.blog_start_date : blog.created_at).toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric'
+})}
                         </span>
                         <span>
                           <i className="ri-user-follow-line"></i> Vallum Capital

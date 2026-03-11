@@ -289,15 +289,16 @@
         line-height: 52px;
         padding-bottom: 10px;
     }
-    .timeanddate{
+    /* .timeanddate{
         display: block;
-    }
+    } */
     .sw--card-desc{
         display: none;
     }
     .sw--card-img img {
-        width: 100px;
-        height: 200px;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
         object-fit: cover;
         border-radius: 5px;
         object-position: center;   
@@ -515,6 +516,19 @@
     /* .sw-header{
         padding: 0 30px 0 20px;
     } */
+    .sidebar-events-ul{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 13px;
+        margin-bottom: 30px;
+    }
+    .blog-card {
+        padding: 0;
+        display: block;
+    }
+    .sw--card-img img{
+        height: 250px;
+    }
     .big-info{
         font-size: 42px;
     }

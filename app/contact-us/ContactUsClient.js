@@ -131,7 +131,7 @@ export default function ContactUsClient() {
                       >
                         <option value="">Select Investment Strategy</option>
                         <option value="Vallum India Discovery Strategy (VDIS)">
-                          Vallum India Discovery Strategy (VDIS)
+                          Vallum India Discovery Strategy (VIDS)
                         </option>
                         <option value="Vallum J.A.N. Principles">
                           Vallum J.A.N. Principles
