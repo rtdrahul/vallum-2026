@@ -142,7 +142,9 @@ const data = breadcrumbData[currentType];
                   <div className="sw--card blog-card shadow" key={blog.blog_id}>
 
                     <div className="sw--card-img">
-                    <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
+                      <Link href={currentType === 'weekend-reading' 
+    ? blog.blog_weekend_link 
+    : `/blog/${currentType}/${blog.blog_slug}`}>
                       <img 
                         src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
                         alt={blog.blog_name} 
@@ -151,9 +153,10 @@ const data = breadcrumbData[currentType];
                       />
                       </Link>
                     </div>
-
                     <div className="sw--card-content"> 
-                      <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
+                      <Link href={currentType === 'weekend-reading' 
+    ? blog.blog_weekend_link 
+    : `/blog/${currentType}/${blog.blog_slug}`}>
                       <h3 className="mb10 btitle">{blog.blog_name}</h3>
                       </Link>                     
                       <p className="sw--card-desc">{blog.blog_short_description}</p>
@@ -170,7 +173,9 @@ const data = breadcrumbData[currentType];
                           <i className="ri-user-follow-line"></i> Vallum Capital
                         </span>
                       </div>
-                      <Link href={`/blog/${currentType}/${blog.blog_slug}`}>
+                      <Link href={currentType === 'weekend-reading' 
+    ? blog.blog_weekend_link 
+    : `/blog/${currentType}/${blog.blog_slug}`}>
                         <button className="client-button">
                           <span>Read More</span>
                         </button>

@@ -1,32 +1,39 @@
 import { Lora, Manrope } from "next/font/google";
 import Script from "next/script";
 import 'remixicon/fonts/remixicon.css'
+
 import "../assets/css/bootstrap.min.css";
 import "../assets/css/style.css";
 import "../assets/css/responsive.css";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import UIEffects from "./components/UIEffects";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import UX4GWidget from "./components/UX4GWidget";
+
 const lora = Lora({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400","500","600","700"],
   variable: "--font-lora",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400","500","600","700","800"],
   variable: "--font-manrope",
 });
 
 async function getSiteSettings() {
   try {
     const res = await fetch("https://badmin.vallum.in/api/setting-data", {
+      cache: "no-store",
     });
-    if (!res.ok) return null;
-    return res.json();
+
+    const data = await res.json();
+
+    return data; // return full response
+
   } catch (error) {
     console.error("Failed to fetch settings:", error);
     return null;
@@ -39,20 +46,36 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+
   const settingsData = await getSiteSettings();
+
   return (
     <html lang="en">
+
       <body className={`${lora.variable} ${manrope.variable}`}>
+
         <main>
-        <Header />
-        {children}
-        <Footer settingsData={settingsData} />
+
+          {/* PASS SETTINGS TO HEADER ALSO */}
+          <Header settingsData={settingsData} />
+
+          {children}
+
+          <Footer settingsData={settingsData} />
+
         </main>
+
         <UIEffects />
         <UX4GWidget />
-        {/* <AccessibilityWidget></AccessibilityWidget> */}
-        <Script src="/assets/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
+        {/* <AccessibilityWidget /> */}
+
+        <Script
+          src="/assets/js/bootstrap.bundle.min.js"
+          strategy="afterInteractive"
+        />
+
       </body>
+
     </html>
   );
 }

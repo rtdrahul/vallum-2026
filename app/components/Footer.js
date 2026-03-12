@@ -2,8 +2,50 @@ import Link from "next/link";
 
 export default function Footer({ settingsData }) {
   // Extracting dynamic data from the API response
-  const settings = settingsData?.sitesettings;
-
+  const basePath = settingsData?.setting_image_path;
+  const siteSettings = settingsData?.sitesettings;
+  const investorDocs = [
+  {
+    label: "FAQ on Investment in PMS",
+    link: siteSettings?.faq_pms ? basePath + siteSettings.faq_pms : null,
+  },
+  {
+    label: "Disclosure Document",
+    link: siteSettings?.disclosure_document
+      ? basePath + siteSettings.disclosure_document
+      : null,
+  },
+  {
+    label: "Investor Charter",
+    link: siteSettings?.investor_charter
+      ? basePath + siteSettings.investor_charter
+      : null,
+  },
+  {
+    label: "Investor Complaints Data",
+    link: siteSettings?.investor_complaints
+      ? basePath + siteSettings.investor_complaints
+      : null,
+  },
+  {
+    label: "FAQ on SEBI Validated UPI ID",
+    link: siteSettings?.faq_upi
+      ? basePath + siteSettings.faq_upi
+      : null,
+  },
+  {
+    label: "SEBI Master Circular for Online Resolution of Disputes",
+    link: siteSettings?.sebi_circular
+      ? basePath + siteSettings.sebi_circular
+      : null,
+  },
+  {
+    label: "Centralised Reporting Mechanism for Demised Investor",
+    link: siteSettings?.demised_investor
+      ? basePath + siteSettings.demised_investor
+      : null,
+  },
+].filter((item) => item.link);
   return (
     <footer className="footerthree">
       <div className="container">
@@ -40,13 +82,13 @@ export default function Footer({ settingsData }) {
               <div className="col-lg-3 mt30">
                 <h5>Investors</h5>
                 <ul className="footer-links-list">
-                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Frequently-Asked-Questions-(FAQ)-Portfolio-Managers.pdf">FAQ on Investment in PMS</Link></li>
-                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Disclosure-Document.pdf">Disclosure Document</Link></li>
-                  <li><Link target="_blank" href="https://badmin.vallum.in/img/uploads/pdfs/Investor_Charter_with_Digital_Accessibility.pdf">Investor Charter</Link></li>
-                  <li><a href="https://badmin.vallum.in/img/uploads/pdfs/February2026.pdf" target="_blank">Investor Complaints Data</a></li>
-                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/FAQonUPI.pdf">FAQ on SEBI Validated UPI ID</Link></li>
-                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/Master_Circular_for_Online_Dispute_Resolution.pdf">SEBI Master Circular for Online Resolution of Disputes</Link></li>
-                  <li><Link href="https://badmin.vallum.in/img/uploads/pdfs/SOP-for-Centralized-Demise-information.pdf">Centralised Reporting Mechanism for Demised Investor</Link></li>
+                  {investorDocs.map((doc, index) => (
+                    <li key={index}>
+                      <Link href={doc.link} target="_blank">
+                        {doc.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -55,13 +97,13 @@ export default function Footer({ settingsData }) {
                 <h5>Contact</h5>
                 <ul className="footer-links-list">
                   <li>
-                    <a href={`tel:${settings?.admin_mobile || "9326576656"}`}>
-                      {settings?.admin_mobile || "9326576656"}
+                    <a href={`tel:${siteSettings?.admin_mobile || "9326576656"}`}>
+                      {siteSettings?.admin_mobile || "9326576656"}
                     </a>
                   </li>
                   <li>
-                    <a href={`mailto:${settings?.admin_email || "connect.vallum@vallum.in"}`}>
-                      {settings?.admin_email || "connect.vallum@vallum.in"}
+                    <a href={`mailto:${siteSettings?.admin_email || "connect.vallum@vallum.in"}`}>
+                      {siteSettings?.admin_email || "connect.vallum@vallum.in"}
                     </a>
                   </li>
                 </ul>
@@ -69,17 +111,17 @@ export default function Footer({ settingsData }) {
                 <div className="infobblk">
                   <ul className="socialmedia">
                     {/* Only show icons if the URL is provided in the API and is not "#" */}
-                    {settings?.linkedin_url && settings.linkedin_url !== "" && (
-                      <li><a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/Linkedin.png" alt="Linkedin" /></a></li>
+                    {siteSettings?.linkedin_url && siteSettings.linkedin_url !== "" && (
+                      <li><a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/Linkedin.png" alt="Linkedin" /></a></li>
                     )}
-                    {settings?.instagram_url && settings.instagram_url !== "" && (
-                      <li><a href={settings.instagram_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/Instagram.png" alt="Instagram" /></a></li>
+                    {siteSettings?.instagram_url && siteSettings.instagram_url !== "" && (
+                      <li><a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/Instagram.png" alt="Instagram" /></a></li>
                     )}
-                    {settings?.youtube_url && settings.youtube_url !== "" && (
-                      <li><a href={settings.youtube_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/youtube.png" alt="Youtube" /></a></li>
+                    {siteSettings?.youtube_url && siteSettings.youtube_url !== "" && (
+                      <li><a href={siteSettings.youtube_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/youtube.png" alt="Youtube" /></a></li>
                     )}
-                    {settings?.twitter_url && settings.twitter_url !== "" && (
-                      <li><a href={settings.twitter_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/X.png" alt="X" /></a></li>
+                    {siteSettings?.twitter_url && siteSettings.twitter_url !== "" && (
+                      <li><a href={siteSettings.twitter_url} target="_blank" rel="noopener noreferrer"><img src="/assets/images/X.png" alt="X" /></a></li>
                     )}
                   </ul>
                 </div>
@@ -94,7 +136,7 @@ export default function Footer({ settingsData }) {
             <div className="row">
               <div className="col-lg-12 mt30">
                 <h5>Investor Grievances</h5>
-                <p className="mb-2">For any grievances, email to <strong>{settings?.admin_support_email || "pms.grievances@vallum.in"}</strong></p>
+                <p className="mb-2">For any grievances, email to <strong>{siteSettings?.admin_support_email || "pms.grievances@vallum.in"}</strong></p>
                 <p className="my-4">
                   In case the grievance is not redressed the investor can take up the matter 
                   with SEBI through SCORES (SEBI COMPLAINTS REDRESS SYSTEM)
@@ -129,7 +171,7 @@ export default function Footer({ settingsData }) {
                     </li>
                     <li className="mt-2">
                         {/* Dynamic Address from API */}
-                        {settings?.address || "B-403, Kanakia Wall Street, Andheri Kurla Road, Chakala MIDC, Mumbai, India - 400 093"}
+                        {siteSettings?.address || "B-403, Kanakia Wall Street, Andheri Kurla Road, Chakala MIDC, Mumbai, India - 400 093"}
                     </li>
                   </ul>
                 </div>
@@ -155,7 +197,7 @@ export default function Footer({ settingsData }) {
 						<div className="col-lg-8">
 							<div className="ft-copyright">
 								<p className="small">
-                  © {new Date().getFullYear()} {settings?.site_title || "Vallum Capital Advisors Pvt Ltd"}. All Rights Reserved. Securities markets are subject to market risks.
+                  © {new Date().getFullYear()} {siteSettings?.site_title || "Vallum Capital Advisors Pvt Ltd"}. All Rights Reserved. Securities markets are subject to market risks.
                 </p>
 							</div>
 						</div>
