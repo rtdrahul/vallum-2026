@@ -273,7 +273,7 @@ export default function Header({ settingsData }) {
                           onClick={handleClose}
                           className="text-decoration-none text-dark d-block"
                         >
-                          {child.label}
+                          - {child.label}
                         </a>
                       </li>
                     ))}
