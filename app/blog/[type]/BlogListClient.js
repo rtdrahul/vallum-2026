@@ -142,9 +142,16 @@ const data = breadcrumbData[currentType];
                   <div className="sw--card blog-card shadow" key={blog.blog_id}>
 
                     <div className="sw--card-img">
-                      <Link href={currentType === 'weekend-reading' 
-    ? blog.blog_weekend_link 
-    : `/blog/${currentType}/${blog.blog_slug}`}>
+                      <Link
+                        href={
+                          currentType === "stakeholders-letters" && blog.blog_pdf !== ""
+                            ? blog.blog_pdf
+                            : currentType === "weekend-reading"
+                            ? blog.blog_weekend_link
+                            : `/blog/${currentType}/${blog.blog_slug}`
+                        }
+                        download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                      >
                       <img 
                         src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
                         alt={blog.blog_name} 
@@ -154,9 +161,16 @@ const data = breadcrumbData[currentType];
                       </Link>
                     </div>
                     <div className="sw--card-content"> 
-                      <Link href={currentType === 'weekend-reading' 
-    ? blog.blog_weekend_link 
-    : `/blog/${currentType}/${blog.blog_slug}`}>
+                      <Link
+                        href={
+                          currentType === "stakeholders-letters" && blog.blog_pdf !== ""
+                            ? blog.blog_pdf
+                            : currentType === "weekend-reading"
+                            ? blog.blog_weekend_link
+                            : `/blog/${currentType}/${blog.blog_slug}`
+                        }
+                        download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                      >
                       <h3 className="mb10 btitle">{blog.blog_name}</h3>
                       </Link>                     
                       <p className="sw--card-desc">{blog.blog_short_description}</p>
@@ -164,18 +178,25 @@ const data = breadcrumbData[currentType];
                       <div className="timeanddate">
                         <span>
                           <i className="ri-calendar-line"></i> {new Date(blog.blog_start_date ? blog.blog_start_date : blog.created_at).toLocaleDateString('en-US', {
-  month: 'short',
-  day: 'numeric',
-  year: 'numeric'
-})}
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          })}
                         </span>
                         <span>
                           <i className="ri-user-follow-line"></i> Vallum Capital
                         </span>
                       </div>
-                      <Link href={currentType === 'weekend-reading' 
-    ? blog.blog_weekend_link 
-    : `/blog/${currentType}/${blog.blog_slug}`}>
+                      <Link
+                        href={
+                          currentType === "stakeholders-letters" && blog.blog_pdf !== ""
+                            ? blog.blog_pdf
+                            : currentType === "weekend-reading"
+                            ? blog.blog_weekend_link
+                            : `/blog/${currentType}/${blog.blog_slug}`
+                        }
+                        download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                      >
                         <button className="client-button">
                           <span>Read More</span>
                         </button>
