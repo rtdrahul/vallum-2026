@@ -145,6 +145,7 @@ export default function ContactUsClient() {
           contact_email: "",
           contact_mobile: "",
           contact_country: "",
+          contact_phonecode: "",
           contact_state: "",
           contact_city: "",
           contact_profile: "",
@@ -252,7 +253,19 @@ export default function ContactUsClient() {
                 </div>
 
                 <div className="fieldsets row">
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-3 d-flex gap-0">
+                    <select 
+                      name="contact_phonecode" 
+                      style={{width: '70px',paddingInline: '3px'}}
+                      value={formData.contact_phonecode} 
+                    >
+                      <option value="+91">+91</option>
+                      {countries.map((country) => (
+                        <option key={country.country_id} value={country.country_phonecode}>
+                          {country.country_phonecode}
+                        </option>
+                      ))}
+                    </select>
                     <input 
                       type="text" 
                       placeholder="Contact Number" 
