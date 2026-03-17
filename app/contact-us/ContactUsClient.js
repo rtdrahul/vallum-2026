@@ -38,72 +38,51 @@ export default function ContactUsClient() {
 
   // ✅ Handle Change (FIXED)
   const handleChange = async (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
 
-    // Profile logic
-    if (name === "contact_profile" && value !== "1" && value !== "2") {
-      setFormData((prev) => ({
-        ...prev,
-        contact_profile: value,
-        business: "",
-      }));
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
+  let updatedForm = { ...formData, [name]: value };
 
-    // ✅ Country change → fetch states
-    if (name === "contact_country") {
-      setFormData((prev) => ({
-        ...prev,
-        contact_country: value,
-        contact_state: "",
-        contact_city: "",
-      }));
+  // Profile logic
+  if (name === "contact_profile" && value !== "1" && value !== "2") {
+    updatedForm.business = "";
+  }
 
-      setStates([]);
-      setCities([]);
+  // Country change
+  if (name === "contact_country") {
+    updatedForm.contact_state = "";
+    updatedForm.contact_city = "";
+    setStates([]);
+    setCities([]);
 
-      try {
-        const res = await fetch(
-          `https://badmin.vallum.in/api/state-data/${value}`
-        );
-        const data = await res.json();
-
-        if (data.status === "success") {
-          setStates(data.stateData);
-        }
-      } catch (err) {
-        console.log(err);
+    try {
+      const res = await fetch(`https://badmin.vallum.in/api/state-data/${value}`);
+      const data = await res.json();
+      if (data.status === "success") {
+        setStates(data.stateData);
       }
+    } catch (err) {
+      console.log(err);
     }
+  }
 
-    // ✅ State change → fetch cities
-    if (name === "contact_state") {
-      setFormData((prev) => ({
-        ...prev,
-        contact_state: value,
-        contact_city: "",
-      }));
+  // State change
+  if (name === "contact_state") {
+    updatedForm.contact_city = "";
+    setCities([]);
 
-      setCities([]);
-
-      try {
-        const res = await fetch(
-          `https://badmin.vallum.in/api/city-data/${value}`
-        );
-        const data = await res.json();
-
-        if (data.status === "success") {
-          setCities(data.citiesData);
-        }
-      } catch (err) {
-        console.log(err);
+    try {
+      const res = await fetch(`https://badmin.vallum.in/api/city-data/${value}`);
+      const data = await res.json();
+      if (data.status === "success") {
+        setCities(data.citiesData);
       }
+    } catch (err) {
+      console.log(err);
     }
-  };
+  }
+
+  setFormData(updatedForm);
+};
 
   // ✅ Submit
   const handleSubmit = async (e) => {
@@ -143,15 +122,15 @@ export default function ContactUsClient() {
         setFormData({
           contact_name: "",
           contact_email: "",
+          contact_phonecode: "+91",
           contact_mobile: "",
           contact_country: "",
-          contact_message: "",
-          contact_phonecode: "",
           contact_state: "",
           contact_city: "",
           contact_profile: "",
           contact_approch: "Website Form",
           business: "",
+          contact_message: "",
         });
 
         setStates([]);
@@ -259,6 +238,7 @@ export default function ContactUsClient() {
                       name="contact_phonecode" 
                       style={{width: '70px',paddingInline: '3px'}}
                       value={formData.contact_phonecode} 
+                      onChange={handleChange}
                     >
                       <option value="+91">+91</option>
                       {countries.map((country) => (
@@ -326,6 +306,7 @@ export default function ContactUsClient() {
                       placeholder="Message" 
                       name="contact_message" 
                       value={formData.contact_message} 
+                      onChange={handleChange}
                       required 
                     />
                   </div>
