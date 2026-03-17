@@ -145,6 +145,7 @@ export default function ContactUsClient() {
           contact_email: "",
           contact_mobile: "",
           contact_country: "",
+          contact_message: "",
           contact_phonecode: "",
           contact_state: "",
           contact_city: "",
@@ -289,7 +290,7 @@ export default function ContactUsClient() {
                     ))}
                   </select>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 ">
                     <select 
                     name="contact_state" 
                     value={formData.contact_state} 
@@ -304,22 +305,30 @@ export default function ContactUsClient() {
                     ))}
                   </select>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 ">
                     <select 
-                  name="contact_city" 
-                  value={formData.contact_city} 
-                  onChange={handleChange}
-                  disabled={!cities.length}
-                >
-                  <option value="">Select City</option>
-                  {cities.map((city) => (
-                    <option key={city.cities_id} value={city.cities_id}>
-                      {city.cities_name}
-                    </option>
-                  ))}
-                </select>
+                      name="contact_city" 
+                      value={formData.contact_city} 
+                      onChange={handleChange}
+                      disabled={!cities.length}
+                    >
+                      <option value="">Select City</option>
+                      {cities.map((city) => (
+                        <option key={city.cities_id} value={city.cities_id}>
+                          {city.cities_name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                  
+                  <div className="col-md-12 mb-3">
+                    <textarea 
+                      type="text" 
+                      placeholder="Message" 
+                      name="contact_message" 
+                      value={formData.contact_message} 
+                      required 
+                    />
+                  </div>
                  
                 </div>
 
