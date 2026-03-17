@@ -1,8 +1,12 @@
 "use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ContactUsClient() {
+
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+
   const [formData, setFormData] = useState({
     contact_name: "",
     contact_email: "",
@@ -10,54 +14,131 @@ export default function ContactUsClient() {
     contact_country: "",
     contact_state: "",
     contact_city: "",
-    contact_profile: "Select Your Profile",
-    contact_approch: "Website Form", // Default value for the approach parameter
-    business: "", // Internal field if needed, otherwise ignore
+    contact_profile: "",
+    contact_approch: "Website Form",
+    business: "",
   });
 
-  const [status, setStatus] = useState({ loading: false, message: "", type: "" });
+  const [status, setStatus] = useState({
+    loading: false,
+    message: "",
+    type: "",
+  });
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prev) => ({ ...prev, [name]: value }));
-  // };
-  const handleChange = (e) => {
-  const { name, value } = e.target;
+  // ✅ Load Countries
+  useEffect(() => {
+    fetch("https://badmin.vallum.in/api/countries-data")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          setCountries(data.countriesData);
+        }
+      });
+  }, []);
 
-  if (name === "contact_profile" && value !== "1" && value !== "2") {
-    setFormData((prev) => ({
-      ...prev,
-      contact_profile: value,
-      business: ""
-    }));
-  } else {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  }
-};
+  // ✅ Handle Change (FIXED)
+  const handleChange = async (e) => {
+    const { name, value } = e.target;
+
+    // Profile logic
+    if (name === "contact_profile" && value !== "1" && value !== "2") {
+      setFormData((prev) => ({
+        ...prev,
+        contact_profile: value,
+        business: "",
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+
+    // ✅ Country change → fetch states
+    if (name === "contact_country") {
+      setFormData((prev) => ({
+        ...prev,
+        contact_country: value,
+        contact_state: "",
+        contact_city: "",
+      }));
+
+      setStates([]);
+      setCities([]);
+
+      try {
+        const res = await fetch(
+          `https://badmin.vallum.in/api/state-data/${value}`
+        );
+        const data = await res.json();
+
+        if (data.status === "success") {
+          setStates(data.stateData);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    // ✅ State change → fetch cities
+    if (name === "contact_state") {
+      setFormData((prev) => ({
+        ...prev,
+        contact_state: value,
+        contact_city: "",
+      }));
+
+      setCities([]);
+
+      try {
+        const res = await fetch(
+          `https://badmin.vallum.in/api/city-data/${value}`
+        );
+        const data = await res.json();
+
+        if (data.status === "success") {
+          setCities(data.citiesData);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
+  // ✅ Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ loading: true, message: "Submitting your request...", type: "info" });
+
+    setStatus({
+      loading: true,
+      message: "Submitting your request...",
+      type: "info",
+    });
 
     try {
-      // Create FormData to send as multipart/form-data or JSON depending on API preference
-      // Here we use JSON which is standard for modern Next.js apps
-      const response = await fetch("https://badmin.vallum.in/api/contact-us-process", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json" 
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://badmin.vallum.in/api/contact-us-process",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
 
       if (result.status === "success" || response.ok) {
-        setStatus({ 
-          loading: false, 
-          message: result.message || "Thank you! Your message has been sent successfully.", 
-          type: "success" 
+        setStatus({
+          loading: false,
+          message:
+            result.message ||
+            "Thank you! Your message has been sent successfully.",
+          type: "success",
         });
+
         // Reset form
         setFormData({
           contact_name: "",
@@ -66,18 +147,22 @@ export default function ContactUsClient() {
           contact_country: "",
           contact_state: "",
           contact_city: "",
-          contact_profile: "Select Your Profile",
+          contact_profile: "",
           contact_approch: "Website Form",
-          business: ""
+          business: "",
         });
+
+        setStates([]);
+        setCities([]);
       } else {
         throw new Error(result.message || "Submission failed");
       }
     } catch (error) {
-      setStatus({ 
-        loading: false, 
-        message: error.message || "An error occurred. Please try again later.", 
-        type: "error" 
+      setStatus({
+        loading: false,
+        message:
+          error.message || "An error occurred. Please try again later.",
+        type: "error",
       });
     }
   };
@@ -177,16 +262,52 @@ export default function ContactUsClient() {
                       required 
                     />
                   </div>
+                   <div className="col-md-6 mb-3">
+                    <select 
+                    name="contact_country" 
+                    value={formData.contact_country} 
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Country</option>
+                    {countries.map((country) => (
+                      <option key={country.country_id} value={country.country_id}>
+                        {country.country_name}
+                      </option>
+                    ))}
+                  </select>
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <select 
+                    name="contact_state" 
+                    value={formData.contact_state} 
+                    onChange={handleChange}
+                    disabled={!states.length}
+                  >
+                    <option value="">Select State</option>
+                    {states.map((state) => (
+                      <option key={state.state_id} value={state.state_id}>
+                        {state.state_name}
+                      </option>
+                    ))}
+                  </select>
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <select 
+                  name="contact_city" 
+                  value={formData.contact_city} 
+                  onChange={handleChange}
+                  disabled={!cities.length}
+                >
+                  <option value="">Select City</option>
+                  {cities.map((city) => (
+                    <option key={city.cities_id} value={city.cities_id}>
+                      {city.cities_name}
+                    </option>
+                  ))}
+                </select>
+                  </div>
                   
-                  <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="City" name="contact_city" value={formData.contact_city} onChange={handleChange} />
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="State" name="contact_state" value={formData.contact_state} onChange={handleChange} />
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="Country" name="contact_country" value={formData.contact_country} onChange={handleChange} />
-                  </div>
+                 
                 </div>
 
                 <div className="fieldsets d-flex flex-column align-items-center">
