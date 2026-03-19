@@ -2,93 +2,88 @@
 
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
+import { useState } from "react";
+
+// SWIPER
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function BlogListClient({ initialData, currentCategory = null }) {
   const params = useParams();
   const searchParams = useSearchParams();
   const currentType = params.type || "all";
-  const currentPage = parseInt(searchParams.get("page") || "1");
-  
-  // Data Extraction from API Response
+
+  const [videoUrl, setVideoUrl] = useState(null);
+
+  // Data
   const blogs = initialData?.blogsData?.data || [];
   const categories = initialData?.categoryData || [];
-  const tags = initialData?.tagData || [];
   const paginationLinks = initialData?.blogsData?.links || [];
-  // Navigation items for the top bar (The 4 Main Types)
+
+  // Split MEDIA
+  const videoMedia = blogs.filter((b) => b.blog_media_type == 1);
+  const pdfMedia = blogs.filter((b) => b.blog_media_type == 2);
+
+  // Extract YouTube ID
+  const getYoutubeId = (url) => {
+  if (!url) return null;
+
+  try {
+    const parsed = new URL(url);
+
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.slice(1);
+    }
+
+    return parsed.searchParams.get("v");
+  } catch {
+    return null;
+  }
+};
+
   const mainTypes = [
-    { label: "Blogs", slug: "blog" }, 
+    { label: "Blogs", slug: "blog" },
     { label: "Media", slug: "media" },
     { label: "Letter to Stakeholders", slug: "stakeholders-letters" },
     { label: "Vallum Weekend Reading", slug: "weekend-reading" },
   ];
 
   const getPaginationUrl = (url) => {
-   if (!url) return "#";
-   const urlObj = new URL(url);
-   const pageNum = urlObj.searchParams.get("page");
-   return `/blog/${currentType}?page=${pageNum}`;
- };
-const breadcrumbData = {
-  blog: {
-    title: "Articles & Perspectives",
-    img: "https://badmin.vallum.in/img/uploads/media/1770087115.webp",
-  },
-  "weekend-reading": {
-    title: "Articles & Perspectives",
-    img: "https://badmin.vallum.in/img/uploads/media/1770087115.webp",
-  },
-  media: {
-    title: "In Conversation With the Markets",
-    img: "https://badmin.vallum.in/img/uploads/media/1770086970.jpg",
-  },
-  "stakeholders-letters": {
-    title: "Reflections on markets, decisions, and long-term thinking",
-    desc:
-      "A research-driven PMS built on GARP, cycle awareness, and risk discipline – designed for HNIs, NRIs, and Family Offices who value clarity over speculation.",
-    img: "https://badmin.vallum.in/img/uploads/media/1770023897.jpg",
-  },
-};
+    if (!url) return "#";
+    const urlObj = new URL(url);
+    const pageNum = urlObj.searchParams.get("page");
+    return `/blog/${currentType}?page=${pageNum}`;
+  };
 
-const data = breadcrumbData[currentType];
- 
   return (
     <>
-      <div className="contactblocks pt-5 pb-0">
-
-         <div className="container">
-
-            <div className="row justify-content-between align-items-center">
-              {data && (
-                <>
-                  <div className="col-lg-8">
-                    <div className="blogcotact">
-                      <h2>{data.title}</h2>
-                      {data.desc && <p className="mt10">{data.desc}</p>}
-                    </div>
-                  </div>
-                  <div className="col-lg-4 mmt40">
-                    <div className="about-img blogcotact-img">
-                      <img src={data.img} className="w-100" alt="" />
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>            
-
-         </div>
-
-      </div>
+      {/* ================= HEADER ================= */}
       <section className="sec-pad pt-5">
         <div className="container">
           <div className="row event-row">
             <div className="col-lg-5">
-              <p className="blog-heading">Insights That Reflect How We Think</p>
+              <p className="blog-heading">
+                Insights That Reflect How We Think
+              </p>
             </div>
+
             <div className="col-lg-7">
               <ul className="events-ul">
                 {mainTypes.map((item) => (
-                  <li key={item.slug} className={currentType === item.slug ? "li-active li-div" : "li-div"}>
-                    <Link href={`/blog/${item.slug}`} className={currentType === item.slug ? "active" : ""}>
+                  <li
+                    key={item.slug}
+                    className={
+                      currentType === item.slug
+                        ? "li-active li-div"
+                        : "li-div"
+                    }
+                  >
+                    <Link
+                      href={`/blog/${item.slug}`}
+                      className={
+                        currentType === item.slug ? "active" : ""
+                      }
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -98,142 +93,183 @@ const data = breadcrumbData[currentType];
           </div>
 
           <div className="row mt30">
-            {/* Dynamic Sidebar Filters */}
+            {/* ================= SIDEBAR ================= */}
             <div className="col-lg-3">
-              <h5 className="mb-2">Filter by Category</h5>
+              <h5>Filter by Category</h5>
               <ul className="sidebar-events-ul">
-                <li className={currentType === 'all' ? "li-active" : ""}>
-                   <Link href="/blog/all" className={currentType === 'all' ? "active" : ""}>All Categories</Link>
+                <li>
+                  <Link href="/blog/all">All Categories</Link>
                 </li>
                 {categories.map((cat) => (
-                  <li key={cat.category_id} className={currentCategory === cat.category_slug ? "li-active" : ""}>
-                     <Link 
-                        href={`/blog/${currentType}/category/${cat.category_slug}`}
-                        className={currentCategory === cat.category_slug ? "active" : ""}
-                     >
-                        {cat.category_name}
-                     </Link>
+                  <li key={cat.category_id}>
+                    <Link
+                      href={`/blog/${currentType}/category/${cat.category_slug}`}
+                    >
+                      {cat.category_name}
+                    </Link>
                   </li>
-                  ))}
+                ))}
               </ul>
-
-              {/* {tags.length > 0 && (
-                <>
-                  <h5 className="mb-2 mt-4">Popular Tags</h5>
-                  <div className="d-flex flex-wrap gap-2">
-                    {tags.map((tag) => (
-                      <Link 
-                        key={tag.tag_id} 
-                        href={`/blog/tag/${tag.tag_slug}`}
-                        className="badge bg-light text-dark text-decoration-none border p-2"
-                      >
-                        # {tag.tag_name}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              )} */}
             </div>
 
-            {/* Blog List Dynamic Rendering */}
+            {/* ================= MAIN CONTENT ================= */}
             <div className="col-lg-9">
-              {blogs.length > 0 ? (
-                blogs.map((blog) => (
-                  <div className="sw--card blog-card shadow" key={blog.blog_id}>
+              {/* ================= MEDIA VIEW ================= */}
+              {/* ================= MEDIA VIEW ================= */}
+              {currentType === "media" ? (
+                <>
+                  {/* ===== VIDEO SWIPER ===== */}
+                  {videoMedia.length > 0 && (
+                    <>
+                      <h3 className="mb-3">Videos</h3>
 
+                      <Swiper
+                        spaceBetween={20}
+                        slidesPerView={3}
+                        breakpoints={{
+                          320: { slidesPerView: 1.2 },
+                          768: { slidesPerView: 2 },
+                          1024: { slidesPerView: 3 },
+                        }}
+                      >
+                        {videoMedia.map((item) => {
+                          const videoId = getYoutubeId(item.blog_media_link);
+
+                          if (!videoId) return null; // prevent crash
+
+                          return (
+                            <SwiperSlide key={item.blog_id}>
+                              <div
+                                className="video-card"
+                                onClick={() =>
+                                  setVideoUrl(
+                                    `https://www.youtube.com/embed/${videoId}?autoplay=1`
+                                  )
+                                }
+                              >
+                                <div className="thumb-wrapper">
+                                  <img
+                                    src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                                    className="img-fluid"
+                                  />
+                                  <div className="play-btn">▶</div>
+                                </div>
+
+                                <h5 className="mt-2">{item.blog_name}</h5>
+                              </div>
+                            </SwiperSlide>
+                          );
+                        })}
+                      </Swiper>
+                    </>
+                  )}
+
+                  {/* ===== PDF SWIPER ===== */}
+                  {pdfMedia.length > 0 && (
+                    <>
+                      <h3 className="mt-5 mb-3">Documents</h3>
+
+                      <Swiper
+                        spaceBetween={20}
+                        slidesPerView={3}
+                        breakpoints={{
+                          320: { slidesPerView: 1.2 },
+                          768: { slidesPerView: 2 },
+                          1024: { slidesPerView: 3 },
+                        }}
+                      >
+                        {pdfMedia.map((item) => (
+                          <SwiperSlide key={item.blog_id}>
+                            <Link href={item.blog_pdf} target="_blank">
+                              <div className="pdf-card">
+                                <img
+                                  src={
+                                    item.blog_image ||
+                                    "https://via.placeholder.com/400x250?text=PDF"
+                                  }
+                                  className="img-fluid"
+                                />
+                                <h5 className="mt-2">{item.blog_name}</h5>
+                              </div>
+                            </Link>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </>
+                  )}
+                </>
+              ) : (
+                /* ================= NORMAL BLOG VIEW ================= */
+                blogs.map((blog) => (
+                  <div
+                    className="sw--card blog-card shadow"
+                    key={blog.blog_id}
+                  >
                     <div className="sw--card-img">
                       <Link
-                        href={
-                          currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                            ? blog.blog_pdf
-                            : currentType === "weekend-reading"
-                            ? blog.blog_weekend_link
-                            : `/blog/${currentType}/${blog.blog_slug}`
-                        }
-                        download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                        href={`/blog/${currentType}/${blog.blog_slug}`}
                       >
-                      <img 
-                        src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
-                        alt={blog.blog_name} 
-                        className="img-fluid"
-                        onError={(e) => { e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png"; }} 
-                      />
+                        <img
+                          src={blog.blog_image}
+                          className="img-fluid"
+                        />
                       </Link>
                     </div>
-                    <div className="sw--card-content"> 
+
+                    <div className="sw--card-content">
+                      <h3>{blog.blog_name}</h3>
+                      <p>{blog.blog_short_description}</p>
+
                       <Link
-                        href={
-                          currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                            ? blog.blog_pdf
-                            : currentType === "weekend-reading"
-                            ? blog.blog_weekend_link
-                            : `/blog/${currentType}/${blog.blog_slug}`
-                        }
-                        download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
-                      >
-                      <h3 className="mb10 btitle">{blog.blog_name}</h3>
-                      </Link>                     
-                      <p className="sw--card-desc">{blog.blog_short_description}</p>
-                      
-                      <div className="timeanddate">
-                        <span>
-                          <i className="ri-calendar-line"></i> {new Date(blog.blog_start_date ? blog.blog_start_date : blog.created_at).toLocaleDateString('en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric'
-                          })}
-                        </span>
-                        <span>
-                          <i className="ri-user-follow-line"></i> Vallum Capital
-                        </span>
-                      </div>
-                      <Link
-                        href={
-                          currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                            ? blog.blog_pdf
-                            : currentType === "weekend-reading"
-                            ? blog.blog_weekend_link
-                            : `/blog/${currentType}/${blog.blog_slug}`
-                        }
-                        download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                        href={`/blog/${currentType}/${blog.blog_slug}`}
                       >
                         <button className="client-button">
-                          <span>Read More</span>
+                          Read More
                         </button>
                       </Link>
                     </div>
                   </div>
                 ))
-              ) : (
-                <div className="text-center py-5 border rounded bg-light">
-                  <h4>No articles found in {currentType}.</h4>
-                  <p>Check back later for new updates.</p>
-                </div>
               )}
 
-               {paginationLinks.length > 3 && (
-                <nav aria-label="Blog navigation" className="mt-5">
-                  <ul className="pagination justify-content-center">
-                    {paginationLinks.map((link, index) => (
-                      <li 
-                        key={index} 
-                        className={`page-item ${link.active ? 'active' : ''} ${!link.url ? 'disabled' : ''}`}
-                      >
-                        <Link
-                          className="page-link"
-                          href={getPaginationUrl(link.url)}
-                          dangerouslySetInnerHTML={{ __html: link.label }}
-                        />
+              {/* ================= PAGINATION ================= */}
+              {currentType !== "media" &&
+                paginationLinks.length > 3 && (
+                  <ul className="pagination mt-5">
+                    {paginationLinks.map((link, i) => (
+                      <li key={i}>
+                        <Link href={getPaginationUrl(link.url)}>
+                          {link.label}
+                        </Link>
                       </li>
                     ))}
                   </ul>
-                </nav>
-              )}
-
+                )}
             </div>
           </div>
         </div>
       </section>
+
+      {/* ================= VIDEO MODAL ================= */}
+      {videoUrl && (
+        <div className="video-modal">
+          <div className="modal-content">
+            <button
+              className="close-btn"
+              onClick={() => setVideoUrl(null)}
+            >
+              ✕
+            </button>
+            <iframe
+              width="100%"
+              height="400"
+              src={videoUrl}
+              title="Video player"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -2342,3 +2342,73 @@ body .vertical-centered-box {
   transform: translate(3px, 3px);
   box-shadow: 0px 0px var(--main-color);
 }
+/* Center active slide scaling */
+.premium-swiper .swiper-slide {
+  transition: all 0.4s ease;
+  opacity: 0.6;
+  transform: scale(0.9);
+}
+
+.premium-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Card styling */
+.sw-img-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 15px;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Hover zoom effect */
+.sw-img-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Image zoom */
+.sw-img-card img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.sw-img-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Custom navigation buttons */
+.swiper-btns {
+  display: flex;
+  z-index: 99;
+  position: relative;
+  overflow: hidden;
+  justify-content: space-between;
+  bottom: 230px;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.custom-prev,
+.custom-next {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #3e3e8a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 26px;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background: #333;
+  transform: scale(1.1);
+}
