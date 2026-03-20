@@ -49,8 +49,6 @@ export default function Resources() {
   return (
     <section className="bg-white sec-pad pt-0">
       <div className="container">
-
-        {/* Header */}
         <div className="row justify-content-center text-center">
           <div className="col-lg-6">
             <h2 className="insight-heading">Resources</h2>
@@ -69,7 +67,7 @@ export default function Resources() {
           centeredSlides={true}
           loop={true}
           loopAdditionalSlides={3}
-          loopFillGroupWithBlank={true}
+          // loopFillGroupWithBlank={true}
           speed={800}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           navigation={{
