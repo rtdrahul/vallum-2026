@@ -55,11 +55,24 @@ export default function Header({ settingsData }) {
         ? basePath + siteSettings.demised_investor
         : null,
     },
+    {
+      label: "PMS Calculator",
+      link: 'https://badmin.vallum.in/img/Vallum_Capital_Advisors_Fee_Illustration.xlsx',
+    },
   ].filter((item) => item.link);
 
   const navData = [
     { id: 1, label: "Home", link: "/", type: "link" },
-    { id: 2, label: "About Us", link: "/about-us", type: "link" },
+    { id: 2,
+      label: "About Us",
+      // link: "/about-us",
+      type: "dropdown",
+      children: [
+        { label: "About Vallum", link: "/about-us" },
+        { label: "CSR", link: "/vallum-capital-csr" },
+        { label: "Founder's Story", link: "/jan" },        
+      ], 
+    },
     {
       id: 3,
       label: "Our Products",

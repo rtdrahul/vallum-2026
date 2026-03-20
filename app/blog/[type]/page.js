@@ -91,7 +91,9 @@ export default async function BlogPage({ params, searchParams }) {
   // Update fetch to include the page number
   const response = await fetch(`https://badmin.vallum.in/api/blog-list/${type}?page=${currentPage}`, {
   });
+  
   const blogData = await response.json();
+  console.log('response',JSON.stringify(blogData));
 
   return <BlogListClient initialData={blogData} />;
 }

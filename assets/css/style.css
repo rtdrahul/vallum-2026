@@ -26,14 +26,14 @@ padding: 0;  margin: 0;   outline:none;  vertical-align:baseline;}
     line-height: 28px;
 }
 .c555{
-    color:#555;
+    color:#000;
 }
 .dotted-ul{
     list-style: disc;
     margin-left: 20px;
-    color:#555;
+    color:#000;
 }
-body {font-family: 'Manrope', sans-serif; color: #484848; font-size: 19px; line-height: 28px; outline:none;	overflow-x: hidden;background: #fff;}
+body {font-family: 'Manrope', sans-serif; color: #000; font-size: 19px; line-height: 28px; outline:none;	overflow-x: hidden;background: #fff;}
 
 article, aside, details, figcaption, figure, footer, header, nav, section, summary {  display: block; }
 
@@ -491,7 +491,7 @@ ease-in-out 1s infinite alternate;
     background: #3e3e8a;
 }
 .dd-item {
-    color: #484848;
+    color: #000;
     font-size: 15px;
     line-height: 2;
 }
@@ -824,7 +824,7 @@ footer p, footer a{ font-weight: 300;}
 .contact-p{
     font-size: 24px!important;
     line-height: 26px;
-    color:#555;
+    color:#000;
     text-align: center!important;
     font-weight: bold;
 }
@@ -1889,10 +1889,17 @@ body .vertical-centered-box {
     color: #b98e62;
 }
 .sw--card-content .btitle {
-    font-size: 22px;
-    line-height: 25px;
-    font-weight: 600;
-    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 40px;
 }
 .sw--card-content p {
     font-size: 18px;
@@ -2279,10 +2286,10 @@ body .vertical-centered-box {
 /* From Uiverse.io by andrew-demchenk0 */ 
 .pdf-button {
     --main-focus: #209978;
-    --font-color: #323232;
+    --font-color: #000;
     --bg-color-sub: #1c8d6f;
     --bg-color: #eee;
-    --main-color: #323232;
+    --main-color: #000;
     cursor: pointer;
     border: 1px solid #17795E;
     width: 182px;
@@ -2389,7 +2396,7 @@ body .vertical-centered-box {
   justify-content: space-between;
   bottom: 230px;
   gap: 10px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .custom-prev,
@@ -2411,4 +2418,490 @@ body .vertical-centered-box {
 .custom-next:hover {
   background: #333;
   transform: scale(1.1);
+}
+.events-ul::-webkit-scrollbar {
+  height:4px;
+}
+/* Founder's Story */
+
+.v-hero {
+    background: #3f3e8a;
+    padding: 5rem 3rem 4.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.v-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(110,109,191,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(42,41,104,0.5) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.v-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 60%, transparent 100%);
+}
+
+.v-hero-inner {
+    /* max-width: 900px; */
+    margin: 0 auto;
+    position: relative;
+}
+
+.v-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 1.5rem;
+}
+
+.v-hero-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: rgba(255,255,255,0.5);
+}
+
+.v-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.22;
+    color: #ffffff;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    letter-spacing: -0.01em;
+}
+
+.v-hero-divider {
+    width: 40px;
+    height: 2px;
+    background: rgba(255,255,255,0.4);
+    margin-bottom: 1.75rem;
+}
+
+.v-hero-byline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.v-byline-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #4e4da0;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+.v-byline-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.01em;
+}
+
+.v-byline-role {
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.2rem;
+    letter-spacing: 0.02em;
+}
+
+/* ── ARTICLE LAYOUT ── */
+.v-article-wrap {
+    /* max-width: 900px; */
+    margin: 0 auto;
+    padding: 4rem 3rem 7rem;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* ── INLINE LINKS ── */
+.v-article-body a.v-ref {
+    color: #3f3e8a;
+    text-decoration: none;
+    border-bottom: 1px solid #dddcf0;
+    padding-bottom: 1px;
+    font-style: italic;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.v-article-body a.v-ref:hover {
+    color: #4e4da0;
+    border-bottom-color: #4e4da0;
+}
+
+/* ── REFERENCES BLOCK ── */
+.v-references {
+    margin-top: 3rem;
+    padding: 1.5rem 1.75rem;
+    background: #f4f4fb;
+    border: 1px solid #dddcf0;
+    border-left: 3px solid #3f3e8a;
+    border-radius: 0 4px 4px 0;
+}
+
+.v-references-title {
+    font-family: 'Lora', serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #3f3e8a;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.v-references-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.v-references-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.v-ref-num {
+    font-family: 'Lora', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #3f3e8a;
+    background: #eeeef7;
+    border: 1px solid #dddcf0;
+    border-radius: 3px;
+    padding: 0.1rem 0.4rem;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    letter-spacing: 0.04em;
+}
+
+.v-ref-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.v-ref-source {
+    font-family: 'Lora', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #9896c8;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.v-ref-link {
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: #3f3e8a;
+    text-decoration: none;
+    border-bottom: 1px solid #dddcf0;
+    transition: color 0.2s, border-color 0.2s;
+    line-height: 1.5;
+}
+
+.v-ref-link:hover {
+    color: #4e4da0;
+    border-bottom-color: #4e4da0;
+}
+
+/* ── BODY COPY ── */
+.v-article-body p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #2d2c5e;
+    margin-bottom: 1.65rem;
+}
+
+.v-article-body p.lead {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #3f3e8a;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* ── SECTION HEADINGS ── */
+.v-article-body h2 {
+    font-family: 'Lora', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #3f3e8a;
+    margin-top: 3.5rem;
+    margin-bottom: 1.25rem;
+    padding-top: 3rem;
+    border-top: 1px solid #dddcf0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.v-article-body h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #dddcf0;
+}
+
+/* ── BLOCKQUOTE ── */
+.v-article-body blockquote {
+    margin: 2.5rem 0;
+    padding: 1.6rem 1.75rem 1.6rem 1.5rem;
+    background: #f0f0fb;
+    border-left: 3px solid #3f3e8a;
+    border-radius: 0 4px 4px 0;
+}
+
+.v-article-body blockquote p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #35347a;
+    margin-bottom: 0;
+}
+
+/* ── STAT CARDS ── */
+.v-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0;
+}
+
+.v-stat-card {
+    background: #eeeef7;
+    border: 1px solid #dddcf0;
+    border-top: 3px solid #3f3e8a;
+    padding: 1.4rem 1.5rem;
+    border-radius: 0 0 4px 4px;
+}
+
+.v-stat-label {
+    font-family: 'Lora', serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #9896c8;
+    display: block;
+    margin-bottom: 0.55rem;
+}
+
+.v-stat-value {
+    font-family: 'Lora', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #3f3e8a;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.45rem;
+}
+
+.v-stat-sub {
+    font-family: 'Lora', serif;
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: #6663a8;
+    line-height: 1.55;
+    display: block;
+}
+
+.v-stat-sub strong {
+    color: #3f3e8a;
+    font-weight: 600;
+}
+
+/* ── CLOSING BLOCK ── */
+.v-closing {
+    margin-top: 3.5rem;
+    padding: 2rem 2.25rem;
+    background: #3f3e8a;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.v-closing::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.05));
+}
+
+.v-closing p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 0.9rem;
+}
+
+.v-closing p:last-child {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 0;
+}
+
+/* ── SIDEBAR ── */
+.v-sidebar {
+    position: sticky;
+    top: 88px;
+}
+
+.v-sidebar-card {
+    background: #f4f4fb;
+    border: 1px solid #dddcf0;
+    border-top: 3px solid #3f3e8a;
+    padding: 1.5rem;
+    border-radius: 0 0 4px 4px;
+    margin-bottom: 1.25rem;
+}
+
+.v-sidebar-card-title {
+    font-family: 'Lora', serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #3f3e8a;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.v-sidebar-card p {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: #6663a8;
+    margin-bottom: 0.8rem;
+}
+
+.v-sidebar-card p:last-child { margin-bottom: 0; }
+
+.v-sidebar-fund-name {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #3f3e8a;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.v-sidebar-cta {
+    display: block;
+    width: 100%;
+    margin-top: 1.1rem;
+    padding: 0.7rem 1rem;
+    background: #3f3e8a;
+    color: #fff;
+    font-family: 'Lora', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+
+.v-sidebar-cta:hover { background: #4e4da0; }
+
+.v-sidebar-principle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.v-principle-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+}
+
+.v-principle-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #3f3e8a;
+    margin-top: 0.4rem;
+    flex-shrink: 0;
+}
+
+.v-principle-text {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: #6663a8;
+    line-height: 1.5;
+}
+
+/* ── HORIZONTAL RULE ── */
+.v-rule {
+    border: none;
+    border-top: 1px solid #dddcf0;
+    margin: 2.75rem 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .v-article-wrap {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 3rem 1.25rem 5rem;
+    }
+
+    .v-sidebar {
+    position: static;
+    margin-top: 3rem;
+    border-top: 1px solid #dddcf0;
+    padding-top: 2rem;
+    }
+
+    .v-hero { padding: 3.5rem 1.25rem 3rem; }
+    .v-breadcrumb { padding: 0.7rem 1.25rem; }
+    .v-stat-row { grid-template-columns: 1fr; }
+
+    .v-article-body p { font-size: 1rem; }
+    .v-article-body p.lead { font-size: 1.1rem; }
 }
