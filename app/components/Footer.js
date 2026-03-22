@@ -53,7 +53,7 @@ export default function Footer({ settingsData }) {
           <div className="col-lg-12 fthead">
             <div className="row">
               {/* Company Links */}
-              <div className="col-lg-3 col-6 mt30">
+              <div className="col-lg-2 col-6 mt30">
                 <h5>Company</h5>
                 <ul className="footer-links-list">
                   <li><Link href="/about-us">About Us</Link></li>
@@ -63,7 +63,7 @@ export default function Footer({ settingsData }) {
                 </ul>
               </div>
               {/* Products Links */}
-              <div className="col-lg-3 col-6 mt30">
+              <div className="col-lg-2 col-6 mt30">
                 <h5>Products</h5>
                 <ul className="footer-links-list">
                   <li><Link href="/vallum-india-discovery">Vallum India Discovery</Link></li>
@@ -78,7 +78,7 @@ export default function Footer({ settingsData }) {
               </div>
 
               {/* Investor Links */}
-              <div className="col-lg-3 mt30">
+              <div className="col-lg-5 mt30">
                 <h5>Investors</h5>
                 <ul className="footer-links-list">
                   {investorDocs.map((doc, index) => (
