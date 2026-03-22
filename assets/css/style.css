@@ -1941,6 +1941,7 @@ body .vertical-centered-box {
 }
 /**/
 .readmore-btn{
+    font-size:16px;
     color: #b98e62;
     border-bottom: 2px solid #b98e62;
     padding-bottom: 3px;

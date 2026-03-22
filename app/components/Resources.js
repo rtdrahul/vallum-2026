@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 
@@ -7,99 +8,100 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function Resources() {
-  const articles = [
-    {
-      title: "India’s Acceleration Phenomenon",
-      description: "Understanding the structural forces reshaping India’s growth trajectory.",
-      image: "/assets/images/common/imager-1.webp",
-      link: "#"
-    },
-    {
-      title: "Understanding Cycles in Equity Investing",
-      description: "Why cycle awareness matters more than stock price movements.",
-      image: "/assets/images/common/imager-2.webp",
-      link: "#"
-    },
-    {
-      title: "GARP in Today’s Market",
-      description: "Applying valuation discipline in an environment driven by narratives.",
-      image: "/assets/images/common/imager-3.webp",
-      link: "#"
-    },
-    {
-      title: "India’s Acceleration Phenomenon",
-      description: "Understanding the structural forces reshaping India’s growth trajectory.",
-      image: "/assets/images/common/imager-1.webp",
-      link: "#"
-    },
-    {
-      title: "Understanding Cycles in Equity Investing",
-      description: "Why cycle awareness matters more than stock price movements.",
-      image: "/assets/images/common/imager-2.webp",
-      link: "#"
-    },
-    {
-      title: "GARP in Today’s Market",
-      description: "Applying valuation discipline in an environment driven by narratives.",
-      image: "/assets/images/common/imager-3.webp",
-      link: "#"
-    }
-  ];
+  const [data, setData] = useState({});
+  const typeArr = ['blog', 'stakeholders-letters', 'weekend-reading'];
+
+  useEffect(() => {
+    fetch('https://badmin.vallum.in/api/featured-blog-list')
+      .then((res) => res.json())
+      .then((res) => {
+        const grouped = {};
+
+        typeArr.forEach((type) => {
+          grouped[type] = res.blogsData.filter(
+            (item) => item.blog_type === type
+          );
+        });
+
+        setData(grouped);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
-    <section className="bg-white sec-pad pt-0">
+    <section className="bg-white sec-pad py-0">
       <div className="container">
-        <div className="row justify-content-center text-center">
+
+        {typeArr.map((type, i) => {
+  const items = data[type] || [];
+
+  if (items.length === 0) return null;
+
+  return (
+    
+    <div key={i} className="mb-5">
+      <div className="row justify-content-center text-center mb-5">
           <div className="col-lg-6">
-            <h2 className="insight-heading">Resources</h2>
-            <p className="mt-2">
-              Structured guides to help you evaluate portfolio managers,
-              understand risk and decide if a PMS is suitable for you.
-            </p>
+            <h2 className="insight-heading text-capitalize">{type.replace(/-/g, ' ')}</h2>
           </div>
         </div>
-        <div className="swiper-btns">
-          <div className="custom-prev">‹</div>
-          <div className="custom-next">›</div>
-        </div>
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          centeredSlides={true}
-          loop={true}
-          loopAdditionalSlides={3}
-          // loopFillGroupWithBlank={true}
-          speed={800}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          navigation={{
-            nextEl: '.custom-next',
-            prevEl: '.custom-prev',
-          }}
-          spaceBetween={30}
-          slidesPerView={3}
-          breakpoints={{
-            320: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-        >
-          {articles.map((article, index) => (
-            <SwiperSlide key={index}>
-              <div className="card-wrapper">
-                <div className="sw-img-card">
-                  <img src={article.image} alt={article.title} />
-                  <h5 className="mt-3">
-                    <a href={article.link}>{article.title}</a>
-                  </h5>
-                  <p>{article.description}</p>
-                  <a href={article.link} className="readmore-btn">
-                    Read More →
+      
+      <div className="swiper-btns">
+        <div className={`custom-prev-${i}`}>‹</div>
+        <div className={`custom-next-${i}`}>›</div>
+      </div>
+
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        loop={true}
+        speed={800}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        navigation={{
+          nextEl: `.custom-next-${i}`,
+          prevEl: `.custom-prev-${i}`,
+        }}
+        spaceBetween={30}
+        slidesPerView={3}
+        breakpoints={{
+          320: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
+      >
+        {items.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="card-wrapper p-5">
+              <div className="sw-img-card">
+
+                <img src={item.blog_image} alt={item.blog_name} />
+
+                <h6 className="mt-3">
+                  <a href={`/${item.blog_slug}`}>
+                    {item.blog_name}
                   </a>
-                </div>
+                </h6>
+
+                <p>
+                  {item.blog_short_description || ''}
+                </p>
+
+                <a
+                  href={`/${item.blog_slug}`}
+                  className="readmore-btn"
+                >
+                  Read More →
+                </a>
+
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+    </div>
+  );
+})}
+
       </div>
     </section>
   );
