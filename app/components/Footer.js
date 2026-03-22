@@ -88,6 +88,11 @@ export default function Footer({ settingsData }) {
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <Link href="https://badmin.vallum.in/img/Vallum_Capital_Advisors_Fee_Illustration.xlsx" target="_blank">
+                      PMS Calculator
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
