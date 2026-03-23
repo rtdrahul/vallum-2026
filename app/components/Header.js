@@ -70,6 +70,7 @@ export default function Header({ settingsData }) {
       children: [
         { label: "About Vallum", link: "/about-us" },
         { label: "CSR", link: "/vallum-capital-csr" },
+        { label: "Vallum Track Record", link: "/vallum-track-record" },
       ], 
     },
     {

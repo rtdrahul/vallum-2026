@@ -57,6 +57,7 @@ export default function Footer({ settingsData }) {
                 <h5>Company</h5>
                 <ul className="footer-links-list">
                   <li><Link href="/about-us">About Us</Link></li>
+                  <li><Link href="/vallum-track-record">Vallum Track Record</Link></li>
                   <li><Link href="/contact-us">Contact Us</Link></li>
                   <li><Link href="/blog/blog">Insights</Link></li>
                   <li><Link href="/contact-us">Career</Link></li>
