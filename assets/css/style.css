@@ -42,7 +42,7 @@ p, ul{padding: 0;   margin: 0;font-family: 'Manrope', sans-serif;}
 a {color: #010101; text-decoration: none; background-color: transparent; }
 ul{list-style:none;}
 h1, h2, h3, h4, h5, h6, p, ul, span, div{word-spacing: 2px;}
-a:hover {text-decoration: none;   color: initial;}
+a:hover {text-decoration: none;   color: #deae6e;}
 button:focus {outline: none!important}
 .animation, .sw-header, .texts, .inine-btn:after, .r-g-btn, .domn-ex-lst, .sticky, .img-card-div, .sw-header.sticky:after, .counternumber, .sw-img-card {
 -webkit-transition: 1.1s cubic-bezier(.16, .84, .442, .98);
