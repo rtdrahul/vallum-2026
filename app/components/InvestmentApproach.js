@@ -46,7 +46,7 @@ export default function InvestmentApproach() {
                 <img 
                   className={item.reverse ? "" : "text-end"} 
                   src={item.image} 
-                  alt={item.title} 
+                  alt='Vallum Capital Advisors Pvt Ltd'
                   style={{ width: '100%', borderRadius: '15px' }}
                 />
               </div>
