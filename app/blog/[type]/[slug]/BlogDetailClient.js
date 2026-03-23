@@ -18,7 +18,7 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                   <ol className="breadcrumb bg-transparent p-0 mb-0">
                     <li className="breadcrumb-item"><Link href="javascript:void(0);">Perspectives</Link></li>
                     <li className="breadcrumb-item"><Link href={`/blog/${type || 'all'}`}>{type?.toUpperCase() || 'Category'}</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">{blogData.blog_name}</li>
+                    <li className="breadcrumb-item" aria-current="page">{blogData.blog_name}</li>
                   </ol>
                 </nav>
               </div>
@@ -126,7 +126,6 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
         }
         .blog-content-body p {
           line-height: 1.8;
-          color: #444;
           font-size: 1.1rem;
         }
         .text-truncate-2 {
