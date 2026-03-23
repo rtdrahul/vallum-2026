@@ -174,13 +174,14 @@ export default function ContactUsClient() {
               <form onSubmit={handleSubmit}>
                 <div className="fieldsets row">
                   <div className="col-md-6 mb-3">
+                    <label>Select Visitor Type <span style={{color: 'red'}}>*</span></label>
                     <select 
                       name="contact_profile" 
                       value={formData.contact_profile} 
                       onChange={handleChange}
                       required
                     >
-                      <option value="" >Select Visitor Type</option>
+                      <option value="" >Select Type</option>
                       <option value="1">Prospective Client</option>
                       <option value="2">Distributor / Partner</option>
                       <option value="3">Vendor</option>
@@ -189,6 +190,7 @@ export default function ContactUsClient() {
                   </div>
                   {(formData.contact_profile === "1" || formData.contact_profile === "2") && (
                     <div className="col-md-6 mb-3">
+                      <label>Business <span style={{color: 'red'}}>*</span></label>
                       <select 
                         name="business" 
                         value={formData.business} 
@@ -211,6 +213,7 @@ export default function ContactUsClient() {
                   </div>
                   <div className="fieldsets row">
                   <div className="col-md-6 mb-3">
+                    <label>Full Name <span style={{color: 'red'}}>*</span></label>
                     <input 
                       type="text" 
                       placeholder="Full Name" 
@@ -221,6 +224,7 @@ export default function ContactUsClient() {
                     />
                   </div>
                   <div className="col-md-6 mb-3">
+                    <label>Email Address <span style={{color: 'red'}}>*</span></label>
                     <input 
                       type="email" 
                       placeholder="Email Address" 
@@ -233,30 +237,34 @@ export default function ContactUsClient() {
                 </div>
 
                 <div className="fieldsets row">
-                  <div className="col-md-6 mb-3 d-flex gap-0">
-                    <select 
-                      name="contact_phonecode" 
-                      style={{width: '70px',paddingInline: '3px'}}
-                      value={formData.contact_phonecode} 
-                      onChange={handleChange}
-                    >
-                      <option value="+91">+91</option>
-                      {countries.map((country) => (
-                        <option key={country.country_id} value={country.country_phonecode}>
-                          {country.country_phonecode}
-                        </option>
-                      ))}
-                    </select>
-                    <input 
-                      type="text" 
-                      placeholder="Contact Number" 
-                      name="contact_mobile" 
-                      value={formData.contact_mobile} 
-                      onChange={handleChange} 
-                      required 
-                    />
+                  <div className="col-md-6 mb-3">
+                  <label>Contact Number <span style={{color: 'red'}}>*</span></label>
+                    <div className="d-flex gap-0">
+                      <select 
+                        name="contact_phonecode" 
+                        style={{width: '70px',paddingInline: '3px'}}
+                        value={formData.contact_phonecode} 
+                        onChange={handleChange}
+                      >
+                        <option value="+91">+91</option>
+                        {countries.map((country) => (
+                          <option key={country.country_id} value={country.country_phonecode}>
+                            {country.country_phonecode}
+                          </option>
+                        ))}
+                      </select>
+                      <input 
+                        type="text" 
+                        placeholder="Contact Number" 
+                        name="contact_mobile" 
+                        value={formData.contact_mobile} 
+                        onChange={handleChange} 
+                        required 
+                      />
+                    </div>
                   </div>
                    <div className="col-md-6 mb-3">
+                    <label>Country </label>
                     <select 
                     name="contact_country" 
                     value={formData.contact_country} 
@@ -271,13 +279,14 @@ export default function ContactUsClient() {
                   </select>
                   </div>
                   <div className="col-md-6 ">
+                    <label>State</label>
                     <select 
                     name="contact_state" 
                     value={formData.contact_state} 
                     onChange={handleChange}
                     disabled={!states.length}
                   >
-                    <option value="">Select State</option>
+                    <option value="">Select </option>
                     {states.map((state) => (
                       <option key={state.state_id} value={state.state_id}>
                         {state.state_name}
@@ -286,13 +295,14 @@ export default function ContactUsClient() {
                   </select>
                   </div>
                   <div className="col-md-6 ">
+                    <label>City </label>
                     <select 
                       name="contact_city" 
                       value={formData.contact_city} 
                       onChange={handleChange}
                       disabled={!cities.length}
                     >
-                      <option value="">Select City</option>
+                      <option value="">Select </option>
                       {cities.map((city) => (
                         <option key={city.cities_id} value={city.cities_id}>
                           {city.cities_name}
@@ -301,6 +311,7 @@ export default function ContactUsClient() {
                     </select>
                   </div>
                   <div className="col-md-12 mb-3">
+                    <label>Message <span style={{color: 'red'}}>*</span></label>
                     <textarea 
                       type="text" 
                       placeholder="Message" 
