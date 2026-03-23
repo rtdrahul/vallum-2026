@@ -129,7 +129,7 @@ export default function UX4GWidget() {
                   <span className="uwaw-features__item__name">
                     <span className="light_dark_icon">
                       
-                      <label htmlFor="checkbox" className="checkbox-label">
+                      <label htmlFor="checkbox" for="checkbox" className="checkbox-label">
                         <i className="fas fa-moon-stars"> <span className="ux4g-icon icon-moon"></span> </i>
                         <i className="fas fa-sun"> <span className="ux4g-icon icon-sun"></span> </i>
                         <span className="ball"></span>
