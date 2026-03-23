@@ -123,25 +123,7 @@ export default function UX4GWidget() {
                 </button>
               </div>
 
-              {/* Light-Dark */}
-              <div className="uwaw-features__item reset-feature" id="featureItem-ht-dark">
-                <button id="dark-btn" className="uwaw-features__item__i">
-                  <span className="uwaw-features__item__name">
-                    <span className="light_dark_icon">
-                      
-                      <label htmlFor="checkbox" for="checkbox" className="checkbox-label">
-                        <i className="fas fa-moon-stars"> <span className="ux4g-icon icon-moon"></span> </i>
-                        <i className="fas fa-sun"> <span className="ux4g-icon icon-sun"></span> </i>
-                        <span className="ball"></span>
-                      </label>
-                      <input type="checkbox" className="light_mode uwaw-featugres__item__i" id="checkbox" />
-                    </span>
-                    <span className="uwaw-features__item__name">Light-Dark</span>
-                  </span>
-                  <span className="tick-active uwaw-features__item__enabled reset-tick" id="tickIcon-ht-dark" style={{ display: "none", pointerEvents: "none" }}></span>
-                </button>
-              </div>
-
+              
               {/* Invert Colors */}
               <div className="uwaw-features__item reset-feature" id="featureItem-ic">
                 <button id="btn-invert" className="uwaw-features__item__i">
