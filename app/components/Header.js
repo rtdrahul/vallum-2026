@@ -164,12 +164,14 @@ export default function Header({ settingsData }) {
                         onMouseLeave={() => setHoveredDropdown(null)}
                       >
                         <Dropdown.Toggle
-                          as="a"
+                          as="button"
                           className="nav-link dropdown-toggle"
                           style={{
                             cursor: "pointer",
                             color: "#000",
                             textDecoration: "none",
+                            border: "none",
+                            background: "transparent",
                           }}
                         >
                           {item.label}
