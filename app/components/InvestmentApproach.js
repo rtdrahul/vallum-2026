@@ -26,7 +26,7 @@ export default function InvestmentApproach() {
   ];
 
   return (
-    <section className="sec-pad">
+    <section className="sec-pad pb-5">
       <div className="container">
         {/* Section Heading */}
         <div className="row justify-content-center text-center">
@@ -39,7 +39,7 @@ export default function InvestmentApproach() {
 
         {/* Dynamic Approach Rows */}
         {approaches.map((item, index) => (
-          <div key={index} className="row justify-content-between vcenter mt-5">
+          <div key={index} className="row justify-content-between vcenter">
             {/* Text Column */}
             <div className={`col-lg-6 col-sm-12 ${item.reverse ? "order-lg-1" : "order-lg-2"}`}>
               <div className="roundimg my-4">

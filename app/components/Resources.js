@@ -39,17 +39,17 @@ export default function Resources() {
 
   return (
     
-    <div key={i} className="mb-5">
-      <div className="row justify-content-center text-center mb-5">
+    <div key={i} className='mb-5'>
+      <div className="row justify-content-center text-center">
           <div className="col-lg-6">
             <h2 className="insight-heading text-capitalize">{type.replace(/-/g, ' ')}</h2>
           </div>
         </div>
       
-      <div className="swiper-btns">
+      {/* <div className="swiper-btns">
         <div className={`custom-prev-${i}`}>‹</div>
         <div className={`custom-next-${i}`}>›</div>
-      </div>
+      </div> */}
 
       <Swiper
         modules={[Navigation, Autoplay]}
@@ -70,24 +70,49 @@ export default function Resources() {
       >
         {items.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="card-wrapper p-5">
+            <div className="card-wrapper py-5">
               <div className="sw-img-card">
-
+                <a
+                  href={
+                    item.blog_type === "stakeholders-letters" && item.blog_pdf !== ""
+                      ? item.blog_pdf
+                      : item.blog_type === "weekend-reading"
+                      ? item.blog_weekend_link
+                      : `/blog/${item.blog_type}/${item.blog_slug}`
+                  }
+                  download={item.blog_type === "stakeholders-letters" && item.blog_pdf !== "" ? true : false}
+                >
                 <img src={item.blog_image} alt={item.blog_name} />
-
-                <h6 className="mt-3">
-                  <a href={`/${item.blog_slug}`}>
+                </a>
+                <h5 className="mt-3">
+                  <a
+                  href={
+                    item.blog_type === "stakeholders-letters" && item.blog_pdf !== ""
+                      ? item.blog_pdf
+                      : item.blog_type === "weekend-reading"
+                      ? item.blog_weekend_link
+                      : `/blog/${item.blog_type}/${item.blog_slug}`
+                  }
+                  download={item.blog_type === "stakeholders-letters" && item.blog_pdf !== "" ? true : false}
+                >
                     {item.blog_name}
                   </a>
-                </h6>
+                </h5>
 
                 <p>
                   {item.blog_short_description || ''}
                 </p>
 
                 <a
-                  href={`/${item.blog_slug}`}
-                  className="readmore-btn"
+                  href={
+                    item.blog_type === "stakeholders-letters" && item.blog_pdf !== ""
+                      ? item.blog_pdf
+                      : item.blog_type === "weekend-reading"
+                      ? item.blog_weekend_link
+                      : `/blog/${item.blog_type}/${item.blog_slug}`
+                  }
+                  download={item.blog_type === "stakeholders-letters" && item.blog_pdf !== "" ? true : false}
+                  className='front-blog'
                 >
                   Read More →
                 </a>

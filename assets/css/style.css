@@ -1140,8 +1140,8 @@ footer p, footer a{ font-weight: 300;}
     /* width: -webkit-fill-available; */
 }
 .sidebar-events-ul li{
-    margin-bottom: 10px;
-    padding: 5px 25px;
+    margin-bottom: 10px;    
+    padding: 2px 18px;
     font-size: 18px;
 }
 .event-row{
@@ -1151,11 +1151,11 @@ footer p, footer a{ font-weight: 300;}
 .events-ul li a, .sidebar-events-ul li a{
     color:#3e3e8a;
 }
-.events-ul li.li-active{
+.events-ul li.li-active, .sidebar-events-ul li.li-active{
     color:#fff;
     background-color: #3e3e8a;
 }
-.events-ul li a.active{
+.events-ul li a.active, .sidebar-events-ul li a.active{
     color:#fff;
 }
 .course-rows {
@@ -2248,7 +2248,7 @@ body .vertical-centered-box {
   width: fit-content;
   display: flex;
   align-items: center;
-  padding: 0.3em 1.1em;
+  padding: 2px 18px;
   font-size: 15px;
   gap: 0.4rem;
   border: none;
@@ -3231,7 +3231,7 @@ body .vertical-centered-box {
     font-family: 'Lora', serif;
     font-size: 0.85rem;
     font-weight: 400;
-    color: #3a3a5c;
+    color: #000;
     line-height: 1.55;
     padding-left: 1.1rem;
     position: relative;
@@ -3337,4 +3337,7 @@ body .vertical-centered-box {
 
     .connector { display: none; }
     .card-watermark { font-size: 3.5rem; }
+  }
+  .front-blog{
+    color:#d0aa76;
   }
