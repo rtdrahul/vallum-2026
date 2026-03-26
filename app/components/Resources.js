@@ -29,7 +29,7 @@ export default function Resources() {
   }, []);
 
   return (
-    <section className="bg-white sec-pad py-0">
+    <section className="bg-white sec-pad pb-0">
       <div className="container">
 
         {typeArr.map((type, i) => {
@@ -82,7 +82,7 @@ export default function Resources() {
                   }
                   download={item.blog_type === "stakeholders-letters" && item.blog_pdf !== "" ? true : false}
                 >
-                <img src={item.blog_image} alt={item.blog_name} />
+                <img src={item.blog_image} alt={item.blog_name}  className='resource-img'/>
                 </a>
                 <h5 className="mt-3">
                   <a
