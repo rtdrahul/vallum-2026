@@ -71,7 +71,7 @@ export default function Resources() {
         {items.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="card-wrapper py-5">
-              <div className="sw-img-card">
+              <div className="sw-img-card" style={{minHeight:"100%"}}>
                 <a
                   href={
                     item.blog_type === "stakeholders-letters" && item.blog_pdf !== ""
