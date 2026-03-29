@@ -40,7 +40,7 @@ export default function Testimonial() {
   return (
     <section className="sec-pad rg-bg-2">
       <div className="container">
-        <div className="row vcenter justify-content-between">
+        <div className="row vcenter justify-content-between testiDiv">
 
           <div className="col-lg-12 text-center mb-5">
             <h2 className="heading-main">What Clients say About Us</h2>
