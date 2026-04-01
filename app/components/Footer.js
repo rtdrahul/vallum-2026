@@ -140,7 +140,7 @@ export default function Footer({ settingsData }) {
           <div className="col-lg-7 fthead">
             <div className="row">
               <div className="col-lg-12 mt30">
-                <h5>Investor Grievances</h5>
+                <h5>Investor Grievances (including grievances related to Disability)</h5>
                 <p className="mb-2">For any grievances, email to <strong>{siteSettings?.admin_support_email || "pms.grievances@vallum.in"}</strong></p>
                 <p className="my-4">
                   In case the grievance is not redressed the investor can take up the matter 

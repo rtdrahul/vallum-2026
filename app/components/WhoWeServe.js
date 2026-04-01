@@ -2,9 +2,9 @@ export default function WhoWeServe() {
     const items = [
       { name: "HNI", img: "/assets/images/individual.webp", desc: "₹50L+ long-term allocation" },
       { name: "Family Offices", img: "/assets/images/family.webp", desc: "Custom mandates & reporting" },
-      { name: "NRIs / OCIs", img: "/assets/images/nri.webp", desc: "Rupee and repatriable structures" },
-      { name: "Institutional", img: "/assets/images/investor.webp", desc: "Segregated accounts" },
-      { name: "Corporate Treasuries", img: "/assets/images/investor.webp", desc: "Surplus deployment with risk controls" }
+      { name: "NRIs / OCIs", img: "https://badmin.vallum.in/img/uploads/media/1775032892.webp", desc: "Rupee and repatriable structures" },
+      { name: "Institutional", img: "https://badmin.vallum.in/img/uploads/media/1775032880.webp", desc: "Segregated accounts" },
+      { name: "Corporate Treasuries", img: "https://badmin.vallum.in/img/uploads/media/1775032903.webp", desc: "Surplus deployment with risk controls" }
     ];
   
     return (
