@@ -128,7 +128,7 @@ export default function Footer({ settingsData }) {
           {/* ✅ Dynamic Footer 6 */}
           {footerData?.footer_desc6 && (
             <div
-              className="col-lg-5 mt-4 mt-lg-0 footer6"
+              className="col-lg-5 right-border-footer mt-4 mt-lg-0 footer6"
               dangerouslySetInnerHTML={{ __html: footerData.footer_desc6 }}
             />
           )}
@@ -141,7 +141,7 @@ export default function Footer({ settingsData }) {
         <div className="container">
           <div className="row">
 
-            <div className="col-lg-8">
+            <div className="col-lg-7">
               <p className="small">
                 © {new Date().getFullYear()}{" "}
                 {siteSettings?.site_title || "Vallum Capital Advisors Pvt Ltd"}.
@@ -149,10 +149,10 @@ export default function Footer({ settingsData }) {
               </p>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-5">
               <div className="ft-linkz">
-                <Link href="/terms-conditions">Terms and Conditions</Link>
-                <Link href="/privacy-policy">Privacy Policy</Link>
+                <Link href="/terms-conditions" style={{borderRight: "1px solid",paddingRight: "10px"}}>Terms and Conditions</Link>
+                <Link href="/privacy-policy" style={{borderRight: "1px solid",paddingRight: "10px"}}>Privacy Policy</Link>
                 <Link href="/disclaimer">Disclaimer</Link>
               </div>
             </div>
