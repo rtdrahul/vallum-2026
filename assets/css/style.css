@@ -3680,8 +3680,8 @@ body .vertical-centered-box {
         }
 
         .testi-heading {
-          font-family: 'Manrope', sans-serif;
-          font-size: clamp(26px, 3.5vw, 40px);
+          font-family: 'Lora', serif;
+          font-size: 52px;
           font-weight: 600;
           color: #f0eee8;
           text-align: center;
