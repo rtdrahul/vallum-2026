@@ -40,7 +40,7 @@ function ArticleSwiper({ blogs, currentType }) {
         {blogs.map((blog) => (
           <SwiperSlide key={blog.blog_id} style={{ height: "auto" }}>
             <Link
-              href={`/blog/${currentType}/${blog.blog_slug}`}
+              href={blog.blog_weekend_link}
               className="article-card"
               style={{ display: "flex", flexDirection: "column", height: "100%", textDecoration: "none" }}
             >
