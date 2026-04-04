@@ -9,32 +9,197 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+/* ─── Sub-components ─────────────────────────────────────────────── */
 
+function ArticleSwiper({ blogs, currentType }) {
+  if (!blogs.length) return null;
+  return (
+    <div className="media-section">
+      <div className="media-section-header">
+        <div>
+          <p className="media-section-label">Editorial</p>
+          <h3 className="media-section-title">Published Insights</h3>
+        </div>
+        <span className="media-section-count">{blogs.length} article{blogs.length !== 1 ? "s" : ""}</span>
+      </div>
+
+      <Swiper
+        className="media-swiper"
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={20}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 4000, disableOnInteraction: true, pauseOnMouseEnter: true }}
+        loop={blogs.length > 3}
+        breakpoints={{
+          576: { slidesPerView: 2 },
+          992: { slidesPerView: 3 },
+        }}
+      >
+        {blogs.map((blog) => (
+          <SwiperSlide key={blog.blog_id} style={{ height: "auto" }}>
+            <Link
+              href={`/blog/${currentType}/${blog.blog_slug}`}
+              className="article-card"
+              style={{ display: "flex", flexDirection: "column", height: "100%", textDecoration: "none" }}
+            >
+              <img
+                src={blog.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
+                alt={blog.blog_name}
+                className="article-card-img"
+                onError={(e) => { e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png"; }}
+              />
+              <div className="article-card-body">
+                <span className="article-card-tag">Article</span>
+                <h4 className="article-card-title">{blog.blog_name}</h4>
+                <span className="article-card-arrow">Explore →</span>
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+}
+
+function VideoSwiper({ blogs }) {
+  if (!blogs.length) return null;
+  return (
+    <div className="media-section">
+      <div className="media-section-header">
+        <div>
+          <p className="media-section-label">Video</p>
+          <h3 className="media-section-title">Conversations & Perspectives</h3>
+        </div>
+        <span className="media-section-count">{blogs.length} video{blogs.length !== 1 ? "s" : ""}</span>
+      </div>
+
+      <Swiper
+        className="media-swiper"
+        modules={[Navigation, Pagination]}
+        spaceBetween={20}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        loop={blogs.length > 3}
+        breakpoints={{
+          576: { slidesPerView: 2 },
+          992: { slidesPerView: 3 },
+        }}
+      >
+        {blogs.map((blog) => (
+          <SwiperSlide key={blog.blog_id} style={{ height: "auto" }}>
+            <div className="video-card">
+              <iframe
+                className="video-card-frame"
+                src={blog.blog_weekend_link}
+                title={blog.blog_name}
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
+              <div className="video-card-body">
+                <div className="video-card-play-icon">
+                  <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1l10 6-10 6V1z" />
+                  </svg>
+                </div>
+                <p className="video-card-title">{blog.blog_name}</p>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+}
+
+function PdfSwiper({ blogs }) {
+  if (!blogs.length) return null;
+  return (
+    <div className="media-section">
+      <div className="media-section-header">
+        <div>
+          <p className="media-section-label">Research</p>
+          <h3 className="media-section-title">Deep Dives & Reports</h3>
+        </div>
+        <span className="media-section-count">{blogs.length} report{blogs.length !== 1 ? "s" : ""}</span>
+      </div>
+
+      <Swiper
+        className="media-swiper"
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={20}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: true, pauseOnMouseEnter: true }}
+        loop={blogs.length > 3}
+        breakpoints={{
+          576: { slidesPerView: 2 },
+          992: { slidesPerView: 3 },
+        }}
+      >
+        {blogs.map((blog) => (
+          <SwiperSlide key={blog.blog_id} style={{ height: "auto" }}>
+            <a
+              href={blog.blog_pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pdf-card"
+              style={{ display: "flex", flexDirection: "column", height: "100%", textDecoration: "none" }}
+            >
+              <div className="pdf-card-img-wrap">
+                <img
+                  src={blog.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
+                  alt={blog.blog_name}
+                  className="pdf-card-img"
+                  onError={(e) => { e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png"; }}
+                />
+                <span className="pdf-card-badge">PDF</span>
+              </div>
+              <div className="pdf-card-body">
+                <h4 className="pdf-card-title">{blog.blog_name}</h4>
+                <span className="pdf-card-cta">
+                  Download
+                  <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 12l-5-5h3V1h4v6h3L8 12zm-6 2h12v1.5H2V14z" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+}
+
+/* ─── Main Export ────────────────────────────────────────────────── */
 export default function BlogListClient({ initialData, currentCategory = null }) {
   const params = useParams();
   const searchParams = useSearchParams();
   const currentType = params.type || "all";
   const currentPage = parseInt(searchParams.get("page") || "1");
-  
-  // Data Extraction from API Response
+
   const blogs = initialData?.blogsData?.data || [];
   const categories = initialData?.categoryData || [];
   const tags = initialData?.tagData || [];
   const paginationLinks = initialData?.blogsData?.links || [];
-  
-  // Navigation items for the top bar
+
   const mainTypes = [
-    { label: "Blogs", slug: "blog" }, 
+    { label: "Blogs", slug: "blog" },
     { label: "Media", slug: "media" },
     { label: "Letter to Stakeholders", slug: "stakeholders-letters" },
     { label: "Vallum Weekend Reading", slug: "weekend-reading" },
   ];
 
   const getPaginationUrl = (url) => {
-   if (!url) return "#";
-   const urlObj = new URL(url);
-   const pageNum = urlObj.searchParams.get("page");
-   return `/blog/${currentType}?page=${pageNum}`;
+    if (!url) return "#";
+    const urlObj = new URL(url);
+    const pageNum = urlObj.searchParams.get("page");
+    return `/blog/${currentType}?page=${pageNum}`;
   };
 
   const breadcrumbData = {
@@ -59,32 +224,34 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
 
   const data = breadcrumbData[currentType];
 
-  // Filtering for Media Tab
-  const videoMedia = blogs.filter(blog => blog.blog_weekend_link);
-  const pdfMedia = blogs.filter(blog => blog.blog_pdf);
- 
+  // Split blogs by blog_media_type for the media tab
+  const articleMedia = blogs.filter((b) => b.blog_media_type === "article");
+  const linkMedia    = blogs.filter((b) => b.blog_media_type === "link");
+  const pdfMedia     = blogs.filter((b) => b.blog_media_type === "pdf");
+
   return (
     <>
+      {/* Inject scoped styles once */}
       <div className="contactblocks pt-5 pb-0">
-         <div className="container">
-            <div className="row justify-content-between align-items-center">
-              {data && (
-                <>
-                  <div className="col-lg-8">
-                    <div className="blogcotact">
-                      <h2>{data.title}</h2>
-                      {data.desc && <p className="mt10">{data.desc}</p>}
-                    </div>
+        <div className="container">
+          <div className="row justify-content-between align-items-center">
+            {data && (
+              <>
+                <div className="col-lg-8">
+                  <div className="blogcotact">
+                    <h2>{data.title}</h2>
+                    {data.desc && <p className="mt10">{data.desc}</p>}
                   </div>
-                  <div className="col-lg-4 mmt40">
-                    <div className="about-img blogcotact-img">
-                      <img src={data.img} className="w-100" alt="" />
-                    </div>
+                </div>
+                <div className="col-lg-4 mmt40">
+                  <div className="about-img blogcotact-img">
+                    <img src={data.img} className="w-100" alt="" />
                   </div>
-                </>
-              )}
-            </div>            
-         </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       </div>
 
       <section className="sec-pad pt-5">
@@ -96,8 +263,14 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
             <div className="col-lg-7">
               <ul className="events-ul">
                 {mainTypes.map((item) => (
-                  <li key={item.slug} className={currentType === item.slug ? "li-active li-div" : "li-div"}>
-                    <Link href={`/blog/${item.slug}`} className={currentType === item.slug ? "active" : ""}>
+                  <li
+                    key={item.slug}
+                    className={currentType === item.slug ? "li-active li-div" : "li-div"}
+                  >
+                    <Link
+                      href={`/blog/${item.slug}`}
+                      className={currentType === item.slug ? "active" : ""}
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -107,142 +280,52 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
           </div>
 
           <div className="row mt30">
-            {/* Dynamic Sidebar Filters */}
+            {/* Sidebar Filters */}
             <div className="col-lg-3">
               <h5 className="mb-2">Filter by Category</h5>
               <ul className="sidebar-events-ul">
-                <li className={currentType === 'all' ? "li-active" : ""}>
-                   <Link href="/blog/all" className={currentType === 'all' ? "active" : ""}>All Categories</Link>
+                <li className={currentType === "all" ? "li-active" : ""}>
+                  <Link href="/blog/all" className={currentType === "all" ? "active" : ""}>
+                    All Categories
+                  </Link>
                 </li>
                 {categories.map((cat) => (
-                  <li key={cat.category_id} className={currentCategory === cat.category_slug ? "li-active" : ""}>
-                     <Link 
-                        href={`/blog/${currentType}/category/${cat.category_slug}`}
-                        className={currentCategory === cat.category_slug ? "active" : ""}
-                     >
-                        {cat.category_name}
-                     </Link>
+                  <li
+                    key={cat.category_id}
+                    className={currentCategory === cat.category_slug ? "li-active" : ""}
+                  >
+                    <Link
+                      href={`/blog/${currentType}/category/${cat.category_slug}`}
+                      className={currentCategory === cat.category_slug ? "active" : ""}
+                    >
+                      {cat.category_name}
+                    </Link>
                   </li>
-                  ))}
+                ))}
               </ul>
             </div>
 
-            {/* Blog List Dynamic Rendering */}
+            {/* Main Content */}
             <div className="col-lg-9">
               {currentType === "media" ? (
-                /* MEDIA TAB: Only Swipers, Videos embedded & auto-played */
-                <div className="media-swipers">
-                  
-                  {/* Swiper 1: Videos */}
-                  {videoMedia.length > 0 && (
-                    <div className="mb-0" style={{height:"350px"}}>
-                      <h4 className="mb-4">YouTube Videos</h4>
-                      
-                      <Swiper
-                        modules={[Navigation, Autoplay]}
-                        loop={true}
-                        speed={800}
-                        autoplay={{ delay: 2500, disableOnInteraction: false }}
-                        navigation={{
-                          nextEl: '.custom-next',
-                          prevEl: '.custom-prev',
-                        }}
-                        spaceBetween={30}
-                        slidesPerView={3}
-                        breakpoints={{
-                          320: { slidesPerView: 1 },
-                          768: { slidesPerView: 2 },
-                          1024: { slidesPerView: 3 },
-                        }}
-                      >
-                        {videoMedia.map((blog) => (
-                          <SwiperSlide key={blog.blog_id}>
-                            <div className="sw--card blog-card shadow h-100 d-flex flex-column pe-0">
-                              
-                              <div className="sw--card-img" style={{ position: "relative", height: "190px" }}>
-                                <iframe
-                                  width="100%"
-                                  height="100%"
-                                  src={blog.blog_weekend_link}
-                                  title={blog.blog_name}
-                                  frameBorder="0"
-                                  allow="autoplay; encrypted-media"
-                                  allowFullScreen
-                                  style={{ borderRadius: "5px" }}
-                                ></iframe>
-                              </div>
-
-                              <div className="sw--card-content flex-grow-1 pt-3 pb-3"> 
-                                  <h3 className="mb0 btitle">{blog.blog_name}</h3>
-                              </div>
-
-                            </div>
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
-                      <div className="swiper-btns" style={{bottom:"175px"}}>
-                        <div className="custom-prev">‹</div>
-                        <div className="custom-next">›</div>
-                      </div>
-                    </div>
+                /* ── MEDIA TAB ── */
+                <div>
+                  {articleMedia.length === 0 && linkMedia.length === 0 && pdfMedia.length === 0 ? (
+                    <div className="media-empty">No media found.</div>
+                  ) : (
+                    <>
+                      <ArticleSwiper blogs={articleMedia} currentType={currentType} />
+                      <VideoSwiper  blogs={linkMedia} />
+                      <PdfSwiper    blogs={pdfMedia} />
+                    </>
                   )}
-
-                  {/* Swiper 2: PDFs */}
-                  {pdfMedia.length > 0 && (
-                    <div>
-                      <h4 className="mb-4 mt-4">PDF Documents</h4>
-                      <Swiper
-                        modules={[Navigation, Pagination]}
-                        spaceBetween={30}
-                        slidesPerView={1}
-                        navigation
-                        pagination={{ clickable: true }}
-                        breakpoints={{
-                          768: { slidesPerView: 3 },
-                          1024: { slidesPerView: 3 },
-                        }}
-                        className="pb-5"
-                      >
-                        {pdfMedia.map(blog => (
-                          <SwiperSlide key={blog.blog_id}>
-                            <div className="sw--card blog-card shadow h-100 d-flex flex-column pe-0">
-                              <div className="sw--card-img">
-                                <Link href={blog.blog_pdf} download target="_blank">
-                                  <img 
-                                    src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
-                                    alt={blog.blog_name} 
-                                    className="img-fluid w-100"
-                                    style={{ objectFit: 'fill', maxWidth:"100%" }}
-                                    onError={(e) => { e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png"; }} 
-                                  />
-                                </Link>
-                              </div>
-                              <div className="sw--card-content flex-grow-1 pt-3 pb-3"> 
-                                <Link href={blog.blog_pdf} download target="_blank">
-                                  <h3 className="mb0 btitle">{blog.blog_name}</h3>
-                                </Link>
-                              </div>
-                            </div>
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
-                    </div>
-                  )}
-                  
-                  {videoMedia.length === 0 && pdfMedia.length === 0 && (
-                    <div className="text-center py-5 border rounded bg-light">
-                      <h4>No media found.</h4>
-                    </div>
-                  )}
-
                 </div>
               ) : (
-                /* ALL OTHER TABS: Your exact original design */
+                /* ── ALL OTHER TABS ── */
                 <>
                   {blogs.length > 0 ? (
                     blogs.map((blog) => (
                       <div className="sw--card blog-card shadow" key={blog.blog_id}>
-
                         <div className="sw--card-img">
                           <Link
                             href={
@@ -252,17 +335,23 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
                                 ? blog.blog_weekend_link
                                 : `/blog/${currentType}/${blog.blog_slug}`
                             }
-                            download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                            download={
+                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
+                                ? true
+                                : false
+                            }
                           >
-                          <img 
-                            src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
-                            alt={blog.blog_name} 
-                            className="img-fluid"
-                            onError={(e) => { e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png"; }} 
-                          />
+                            <img
+                              src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
+                              alt={blog.blog_name}
+                              className="img-fluid"
+                              onError={(e) => {
+                                e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png";
+                              }}
+                            />
                           </Link>
                         </div>
-                        <div className="sw--card-content"> 
+                        <div className="sw--card-content">
                           <Link
                             href={
                               currentType === "stakeholders-letters" && blog.blog_pdf !== ""
@@ -271,24 +360,33 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
                                 ? blog.blog_weekend_link
                                 : `/blog/${currentType}/${blog.blog_slug}`
                             }
-                            download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                            download={
+                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
+                                ? true
+                                : false
+                            }
                           >
-                          <h3 className="mb10 btitle">{blog.blog_name}</h3>
-                          </Link>                      
+                            <h3 className="mb10 btitle">{blog.blog_name}</h3>
+                          </Link>
                           <p className="sw--card-desc">{blog.blog_short_description}</p>
-                          
+
                           <div className="timeanddate">
                             <span>
-                              <i className="ri-calendar-line"></i> {new Date(blog.blog_start_date ? blog.blog_start_date : blog.created_at).toLocaleDateString('en-US', {
-                                month: 'short',
-                                day: 'numeric',
-                                year: 'numeric'
+                              <i className="ri-calendar-line"></i>{" "}
+                              {new Date(
+                                blog.blog_start_date ? blog.blog_start_date : blog.created_at
+                              ).toLocaleDateString("en-US", {
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric",
                               })}
                             </span>
                             <span>
-                              <i className="ri-user-follow-line"></i> Vallum Capital
+                              <i className="ri-user-follow-line"></i>{" "}
+                              {blog.blog_author_name || "Vallum Capital"}
                             </span>
                           </div>
+
                           <Link
                             href={
                               currentType === "stakeholders-letters" && blog.blog_pdf !== ""
@@ -297,7 +395,11 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
                                 ? blog.blog_weekend_link
                                 : `/blog/${currentType}/${blog.blog_slug}`
                             }
-                            download={currentType === "stakeholders-letters" && blog.blog_pdf !== "" ? true : false}
+                            download={
+                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
+                                ? true
+                                : false
+                            }
                           >
                             <button className="client-button">
                               <span>Read More</span>
@@ -317,9 +419,11 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
                     <nav className="mt-5">
                       <ul className="pagination justify-content-center">
                         {paginationLinks.map((link, index) => (
-                          <li 
-                            key={index} 
-                            className={`page-item ${link.active ? 'active' : ''} ${!link.url ? 'disabled' : ''}`}
+                          <li
+                            key={index}
+                            className={`page-item ${link.active ? "active" : ""} ${
+                              !link.url ? "disabled" : ""
+                            }`}
                           >
                             <Link
                               className="page-link"
