@@ -226,7 +226,7 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
 
   // Split blogs by blog_media_type for the media tab
   const articleMedia = blogs.filter((b) => b.blog_media_type === "article");
-  const linkMedia    = blogs.filter((b) => b.blog_media_type === "link");
+  const linkMedia    = blogs.filter((b) => b.blog_media_type === "youtube");
   const pdfMedia     = blogs.filter((b) => b.blog_media_type === "pdf");
 
   return (
