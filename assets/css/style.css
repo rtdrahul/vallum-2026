@@ -1899,7 +1899,7 @@ body .vertical-centered-box {
 
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 40px;
+    max-height: 28px;
 }
 .sw--card-content p {
     font-size: 16px;
@@ -2278,10 +2278,10 @@ body .vertical-centered-box {
 }
 
 .uw-widget-custom-trigger{
-    max-width: 60px!important;
-    height: 60px!important;
-    bottom: 80px!important;
-    right: 30px!important;
+    max-width: 44px!important;
+    height: 44px!important;
+    /* bottom: 80px!important;
+    right: 30px!important; */
     z-index: 9999;
 }
 /* From Uiverse.io by andrew-demchenk0 */ 
@@ -4153,4 +4153,7 @@ body .vertical-centered-box {
     font-style: italic;
     font-size: 15px;
     background: #faf9f6;
+  }
+  .uwaw-body{
+    padding-bottom:10px!important;
   }
