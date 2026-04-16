@@ -721,7 +721,6 @@
   .audience-grid{grid-template-columns:repeat(2,1fr)}
   .spec-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
   .blog-grid{grid-template-columns:1fr}
   .team-card{grid-template-columns:1fr;text-align:center}
   .team-photo{max-width:200px;margin:0 auto}
