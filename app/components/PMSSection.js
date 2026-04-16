@@ -1,32 +1,47 @@
 export default function PMSSection() {
-    return (
-      <section className="sec-pad rg-bg-2">
-        <div className="container">
-          <div className="row vcenter justify-content-between">
-            <div className="col-lg-12 text-center mb-5">
-              <h2 className="heading-main">Portfolio Management Services (PMS)</h2>
+  return (
+    <>
+      <div className="pms-wrap">
+        <div className="pms-topbar" />
+
+        <div className="pms-hero">
+          {/* LEFT: Image Panel */}
+          <div className="pms-img-panel">
+            <span className="pms-chip">Equity &amp; Multi Asset</span>
+            <div className="pms-dots" />
+            <div className="pms-img-inner">
+              <img
+                src="/assets/images/common/PMS.webp"
+                alt="Portfolio Management Services illustration"
+              />
             </div>
-            
-            <div className="col-lg-6">
-              <div className="single-image roundimg">
-                {/* Ensure this image path exists in your public folder */}
-                <img src="/assets/images/common/PMS.webp" alt="PMS Strategy" className="w-100" />
-              </div>
-            </div>
-  
-            <div className="col-lg-6 px-3 py-3 pms-div">
-              <p className="mt20">
-                Vallum PMS offers Equity and Multi Asset strategies based on research depth, valuation discipline and structured risk management.
-                </p>
-              <p className="mt20">
-                Our process integrates bottom up company analysis with top down macro assessment so that portfolio construction reflects both business quality and market cycles.
+          </div>
+
+          {/* RIGHT: Content Panel */}
+          <div className="pms-content">
+            <span className="pms-eyebrow">Our Offering</span>
+            <h2 className="pms-title">
+              Portfolio Management<br /><em>Services</em>
+            </h2>
+            <div className="pms-divider" />
+            <div className="pms-body">
+              <p>
+                Vallum PMS offers <strong>Equity and Multi Asset strategies</strong> based
+                on research depth, valuation discipline and structured risk management.
               </p>
-              <p className="mt20">
-                Decisions are guided by defined position sizing, continuous review and a long term investment horizon.
+              <p>
+                Our process integrates <strong>bottom-up company analysis</strong> with
+                top-down macro assessment so that portfolio construction reflects both
+                business quality and market cycles.
+              </p>
+              <p>
+                Decisions are guided by <strong>defined position sizing</strong>,
+                continuous review and a long-term investment horizon.
               </p>
             </div>
           </div>
         </div>
-      </section>
-    );
-  }
+      </div>
+    </>
+  );
+}

@@ -1,4 +1,4 @@
-import { Lora, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from 'next/font/google'
 import Script from "next/script";
 import 'remixicon/fonts/remixicon.css'
 
@@ -6,23 +6,24 @@ import "../assets/css/bootstrap.min.css";
 import "../assets/css/style.css";
 import "../assets/css/responsive.css";
 
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import UIEffects from "./components/UIEffects";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import UX4GWidget from "./components/UX4GWidget";
 
-const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400","500","600","700"],
-  variable: "--font-lora",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400","500","600","700","800"],
-  variable: "--font-manrope",
-});
+const cormorant = Cormorant_Garamond({
+    subsets: ['latin'],
+    weight: ['300','400','500','600'],
+    style: ['normal','italic'],
+    variable: '--font-display',
+  })
+  const outfit = Outfit({
+    subsets: ['latin'],
+    weight: ['300','400','500','600','700'],
+    variable: '--font-body',
+  });
 
 async function getSiteSettings() {
   try {
@@ -52,7 +53,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
 
-      <body className={`${lora.variable} ${manrope.variable}`}>
+      <body className={`${cormorant.variable} ${outfit.variable}`}>
 
         <main>
 

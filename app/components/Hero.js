@@ -1,26 +1,24 @@
 const Hero = () => (
-    <div className="head-section">
-      <div className="container index-up">
-        <div className="row justify-content-between align-items-center">
-          <div className="col-xl-5 col-lg-6">
-            <div className="paragraph">
-              <h1 className="typewriter text-start">
-                Invest With Discipline. <br></br>Build Wealth That Endures.
-              </h1>
-              <p className="color-black text-start">
-                A research-driven PMS built on GARP, cycle awareness, and risk discipline - designed for HNIs, NRIs, and Family Offices who value clarity over speculation.
-              </p>
-              <a href="/contact-us">
-              <button className="client-button"><span>Get in Touch</span></button>
-              </a>
-            </div>
-          </div>
-          <div className="col-xl-7 col-lg-6">
-            <img src="/assets/images/common/hero-banner.webp" alt="Hero" className="hero-img"/>
-          </div>
+  <section className="hero">
+  <div className="container">
+    <div className="hero-grid">
+      <div className="hero-content">
+        <div className="hero-badge"><span className="dot"></span>SEBI Registered Portfolio Manager</div>
+        <h1>Invest With <span className="accent">Discipline.</span><br/>Build Wealth That Endures.</h1>
+        <p className="hero-sub">A research-driven PMS built on GARP, cycle awareness, and risk discipline — designed for HNIs, NRIs, and Family Offices who value clarity over speculation.</p>
+        <div className="hero-ctas mb-5">
+          <a className="btn btn-primary" href="/contact-us">Get in Touch <span className="arrow">→</span></a>
+          <a className="btn btn-ghost" href="/about-us">Learn Our Approach</a>
+        </div>
+      </div>
+      <div className="hero-visual">
+        <div className="hero-img-wrapper">
+          <img src="/assets/images/common/hero-banner.webp?w=600&h=500&fit=crop&q=80" alt="Vallum Capital - Disciplined investing approach"/>
         </div>
       </div>
     </div>
+  </div>
+</section>
   );
   
   export default Hero;

@@ -223,8 +223,7 @@ export default function Header({ settingsData }) {
 
               <a
                 href="/contact-us"
-                className="onboard d-none d-md-block text-decoration-none"
-                style={{ color: "#000" }}
+                className="btn btn-outline d-none d-md-block text-decoration-none"
               >
                 Direct Onboarding
               </a>
@@ -233,10 +232,9 @@ export default function Header({ settingsData }) {
                 href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in"
                 target="_blank"
                 rel="noreferrer"
+                className="btn btn-indigo d-none d-md-block"
               >
-                <button className="client-button btn btn-dark d-none d-md-block">
                   Client Login
-                </button>
               </a>
               <button
                 id="uw-widget-custom-trigger"

@@ -14,33 +14,6 @@ export default function Home() {
     <>
       
       <Hero />
-      
-      {/* Floating Stats Bar */}
-      <div className="float-bnr">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="floatbox text-white">
-                <div className="floatrightbox">
-                  <div className="pointswithimganddata col-lg-4">
-                    <h2 className="big-info">15+</h2>
-                    <p>Years of Experience</p>
-                  </div>
-                  <div className="pointswithimganddata col-lg-4">
-                    <h2 className="big-info">3</h2>
-                    <p>Investment Approach</p>
-                  </div>
-                  {/* <div className="pointswithimganddata col-lg-4">
-                    <h2 className="big-info">500+</h2>
-                    <p>Investors</p>
-                  </div> */}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <Features />
       <WhoWeServe />
       <PMSSection /> 
