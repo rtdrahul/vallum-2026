@@ -703,7 +703,6 @@
   .timeline-item{grid-template-columns:1fr;padding-left:56px}
   .timeline-item:nth-child(even){direction:ltr}
   .timeline-dot{left:24px}
-  .footer-grid{grid-template-columns:repeat(2,1fr)}
   .wws-grid {
             grid-template-columns: repeat(3, 1fr);
           }
