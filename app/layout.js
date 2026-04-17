@@ -10,6 +10,7 @@ import "../assets/css/responsive.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import UIEffects from "./components/UIEffects";
+import SebiNoticePopup from "./components/SebiNoticePopup";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import UX4GWidget from "./components/UX4GWidget";
 
@@ -54,7 +55,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
 
       <body className={`${cormorant.variable} ${outfit.variable}`}>
-
+        <SebiNoticePopup />
         <main>
 
           {/* PASS SETTINGS TO HEADER ALSO */}
