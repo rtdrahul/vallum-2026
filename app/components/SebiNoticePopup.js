@@ -38,6 +38,7 @@ export default function SebiNoticePopup() {
       tabIndex="-1"
       aria-hidden="true"
       ref={modalRef}
+      style={{zIndex:"99999"}}
     >
       {/* Smaller popup */}
       <div className="modal-dialog modal-dialog-centered">
@@ -48,6 +49,7 @@ export default function SebiNoticePopup() {
             overflow: "hidden",
             maxWidth: "560px",
             margin: "auto",
+            height: "460px",
           }}
         >
           {/* Header */}
@@ -76,7 +78,7 @@ export default function SebiNoticePopup() {
           <div
             className="modal-body px-4 py-3"
             style={{
-              maxHeight: "420px",
+              maxHeight: "380px",
               overflowY: "auto",
               fontSize: "15px",
               lineHeight: "1.7",
@@ -126,7 +128,7 @@ export default function SebiNoticePopup() {
           </div>
 
           {/* Footer */}
-          <div className="modal-footer bg-light border-0 px-4 py-3">
+          <div className="modal-footer bg-light border-0 px-4 py-2">
             <button
               type="button"
               className="btn text-white px-4"

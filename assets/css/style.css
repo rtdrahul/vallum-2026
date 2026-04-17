@@ -53,6 +53,10 @@ padding: 0;  margin: 0;   outline:none;  vertical-align:baseline;}
     border-top: 3px solid #D4B892!important;
     opacity: 1;
 }
+.modal-body p{
+    font-size: 15px;
+    line-height: 22px;
+}
 .fs-16{
     font-size: 16px;
     line-height: 28px;

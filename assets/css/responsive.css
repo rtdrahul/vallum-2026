@@ -23,9 +23,9 @@
 
 }
 
-.modal-title{
-    font-size: 34px;
-    line-height: 39px;
+.modal-title {
+    font-size: 29px;
+    line-height: 20px;
 }
 @media only screen and (max-width: 1120px) {
 
@@ -442,10 +442,10 @@
         padding-bottom: 60px;
 
     }
-    .modal-title{
-        font-size: 30px;
-        line-height: 36px;
-    }
+    .modal-title {
+    font-size: 29px;
+    line-height: 20px;
+}
 
 
 
