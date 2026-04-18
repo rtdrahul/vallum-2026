@@ -323,7 +323,6 @@ export default function ContactUsClient() {
           <div className="vc-form-card">
             <div className="vc-form-header">
               <p className="vc-form-header-title">Send Us a Message</p>
-              <span className="vc-form-header-badge">Secure Form</span>
             </div>
 
             <div className="vc-form-body">

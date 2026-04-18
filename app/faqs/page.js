@@ -1,4 +1,4 @@
-import ContactUsClient from "./ContactUsClient";
+import FaqsClient from "./FaqsClient";
 
 // SERVER-SIDE: Fetch data and generate metadata
 async function fetchPageData(slug) {
@@ -20,7 +20,7 @@ async function fetchPageData(slug) {
 // SERVER-SIDE: Generate metadata for SEO
 export async function generateMetadata() {
   // In Next.js 15, 'params' is a Promise, so it must be awaited before use.
-  const pageData = await fetchPageData('contact-us');
+  const pageData = await fetchPageData('faqs');
   
   if (!pageData) {
     return {
@@ -70,6 +70,6 @@ export async function generateMetadata() {
 }
 
 // SERVER-SIDE: Main page component
-export default async function ContactUsPage({ params }) {
-  return <ContactUsClient />
+export default async function FaqsPage({ params }) {
+  return <FaqsClient />
 }
