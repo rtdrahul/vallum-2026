@@ -5735,6 +5735,7 @@ body .vertical-centered-box {
     .vf-cta-btn:hover {
       background: var(--gold);
       transform: translateY(-1px);
+      color:#fff;
       box-shadow: 0 6px 20px rgba(184,148,63,0.35);
     }
     .vf-cta-btn svg {
