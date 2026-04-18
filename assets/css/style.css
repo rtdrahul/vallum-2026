@@ -5512,21 +5512,22 @@ body .vertical-centered-box {
 
     /* FAQ Item */
     .vf-faq-item {
-      border-bottom: 1px solid var(--primary);
-      overflow: hidden;
+      border: 1px solid #b3b7de;
       opacity: 1;
       border-radius: 10px;
       margin-bottom: 10px;
+      transition: opacity .45s, transform .45s;
+      overflow: hidden;
+      box-shadow: 1px 3px 20px 1px #cfbfeb;
       transform: translateY(16px);
-      transition: opacity .45s ease, transform .45s ease;
     }
     .vf-faq-item.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .vf-faq-item:first-child {
+    /* .vf-faq-item:first-child {
       border-top: 1px solid var(--cream-dark);
-    }
+    } */
     .vf-faq-item.active {
       background: white;
       box-shadow: var(--shadow-sm);
@@ -5539,7 +5540,7 @@ body .vertical-centered-box {
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 22px 4px;
+      padding: 22px 15x;
       background: none;
       border: none;
       cursor: pointer;
