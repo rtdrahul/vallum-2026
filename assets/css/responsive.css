@@ -760,6 +760,9 @@
 }
 @media(max-width:480px){
   .container{padding:0 16px}
+  .hero-img-wrapper img{
+    height:400px;
+  }
   .footer-grid{grid-template-columns:1fr}
   .audience-grid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
