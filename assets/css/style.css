@@ -5659,9 +5659,10 @@ body .vertical-centered-box {
     /* No results */
     .vf-no-results {
       text-align: center;
+      font-family: var(--font-body);
       padding: 60px 20px;
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 16px;
     }
     .vf-no-results strong { color: var(--primary); display: block; font-size: 18px; margin-bottom: 8px; font-family: var(--font-display); font-weight: 400; }
 

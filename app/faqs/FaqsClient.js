@@ -141,7 +141,6 @@ export default function FaqsClient() {
             {filtered.length === 0 ? (
               <div className="vf-no-results">
                 <strong>No results found</strong>
-                Try a different search term or{" "}
               </div>
             ) : (
               <div className="vf-faq-list">
