@@ -5383,7 +5383,7 @@ body .vertical-centered-box {
       font-size: 10px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: #fff;
     }
     .vf-stat-sep {
       width: 1px;
@@ -5709,7 +5709,7 @@ body .vertical-centered-box {
     .vf-cta h3 em { font-style: italic; color: var(--gold-light); }
     .vf-cta p {
       font-size: 13px;
-      color: rgba(255,255,255,0.45);
+      color: #ffffffd9;
       margin: 0;
       line-height: 1.6;
     }
@@ -5719,7 +5719,7 @@ body .vertical-centered-box {
       align-items: center;
       gap: 12px;
       padding: 13px 28px;
-      background: var(--gold);
+      background: var(--gold-light);
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -5728,18 +5728,18 @@ body .vertical-centered-box {
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--primary);
+      color: #fff;
       text-decoration: none;
       transition: background .2s, transform .15s, box-shadow .2s;
     }
     .vf-cta-btn:hover {
-      background: var(--gold-light);
+      background: var(--gold);
       transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(184,148,63,0.35);
     }
     .vf-cta-btn svg {
       width: 14px; height: 14px;
-      stroke: var(--primary);
+      stroke: #fff;
       stroke-width: 2;
       fill: none;
       stroke-linecap: round;
