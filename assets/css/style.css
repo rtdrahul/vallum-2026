@@ -5540,7 +5540,7 @@ body .vertical-centered-box {
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 22px 15x;
+      padding: 22px 15px;
       background: none;
       border: none;
       cursor: pointer;
