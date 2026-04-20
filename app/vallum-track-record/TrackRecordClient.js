@@ -596,6 +596,8 @@ export default function TrackRecordClient() {
               justifyContent: "space-between",
               alignItems: "flex-start",
               position: "relative",
+              gap: "20px",
+              overflowX: "scroll",
               zIndex: 1,
             }}
           >
@@ -638,7 +640,7 @@ export default function TrackRecordClient() {
                   {/* Label */}
                   <span
                     style={{
-                      fontFamily: "'Source Sans 3', sans-serif",
+                      
                       fontSize: isActive ? "11px" : "10px",
                       fontWeight: isActive ? 700 : 500,
                       color: isActive ? "#C28934" : "#aaa69c",
@@ -720,7 +722,7 @@ export default function TrackRecordClient() {
           {/* Counter */}
           <span
             style={{
-              fontFamily: "'Source Sans 3', sans-serif",
+              
               fontSize: "13px",
               color: "#a09890",
               minWidth: "56px",
