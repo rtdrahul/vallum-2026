@@ -763,6 +763,18 @@
   .hero-img-wrapper img{
     height:400px;
   }
+  .vf-faq-btn{
+    gap:4px;
+    padding: 11px 18px;
+  }
+  .vf-faq-item.active .vf-faq-btn {
+        padding: 11px 18px;
+    }
+  .vf-faq-answer-inner {
+        color: var(--ink);
+        padding: 0 52px 11px;
+        line-height: 1.75;
+    }
   .footer-grid{grid-template-columns:1fr}
   .audience-grid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
