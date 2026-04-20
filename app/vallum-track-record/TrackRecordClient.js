@@ -239,9 +239,9 @@ function RecordCard({ record, state }) {
 
   const stateStyles = {
     visible:     { opacity: 1, transform: "translateX(0)",    pointerEvents: "auto",  position: "relative" },
-    "exit-left": { opacity: 0, transform: "translateX(-80px)", pointerEvents: "none", position: "absolute", inset: 0 },
-    "exit-right":{ opacity: 0, transform: "translateX(80px)", pointerEvents: "none",  position: "absolute", inset: 0 },
-    hidden:      { opacity: 0, transform: "translateX(80px)", pointerEvents: "none",  position: "absolute", inset: 0 },
+    "exit-left": { opacity: 0, transform: "translateX(0px)", pointerEvents: "none", position: "absolute", inset: 0 },
+    "exit-right":{ opacity: 0, transform: "translateX(0px)", pointerEvents: "none",  position: "absolute", inset: 0 },
+    hidden:      { opacity: 0, transform: "translateX(0px)", pointerEvents: "none",  position: "absolute", inset: 0 },
   };
 
   return (
@@ -268,7 +268,7 @@ function RecordCard({ record, state }) {
         <span
           aria-hidden="true"
           style={{
-            fontFamily: "'Playfair Display', Georgia, serif",
+            
             fontSize: "120px",
             fontWeight: 900,
             color: "#f0ece3",
@@ -306,7 +306,7 @@ function RecordCard({ record, state }) {
                     color: "#2B338A",
                     fontSize: "11px",
                     fontWeight: 700,
-                    fontFamily: "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif",
+                    
                     letterSpacing: "0.07em",
                     padding: "4px 12px",
                     borderRadius: "2px",
@@ -326,7 +326,7 @@ function RecordCard({ record, state }) {
                       color: "#ffffff",
                       fontSize: "10px",
                       fontWeight: 700,
-                      fontFamily: "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif",
+                      
                       letterSpacing: "0.08em",
                       padding: "4px 11px",
                       borderRadius: "2px",
@@ -351,7 +351,7 @@ function RecordCard({ record, state }) {
               {/* Title */}
               <h3
                 style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
+                  
                   fontSize: "22px",
                   fontWeight: 700,
                   color: "#1e244f",
@@ -366,7 +366,7 @@ function RecordCard({ record, state }) {
             {/* Year pill */}
             <span
               style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
+                
                 fontSize: "15px",
                 fontWeight: 700,
                 color: "#C28934",
@@ -436,7 +436,7 @@ function RecordCard({ record, state }) {
                 gap: "7px",
                 background: "#2B338A",
                 color: "#ffffff",
-                fontFamily: "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif",
+                
                 fontSize: "13px",
                 fontWeight: 600,
                 letterSpacing: "0.04em",
@@ -529,16 +529,9 @@ export default function TrackRecordClient() {
 
   return (
     <>
-      {/* Google Fonts */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;500;600&display=swap"
-        rel="stylesheet"
-      />
-
       <section
         style={{
-          fontFamily: "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif",
+          
           background: "#F5F4EF",
           padding: "48px 20px 60px",
           WebkitFontSmoothing: "antialiased",
@@ -548,7 +541,7 @@ export default function TrackRecordClient() {
         <div style={{ textAlign: "center", marginBottom: "36px" }}>
           <h2
             style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              
               fontSize: "clamp(22px, 4vw, 30px)",
               fontWeight: 900,
               color: "#2B338A",
@@ -576,7 +569,6 @@ export default function TrackRecordClient() {
         <div
           style={{
             position: "relative",
-            maxWidth: "820px",
             margin: "0 auto 32px",
             padding: "0 8px",
           }}
@@ -668,9 +660,8 @@ export default function TrackRecordClient() {
           aria-live="polite"
           style={{
             position: "relative",
-            maxWidth: "820px",
             margin: "0 auto",
-            minHeight: "340px",
+            minHeight: "540px",
           }}
         >
           {RECORDS.map((rec, i) => (
