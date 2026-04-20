@@ -114,7 +114,7 @@ export default function Header({ settingsData }) {
       
       {/* ════════════════ HEADER ════════════════ */}
       <header className={`vl-header${isScrolled ? " scrolled" : ""}`}>
-        <div className="vl-inner">
+        <div className="vl-inner container">
 
           {/* Logo */}
           <a href="/" className="vl-logo" aria-label="Vallum Home">

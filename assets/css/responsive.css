@@ -691,6 +691,7 @@
     
 
 }
+.polite{min-height: 400px;}
 .vl-spacer { height: 72px; }
 /* ========== New RESPONSIVE ========== */
 @media(max-width:1024px){
@@ -725,6 +726,7 @@
             grid-template-columns: repeat(3, 1fr);
           }
   .footer-grid{grid-template-columns:repeat(2,1fr)}
+  
 }
 @media(max-width:768px){
   
@@ -767,9 +769,13 @@
 }
 @media(max-width:480px){
   .container{padding:0 16px}
+  .tablist{
+    overflow-x: auto;
+  }
   .hero-img-wrapper img{
     height:400px;
   }
+  .polite{min-height: 600px;}
   .vl-inner { padding: 0 16px; height: 64px; }
   .vl-logo img { height: 38px; }
   .vf-faq-btn{

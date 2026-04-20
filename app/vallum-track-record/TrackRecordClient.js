@@ -246,6 +246,7 @@ function RecordCard({ record, state }) {
 
   return (
     <div
+      className="container"
       style={{
         width: "100%",
         transition: baseTransition,
@@ -591,13 +592,14 @@ export default function TrackRecordClient() {
           <div
             role="tablist"
             aria-label="Select year"
+            className="tablist"
             style={{
               display: "flex",
+              width: "100%",
               justifyContent: "space-between",
               alignItems: "flex-start",
               position: "relative",
               gap: "20px",
-              overflowX: "scroll",
               zIndex: 1,
             }}
           >
@@ -660,10 +662,10 @@ export default function TrackRecordClient() {
         {/* ── Card Stage ── */}
         <div
           aria-live="polite"
+          className="polite"
           style={{
             position: "relative",
             margin: "0 auto",
-            minHeight: "540px",
           }}
         >
           {RECORDS.map((rec, i) => (
