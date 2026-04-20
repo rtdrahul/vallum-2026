@@ -694,6 +694,11 @@
 
 /* ========== New RESPONSIVE ========== */
 @media(max-width:1024px){
+    .vl-nav { display: none; }
+    .vl-hamburger { display: flex; }
+    .vl-btn-outline,
+    .vl-btn-solid { display: none; }
+    .vl-a11y-btn { display: none; }
   .hero-grid{grid-template-columns:1fr;text-align:center}
   .hero-sub{margin:0 auto 32px}.hero-ctas{justify-content:center}
   .hero-visual{max-width:500px;margin:0 auto}
@@ -763,6 +768,9 @@
   .hero-img-wrapper img{
     height:400px;
   }
+  .vl-inner { padding: 0 16px; height: 64px; }
+  .vl-logo img { height: 38px; }
+  .vl-spacer { height: 64px; }
   .vf-faq-btn{
     gap:4px;
     padding: 11px 18px;
