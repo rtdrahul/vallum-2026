@@ -42,7 +42,7 @@ export async function generateMetadata() {
   return {
     title: meta.page_meta_title || meta.page_name || defaultMetadata.title,
     description: meta.page_meta_desc || defaultMetadata.description,
-    keywords: meta.page_meta_keyword || "ApplyLynk, education, courses, learning",
+    keywords: meta.page_meta_keyword || "",
     openGraph: {
       title: meta.page_meta_title || meta.page_name || defaultMetadata.title,
       description: meta.page_meta_desc || defaultMetadata.description,

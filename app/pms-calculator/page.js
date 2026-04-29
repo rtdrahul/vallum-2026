@@ -20,7 +20,7 @@ async function fetchPageData(slug) {
 // SERVER-SIDE: Generate metadata for SEO
 export async function generateMetadata() {
   // In Next.js 15, 'params' is a Promise, so it must be awaited before use.
-  const pageData = await fetchPageData('contact-us');
+  const pageData = await fetchPageData('pms-calculator');
   
   if (!pageData) {
     return {
@@ -33,7 +33,7 @@ export async function generateMetadata() {
     title: "VALLUM CAPITAL ADVISORS | SEBI Registered Investment Advisors",
     description: "VALLUM CAPITAL ADVISORS | SEBI Registered Investment Advisors",
     image: "https://badmin.vallum.in/assets/images/logo/logo.webp",
-    url: "https://www.viblo.in",
+    url: "https://vallum.in",
   };
 
   const meta = pageData.metaData;
@@ -42,7 +42,7 @@ export async function generateMetadata() {
   return {
     title: meta.page_meta_title || meta.page_name || defaultMetadata.title,
     description: meta.page_meta_desc || defaultMetadata.description,
-    keywords: meta.page_meta_keyword || "ApplyLynk, education, courses, learning",
+    keywords: meta.page_meta_keyword || "",
     openGraph: {
       title: meta.page_meta_title || meta.page_name || defaultMetadata.title,
       description: meta.page_meta_desc || defaultMetadata.description,
