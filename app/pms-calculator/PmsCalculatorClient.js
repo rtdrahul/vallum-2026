@@ -44,7 +44,7 @@ const Row = ({ label, formula, values, isBold, isGreen, isRed, isStr }) => (
     {values.map((v, i) => {
       const color = isGreen ? "#1a7f4f" : isRed && typeof v === "number" && v < 0 ? "#c0392b" : "#222";
       return (
-        <td key={i} style={{ padding: "6px 14px", textAlign: "right", borderBottom: "1px solid #eee", fontSize: 15, fontWeight: isBold ? 500 : 400, color, whiteSpace: "nowrap" }}>
+        <td key={i} style={{ padding: "6px 14px", textAlign: "right",verticalAlign: "middle", borderBottom: "1px solid #eee", fontSize: 15, fontWeight: isBold ? 500 : 400, color, whiteSpace: "nowrap" }}>
           {isStr ? v : fmtCr(v)}
         </td>
       );
@@ -109,18 +109,18 @@ function TabFixed() {
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
-        <ColHeaders labels={["Scenario 1 (Gain " + returns[0] + "%)", "Scenario 2 (" + (returns[1] >= 0 ? "Gain " + returns[1] : "Loss " + Math.abs(returns[1])) + "%)", "Scenario 3 (Loss " + Math.abs(returns[2]) + "%)"]} />
+        <ColHeaders labels={["Scenario 1 (Gain " + returns[0] + "%)", "Scenario 2 (" + (returns[1] >= 0 ? "No Change " + returns[1] : "Loss " + Math.abs(returns[1])) + "%)", "Scenario 3 (Loss " + Math.abs(returns[2]) + "%)"]} />
         <SectionHeader label="Fixed Fee Illustration" />
-        <Row label="Capital Contributed / AUM" formula="[i] = a" values={V("i")} />
-        <Row label="Gain / (Loss) on Investment" formula="[ii] = i × Scenario return" values={V("ii")} />
-        <Row label="Gross Value of Portfolio (year end)" formula="[iii] = i + ii" values={V("iii")} />
-        <Row label="Average Assets Under Management" formula="[iv] = (i + iii) / 2" values={V("iv")} />
-        <Row label="Other Expenses" formula="[v] = iv × c" values={V("v")} isRed />
-        <Row label="Brokerage and Transaction Cost" formula="[vi] = iv × d" values={V("vi")} isRed />
+        <Row label="Capital Contributed / Assets under Management" formula="[i] = a" values={V("i")} />
+        <Row label="Gain / (Loss) on Investment based on the Scenario" formula="[ii] = i × Scenario return" values={V("ii")} />
+        <Row label="Gross Value of the Portfolio at the end of the year" formula="[iii] = i + ii" values={V("iii")} />
+        <Row label="Average assets under management" formula="[iv] = (i + iii) / 2" values={V("iv")} />
+        <Row label="Other Expense" formula="[v] = iv × c" values={V("v")} isRed />
+        <Row label="Brokerage and Transaction cost" formula="[vi] = iv × d" values={V("vi")} isRed />
         <Row label="Management Fees" formula="[vii] = (iv + v + vi) × b" values={V("vii")} isRed />
-        <Row label="Total Charges During the Year" formula="[viii] = v + vi + vii" values={V("viii")} isBold isRed />
-        <Row label="Net Value of Portfolio (year end)" formula="[ix] = iii + viii" values={V("ix")} isBold isGreen />
-        <PctRow label="% Portfolio Return" formula="[x] = (ix − i) / i" values={V("x")} />
+        <Row label="Total charges during the year" formula="[viii] = v + vi + vii" values={V("viii")} isBold isRed />
+        <Row label="Net value of the Portfolio at the end of the year" formula="[ix] = iii + viii" values={V("ix")} isBold isGreen />
+        <PctRow label="% Portfolio Return" formula="[x] = ((ix − i) / i)%" values={V("x")} />
       </TableWrap>
       <Notes notes={fixedNotes} />
     </div>
@@ -169,7 +169,7 @@ function TabHybrid({ varOnly = false }) {
         <Assump label="Management Fee (% p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
         <Assump label="Other Expenses (% p.a.)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
         <Assump label="Performance Fee (%)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate (% p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Hurdle Rate of Return (% p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
         <Assump label="Brokerage & Transaction Cost (% p.a.)" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       {varOnly && <div style={{ fontSize: 15, color: "#777", marginBottom: 12, fontStyle: "italic" }}>Management Fee is 0 for the Variable Fee model.</div>}
@@ -255,7 +255,7 @@ function TabMultiYear() {
         <Assump label="Management Fee (% p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
         <Assump label="Other Expenses (% p.a.)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
         <Assump label="Performance Fee (%)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate (% p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Hurdle Rate of Return(% p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
         <Assump label="Brokerage & Transaction Cost (% p.a.)" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={yrLabels} />
@@ -379,9 +379,9 @@ const multiNotes = [
 /* ── MAIN APP ───────────────────────────────────────── */
 const TABS = [
   { id: "fixed", label: "One Year — Fixed Fees" },
-  // { id: "hybrid", label: "One Year — Hybrid Fees" },
-  // { id: "variable", label: "One Year — Variable Fees" },
-  // { id: "multi", label: "Multi Year — Hybrid Fees" },
+  { id: "hybrid", label: "One Year — Hybrid Fees" },
+  { id: "variable", label: "One Year — Variable Fees" },
+  { id: "multi", label: "Multi Year — Hybrid Fees" },
 ];
 
 export default function PmsCalculator() {
