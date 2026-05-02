@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 
 const BRAND = "#3e3e8a";
 const BRAND_LIGHT = "#f0f0fa";
-const BRAND_MED = "#c5c5e8";
+const BRAND_MED = "#312e2e";
 
 const fmt = (v, dp = 0) => {
   if (v === null || v === undefined || isNaN(v)) return "—";
@@ -37,14 +37,14 @@ const SectionHeader = ({ label }) => (
 
 const Row = ({ label, formula, values, isBold, isGreen, isRed, isStr }) => (
   <tr style={{ background: isBold ? BRAND_LIGHT : "white" }}>
-    <td style={{ padding: "6px 12px", borderBottom: "1px solid #eee", minWidth: 220, maxWidth: 320 }}>
+    <td style={{ padding: "6px 12px", borderBottom: "1px solid #312e2e", minWidth: 220, maxWidth: 320 }}>
       <div style={{ fontWeight: isBold ? 500 : 400, fontSize: 15, color: "#222" }}>{label}</div>
       <div style={{ fontSize: 14, color: BRAND, fontStyle: "italic", marginTop: 1 }}>{formula}</div>
     </td>
     {values.map((v, i) => {
       const color = isGreen ? "#1a7f4f" : isRed && typeof v === "number" && v < 0 ? "#c0392b" : "#222";
       return (
-        <td key={i} style={{ padding: "6px 14px", textAlign: "right",verticalAlign: "middle", borderBottom: "1px solid #eee", fontSize: 15, fontWeight: isBold ? 500 : 400, color, whiteSpace: "nowrap" }}>
+        <td key={i} style={{ padding: "6px 14px", textAlign: "right",verticalAlign: "middle", borderBottom: "1px solid #312e2e", fontSize: 15, fontWeight: isBold ? 500 : 400, color, whiteSpace: "nowrap" }}>
           {isStr ? v : fmtCr(v)}
         </td>
       );
@@ -54,12 +54,12 @@ const Row = ({ label, formula, values, isBold, isGreen, isRed, isStr }) => (
 
 const PctRow = ({ label, formula, values }) => (
   <tr style={{ background: BRAND_LIGHT }}>
-    <td style={{ padding: "6px 12px", borderBottom: "1px solid #eee" }}>
+    <td style={{ padding: "6px 12px", borderBottom: "1px solid #312e2e" }}>
       <div style={{ fontWeight: 500, fontSize: 15, color: "#222" }}>{label}</div>
       <div style={{ fontSize: 14, color: BRAND, fontStyle: "italic", marginTop: 1 }}>{formula}</div>
     </td>
     {values.map((v, i) => (
-      <td key={i} style={{ padding: "6px 14px", textAlign: "right", borderBottom: "1px solid #eee", fontSize: 15, fontWeight: 500, color: v >= 0 ? "#1a7f4f" : "#c0392b" }}>
+      <td key={i} style={{ padding: "6px 14px", textAlign: "right", borderBottom: "1px solid #312e2e", fontSize: 15, fontWeight: 500, color: v >= 0 ? "#1a7f4f" : "#c0392b" }}>
         {fmtPct(v)}
       </td>
     ))}
