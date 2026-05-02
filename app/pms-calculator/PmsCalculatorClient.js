@@ -102,10 +102,10 @@ function TabFixed() {
   return (
     <div>
       <AssumptionsGrid>
-        <Assump label="Capital (₹)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (% p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
-        <Assump label="Other Expenses (% p.a.)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
-        <Assump label="Brokerage & Transaction Cost (% p.a.)" value={d} onChange={v => setD(v)} suffix="%" step="0.1" />
+        <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
+        <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
+        <Assump label="Other Expenses" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
+        <Assump label="Brokerage and Transaction cost" value={d} onChange={v => setD(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
@@ -165,38 +165,38 @@ function TabHybrid({ varOnly = false }) {
   return (
     <div>
       <AssumptionsGrid>
-        <Assump label="Capital (₹)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (% p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
-        <Assump label="Other Expenses (% p.a.)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
-        <Assump label="Performance Fee (%)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate of Return (% p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
-        <Assump label="Brokerage & Transaction Cost (% p.a.)" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
+        <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
+        <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
+        <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
+        <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
+        <Assump label="Hurdle Rate of Return (%age per annum)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Brokerage and Transaction cost" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
-      {varOnly && <div style={{ fontSize: 15, color: "#777", marginBottom: 12, fontStyle: "italic" }}>Management Fee is 0 for the Variable Fee model.</div>}
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
         <ColHeaders labels={[`Scenario 1 (${returns[0]}%)`, `Scenario 2 (${returns[1]}%)`, `Scenario 3 (${returns[2]}%)`]} />
         <SectionHeader label={varOnly ? "Variable Fee Illustration" : "Hybrid Fee Illustration"} />
-        <Row label="Capital Contributed / AUM" formula="[i] = a" values={V("i")} />
-        <Row label="Gain / (Loss) on Investment" formula="[ii] = i × scenario" values={V("ii")} />
-        <Row label="Gross Value of Portfolio (year end)" formula="[iii] = i + ii" values={V("iii")} />
-        <Row label="Average AUM" formula="[iv] = (i + iii) / 2" values={V("iv")} />
+        <Row label="Capital Contributed / Assets under Management" formula="[i] = a" values={V("i")} />
+        <Row label="Gain / (Loss) on Investment based on the Scenario" formula="[ii] = i × scenario" values={V("ii")} />
+        <Row label="Gross Value of the Portfolio at the end of the year" formula="[iii] = i + ii" values={V("iii")} />
+        <Row label="Daily Weighted Average assets under management" formula="[iv] = (i + iii) / 2" values={V("iv")} />
         <Row label="Other Expenses" formula="[v] = iv × c" values={V("v")} isRed />
-        <Row label="Brokerage and Transaction Cost" formula="[vi] = iv × f" values={V("vi")} isRed />
+        <Row label="Brokerage and Transaction cost" formula="[vi] = iv × f" values={V("vi")} isRed />
         <Row label="Management Fees" formula="[vii] = (iv + v + vi) × b" values={V("vii")} isRed />
-        <Row label="Total Charges Before Performance Fee" formula="[viii] = v + vi + vii" values={V("viii")} isBold isRed />
-        <Row label="Gross Portfolio Value Before Performance Fee" formula="[ix] = iii + viii" values={V("ix")} />
-        <SectionHeader label="Performance Fee Calculation" />
-        <Row label="High Water Mark Value (HWM)" formula="[x] = capital (yr 1)" values={V("x")} />
-        <Row label="Hurdle Return Amount" formula="[xi] = i × e" values={V("xi")} />
-        <Row label="Performance Fee Applicable?" formula='[xii] = ix > (x + xi) → "Yes" else "No P.Fee"' values={V("xii")} isStr />
-        <Row label="Portfolio Value in Excess of Hurdle" formula="[xiii] = ix − x − xi (if applicable)" values={V("xiii")} />
-        <Row label="Performance Fee" formula="[xiv] = xiii × d" values={V("xiv")} isRed />
-        <Row label="Net Portfolio Value (after all fees)" formula="[xv] = ix + xiv" values={V("xv")} isBold isGreen />
+        <Row label="Total charges before Performance fee." formula="[viii] = v + vi + vii" values={V("viii")} isBold isRed />
+        <Row label="Gross Value of the Portfolio before Performance fee" formula="[ix] = iii + viii" values={V("ix")} />
+        
+        <Row label="High Water Mark Value (HWM) (Capital contributed for 1st year and second year onwards as defined in the PMS agreement." formula="[x] = capital (yr 1)" values={V("x")} />
+        <Row label="Hurdle Rate of return or as defined in the PMS agreement" formula="[xi] = i × e" values={V("xi")} />
+        <Row label="Gross Value of the Portfolio before Performance fee is greater than High Water Mark Value + Hurdle rate of return" formula='[xii] = ix > (x + xi) → "Yes" else "No P.Fee"' values={V("xii")} isStr />
+        <SectionHeader label="If Yes, proceed to performance fee calculation else 0 (zero) performance fee for the period)" />
+        <Row label="Portfolio return subject of Performance Fee" formula="[xiii] = ix − x − xi (if applicable)" values={V("xiii")} />
+        <Row label="Performance fee" formula="[xiv] = xiii × d" values={V("xiv")} isRed />
+        <Row label="Net value of the Portfolio at the end of the year after all fees and expenses" formula="[xv] = ix + xiv" values={V("xv")} isBold isGreen />
         <PctRow label="% Portfolio Return" formula="[xvi] = (xv − i) / i" values={V("xvi")} />
-        <SectionHeader label="High Water Mark to Carry Forward" />
-        <Row label="HWM c/f — if fee charged from portfolio" formula="[xvii] = max(x, xv)" values={V("hwmPortfolio")} />
-        <Row label="HWM c/f — if fee paid separately by investor" formula="[xvii] = max(ix, x)" values={V("hwmSeparate")} />
+        <SectionHeader  />
+        <Row label="High Water Mark to be carried forward for next year. When performance fee is charged from the portfolio itself." formula="[xvii] = max(x, xv)" values={V("hwmPortfolio")} />
+        <Row label="High Water Mark to becarried forward for next year. When performance fee is paid separately by the investor to the PM" formula="[xvii] = max(ix, x)" values={V("hwmSeparate")} />
       </TableWrap>
       <Notes notes={hybridNotes} />
     </div>
@@ -207,30 +207,36 @@ function TabHybrid({ varOnly = false }) {
 function calcMultiYear(a, b, c, d, e, f, retPct) {
   const years = [];
   let prevXI = null, prevIX = null, prevXVII = null, prevXIX = null;
+  const initialCapital = a;
   for (let n = 0; n < 5; n++) {
     const r = retPct[n];
     const i = n === 0 ? a : prevXVII;
     const ii = i * r, iii = i + ii;
     const iv = (i + iii) / 2;
     const v = -(iv * c), vi = -(iv * f);
-    const vii = -(iv * b); // Multi-year uses iv * b (not (iv+v+vi)*b)
+    const vii = -(iv * b);
     const viii = v + vi + vii;
     const ix = iii + viii;
-    const x = n === 0 ? a : prevXIX; // HWM
-    let xi;
-    if (n === 0) {
-      xi = i * (1 + e);
-    } else {
-      xi = Math.max(prevIX * (1 + e), prevXI * (1 + e));
-    }
+    const x = n === 0 ? a : prevXIX;
+    const xi = n === 0 ? i * (1 + e) : Math.max(prevIX, prevXI) * (1 + e);
     const isP = ix > xi;
-    const xiv = isP ? (ix - xi) * d : 0; // performance fee
+    const xii = isP ? (ix - xi) / xi : 0;
+    const xiii = xii * d;
+    // FIX: Year 1 uses xii*d*i; Year 2+ uses (ix-xi)*d
+    const xiv = isP ? (n === 0 ? xii * d * i : (ix - xi) * d) : 0;
+    const xvi = isP ? "Yes" : "No P.Fee";
     const xvii = ix - xiv;
     const xviii = (xvii - i) / i;
+    const xirr = Math.pow(xvii / initialCapital, 1 / (n + 1)) - 1;
     const xix = Math.max(x, ix);
 
-    years.push({ i, ii, iii, iv, v, vi, vii, viii, ix, x, xi, isPerf: isP ? "Yes" : "No P.Fee", xiv: -xiv, xvii, xviii, xix });
-    prevXI = xi; prevIX = ix; prevXVII = xvii; prevXIX = xix;
+    years.push({ i, ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii, xiii, xiv: -xiv, xvi, xvii, xviii, xirr, xix });
+
+    // FIX: Update all prev variables each iteration
+    prevXI = xi;
+    prevIX = ix;
+    prevXVII = xvii;
+    prevXIX = xix;
   }
   return years;
 }
@@ -251,34 +257,39 @@ function TabMultiYear() {
   return (
     <div>
       <AssumptionsGrid>
-        <Assump label="Capital (₹)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (% p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
-        <Assump label="Other Expenses (% p.a.)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
-        <Assump label="Performance Fee (%)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate of Return(% p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
-        <Assump label="Brokerage & Transaction Cost (% p.a.)" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
+        <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
+        <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
+        <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
+        <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
+        <Assump label="Hurdle Rate of Return (%age per annum)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Brokerage and Transaction cost" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={yrLabels} />
       <TableWrap>
         <ColHeaders labels={yrLabels} />
-        <SectionHeader label="Multi-Year Hybrid Fee Calculator" />
-        <Row label="Opening Capital / AUM" formula="[i] = a (Yr1), xvii prev (Yr2+)" values={V("i")} />
-        <Row label="Gain / (Loss)" formula="[ii] = i × return" values={V("ii")} />
-        <Row label="Gross Portfolio Value" formula="[iii] = i + ii" values={V("iii")} />
-        <Row label="Average AUM" formula="[iv] = (i + iii) / 2" values={V("iv")} />
+        <SectionHeader label="Hybrid Fee Calculator" />
+        <Row label="Capital Contributed / Op Assets under Management" formula="[i] = a (Yr1), xvii prev (Yr2+)" values={V("i")} />
+        <Row label="Gain / (Loss) on Investment based on the Scenario" formula="[ii] = i × return" values={V("ii")} />
+        <Row label="Gross Value of the Portfolio at the end of the year" formula="[iii] = i + ii" values={V("iii")} />
+        <Row label="Daily Weighted Average assets under management" formula="[iv] = (i + iii) / 2" values={V("iv")} />
         <Row label="Other Expenses" formula="[v] = iv × c" values={V("v")} isRed />
         <Row label="Brokerage and Transaction Cost" formula="[vi] = iv × f" values={V("vi")} isRed />
         <Row label="Management Fees" formula="[vii] = iv × b" values={V("vii")} isRed />
-        <Row label="Total Charges" formula="[viii] = v + vi + vii" values={V("viii")} isBold isRed />
-        <Row label="Portfolio Value Before Performance Fee" formula="[ix] = iii + viii" values={V("ix")} />
-        <SectionHeader label="Performance Fee Calculation" />
-        <Row label="High Water Mark (HWM)" formula="[x] = capital (Yr1); max prior ix (Yr2+)" values={V("x")} />
-        <Row label="Hurdle NAV (compounded)" formula="[xi] = i×(1+e) Yr1; max(prev_ix, prev_xi)×(1+e) Yr2+" values={V("xi")} />
-        <Row label="Performance Fee Applicable?" formula='[xii] = ix > xi → "Yes" else "No P.Fee"' values={V("isPerf")} isStr />
-        <Row label="Performance Fee" formula="[xiv] = (ix − xi) × d (if applicable)" values={V("xiv")} isRed />
-        <Row label="Net Portfolio Value (after all fees)" formula="[xvii] = ix − xiv" values={V("xvii")} isBold isGreen />
-        <PctRow label="% Portfolio Return" formula="[xviii] = (xvii − i) / i" values={V("xviii")} />
-        <Row label="HWM Carried Forward" formula="[xix] = max(x, ix)" values={V("xix")} />
+        <Row label="Total charges during the year" formula="[viii] = v + vi + vii" values={V("viii")} isBold isRed />
+        <SectionHeader/>
+        <Row label="Value of the Portfolio before Performance fee" formula="[ix] = iii + viii" values={V("ix")} />
+        <Row label="High Water Mark Value (HWM)" formula="[x] = capital (Yr1); max(x, ix) prior year (Yr2+)" values={V("x")} />
+        <Row label="Hurdle NAV (Compounded at Hurdle rate YoY)" formula="[xi] = i×(1+e) Yr1; max(prev_ix, prev_xi)×(1+e) Yr2+" values={V("xi")} />
+        <SectionHeader/>
+        <PctRow label="Portfolio value in excess of Hurdle NAV" formula="[xii] = (ix − xi) / xi  (if ix > xi, else 0)" values={V("xii")} />
+        <PctRow label="Profit share of the PMS" formula="[xiii] = xii × d  (performance fee rate applied to excess)" values={V("xiii")} />
+        <Row label="Profit Share To be taken by PMS" formula="[xiv] = (ix − xi) × d  (if applicable, else 0)" values={V("xiv")} isRed />
+        <Row label="Is the Performance Fee charged?" formula='[xvi] = ix > xi → "Yes" else "No P.Fee"' values={V("xvi")} isStr />
+        <SectionHeader label="If Yes, proceed to performance fee calculation else 0 (zero) performance fee for the period" />
+        <Row label="Net value of the Portfolio at the end of the year after all fees and expenses" formula="[xvii] = ix − xiv" values={V("xvii")} isBold isGreen />
+        <PctRow label="% Portfolio Return (for the year)" formula="[xviii] = (xvii − i) / i" values={V("xviii")} />
+        <PctRow label="Portfolio XIRR (Annualised CAGR since inception)" formula="[xirr] = (xvii / initial capital)^(1/n) − 1" values={V("xirr")} />
+        <Row label="High Water Mark to be carried forward to next year" formula="[xix] = max(x, ix)" values={V("xix")} />
       </TableWrap>
       <Notes notes={multiNotes} />
     </div>
@@ -362,7 +373,7 @@ const hybridNotes = [
   "Other Expenses includes Account Opening charges, stamp duty /Audit Fee/ Bank charges / Fund Accounting charges / Custody Fee / demat charges or other miscellaneous expense",
   "Brokerage and transaction cost for the illustration purpose is charged on the Average AUM. However, Brokerage and Transaction cost are charged on basis the actuals trades.",
   "All Fees and charges are subject to GST.",
-  "For this illustration, High Water Mark for the 1st Year is the Capital invested and from second year onwards if performance fee is charged, it’s the year end closing value after all charges and fees, else it remains the same. However, in actual, High Water Mark is defined in the PMS agreement and may differ from this illustration.",
+  "For this illustration, High Water Mark for the 1st Year is the Capital invested and from second year onwards if performance fee is charged, it's the year end closing value after all charges and fees, else it remains the same. However, in actual, High Water Mark is defined in the PMS agreement and may differ from this illustration.",
   "For this illustration, Hurdle rate is calculated on Higher of (HWM or previous year closing capital). However, in actual Hurdle Rate of return is defined in the PMS agreement and may differ from this illustration.",
   "Hurdle rate is prorated in case the performance fee period is less than 1 year OR if there are inflow/outflows from the portfolio",
   "The above illustration shows the High Water Mark to be carried forward in different scenario for equal and fair treatment to the investor.",
@@ -371,16 +382,17 @@ const hybridNotes = [
 ];
 const multiNotes = [
   "In the illustration, Management fee is assumed to be charged annually. However, the Portfolio Manager may charge fee at any other frequency (i.e. Monthly, Quarterly, Semi-annually, Annually) as defined in the PMS agreement and permitted under SEBI regulations.",
-    "For this illustration, the Hurdle NAV is compounded annually at the Hurdle Rate. In the first year, the Hurdle NAV is calculated by applying the Hurdle Rate to the Initial Capital Contribution. For subsequent years, the Hurdle NAV is calculated as the greater of the Value of the Portfolio before applying the Performance Fee, after applying the Hurdle Rate, or the previous year’s Hurdle NAV compounded by the Hurdle Rate. This approach ensures that the Hurdle NAV is properly compounded while accounting for the performance of the portfolio.",
-    "For this illustration, High Water Mark in any year is the maximum closing value of the portfolio (before performance fee) in all the preceding financial years.",
-    "In this example, there is no catch up of fee for the customer.",
-    "Hurdle rate is prorated in case the performance fee period is less than 1 year OR if there are inflow/outflows from the portfolio.",
-    "The above calculator assumes that the performance fee is charged from the portfolio itself.",
-    "Returns are assumed to be generated linearly through the year.",
-    "Other Expenses includes Account Opening charges, stamp duty / Audit Fee / Bank charges / Fund Accounting charges / Custody Fee / demat charges or other miscellaneous expense.",
-    "Brokerage and transaction cost for the illustration purpose is charged on the Average AUM. However, Brokerage and Transaction cost are charged on basis the actual trades.",
-    "All Fees and charges are subject to GST.",
-    "This is only a generic illustration, each portfolio manager can modify the illustration as per the terms and condition of their PMS agreement."
+  "For this illustration, the Hurdle NAV is compounded annually at the Hurdle Rate. In the first year, the Hurdle NAV is calculated by applying the Hurdle Rate to the Initial Capital Contribution. For subsequent years, the Hurdle NAV is calculated as the greater of the Value of the Portfolio before applying the Performance Fee, after applying the Hurdle Rate, or the previous year's Hurdle NAV compounded by the Hurdle Rate. This approach ensures that the Hurdle NAV is properly compounded while accounting for the performance of the portfolio.",
+  "For this illustration, High Water Mark in any year is the maximum closing value of the portfolio (before performance fee) in all the preceding financial years.",
+  "In this example, there is no catch up of fee for the customer.",
+  "Hurdle rate is prorated in case the performance fee period is less than 1 year OR if there are inflow/outflows from the portfolio.",
+  "The above calculator assumes that the performance fee is charged from the portfolio itself.",
+  "Returns are assumed to be generated linearly through the year.",
+  "Other Expenses includes Account Opening charges, stamp duty / Audit Fee / Bank charges / Fund Accounting charges / Custody Fee / demat charges or other miscellaneous expense.",
+  "Brokerage and transaction cost for the illustration purpose is charged on the Average AUM. However, Brokerage and Transaction cost are charged on basis the actual trades.",
+  "All Fees and charges are subject to GST.",
+  "This is only a generic illustration, each portfolio manager can modify the illustration as per the terms and condition of their PMS agreement.",
+  "Portfolio XIRR is the Compound Annual Growth Rate (CAGR) from initial capital to the current net portfolio value over n years: (Net Portfolio Value / Initial Capital)^(1/n) − 1.",
 ];
 
 /* ── MAIN APP ───────────────────────────────────────── */
@@ -438,4 +450,4 @@ export default function PmsCalculator() {
         </div>
     </section>
   );
-} 
+}
