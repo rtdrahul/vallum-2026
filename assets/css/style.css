@@ -6238,3 +6238,10 @@ body .vertical-centered-box {
     opacity: 1;
     transform: translateY(-50%) translateX(0);
   }
+  .pflag-img {
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-right: 6px;
+}

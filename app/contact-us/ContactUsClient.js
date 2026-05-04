@@ -267,7 +267,7 @@ export default function ContactUsClient() {
   const statesLoaded  = states.length > 0;
   const citiesLoaded  = cities.length > 0;
 
-  const flagEmoji = toFlag(form.contact_phoneflag || "IN");
+  const flagImg = `https://flagcdn.com/w40/${(form.contact_phoneflag || "IN").toLowerCase()}.png`;
 
   return (
     <div className="vc-contact-root">
@@ -427,7 +427,12 @@ export default function ContactUsClient() {
                     <div className="vc-phone-group">
                       <div className="vc-phone-flag-wrap">
                         <div className="vc-phone-flag-display">
-                          <span className="pflag">{flagEmoji}</span>
+                          <img
+                            src={flagImg}
+                            alt={form.contact_phoneflag}
+                            className="pflag-img"
+                            onError={(e) => e.target.style.display = "none"}
+                          />
                           <span className="pcode">{form.contact_phonecode}</span>
                           <span className="parrow">▼</span>
                         </div>

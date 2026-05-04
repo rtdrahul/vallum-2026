@@ -87,10 +87,10 @@ export default function Header({ settingsData }) {
     {
       id: 4, label: "Perspectives", type: "dropdown",
       children: [
-        { label: "Blogs", link: "/blog/blog" },
-        { label: "Letter to Stakeholders", link: "/blog/stakeholders-letters" },
-        { label: "Media", link: "/blog/media" },
-        { label: "Weekend Reading", link: "/blog/weekend-reading" },
+        { label: "Blogs", link: "/perspective/blog" },
+        { label: "Letter to Stakeholders", link: "/perspective/stakeholders-letters" },
+        { label: "Media", link: "/perspective/media" },
+        { label: "Weekend Reading", link: "/perspective/weekend-reading" },
       ],
     },
     {
