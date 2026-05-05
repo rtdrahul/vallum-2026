@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 const getHref = (item) => {
   if (item.blog_type === 'stakeholders-letters' && item.blog_pdf !== '') return item.blog_pdf;
   if (item.blog_type === 'weekend-reading') return item.blog_weekend_link;
-  return `/blog/${item.blog_type}/${item.blog_slug}`;
+  return `/perspective/${item.blog_type}/${item.blog_slug}`;
 };
 
 const isDownload = (item) =>
