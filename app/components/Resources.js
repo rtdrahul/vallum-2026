@@ -36,7 +36,7 @@ export default function Resources() {
   return (
     <>
       <section className="resources-section">
-        <div className="resources-container">
+        <div className="container">
           {typeArr.map((type, i) => {
             const items = data[type] || [];
             if (items.length === 0) return null;

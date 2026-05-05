@@ -55,7 +55,7 @@ export default function Testimonial() {
     <>
 
       <section className="testi-section">
-        <div className="testi-inner">
+        <div className="testi-inner container">
 
           <p className="testi-eyebrow">Client Voices</p>
           <h2 className="testi-heading">What Clients say About Us</h2>

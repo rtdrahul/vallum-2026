@@ -72,7 +72,7 @@ export default function InvestmentApproach() {
         {/* Subtle background texture */}
         <div className="ia-bg-texture" aria-hidden="true" />
 
-        <div className="ia-container">
+        <div className="container">
           <div className="sec-header reveal">
             <span className="overline">Our Strategies</span>
             <h2>Investment Approach</h2>
