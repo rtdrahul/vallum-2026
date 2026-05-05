@@ -5109,11 +5109,11 @@ body .vertical-centered-box {
     .vc-info-desc{font-size:14px;color:var(--text-muted);line-height:1.8;margin:0 0 12px;}
     .vc-divider{width:40px;height:2px;background:var(--gold);margin:28px 0;border-radius:2px;}
     .vc-contact-cards{display:flex;flex-direction:column;gap:16px;margin-top:32px;}
-    .vc-contact-card{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:white;border:1px solid var(--cream-dark);border-radius:8px;transition:border-color .2s,box-shadow .2s;}
+    .vc-contact-card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:white;border:1px solid var(--cream-dark);border-radius:8px;transition:border-color .2s,box-shadow .2s;}
     .vc-contact-card:hover{border-color:var(--border);box-shadow:0 4px 16px rgba(13,27,42,0.06);}
     .vc-card-icon{width:36px;height:36px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
     .vc-card-icon svg{width:16px;height:16px;fill:none;stroke:var(--gold-light);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
-    .vc-card-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin:0 0 3px;}
+    .vc-card-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin:0;line-height: 15px;}
     .vc-card-value{font-size:13px;color:var(--primary);line-height:1.5;margin:0;}
     .vc-form-card{background:white;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;}
     .vc-form-header{background:var(--primary);padding:22px 32px;display:flex;align-items:center;justify-content:space-between;}
