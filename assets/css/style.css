@@ -4273,7 +4273,7 @@ body .vertical-centered-box {
    ORNAMENTAL DIVIDER
    ============================================================ */
 .ornament{display:flex;align-items:center;justify-content:center;gap:16px;margin:20px auto;width:200px}
-.ornament::before,.ornament::after{content:'';flex:1;height:1px;background:#DFC27D}
+.ornament::before,.ornament::after{content:'';flex:1;height:1px;background:#C28934}
 .ornament svg{width:16px;height:16px;fill:#C28934;flex-shrink:0}
 
 /* ============================================================
@@ -4284,9 +4284,9 @@ body .vertical-centered-box {
   transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;border-radius: 10px;}
 .phil::after{content:'';position:absolute;top:0;left:0;width:0;height:3px;
   background:#C28934;transition:width 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
-.phil:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(26,26,46,0.06);border-color:#DFC27D}
+.phil:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(26,26,46,0.06);border-color:#C28934}
 .phil:hover::after{width:100%}
-.phil-num{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:36px;font-weight:300;color:#DFC27D;
+.phil-num{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:36px;font-weight:300;color:#C28934;
   line-height:1;margin-bottom:12px}
 .phil h3{font-family:'Outfit',system-ui,-apple-system,sans-serif;font-size:17px;font-weight:600;color:#1A1A2E;margin-bottom:8px}
 .phil p{font-size:14px;color:var(--ink);line-height:1.7}
@@ -4336,7 +4336,7 @@ body .vertical-centered-box {
 
 .wws-heading em {
   font-style: italic;
-  color: #c9a96e;
+  color: #C28934;
 }
 
 .wws-rule {
@@ -4406,7 +4406,7 @@ body .vertical-centered-box {
 
 .wws-tag {
   display: inline-block;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4467,7 +4467,7 @@ body .vertical-centered-box {
 }
 
 .wws-card:hover .wws-name {
-  color: #c9a96e;
+  color: #C28934;
 }
 
 .wws-desc {
@@ -5068,18 +5068,18 @@ body .vertical-centered-box {
   .cta-section p{font-size:16px;color:#fff;max-width:600px;margin:0 auto 32px;line-height:1.7}
 
   /* ========== FOOTER ========== */
-.footer{background:#C8C9E8;color:#C8C9E8;padding:64px 0 0}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:48px}
+.footer{background:#f2f2f8;padding:64px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:32px;margin-bottom:48px}
 .footer-brand{max-width:280px}
 .footer-logo{margin-bottom:16px;}
 .footer-brand p{font-size:13px;line-height:1.7;color:#000;margin-bottom:12px}
-.footer-col h4{font-size:13px;font-weight:600;color:#000;text-transform:uppercase;
-  letter-spacing:1px;margin-bottom:16px}
+.footer-col p{font-size:13px;font-weight:500;color:#000;text-transform:uppercase;
+  letter-spacing:1px;}
 .footer-col a{display:block;font-size:13px;color:#000;padding:4px 0;
   transition:all 0.25s cubic-bezier(0.25,0.46,0.45,0.94)}
-.footer-col a:hover{color:#D4A94E;transform:translateX(3px)}
+.footer-col a:hover{color:#2b338a;transform:translateX(3px);font-weight: 500;text-decoration: underline;}
 .footer-sebi{border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;margin-top:24px}
-.footer-sebi-inner{display:flex;gap:24px;align-items:flex-start;font-size:12px;color:#000;line-height:1.6}
+.footer-sebi-inner{display:flex;gap:24px;align-items:flex-start;font-size:12px;color:#000;line-height:1.6;justify-content: center;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:20px 0}
 .footer-bottom-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
   font-size:12px;color:#000}
@@ -5089,7 +5089,7 @@ body .vertical-centered-box {
   font-size:12px;line-height:1.7}
 .footer-grievance strong{color:#000}
 .footer-grievance p{font-size: 13px;color:#000}
-.footer-grievance a{color:#D4A94E}
+.footer-grievance a{color: #2b338a;font-weight: 500;text-decoration: underline;}
 
 /* contact us section  */
 .vc-contact-root{font-family:var(--font-body);background:var(--cream);min-height:100vh;}
@@ -5131,7 +5131,7 @@ body .vertical-centered-box {
     .vc-row-1{grid-template-columns:1fr;}
     @media(max-width:600px){.vc-row-2{grid-template-columns:1fr;}.vc-form-body{padding:20px;}}
     .vc-field{position:relative;}
-    .vc-label{display:block;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#4a5568;margin-bottom:7px;}
+    .vc-label{display:block;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#2b338a;margin-bottom:7px;}
     .vc-required{color:var(--gold);margin-left:2px;}
     .vc-opt{color:var(--text-muted);font-size:10px;font-weight:400;letter-spacing:0;text-transform:none;margin-left:4px;}
     .vc-input,.vc-select,.vc-textarea{width:100%;box-sizing:border-box;background:var(--cream);border:1.5px solid #e5e7eb;border-radius:8px;padding:11px 14px;font-family:var(--font-body);font-size:14px;color:var(--ink);transition:border-color .2s,background .2s,box-shadow .2s;outline:none;-webkit-appearance:none;appearance:none;}

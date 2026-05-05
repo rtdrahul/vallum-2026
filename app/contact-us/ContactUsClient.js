@@ -371,8 +371,8 @@ export default function ContactUsClient() {
                   <div className={`vc-conditional${showStrategy ? " open" : ""}`}>
                     <div className="vc-cond-inner">
                       <div className="vc-field">
-                        <label className="vc-label">Investment Strategy <span className="vc-opt">(optional)</span></label>
-                        <select className="vc-select" name="business" value={form.business} onChange={handleChange}>
+                        <label className="vc-label" htmlFor="business">Investment Strategy <span className="vc-opt">(optional)</span></label>
+                        <select className="vc-select" name="business" id="business" value={form.business} onChange={handleChange}>
                           <option value="">Select Strategy</option>
                           <option value="Vallum India Discovery Strategy (VDIS)">Vallum India Discovery Strategy (VIDS)</option>
                           <option value="Vallum J.A.N. Principles">Vallum J.A.N. Principles</option>
@@ -386,9 +386,10 @@ export default function ContactUsClient() {
                   <div className={`vc-conditional${showOthers ? " open" : ""}`}>
                     <div className="vc-cond-inner">
                       <div className="vc-field">
-                        <label className="vc-label">Please specify <span className="vc-opt">(optional)</span></label>
+                        <label className="vc-label" htmlFor="others_visitor">Please specify <span className="vc-opt">(optional)</span></label>
                         <input
                           className="vc-input"
+                          id="others_visitor"
                           name="others_visitor"
                           value={form.others_visitor}
                           onChange={handleChange}
@@ -403,24 +404,26 @@ export default function ContactUsClient() {
                   <div className="vc-section-label" style={{marginTop:8}}>Your Details</div>
                   <div className="vc-row vc-row-2">
                     <div className="vc-field">
-                      <label className="vc-label">Full Name <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_name">Full Name <span className="vc-required">*</span></label>
                       <input
                         className={ic("contact_name")}
                         name="contact_name"
+                        id="contact_name"                        
                         value={form.contact_name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="John Doe"
+                        placeholder="Hitesh Kumar"
                         autoComplete="name"
                       />
                       <FieldError show={touched.contact_name} msg={errors.contact_name} />
                     </div>
                     <div className="vc-field">
-                      <label className="vc-label">Email Address <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_email">Email Address <span className="vc-required">*</span></label>
                       <input
                         className={ic("contact_email")}
                         type="email"
                         name="contact_email"
+                        id="contact_email"
                         value={form.contact_email}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -434,7 +437,7 @@ export default function ContactUsClient() {
                   <div className="vc-row vc-row-2">
                     {/* Phone with flag + code */}
                     <div className="vc-field">
-                      <label className="vc-label">Phone Number <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_mobile">Phone Number <span className="vc-required">*</span></label>
                       <div className="vc-phone-group">
                         <div className="vc-phone-flag-wrap">
                           <div className="vc-phone-flag-display">
@@ -472,6 +475,7 @@ export default function ContactUsClient() {
                           className={`vc-input vc-phone-input${touched.contact_mobile ? (errors.contact_mobile ? " error" : " valid") : ""}`}
                           type="number"
                           name="contact_mobile"
+                          id="contact_mobile"
                           value={form.contact_mobile}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -486,10 +490,11 @@ export default function ContactUsClient() {
 
                     {/* Country */}
                     <div className="vc-field">
-                      <label className="vc-label">Country <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_country">Country <span className="vc-required">*</span></label>
                       <select
                         className={sc("contact_country")}
                         name="contact_country"
+                        id="contact_country"
                         value={form.contact_country}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -506,7 +511,7 @@ export default function ContactUsClient() {
                   <div className="vc-row vc-row-2">
                     {/* State: required only when states are loaded */}
                     <div className="vc-field">
-                      <label className="vc-label">
+                      <label className="vc-label" htmlFor="contact_state">
                         State{" "}
                         {statesLoaded
                           ? <span className="vc-required">*</span>
@@ -515,6 +520,7 @@ export default function ContactUsClient() {
                       <select
                         className={sc("contact_state")}
                         name="contact_state"
+                        id="contact_state"
                         value={form.contact_state}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -528,9 +534,10 @@ export default function ContactUsClient() {
 
                     {/* City: always optional */}
                     <div className="vc-field">
-                      <label className="vc-label">City <span className="vc-opt">(optional)</span></label>
+                      <label className="vc-label" htmlFor="contact_city">City <span className="vc-opt">(optional)</span></label>
                       <select
                         className="vc-select"
+                        id="contact_city"
                         name="contact_city"
                         value={form.contact_city}
                         onChange={handleChange}
@@ -546,11 +553,13 @@ export default function ContactUsClient() {
                   <div className="vc-section-label" style={{marginTop:8}}>Your Message</div>
                   <div className="vc-row vc-row-1">
                     <div className="vc-field">
-                      <label className="vc-label">Message <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_message">Message <span className="vc-required">*</span></label>
                       <textarea
                         className={`vc-textarea${touched.contact_message ? (errors.contact_message ? " error" : " valid") : ""}`}
                         rows={4}
+                        id="contact_message"
                         name="contact_message"
+                        autoComplete="off"
                         value={form.contact_message}
                         onChange={handleChange}
                         onBlur={handleBlur}
