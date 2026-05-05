@@ -4296,7 +4296,7 @@ body .vertical-centered-box {
    ============================================================ */
 
 .wws-section {
-  background: #0d1b2e;
+  background: linear-gradient(135deg, #fff 0%, #e8e8f5 100%);
   font-family: var(--font-body);
   overflow: hidden;
   position: relative;
@@ -4351,7 +4351,7 @@ body .vertical-centered-box {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
 }
 
@@ -4406,7 +4406,7 @@ body .vertical-centered-box {
 
 .wws-tag {
   display: inline-block;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4460,7 +4460,7 @@ body .vertical-centered-box {
   font-size: 20px;
   line-height: 28px;
   font-weight: 500;
-  color: #f0e8d5;
+  /* color: #f0e8d5; */
   margin: 0 0 8px;
   letter-spacing: 0.01em;
   transition: color 0.3s ease;
@@ -4471,9 +4471,9 @@ body .vertical-centered-box {
 }
 
 .wws-desc {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
-  color: #fff;
+  /* color: #fff; */
   line-height: 1.6;
   margin: 0;
   letter-spacing: 0.01em;
@@ -4500,11 +4500,6 @@ body .vertical-centered-box {
   overflow: hidden;
 }
 
-.pms-topbar {
-  height: 3px;
-  background: linear-gradient(90deg, #2B338A 0%, #C28934 50%, #2B338A 100%);
-}
-
 /* HERO SPLIT */
 .pms-hero {
   display: grid;
@@ -4516,13 +4511,13 @@ body .vertical-centered-box {
 /* LEFT: image panel */
 .pms-img-panel {
   position: relative;
-  background: #2B338A;
+  /* background: #2B338A; */
   display: flex;
   /* align-items: flex-end; */
   justify-content: center;
   overflow: hidden;
 }
-.pms-img-panel::before {
+/* .pms-img-panel::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -4530,15 +4525,15 @@ body .vertical-centered-box {
     radial-gradient(ellipse 70% 60% at 30% 80%, rgba(194,137,52,0.18) 0%, transparent 60%),
     radial-gradient(ellipse 50% 40% at 80% 10%, rgba(255,255,255,0.04) 0%, transparent 50%);
   pointer-events: none;
-}
-.pms-img-panel::after {
+} */
+/* .pms-img-panel::after {
   content: '';
   position: absolute;
   top: 0; right: -1px; bottom: 0;
   width: 72px;
   background: #f7f4ee;
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
-}
+} */
 
 .pms-img-inner {
   position: relative;

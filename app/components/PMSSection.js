@@ -2,12 +2,11 @@ export default function PMSSection() {
   return (
     <>
       <div className="pms-wrap">
-        <div className="pms-topbar" />
+        <div className="container">
 
         <div className="pms-hero">
           {/* LEFT: Image Panel */}
           <div className="pms-img-panel">
-            <span className="pms-chip">Equity &amp; Multi Asset</span>
             <div className="pms-dots" />
             <div className="pms-img-inner">
               <img
@@ -40,6 +39,7 @@ export default function PMSSection() {
               </p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>

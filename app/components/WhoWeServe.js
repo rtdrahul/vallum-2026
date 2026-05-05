@@ -40,7 +40,7 @@ export default function WhoWeServe() {
         <div className="container">
           <div className="sec-header reveal">
             <span className="overline">Our Clientele</span>
-            <h2 className="text-white">Who We Serve</h2>
+            <h2>Who We Serve</h2>
             <div className="ornament"><svg viewBox="0 0 16 16"><path d="M8 0L10 6H16L11 10L13 16L8 12L3 16L5 10L0 6H6Z"/></svg></div>
           </div>
           <div className="wws-grid">
