@@ -12,6 +12,7 @@ export default function AccessibilityWidget() {
     hideImages: false,
     invertColors: false,
   });
+  
 
   // Toggle individual settings
   const toggleSetting = (key) => {
