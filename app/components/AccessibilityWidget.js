@@ -5,13 +5,14 @@ import { useState, useEffect } from "react";
 export default function AccessibilityWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [settings, setSettings] = useState({
-    biggerText: false,
+    biggerText: false, 
     textSpacing: false,
     highlightLinks: false,
     dyslexiaFriendly: false,
     hideImages: false,
     invertColors: false,
   });
+  
 
   // Toggle individual settings
   const toggleSetting = (key) => {
