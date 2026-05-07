@@ -90,25 +90,36 @@ function VideoSwiper({ blogs }) {
       >
         {blogs.map((blog) => (
           <SwiperSlide key={blog.blog_id} style={{ height: "auto" }}>
-            <div className="video-card">
-              <iframe
-                className="video-card-frame"
-                src={blog.blog_weekend_link}
-                title={blog.blog_name}
-                frameBorder="0"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-              />
-              <div className="video-card-body">
-                <div className="video-card-play-icon">
-                  <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1l10 6-10 6V1z" />
-                  </svg>
-                </div>
-                <p className="video-card-title">{blog.blog_name}</p>
-              </div>
-            </div>
-          </SwiperSlide>
+  <div className="video-card">
+    
+    <iframe
+      className="video-card-frame"
+      src={blog.blog_weekend_link}
+      title={blog.blog_name}
+      frameBorder="0"
+      allow="autoplay; encrypted-media"
+      allowFullScreen
+    />
+
+    <div className="video-card-body">
+      <div className="video-card-play-icon">
+        <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1l10 6-10 6V1z" />
+        </svg>
+      </div>
+
+      <p className="video-card-title">{blog.blog_name}</p>
+
+      {/* Accessibility transcript */}
+      <a
+        href={`/transcript/${blog.blog_id}`}
+        className="video-transcript-link"
+      >
+        Read video transcript
+      </a>
+    </div>
+  </div>
+</SwiperSlide>
         ))}
       </Swiper>
     </div>
