@@ -6268,3 +6268,7 @@ body .vertical-centered-box {
   color: #003f8a;
   text-decoration-thickness: 2px;
 }
+
+em {
+  color: #5f4630;
+}

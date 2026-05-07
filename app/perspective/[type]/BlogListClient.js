@@ -412,8 +412,9 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
                             }
                           >
                             <button className="client-button">
-                              <span>Read More</span>
-                            </button>
+<span>
+  Read More About {blog.blog_name}
+</span>                            </button>
                           </Link>
                         </div>
                       </div>
