@@ -4614,7 +4614,7 @@ body .vertical-centered-box {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #C28934;
+  color: #7A5320;
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -6255,4 +6255,16 @@ body .vertical-centered-box {
   object-fit: cover;
   border-radius: 2px;
   margin-right: 6px;
+}
+
+.report-link {
+  color: #005fcc;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.report-link:hover,
+.report-link:focus {
+  color: #003f8a;
+  text-decoration-thickness: 2px;
 }

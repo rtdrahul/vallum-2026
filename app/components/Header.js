@@ -228,8 +228,7 @@ export default function Header({ settingsData }) {
       <aside
         className={`vl-drawer${showMobileMenu ? " open" : ""}`}
         aria-label="Mobile navigation"
-        role="dialog"
-        aria-modal="true"
+        role="navigation"
       >
         {/* Drawer Header */}
         <div className="vl-drawer-head">

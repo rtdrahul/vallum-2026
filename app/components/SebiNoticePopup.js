@@ -110,12 +110,15 @@ export default function SebiNoticePopup() {
             </p>
 
             <p>
-              If you come across suspicious activity or impersonation, please
-              report it immediately at{" "}
-              <a href="mailto:connect.vallum@vallum.in">
-                connect.vallum@vallum.in
-              </a>
-            </p>
+  If you come across suspicious activity or impersonation, please
+  report it immediately at{" "}
+  <a
+    href="mailto:connect.vallum@vallum.in"
+    className="report-link"
+  >
+    connect.vallum@vallum.in
+  </a>
+</p>
 
             <p>
               Your vigilance helps protect both you and the integrity of our
