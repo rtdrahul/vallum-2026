@@ -3908,7 +3908,7 @@ body .vertical-centered-box {
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #b08d57;
+    color: #8a6a3b;
     font-family: 'Georgia', serif;
     margin-bottom: 4px;
   }
@@ -3968,7 +3968,7 @@ body .vertical-centered-box {
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #b08d57;
+    color: #8a6a3b;
     font-family: 'Georgia', serif;
   }
   .article-card-title {
@@ -3982,7 +3982,7 @@ body .vertical-centered-box {
   }
   .article-card-arrow {
     font-size: 16px;
-    color: #b08d57;
+    color: #8a6a3b;
     /* margin-top: 4px; */
     display: inline-block;
     transition: transform 0.2s ease;
@@ -4024,7 +4024,7 @@ body .vertical-centered-box {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: #b08d57;
+    background: #8a6a3b;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4112,7 +4112,7 @@ body .vertical-centered-box {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #b08d57;
+    color: #8a6a3b;
     font-family: 'Georgia', serif;
     text-decoration: none;
     margin-top: 4px;
@@ -4120,7 +4120,7 @@ body .vertical-centered-box {
   .pdf-card-cta svg {
     width: 13px;
     height: 13px;
-    fill: #b08d57;
+    fill: #8a6a3b;
     transition: transform 0.2s ease;
   }
   .pdf-card:hover .pdf-card-cta svg {
@@ -4138,7 +4138,7 @@ body .vertical-centered-box {
     height: 6px;
   }
   .media-swiper .swiper-pagination-bullet-active {
-    background: #b08d57;
+    background: #8a6a3b;
     width: 20px;
     border-radius: 3px;
   }
