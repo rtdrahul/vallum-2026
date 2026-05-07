@@ -4224,6 +4224,11 @@ body .vertical-centered-box {
   background:#FDF5E3;border:1px solid #E8C86A;font-size:13px;font-weight:500;
   color:#A66523;margin-bottom:24px;animation:fadeInUp 0.6s cubic-bezier(0.25,0.46,0.45,0.94) both}
 .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:#C28934;animation:pulse 2s infinite}
+.hero-badge:hover, .ia-tag:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 14px #7276a54d;
+  border-color:#A66523;
+}
 .hero h1{font-size:clamp(36px,5vw,56px);font-weight:700;color:#1A1A2E;line-height:1.1;
   margin-bottom:20px;animation:fadeInUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.1s both}
 .hero h1 .accent{color:#3B3D8A}
@@ -4377,7 +4382,7 @@ body .vertical-centered-box {
   opacity: 0;
 }
 
-.wws-card::after {
+/* .wws-card::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -4385,7 +4390,7 @@ body .vertical-centered-box {
   background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,169,110,0.07) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.35s ease;
-}
+} */
 
 .wws-card:hover,
 .wws-card.active {
@@ -4416,7 +4421,11 @@ body .vertical-centered-box {
   padding: 3px 10px;
   margin-bottom: 20px;
 }
-
+.wws-tag:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 14px #7276a54d;
+  border-color:#A66523;
+}
 .wws-img-wrap {
   width: 160px;
   height: 160px;
@@ -4436,7 +4445,14 @@ body .vertical-centered-box {
   border: 0.5px solid rgba(201,169,110,0.15);
   transition: border-color 0.35s ease;
 }
-
+.wws-grid .wws-card:nth-last-child(-n+3) .wws-img-wrap {
+  width: 180px;
+  height: 180px;
+}
+.wws-grid .wws-card:nth-last-child(-n+3) .wws-img-wrap img {
+  width: 180px;
+  height: 180px;
+}
 .wws-card:hover .wws-img-wrap::before {
   border-color: rgba(201,169,110,0.3);
 }
@@ -5072,23 +5088,23 @@ body .vertical-centered-box {
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 2fr;gap:32px;margin-bottom:48px}
 .footer-brand{max-width:280px}
 .footer-logo{margin-bottom:16px;}
-.footer-brand p{font-size:13px;line-height:1.7;color:#000;margin-bottom:12px}
+.footer-brand p{font-size:14px;line-height:1.7;color:#000;margin-bottom:12px}
 .footer-col p{font-size:13px;font-weight:500;color:#000;text-transform:uppercase;
   letter-spacing:1px;}
-.footer-col a{display:block;font-size:13px;color:#000;padding:4px 0;
+.footer-col a{display:block;font-size:14px;color:#000;padding:4px 0;
   transition:all 0.25s cubic-bezier(0.25,0.46,0.45,0.94)}
 .footer-col a:hover{color:#2b338a;transform:translateX(3px);font-weight: 500;text-decoration: underline;}
 .footer-sebi{border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;margin-top:24px}
-.footer-sebi-inner{display:flex;gap:24px;align-items:flex-start;font-size:12px;color:#000;line-height:1.6;justify-content: center;}
+.footer-sebi-inner{display:flex;gap:24px;align-items:flex-start;font-size:14px;color:#000;line-height:1.6;justify-content: center;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:20px 0}
 .footer-bottom-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-  font-size:12px;color:#000}
+  font-size:14px;color:#000}
 .footer-bottom a{color:#000}.footer-bottom a:hover{color:#D4A94E}
 .footer-legal-links{display:flex;gap:20px}
 .footer-grievance{background:#ffffff8c;border-radius:12px;padding:16px 20px;margin-top:20px;
   font-size:12px;line-height:1.7}
 .footer-grievance strong{color:#000}
-.footer-grievance p{font-size: 13px;color:#000}
+.footer-grievance p{font-size: 14px;color:#000}
 .footer-grievance a{color: #2b338a;font-weight: 500;text-decoration: underline;}
 
 /* contact us section  */

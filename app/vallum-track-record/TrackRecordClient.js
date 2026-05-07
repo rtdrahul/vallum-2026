@@ -391,7 +391,7 @@ function RecordCard({ record, state }) {
               <li
                 key={i}
                 style={{
-                  fontSize: "14px",
+                  fontSize: "16px",
                   color: "#4a4540",
                   lineHeight: 1.65,
                   paddingLeft: "20px",

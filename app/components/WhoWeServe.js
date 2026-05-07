@@ -4,7 +4,7 @@ const items = [
     name: "HNI",
     img: "/assets/images/individual.webp",
     desc: "₹50L+ long-term allocation",
-    tag: "High Net Worth",
+    tag: "High-Net Worth",
   },
   {
     name: "Family Offices",

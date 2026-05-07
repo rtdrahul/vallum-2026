@@ -217,7 +217,6 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
     },
     "stakeholders-letters": {
       title: "Reflections on markets, decisions, and long-term thinking",
-      desc: "A research-driven PMS built on GARP, cycle awareness, and risk discipline – designed for HNIs, NRIs, and Family Offices who value clarity over speculation.",
       img: "https://badmin.vallum.in/img/uploads/media/1770023897.jpg",
     },
   };
