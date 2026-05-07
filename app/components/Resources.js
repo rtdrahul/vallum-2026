@@ -48,23 +48,23 @@ export default function Resources() {
             };
 
             return (
-              <div key={i} className="resource-block">
+              <section key={i} className="resource-block" role="region" aria-label={labelMap[type] || 'Resources'}>
                 <div className="resource-header">
                   <h2 className="resource-title">
                     <span>{labelMap[type] || 'Resources'}</span>
                     {type.replace(/-/g, ' ')}
                   </h2>
                   <div className="swiper-nav-group">
-                    <div className={`nav-btn custom-prev-${i}`}>
+                    <button type="button" className={`nav-btn custom-prev-${i}`} aria-label="Previous resource slide">
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                    </div>
-                    <div className={`nav-btn custom-next-${i}`}>
+                    </button>
+                    <button type="button" className={`nav-btn custom-next-${i}`} aria-label="Next resource slide">
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
 
@@ -96,7 +96,7 @@ export default function Resources() {
                         </div>
                         <div className="res-card-body">
                           <h5 className="res-card-title">
-                            <a href={getHref(item)} download={isDownload(item) || undefined}>
+                            <a href={getHref(item)} download={isDownload(item) || undefined} aria-label={`Open ${item.blog_name}`}>
                               {item.blog_name}
                             </a>
                           </h5>
@@ -107,6 +107,7 @@ export default function Resources() {
                             href={getHref(item)}
                             download={isDownload(item) || undefined}
                             className="res-read-more"
+                            aria-label={isDownload(item) ? `Download ${item.blog_name}` : `Read article ${item.blog_name}`}
                           >
                             {isDownload(item) ? 'Download' : 'Read Article'}
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -118,7 +119,7 @@ export default function Resources() {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-              </div>
+              </section>
             );
           })}
         </div>

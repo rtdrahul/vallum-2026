@@ -56,6 +56,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
 
       <body className={`${cormorant.variable} ${outfit.variable}`}>
+        <a href="#main-content" className="skip-link" style={{ position: 'absolute', top: '-40px', left: '6px', background: '#000', color: '#fff', padding: '8px', zIndex: 1000, textDecoration: 'none' }}>Skip to main content</a>
         <SebiNoticePopup />
         <main>
 

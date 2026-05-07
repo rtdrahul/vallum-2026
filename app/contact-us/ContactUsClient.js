@@ -60,10 +60,11 @@ function validateField(name, value, formData, hasStates) {
 }
 
 /* ─────────── Inline field-error (NOT a wrapper) ─────────── */
-function FieldError({ show, msg }) {
+function FieldError({ show, msg, id }) {
   if (!show || !msg) return null;
+
   return (
-    <div className="vc-field-error">
+    <div id={id} className="vc-field-error" role="alert">
       <svg viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"/>
       </svg>
@@ -282,7 +283,7 @@ export default function ContactUsClient() {
       </section>
 
       {/* Main */}
-      <section>
+      <section id="main-content">
         <div className="container">
           <div className="vc-main">
 
@@ -372,7 +373,7 @@ export default function ContactUsClient() {
                     <div className="vc-cond-inner">
                       <div className="vc-field">
                         <label className="vc-label" htmlFor="business">Investment Strategy <span className="vc-opt">(optional)</span></label>
-                        <select className="vc-select" name="business" id="business" value={form.business} onChange={handleChange}>
+                        <select className="vc-select" name="business" id="business" value={form.business} onChange={handleChange} aria-label="Investment Strategy">
                           <option value="">Select Strategy</option>
                           <option value="Vallum India Discovery Strategy (VDIS)">Vallum India Discovery Strategy (VIDS)</option>
                           <option value="Vallum J.A.N. Principles">Vallum J.A.N. Principles</option>
@@ -395,6 +396,8 @@ export default function ContactUsClient() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="Describe your visitor type"
+                            autoComplete="off"
+                          aria-label="Please specify your visitor type"
                         />
                       </div>
                     </div>
@@ -414,6 +417,9 @@ export default function ContactUsClient() {
                         onBlur={handleBlur}
                         placeholder="Hitesh Kumar"
                         autoComplete="name"
+                        aria-label="Full Name"
+                          aria-invalid={errors.contact_name ? "true" : "false"}
+
                       />
                       <FieldError show={touched.contact_name} msg={errors.contact_name} />
                     </div>
@@ -423,14 +429,18 @@ export default function ContactUsClient() {
                         className={ic("contact_email")}
                         type="email"
                         name="contact_email"
+                          aria-invalid={errors.contact_email ? "true" : "false"}
                         id="contact_email"
                         value={form.contact_email}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         placeholder="you@example.com"
                         autoComplete="email"
+                        aria-label="Email Address"
+                          aria-describedby="contact_email_error"
                       />
-                      <FieldError show={touched.contact_email} msg={errors.contact_email} />
+                      <FieldError  id="contact_email_error"
+ show={touched.contact_email} msg={errors.contact_email} />
                     </div>
                   </div>
 
@@ -443,7 +453,7 @@ export default function ContactUsClient() {
                           <div className="vc-phone-flag-display">
                             <img
                               src={flagImg}
-                              alt={form.contact_phoneflag}
+                              alt={`${form.contact_phoneflag} flag`}
                               className="pflag-img"
                               onError={(e) => e.target.style.display = "none"}
                             />
@@ -463,6 +473,8 @@ export default function ContactUsClient() {
                                 key={c.country_id}
                                 value={c.country_phonecode}
                                 data-iso={c.country_shortname || ""}
+                                  lang="en"
+
                               >
                                 {c.country_shortname
                                   ? `${c.country_shortname} ${c.country_phonecode} — ${c.country_name}`
@@ -473,9 +485,16 @@ export default function ContactUsClient() {
                         </div>
                         <input
                           className={`vc-input vc-phone-input${touched.contact_mobile ? (errors.contact_mobile ? " error" : " valid") : ""}`}
-                          type="number"
+                          type="tel"
                           name="contact_mobile"
                           id="contact_mobile"
+                          aria-invalid={errors.contact_mobile ? "true" : "false"}
+                          aria-describedby="contact_mobile_error" 
+                          onInput={(e) => {
+                            e.currentTarget.value = e.currentTarget.value
+                              .replace(/\D/g, "")
+                              .slice(0, 12);
+                          }}
                           value={form.contact_mobile}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -483,9 +502,11 @@ export default function ContactUsClient() {
                           maxLength={12}
                           inputMode="numeric"
                           autoComplete="tel"
+                          aria-label="Phone Number"
                         />
                       </div>
-                      <FieldError show={touched.contact_mobile} msg={errors.contact_mobile} />
+                      <FieldError   id="contact_mobile_error"
+show={touched.contact_mobile} msg={errors.contact_mobile} />
                     </div>
 
                     {/* Country */}
@@ -495,16 +516,20 @@ export default function ContactUsClient() {
                         className={sc("contact_country")}
                         name="contact_country"
                         id="contact_country"
+                          aria-invalid={errors.contact_country ? "true" : "false"}
+aria-describedby="contact_country_error"
                         value={form.contact_country}
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        aria-label="Country"
                       >
                         <option value="">Select Country</option>
                         {countries.map(c => (
                           <option key={c.country_id} value={c.country_id}>{c.country_name}</option>
                         ))}
                       </select>
-                      <FieldError show={touched.contact_country} msg={errors.contact_country} />
+                      <FieldError   id="contact_country_error"
+ show={touched.contact_country} msg={errors.contact_country} />
                     </div>
                   </div>
 
@@ -522,14 +547,18 @@ export default function ContactUsClient() {
                         name="contact_state"
                         id="contact_state"
                         value={form.contact_state}
+                          aria-invalid={errors.contact_state ? "true" : "false"}
+aria-describedby="contact_state_error"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         disabled={!statesLoaded}
+                        aria-label="State"
                       >
                         <option value="">{statesLoaded ? "Select State" : "Select country first"}</option>
                         {states.map(s => <option key={s.state_id} value={s.state_id}>{s.state_name}</option>)}
                       </select>
-                      <FieldError show={touched.contact_state} msg={errors.contact_state} />
+                      <FieldError   id="contact_state_error"
+ show={touched.contact_state} msg={errors.contact_state} />
                     </div>
 
                     {/* City: always optional */}
@@ -539,9 +568,12 @@ export default function ContactUsClient() {
                         className="vc-select"
                         id="contact_city"
                         name="contact_city"
+                          aria-invalid={errors.contact_city ? "true" : "false"}
+
                         value={form.contact_city}
                         onChange={handleChange}
                         disabled={!citiesLoaded}
+                        aria-label="City"
                       >
                         <option value="">{citiesLoaded ? "Select City" : "Select state first"}</option>
                         {cities.map(c => <option key={c.cities_id} value={c.cities_id}>{c.cities_name}</option>)}
@@ -560,10 +592,13 @@ export default function ContactUsClient() {
                         id="contact_message"
                         name="contact_message"
                         autoComplete="off"
+                          aria-invalid={errors.contact_message ? "true" : "false"}
+
                         value={form.contact_message}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         placeholder="Share your thoughts, questions, or any specific context you'd like us to know…"
+                        aria-label="Message"
                       />
                       <p className={`vc-char-count${form.contact_message.length > 0 && form.contact_message.length < 20 ? " warn" : ""}`}>
                         {form.contact_message.length} chars

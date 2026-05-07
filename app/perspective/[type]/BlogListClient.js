@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 function ArticleSwiper({ blogs, currentType }) {
   if (!blogs.length) return null;
   return (
-    <div className="media-section">
+    <div className="media-section" role="region" aria-label="Published Insights carousel">
       <div className="media-section-header">
         <div>
           <p className="media-section-label">Editorial</p>
@@ -66,7 +66,7 @@ function ArticleSwiper({ blogs, currentType }) {
 function VideoSwiper({ blogs }) {
   if (!blogs.length) return null;
   return (
-    <div className="media-section">
+    <div className="media-section" role="region" aria-label="Video carousel">
       <div className="media-section-header">
         <div>
           <p className="media-section-label">Video</p>
@@ -118,7 +118,7 @@ function VideoSwiper({ blogs }) {
 function PdfSwiper({ blogs }) {
   if (!blogs.length) return null;
   return (
-    <div className="media-section">
+    <div className="media-section" role="region" aria-label="Research carousel">
       <div className="media-section-header">
         <div>
           <p className="media-section-label">Research</p>
@@ -400,10 +400,10 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
                                 ? true
                                 : false
                             }
+                            className="client-button"
+                            aria-label={`Read more about ${blog.blog_name}`}
                           >
-                            <button className="client-button">
-                              <span>Read More</span>
-                            </button>
+                            <span>Read More</span>
                           </Link>
                         </div>
                       </div>

@@ -28,34 +28,34 @@ export default function Footer({ settingsData }) {
             <img
               className="footer-logo"
               src={siteSettings?.site_logo || "/assets/images/logo.png"}
-              alt={siteSettings?.site_title || "Vallum Capital"}
+              alt={siteSettings?.site_title ? `${siteSettings.site_title} logo` : "Vallum Capital logo"}
             />
             <p>A research-driven PMS built on GARP, cycle awareness, and risk discipline — designed for HNIs, NRIs, and Family Offices who value clarity over speculation.</p>
 
             
             <div className="footer-col">
               {siteSettings?.admin_support_mobile && (
-                <a href="tel:{siteSettings.admin_support_mobile}">{siteSettings.admin_support_mobile}</a>
+                <a href={`tel:${siteSettings.admin_support_mobile}`}>{siteSettings.admin_support_mobile}</a>
               )}
               {siteSettings?.admin_support_email && (
-                <a href="mailto:{siteSettings.admin_support_email}">{siteSettings.admin_support_email}</a>
+                <a href={`mailto:${siteSettings.admin_support_email}`}>{siteSettings.admin_support_email}</a>
               )}
                   <a href="https://vallum.in" target="_blank">www.vallum.in</a>
             </div>
             {/* Social Icons */}
             <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
               {siteSettings?.linkedin_url && (
-                <a className="social-link" aria-label="Visit our linkedin profile" href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer" style={{ width: "20px", height: "20px", borderRadius: "8px" }}>
+                <a className="social-link" aria-label="Visit our linkedin profile" title="Visit our LinkedIn profile" href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer" style={{ width: "20px", height: "20px", borderRadius: "8px" }}>
                   <svg viewBox="0 0 24 24" width="16" height="16"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" fill="black" /><rect x="2" y="9" width="4" height="12" fill="black" /><circle cx="4" cy="4" r="2" fill="black" /></svg>
                 </a>
               )}
               {siteSettings?.twitter_url && (
-                <a className="social-link" aria-label="Visit our twitter profile" href={siteSettings.twitter_url} target="_blank" rel="noopener noreferrer" style={{ width: "20px", height: "20px", borderRadius: "8px" }}>
+                <a className="social-link" aria-label="Visit our twitter profile" title="Visit our Twitter profile" href={siteSettings.twitter_url} target="_blank" rel="noopener noreferrer" style={{ width: "20px", height: "20px", borderRadius: "8px" }}>
                   <svg viewBox="0 0 24 24" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="black" /></svg>
                 </a>
               )}
               {siteSettings?.youtube_url && (
-                <a className="social-link" aria-label="Visit our youtube channel" href={siteSettings.youtube_url} target="_blank" rel="noopener noreferrer" style={{ width: "20px", height: "20px", borderRadius: "8px" }}>
+                <a className="social-link" aria-label="Visit our youtube channel" title="Visit our YouTube channel" href={siteSettings.youtube_url} target="_blank" rel="noopener noreferrer" style={{ width: "20px", height: "20px", borderRadius: "8px" }}>
                   <svg viewBox="0 0 24 24" width="16" height="16"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z" fill="black" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white" /></svg>
                 </a>
               )}

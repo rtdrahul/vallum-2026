@@ -118,7 +118,7 @@ export default function Header({ settingsData }) {
 
           {/* Logo */}
           <a href="/" className="vl-logo" aria-label="Vallum Home">
-            <img src="/assets/images/logo.png" alt="Vallum Capital" />
+            <img src="/assets/images/logo.png" alt="Vallum Capital logo" />
           </a>
 
           {/* ── Desktop Nav ── */}
