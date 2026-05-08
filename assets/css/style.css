@@ -4574,7 +4574,7 @@ body .vertical-centered-box {
   display: flex;
   /* align-items: flex-end; */
   justify-content: center;
-  padding: 32px 48px 0;
+  /* padding: 32px 48px 0; */
 }
 .pms-img-inner img {
   width: 100%;
@@ -4630,7 +4630,7 @@ body .vertical-centered-box {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #7A5320;
+  color: #b8860b;
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -4655,7 +4655,7 @@ body .vertical-centered-box {
 }
 .pms-title em {
   font-style: italic;
-  color: #C28934;
+  color: #b8860b;
 }
 .pms-title-abbr {
   font-family: var(--font-body);
