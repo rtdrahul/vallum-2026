@@ -4528,7 +4528,7 @@ body .vertical-centered-box {
 
 .pms-wrap {
   font-family: var(--font-body);
-  background: #f7f4ee;
+  /* background: #f7f4ee; */
   overflow: hidden;
 }
 
@@ -4617,7 +4617,7 @@ body .vertical-centered-box {
 
 /* RIGHT: content panel */
 .pms-content {
-  background: #f7f4ee;
+  /* background: #f7f4ee; */
   padding: 56px 56px 56px 80px;
   display: flex;
   flex-direction: column;
