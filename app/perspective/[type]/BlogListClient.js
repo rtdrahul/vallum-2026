@@ -28,7 +28,6 @@ function ArticleSwiper({ blogs, currentType }) {
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
         slidesPerView={1}
-        navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000, disableOnInteraction: true, pauseOnMouseEnter: true }}
         loop={blogs.length > 3}
@@ -80,7 +79,6 @@ function VideoSwiper({ blogs }) {
         modules={[Navigation, Pagination]}
         spaceBetween={20}
         slidesPerView={1}
-        navigation
         pagination={{ clickable: true }}
         loop={blogs.length > 3}
         breakpoints={{
@@ -110,13 +108,6 @@ function VideoSwiper({ blogs }) {
 
       <p className="video-card-title">{blog.blog_name}</p>
 
-      {/* Accessibility transcript */}
-      <a
-        href={`/transcript/${blog.blog_id}`}
-        className="video-transcript-link"
-      >
-        Read video transcript
-      </a>
     </div>
   </div>
 </SwiperSlide>
@@ -143,7 +134,6 @@ function PdfSwiper({ blogs }) {
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
         slidesPerView={1}
-        navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: true, pauseOnMouseEnter: true }}
         loop={blogs.length > 3}
@@ -264,191 +254,242 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
         </div>
       </div>
 
-      <section className="sec-pad pt-5">
-        <div className="container">
-          <div className="row event-row">
-            <div className="col-lg-5">
-              <p className="blog-heading">Insights That Reflect How We Think</p>
-            </div>
-            <div className="col-lg-7">
-              <ul className="events-ul">
-                {mainTypes.map((item) => (
-                  <li
-                    key={item.slug}
-                    className={currentType === item.slug ? "li-active li-div" : "li-div"}
-                  >
-                    <Link
-                      href={`/perspective/${item.slug}`}
-                      className={currentType === item.slug ? "active" : ""}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <section
+  className="sec-pad pt-5"
+  aria-label="Insights and perspectives section"
+>
+  <div className="container">
+
+    {/* TOP CATEGORY NAVIGATION */}
+    <div className="row event-row">
+      <div className="col-lg-5">
+        <h2 className="blog-heading">
+          Insights That Reflect How We Think
+        </h2>
+      </div>
+
+      <div className="col-lg-7">
+        <nav aria-label="Perspective types">
+          <ul className="events-ul">
+            {mainTypes.map((item) => (
+              <li
+                key={item.slug}
+                className={
+                  currentType === item.slug
+                    ? "li-active li-div"
+                    : "li-div"
+                }
+              >
+                <Link
+                  href={`/perspective/${item.slug}`}
+                  className={currentType === item.slug ? "active" : ""}
+                  aria-current={
+                    currentType === item.slug ? "page" : undefined
+                  }
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div className="row mt30">
+
+      {/* SIDEBAR FILTERS */}
+      <div className="col-lg-3">
+        <h3 className="mb-2">Filter by Category</h3>
+
+        <nav aria-label="Blog categories">
+          <ul className="sidebar-events-ul">
+
+            <li className={currentType === "all" ? "li-active" : ""}>
+              <Link
+                href="/perspective/all"
+                className={currentType === "all" ? "active" : ""}
+                aria-current={
+                  currentType === "all" ? "page" : undefined
+                }
+              >
+                All Categories
+              </Link>
+            </li>
+
+            {categories.map((cat) => (
+              <li
+                key={cat.category_id}
+                className={
+                  currentCategory === cat.category_slug
+                    ? "li-active"
+                    : ""
+                }
+              >
+                <Link
+                  href={`/perspective/${currentType}/category/${cat.category_slug}`}
+                  className={
+                    currentCategory === cat.category_slug
+                      ? "active"
+                      : ""
+                  }
+                  aria-current={
+                    currentCategory === cat.category_slug
+                      ? "page"
+                      : undefined
+                  }
+                >
+                  {cat.category_name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div className="col-lg-9">
+
+        {currentType === "media" ? (
+          <div>
+
+            {articleMedia.length === 0 &&
+            linkMedia.length === 0 &&
+            pdfMedia.length === 0 ? (
+
+              <div className="media-empty">
+                No media found.
+              </div>
+
+            ) : (
+              <>
+                {/* CAROUSEL REGIONS */}
+
+                <section
+                  role="region"
+                  aria-label="Featured article media carousel"
+                >
+                  <ArticleSwiper
+                    blogs={articleMedia}
+                    currentType={currentType}
+                  />
+                </section>
+
+                <section
+                  role="region"
+                  aria-label="Featured video media carousel"
+                >
+                  <VideoSwiper blogs={linkMedia} />
+                </section>
+
+                <section
+                  role="region"
+                  aria-label="Featured PDF media carousel"
+                >
+                  <PdfSwiper blogs={pdfMedia} />
+                </section>
+              </>
+            )}
           </div>
+        ) : (
+          <>
+            {blogs.length > 0 ? (
+              blogs.map((blog) => (
+                <article
+                  className="sw--card blog-card shadow"
+                  key={blog.blog_id}
+                >
+                  <div className="sw--card-img">
 
-          <div className="row mt30">
-            {/* Sidebar Filters */}
-            <div className="col-lg-3">
-              <h5 className="mb-2">Filter by Category</h5>
-              <ul className="sidebar-events-ul">
-                <li className={currentType === "all" ? "li-active" : ""}>
-                  <Link href="/perspective/all" className={currentType === "all" ? "active" : ""}>
-                    All Categories
-                  </Link>
-                </li>
-                {categories.map((cat) => (
-                  <li
-                    key={cat.category_id}
-                    className={currentCategory === cat.category_slug ? "li-active" : ""}
-                  >
                     <Link
-                      href={`/perspective/${currentType}/category/${cat.category_slug}`}
-                      className={currentCategory === cat.category_slug ? "active" : ""}
+                      href={
+                        currentType === "stakeholders-letters" &&
+                        blog.blog_pdf !== ""
+                          ? blog.blog_pdf
+                          : currentType === "weekend-reading"
+                          ? blog.blog_weekend_link
+                          : `/perspective/${currentType}/${blog.blog_slug}`
+                      }
+                      download={
+                        currentType === "stakeholders-letters" &&
+                        blog.blog_pdf !== ""
+                      }
+                      aria-label={`Open article: ${blog.blog_name}`}
                     >
-                      {cat.category_name}
+                      <img
+                        src={
+                          blog?.blog_image ||
+                          "https://badmin.vallum.in/img/uploads/media/1772871903.png"
+                        }
+                        alt={blog.blog_name}
+                        className="img-fluid"
+                        onError={(e) => {
+                          e.target.src =
+                            "https://badmin.vallum.in/img/uploads/media/1772871903.png";
+                        }}
+                      />
                     </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  </div>
 
-            {/* Main Content */}
-            <div className="col-lg-9">
-              {currentType === "media" ? (
-                /* ── MEDIA TAB ── */
-                <div>
-                  {articleMedia.length === 0 && linkMedia.length === 0 && pdfMedia.length === 0 ? (
-                    <div className="media-empty">No media found.</div>
-                  ) : (
-                    <>
-                      <ArticleSwiper blogs={articleMedia} currentType={currentType} />
-                      <VideoSwiper  blogs={linkMedia} />
-                      <PdfSwiper    blogs={pdfMedia} />
-                    </>
-                  )}
-                </div>
-              ) : (
-                /* ── ALL OTHER TABS ── */
-                <>
-                  {blogs.length > 0 ? (
-                    blogs.map((blog) => (
-                      <div className="sw--card blog-card shadow" key={blog.blog_id}>
-                        <div className="sw--card-img">
-                          <Link
-                            href={
-                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                                ? blog.blog_pdf
-                                : currentType === "weekend-reading"
-                                ? blog.blog_weekend_link
-                                : `/perspective/${currentType}/${blog.blog_slug}`
-                            }
-                            download={
-                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                                ? true
-                                : false
-                            }
-                          >
-                            <img
-                              src={blog?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
-                              alt={blog.blog_name}
-                              className="img-fluid"
-                              onError={(e) => {
-                                e.target.src = "https://badmin.vallum.in/img/uploads/media/1772871903.png";
-                              }}
-                            />
-                          </Link>
-                        </div>
-                        <div className="sw--card-content">
-                          <Link
-                            href={
-                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                                ? blog.blog_pdf
-                                : currentType === "weekend-reading"
-                                ? blog.blog_weekend_link
-                                : `/perspective/${currentType}/${blog.blog_slug}`
-                            }
-                            download={
-                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                                ? true
-                                : false
-                            }
-                          >
-                            <h3 className="mb10 btitle">{blog.blog_name}</h3>
-                          </Link>
-                          <p className="sw--card-desc">{blog.blog_short_description}</p>
+                  <div className="sw--card-content">
 
-                          <div className="timeanddate">
-                            <span>
-                              <i className="ri-calendar-line"></i>{" "}
-                              {new Date(
-                                blog.blog_start_date ? blog.blog_start_date : blog.created_at
-                              ).toLocaleDateString("en-US", {
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric",
-                              })}
-                            </span>
-                            <span>
-                              <i className="ri-user-follow-line"></i>{" "}
-                              {blog.blog_author_name || "Vallum Capital"}
-                            </span>
-                          </div>
+                    <Link
+                      href={
+                        currentType === "stakeholders-letters" &&
+                        blog.blog_pdf !== ""
+                          ? blog.blog_pdf
+                          : currentType === "weekend-reading"
+                          ? blog.blog_weekend_link
+                          : `/perspective/${currentType}/${blog.blog_slug}`
+                      }
+                      download={
+                        currentType === "stakeholders-letters" &&
+                        blog.blog_pdf !== ""
+                      }
+                    >
+                      <h3 className="mb10 btitle">
+                        {blog.blog_name}
+                      </h3>
+                    </Link>
 
-                          <Link
-                            href={
-                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                                ? blog.blog_pdf
-                                : currentType === "weekend-reading"
-                                ? blog.blog_weekend_link
-                                : `/perspective/${currentType}/${blog.blog_slug}`
-                            }
-                            download={
-                              currentType === "stakeholders-letters" && blog.blog_pdf !== ""
-                                ? true
-                                : false
-                            }
-                          >
-                            <button className="client-button"><span>Read More</span></button>
-                          </Link>
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="text-center py-5 border rounded bg-light">
-                      <h4>No articles found in {currentType}.</h4>
-                      <p>Check back later for new updates.</p>
-                    </div>
-                  )}
+                    <p className="sw--card-desc">
+                      {blog.blog_short_description}
+                    </p>
 
-                  {paginationLinks.length > 3 && (
-                    <nav className="mt-5">
-                      <ul className="pagination justify-content-center">
-                        {paginationLinks.map((link, index) => (
-                          <li
-                            key={index}
-                            className={`page-item ${link.active ? "active" : ""} ${
-                              !link.url ? "disabled" : ""
-                            }`}
-                          >
-                            <Link
-                              className="page-link"
-                              href={getPaginationUrl(link.url)}
-                              dangerouslySetInnerHTML={{ __html: link.label }}
-                            />
-                          </li>
-                        ))}
-                      </ul>
-                    </nav>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+                    <Link
+                      className="btn btn-indigo"
+                      aria-label={`Read more about ${blog.blog_name}`}
+                      href={
+                        currentType === "stakeholders-letters" &&
+                        blog.blog_pdf !== ""
+                          ? blog.blog_pdf
+                          : currentType === "weekend-reading"
+                          ? blog.blog_weekend_link
+                          : `/perspective/${currentType}/${blog.blog_slug}`
+                      }
+                      download={
+                        currentType === "stakeholders-letters" &&
+                        blog.blog_pdf !== ""
+                      }
+                    >
+                      Read More
+                    </Link>
+
+                  </div>
+                </article>
+              ))
+            ) : (
+              <div className="text-center py-5 border rounded bg-light">
+                <h4>No articles found in {currentType}.</h4>
+                <p>Check back later for new updates.</p>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
     </>
   );
 }
