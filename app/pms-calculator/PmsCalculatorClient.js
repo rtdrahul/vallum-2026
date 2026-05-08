@@ -169,7 +169,7 @@ function TabHybrid({ varOnly = false }) {
         <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
         <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
         <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate of Return (%age per annum)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Hurdle Rate of Return (%age p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
         <Assump label="Brokerage and Transaction cost" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
@@ -261,7 +261,7 @@ function TabMultiYear() {
         <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
         <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
         <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate of Return (%age per annum)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Hurdle Rate of Return (%age p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
         <Assump label="Brokerage and Transaction cost" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={yrLabels} />
