@@ -175,7 +175,7 @@ function TabHybrid({ varOnly = false }) {
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
         <ColHeaders labels={[`Scenario 1 (${returns[0]}%)`, `Scenario 2 (${returns[1]}%)`, `Scenario 3 (${returns[2]}%)`]} />
-        <SectionHeader label={varOnly ? "Variable Fee Illustration" : "Hybrid Fee Illustration"} />
+        <SectionHeader label={varOnly ? "Hybrid Fee Illustration" : "Hybrid Fee Illustration"} />
         <Row label="Capital Contributed / Assets under Management" formula="[i] = a" values={V("i")} />
         <Row label="Gain / (Loss) on Investment based on the Scenario" formula="[ii] = i × scenario" values={V("ii")} />
         <Row label="Gross Value of the Portfolio at the end of the year" formula="[iii] = i + ii" values={V("iii")} />
