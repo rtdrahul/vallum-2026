@@ -4191,7 +4191,7 @@ body .vertical-centered-box {
 .btn-primary{background:#C28934;color:#FFFFFF}
 .btn-primary:hover{background:#A66523;transform:translateY(-2px);box-shadow:0 8px 24px rgba(194,137,52,0.3)}
 .btn-indigo{background:#2B338A;color:#FFFFFF}
-.btn-indigo:hover{background:#161853;transform:translateY(-2px);box-shadow:0 8px 24px rgba(43,51,138,0.3);color:#fff;}
+.btn-indigo:hover{background:#2B338A;box-shadow:0 8px 24px rgba(43,51,138,0.3);color:#fff;}
 .btn-outline{background:transparent;color:#2B338A;border:1.5px solid #2B338A}
 .btn-outline:hover{background:#2B338A;color:#FFFFFF;transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:#444460;border:1px solid #ccccce}
@@ -5312,7 +5312,7 @@ body .vertical-centered-box {
       font-weight: 500;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #fff;
       margin-bottom: 22px;
     }
     .vf-hero-label::before, .vf-hero-label::after {
