@@ -200,10 +200,7 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
     if (!url) return "#";
     const urlObj = new URL(url);
     const pageNum = urlObj.searchParams.get("page");
-    const base = currentCategory
-      ? `/perspective/${currentType}/category/${currentCategory}`
-      : `/perspective/${currentType}`;
-    return `${base}?page=${pageNum}`;
+    return `/perspective/${currentType}?page=${pageNum}`;
   };
 
   const breadcrumbData = {
@@ -308,8 +305,16 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
         <nav aria-label="Blog categories">
           <ul className="sidebar-events-ul">
 
-            <li className={!currentCategory ? "li-active" : ""}>
-              <Link href={`/perspective/${currentType}`}>All Categories</Link>
+            <li className={currentType === "all" ? "li-active" : ""}>
+              <Link
+                href="/perspective/all"
+                className={currentType === "all" ? "active" : ""}
+                aria-current={
+                  currentType === "all" ? "page" : undefined
+                }
+              >
+                All Categories
+              </Link>
             </li>
 
             {categories.map((cat) => (

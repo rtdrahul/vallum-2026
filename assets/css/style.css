@@ -4581,7 +4581,7 @@ body .vertical-centered-box {
   /* max-width: 400px; */
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 -8px 32px rgba(0,0,0,0.25));
+  /* filter: drop-shadow(0 -8px 32px rgba(0,0,0,0.25)); */
   transition: transform 0.5s ease;
 }
 .pms-img-panel:hover .pms-img-inner img {

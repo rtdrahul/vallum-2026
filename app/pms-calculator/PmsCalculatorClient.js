@@ -413,7 +413,7 @@ export default function PmsCalculator() {
           <div style={{ background: BRAND, padding: "20px 24px 0", borderRadius: "10px 10px 0 0" }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 16 }}>
               <h1 style={{ margin: 0, color: "white", letterSpacing: "-0.01em" }}>PMS Fee Calculator</h1>
-              <span style={{ fontSize: 22, color: "rgba(255, 255, 255)", fontStyle: "italic" }}>(Vallum Capital Advisors)</span>
+              <span style={{ fontSize: 22, color: "rgba(255, 255, 255)", fontStyle: "italic" }}>(Vallum Capital Advisors Pvt. Ltd.)</span>
             </div>
             {/* Tab bar */}
             <div style={{ display: "flex", gap: 4, overflowX: "auto" }}>

@@ -759,7 +759,7 @@
     .pms-img-panel { min-height: 280px; align-items: center; }
     .pms-img-panel::after { display: none; }
     .pms-img-inner { padding: 24px 32px; }
-    .pms-img-inner img { width: 65%; }
+    /* .pms-img-inner img { width: 65%; } */
     .pms-content { padding: 40px 28px; }
     .pms-pillars { grid-template-columns: 1fr; }
     .pms-pillar { border-right: none; border-bottom: 0.5px solid rgba(43,51,138,0.08); }
