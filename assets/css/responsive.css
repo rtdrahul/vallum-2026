@@ -768,13 +768,25 @@
     .ia-badge { width: 44px; height: 44px; font-size: 1.1rem; }
 }
 @media(max-width:480px){
-  .container{padding:0 16px}
-  .tablist{
-    overflow-x: auto;
-  }
-  .hero-img-wrapper img{
-    height:400px;
-  }
+    .founders-body {
+        background: var(--white);
+        grid-template-columns: 1fr;
+        min-height: 520px;
+        display: grid;
+    }
+    .founders-header {
+        padding: 3.5rem 3rem ;
+    }
+    .photo-placeholder{
+        min-height: fit-content;
+    }
+    .container{padding:0 16px}
+    .tablist{
+        overflow-x: auto;
+    }
+    .hero-img-wrapper img{
+        height:400px;
+    }
   .polite{min-height: 600px;}
   .vl-inner { padding: 0 16px; height: 64px; }
   .vl-logo img { height: 38px; }
