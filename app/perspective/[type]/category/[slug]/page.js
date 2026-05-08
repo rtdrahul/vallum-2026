@@ -5,8 +5,9 @@ import { notFound } from "next/navigation";
 async function fetchFilteredBlogs(type, categorySlug) {
   try {
     // Adjust this URL to match your backend's filtering logic
-    const response = await fetch(`https://badmin.vallum.in/api/cat-blog-list/${type}?category=${categorySlug}`, {
+    const response = await fetch(`https://badmin.vallum.in/api/blog-list/${type}?category=${categorySlug}`, {
       headers: { Accept: "application/json" },
+      cache: "no-store",
     });
 
     if (!response.ok) return null;
