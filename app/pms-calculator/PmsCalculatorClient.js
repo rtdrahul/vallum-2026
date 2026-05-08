@@ -186,7 +186,7 @@ function TabHybrid({ varOnly = false }) {
         <Row label="Total charges before Performance fee." formula="[viii] = v + vi + vii" values={V("viii")} isBold isRed />
         <Row label="Gross Value of the Portfolio before Performance fee" formula="[ix] = iii + viii" values={V("ix")} />
         
-        <Row label="High Water Mark Value (HWM) (Capital contributed for 1st year and second year onwards as defined in the PMS agreement." formula="[x] = capital (yr 1)" values={V("x")} />
+        <Row label="High Water Mark Value (HWM) (Capital contributed for 1st year and second year onwards as defined in the PMS agreement.)" formula="[x] = capital (yr 1)" values={V("x")} />
         <Row label="Hurdle Rate of return or as defined in the PMS agreement" formula="[xi] = i × e" values={V("xi")} />
         <Row label="Gross Value of the Portfolio before Performance fee is greater than High Water Mark Value + Hurdle rate of return" formula='[xii] = ix > (x + xi) → "Yes" else "No P.Fee"' values={V("xii")} isStr />
         <SectionHeader/>
