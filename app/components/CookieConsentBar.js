@@ -64,7 +64,7 @@ export default function CookieConsentBar() {
           </div>
 
           {/* Right Buttons */}
-          <div className="col-lg-3 col-md-12 text-lg-end text-center">
+          <div className="col-lg-3 col-md-12 text-lg-end text-center d-flex g-3">
             <button
               onClick={rejectCookies}
               className="btn btn-outline me-2 py-2"              

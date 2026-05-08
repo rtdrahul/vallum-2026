@@ -8,31 +8,12 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
 
   return (
     <>
-      {/* Header Section */}
-      <div className="py-4 bg-white headbg">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="paragraph">
-                <nav aria-label="breadcrumb">
-                  <ol className="breadcrumb bg-transparent p-0 mb-0">
-                    <li className="breadcrumb-item"><Link href="javascript:void(0);">Perspectives</Link></li>
-                    <li className="breadcrumb-item"><Link href={`/perspective/${type || 'all'}`}>{type?.toUpperCase() || 'Category'}</Link></li>
-                    <li className="breadcrumb-item" aria-current="page">{blogData.blog_name}</li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <section className="sec-pad pt-4">
+      <section className="sec-pad pt-5">
         <div className="container">
           <div className="row">
             {/* Main Content */}
             <div className="col-lg-8">
-              <div className="blog-detail-container card shadow-sm p-4 border-0">
+              <div className="blog-detail-container card shadow-sm p-4 mb-5 border-0">
                 {/* Featured Image */}
                 <div className="mb-4 text-center">
                   <img 
