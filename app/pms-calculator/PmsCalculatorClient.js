@@ -203,14 +203,14 @@ function TabHybrid({ varOnly = false }) {
         <Row label="High Water Mark Value (HWM) (Capital contributed for 1st year and second year onwards as defined in the PMS agreement.)" formula="[x] = capital (yr 1)" values={V("x")} />
         <Row label="Hurdle Rate of return or as defined in the PMS agreement" formula="[xi] = i × e" values={V("xi")} />
         <Row label="Gross Value of the Portfolio before Performance fee is greater than High Water Mark Value + Hurdle rate of return" formula='[xii] = ix > (x + xi) → "Yes" else "No P.Fee"' values={V("xii")} isStr />
-        <SectionHeader/>
+        <SectionHeader label={<strong>If Yes, proceed to performance fee calculation else 0 (zero) performance fee for the period</strong>} />
         <Row label="Portfolio return subject of Performance Fee" formula="[xiii] = ix − x − xi (if applicable)" values={V("xiii")} />
         <Row label="Performance fee" formula="[xiv] = xiii × d" values={V("xiv")} isRed />
         <Row label="Net value of the Portfolio at the end of the year after all fees and expenses" formula="[xv] = ix + xiv" values={V("xv")} isBold isGreen />
         <PctRow label="% Portfolio Return" formula="[xvi] = (xv − i) / i" values={V("xvi")} />
         <SectionHeader  />
-        <Row label="High Water Mark to be carried forward for next year. When performance fee is charged from the portfolio itself." formula="[xvii] = max(x, xv)" values={V("hwmPortfolio")} />
-        <Row label="High Water Mark to becarried forward for next year. When performance fee is paid separately by the investor to the PM" formula="[xvii] = max(ix, x)" values={V("hwmSeparate")} />
+        <Row label={<>High Water Mark to be carried forward for next year.<strong> When performance fee is charged from the portfolio itself.</strong></>} formula="[xvii] = max(x, xv)" values={V("hwmPortfolio")} />
+        <Row label={<>High Water Mark to becarried forward for next year.<strong> When performance fee is paid separately by the investor to the PM</strong></>} formula="[xvii] = max(ix, x)" values={V("hwmSeparate")} />
       </TableWrap>
       <Notes notes={hybridNotes} />
     </div>
@@ -430,6 +430,9 @@ export default function PmsCalculator() {
             <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 16 }}>
               <h1 style={{ margin: 0, color: "white", letterSpacing: "-0.01em" }}>PMS Fee Calculator</h1>
               <span style={{ fontSize: 22, color: "rgba(255, 255, 255)" }}>(Vallum Capital Advisors Pvt. Ltd.)</span>
+            </div>
+            <div>
+              <a target="_blank" rel="noreferrer" role="menuitem" style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", border:"1px solid white", marginBottom:"20px" }} href="https://badmin.vallum.in/img/Vallum_Capital_Advisors_Fee_Illustration.xlsx" download className="btn btn-outline">Download Fee Illustration Excel</a>
             </div>
             {/* Tab bar */}
             <div style={{ display: "flex", gap: 4, overflowX: "auto" }}>

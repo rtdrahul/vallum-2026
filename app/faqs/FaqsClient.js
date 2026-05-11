@@ -1,16 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
-/* ══════════════════════════════════════════
-   Component
-══════════════════════════════════════════ */
 export default function FaqsClient() {
-
-  const [faqs, setFaqs]         = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState(null);
-  const [openId, setOpenId]     = useState(null);
-  const [query, setQuery]       = useState("");
+  const [faqs, setFaqs]       = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError]     = useState(null);
+  const [openIdx, setOpenIdx] = useState(0);
+  const [query, setQuery]     = useState("");
 
   const itemRefs = useRef({});
 
@@ -23,10 +19,7 @@ export default function FaqsClient() {
       .then(d => {
         if (d.status === "success") {
           setFaqs(d.faqData || []);
-          // Open first FAQ by default
-          if (d.faqData && d.faqData.length > 0) {
-            setOpenId(d.faqData[0].faq_id);
-          }
+          setOpenIdx(0);
         } else {
           setError("Failed to load FAQs.");
         }
@@ -35,15 +28,12 @@ export default function FaqsClient() {
       .finally(() => setLoading(false));
   }, []);
 
-  /* ── Intersection observer for stagger-in ── */
+  /* ── Stagger-in observer ── */
   useEffect(() => {
     if (loading) return;
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          obs.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }
       }),
       { threshold: 0.08 }
     );
@@ -57,151 +47,128 @@ export default function FaqsClient() {
     const q = query.toLowerCase();
     return (
       (f.faq_title || "").toLowerCase().includes(q) ||
-      (f.faq_description   || "").toLowerCase().includes(q)
+      (f.faq_description || "").toLowerCase().includes(q)
     );
   });
 
-  const toggle = (id) => setOpenId(prev => prev === id ? null : id);
+  const toggle = (idx) => setOpenIdx(prev => prev === idx ? null : idx);
 
   /* ── Render ── */
   return (
-    <div className="vf-root">
-
-      {/* ══ HERO ══ */}
-      <section className="vf-hero">
-        <div className="vf-hero-grid" />
-        <div className="vf-hero-rule" />
-        <div className="vf-hero-orb vf-hero-orb-1" />
-        <div className="vf-hero-orb vf-hero-orb-2" />
-
-        <div className="vf-hero-inner">
-          
-          <div className="vf-hero-label">Frequently Asked Questions</div>
-
-          <h1>
-            Questions We<br />
-            <em>Hear Most Often</em>
+    <>
+      {/* Hero */}
+      <section className="hero-section">
+        <div className="container hero-container">
+          <div className="hero-label">
+            <span className="line"></span>
+            FREQUENTLY ASKED QUESTIONS
+            <span className="line"></span>
+          </div>
+          <h1 className="hero-title">
+            Questions We <br /><span>Hear Most Often</span>
           </h1>
-
-          <p className="vf-hero-sub">
-            Investing is a serious, long-term commitment. Below you'll find clear, candid
-            answers to the questions investors ask us most — about our philosophy,
-            process, fees, and the path to getting started.
+          <p className="hero-desc">
+            Investing is a serious, long-term commitment. Below you'll find clear, candid answers
+            to the questions investors ask us most — about our philosophy, process, fees, and the
+            path to getting started.
           </p>
-
-          {/* Stats */}
-          {!loading && !error && faqs.length > 0 && (
-            <div className="vf-hero-stats">
-              <div className="vf-stat">
-                <span className="vf-stat-num">{faqs.length}</span>
-                <span className="vf-stat-label">Questions Answered</span>
-              </div>
-              <div className="vf-stat-sep" />
-              <div className="vf-stat">
-                <span className="vf-stat-num">15+</span>
-                <span className="vf-stat-label">Years of Practice</span>
-              </div>
-              <div className="vf-stat-sep" />
-              <div className="vf-stat">
-                <span className="vf-stat-num">SEBI</span>
-                <span className="vf-stat-label">Registered PMS</span>
-              </div>
+          <div className="hero-stats">
+            <div className="stat-box">
+              <span className="stat-n">{loading ? "…" : filtered.length}</span>
+              <span className="stat-l">QUESTIONS ANSWERED</span>
             </div>
-          )}
+            <div className="stat-box">
+              <span className="stat-n">15+</span>
+              <span className="stat-l">YEARS OF PRACTICE</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-n">SEBI</span>
+              <span className="stat-l">REGISTERED PMS</span>
+            </div>
+          </div>
         </div>
-
-        <div className="vf-hero-border" />
       </section>
 
-      {/* ══ FAQ BODY ══ */}
-      <div className="vf-body">
+      {/* FAQ Content */}
+      <section className="faq-content-section">
+        <div className="container">
 
-        {/* Loading */}
-        {loading && (
-          <div className="vf-skeleton-list">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="vf-skeleton-item" style={{animationDelay:`${i*0.1}s`}} />
-            ))}
-          </div>
-        )}
+          {/* States */}
+          {loading && <p className="faq-status">Loading…</p>}
+          {error   && <p className="faq-status faq-error">{error}</p>}
+          {!loading && !error && filtered.length === 0 && (
+            <p className="faq-status">No results found for "{query}".</p>
+          )}
 
-        {/* Error */}
-        {!loading && error && (
-          <div className="vf-error-box">
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"/>
-            </svg>
-            {error}
-          </div>
-        )}
+          {/* Accordion */}
+          {!loading && !error && (
+            <div className="faq-accordion">
+              {filtered.map((faq, idx) => {
+                const isOpen = openIdx === idx;
+                const inputId = `faq-${idx}`;
+                return (
+                  <div
+                    key={faq.faq_id ?? idx}
+                    className="accordion-item"
+                    ref={el => { itemRefs.current[idx] = el; }}
+                  >
+                    {/* ✅ Hidden checkbox — drives ALL the CSS selectors */}
+                    <input
+                      type="checkbox"
+                      id={inputId}
+                      className="acc-toggle"
+                      checked={isOpen}
+                      onChange={() => toggle(idx)}
+                    />
 
-        {/* FAQ List */}
-        {!loading && !error && (
-          <>
-            {filtered.length === 0 ? (
-              <div className="vf-no-results">
-                <strong>No results found</strong>
-              </div>
-            ) : (
-              <div className="vf-faq-list">
-                {filtered.map((faq, idx) => {
-                  const isOpen = openId === faq.faq_id;
-                  return (
-                    <div
-                      key={faq.faq_id}
-                      ref={el => { itemRefs.current[faq.faq_id] = el; }}
-                      className={`vf-faq-item${isOpen ? " active" : ""}`}
-                      style={{ transitionDelay: `${Math.min(idx * 60, 400)}ms` }}
+                    {/* Header — must be sibling immediately after input */}
+                    <label
+                      htmlFor={inputId}
+                      className="acc-header"
                     >
-                      <button
-                        className="vf-faq-btn"
-                        onClick={() => toggle(faq.faq_id)}
-                        aria-expanded={isOpen}
-                      >
-                        <span className="vf-faq-num">
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
-                        <span className="vf-faq-q">{faq.faq_title}</span>
-                        <span className="vf-faq-icon">
-                          <svg viewBox="0 0 14 14">
-                            <path d="M7 2v10M2 7h10"/>
-                          </svg>
-                        </span>
-                      </button>
+                      <span className="acc-num">{String(idx + 1).padStart(2, "0")}</span>
+                      <span className="acc-question">{faq.faq_title}</span>
+                      <div className="acc-icon" />
+                    </label>
 
-                      <div className={`vf-faq-answer${isOpen ? " open" : ""}`}>
-                        <div
-                        className="vf-faq-answer-inner"
-                        dangerouslySetInnerHTML={{
-                            __html: faq.faq_description || "",
-                        }}
-                        />
-                      </div>
+                    {/* Body — must be sibling after input for ~ selector */}
+                    <div className="acc-body">
+                      <div
+                        className="acc-inner"
+                        dangerouslySetInnerHTML={{ __html: faq.faq_description }}
+                      />
                     </div>
-                  );
-                })}
-              </div>
-            )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
 
-            {/* Bottom CTA */}
-            {filtered.length > 0 && (
-              <div className="vf-cta">
-                <div className="vf-cta-left">
-                  <p className="vf-cta-label">Still have questions?</p>
-                  <h3>We welcome a<br /><em>direct conversation.</em></h3>
-                  <p>Our team is available to answer any question not covered above with complete candour.</p>
-                </div>
-                <a href="/contact-us" className="vf-cta-btn">
-                  Get in Touch
-                  <svg viewBox="0 0 14 14">
-                    <path d="M2 7h10M8 3l4 4-4 4"/>
-                  </svg>
-                </a>
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    </div>
+          {/* CTA */}
+          <div className="cta-card">
+            <div className="cta-info">
+              <span className="cta-small">STILL HAVE QUESTIONS?</span>
+              <h2 className="cta-head">
+                We welcome a <br /><i>direct conversation.</i>
+              </h2>
+              <p className="cta-para">
+                Our team is available to answer any question not covered above with complete candour.
+              </p>
+            </div>
+            <div className="cta-btn-wrap">
+              <a href="/contact-us" className="btn-gold">
+                GET IN TOUCH{" "}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </>
   );
 }
