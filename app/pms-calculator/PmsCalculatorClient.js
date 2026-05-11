@@ -27,11 +27,19 @@ const Input = ({ value, onChange, min, step = "any", prefix, suffix, width = 160
   </div>
 );
 
-const SectionHeader = ({ label }) => (
+const SectionHeader = ({ label, colLabels = [] }) => (
   <tr>
-    <td colSpan={10} style={{ background: BRAND, color: "white", padding: "6px 12px", fontWeight: 500, fontSize: 14, letterSpacing: "0.04em" }}>
+    <td
+      colSpan={colLabels.length === 0 ? 10 : 1}
+      style={{ background: BRAND, color: "white", padding: "6px 12px", fontWeight: 500, fontSize: 14, letterSpacing: "0.04em" }}
+    >
       {label}
     </td>
+    {colLabels.map((l, i) => (
+      <td key={i} style={{ background: BRAND, color: "white", padding: "6px 14px", textAlign: "right", fontWeight: 600, fontSize: 14 }}>
+        {l}
+      </td>
+    ))}
   </tr>
 );
 
@@ -39,7 +47,7 @@ const Row = ({ label, formula, values, isBold, isGreen, isRed, isStr }) => (
   <tr style={{ background: isBold ? BRAND_LIGHT : "white" }}>
     <td style={{ padding: "6px 12px", borderBottom: "1px solid #312e2e", minWidth: 220, maxWidth: 320 }}>
       <div style={{ fontWeight: isBold ? 500 : 400, fontSize: 15, color: "#222" }}>{label}</div>
-      <div style={{ fontSize: 14, color: BRAND, fontStyle: "italic", marginTop: 1 }}>{formula}</div>
+      <div style={{ fontSize: 14, color: BRAND, marginTop: 1 }}>{formula}</div>
     </td>
     {values.map((v, i) => {
       const color = isGreen ? "#1a7f4f" : isRed && typeof v === "number" && v < 0 ? "#c0392b" : "#222";
@@ -56,7 +64,7 @@ const PctRow = ({ label, formula, values }) => (
   <tr style={{ background: BRAND_LIGHT }}>
     <td style={{ padding: "6px 12px", borderBottom: "1px solid #312e2e" }}>
       <div style={{ fontWeight: 500, fontSize: 15, color: "#222" }}>{label}</div>
-      <div style={{ fontSize: 14, color: BRAND, fontStyle: "italic", marginTop: 1 }}>{formula}</div>
+      <div style={{ fontSize: 14, color: BRAND, marginTop: 1 }}>{formula}</div>
     </td>
     {values.map((v, i) => (
       <td key={i} style={{ padding: "6px 14px", textAlign: "right", borderBottom: "1px solid #312e2e", fontSize: 15, fontWeight: 500, color: v >= 0 ? "#1a7f4f" : "#c0392b" }}>
@@ -103,14 +111,18 @@ function TabFixed() {
     <div>
       <AssumptionsGrid>
         <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
+        <Assump label="Management Fee (%age p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
         <Assump label="Other Expenses" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
         <Assump label="Brokerage and Transaction cost" value={d} onChange={v => setD(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
-        <ColHeaders labels={["Scenario 1 (Gain " + returns[0] + "%)", "Scenario 2 (" + (returns[1] >= 0 ? "No Change " + returns[1] : "Loss " + Math.abs(returns[1])) + "%)", "Scenario 3 (Loss " + Math.abs(returns[2]) + "%)"]} />
-        <SectionHeader label="Fixed Fee Illustration" />
+        <ColHeaders labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
+        <SectionHeader label="Fixed Fee Illustration" colLabels={[
+          `Gain ${returns[0]}%`,
+          returns[1] >= 0 ? `No Change ${returns[1]}%` : `Loss ${Math.abs(returns[1])}%`,
+          returns[2] >= 0 ? `Gain ${returns[2]}%` : `Loss ${Math.abs(returns[2])}%`
+        ]} />
         <Row label="Capital Contributed / Assets under Management" formula="[i] = a" values={V("i")} />
         <Row label="Gain / (Loss) on Investment based on the Scenario" formula="[ii] = i × Scenario return" values={V("ii")} />
         <Row label="Gross Value of the Portfolio at the end of the year" formula="[iii] = i + ii" values={V("iii")} />
@@ -166,7 +178,7 @@ function TabHybrid({ varOnly = false }) {
     <div>
       <AssumptionsGrid>
         <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
+        <Assump label="Management Fee (%age p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
         <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
         <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
         <Assump label="Hurdle Rate of Return (%age p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
@@ -174,8 +186,10 @@ function TabHybrid({ varOnly = false }) {
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
-        <ColHeaders labels={[`Scenario 1 (${returns[0]}%)`, `Scenario 2 (${returns[1]}%)`, `Scenario 3 (${returns[2]}%)`]} />
-        <SectionHeader label={varOnly ? "Hybrid Fee Illustration" : "Hybrid Fee Illustration"} />
+        <ColHeaders labels={[`Scenario 1`, `Scenario 2`, `Scenario 3`]} />
+        <SectionHeader label="Hybrid Fee Illustration" colLabels={
+          returns.map(r => r > 0 ? `Gain ${r}%` : r === 0 ? `No Change 0%` : `Loss ${Math.abs(r)}%`)
+        } />
         <Row label="Capital Contributed / Assets under Management" formula="[i] = a" values={V("i")} />
         <Row label="Gain / (Loss) on Investment based on the Scenario" formula="[ii] = i × scenario" values={V("ii")} />
         <Row label="Gross Value of the Portfolio at the end of the year" formula="[iii] = i + ii" values={V("iii")} />
@@ -258,7 +272,7 @@ function TabMultiYear() {
     <div>
       <AssumptionsGrid>
         <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (%age per annum)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
+        <Assump label="Management Fee (%age p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
         <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
         <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
         <Assump label="Hurdle Rate of Return (%age p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
@@ -267,7 +281,9 @@ function TabMultiYear() {
       <ReturnInputs returns={returns} setReturns={setReturns} labels={yrLabels} />
       <TableWrap>
         <ColHeaders labels={yrLabels} />
-        <SectionHeader label="Hybrid Fee Calculator" />
+        <SectionHeader label="Hybrid Fee Calculator" colLabels={
+          returns.map(r => r >= 0 ? `Gain +${r}%` : `Loss ${r}%`)
+        } />
         <Row label="Capital Contributed / Op Assets under Management" formula="[i] = a (Yr1), xvii prev (Yr2+)" values={V("i")} />
         <Row label="Gain / (Loss) on Investment based on the Scenario" formula="[ii] = i × return" values={V("ii")} />
         <Row label="Gross Value of the Portfolio at the end of the year" formula="[iii] = i + ii" values={V("iii")} />
@@ -413,7 +429,7 @@ export default function PmsCalculator() {
           <div style={{ background: BRAND, padding: "20px 24px 0", borderRadius: "10px 10px 0 0" }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 16 }}>
               <h1 style={{ margin: 0, color: "white", letterSpacing: "-0.01em" }}>PMS Fee Calculator</h1>
-              <span style={{ fontSize: 22, color: "rgba(255, 255, 255)", fontStyle: "italic" }}>(Vallum Capital Advisors Pvt. Ltd.)</span>
+              <span style={{ fontSize: 22, color: "rgba(255, 255, 255)" }}>(Vallum Capital Advisors Pvt. Ltd.)</span>
             </div>
             {/* Tab bar */}
             <div style={{ display: "flex", gap: 4, overflowX: "auto" }}>
