@@ -9,6 +9,7 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 /* ─── Sub-components ─────────────────────────────────────────────── */
 
 function ArticleSwiper({ blogs, currentType }) {
@@ -88,29 +89,25 @@ function VideoSwiper({ blogs }) {
       >
         {blogs.map((blog) => (
           <SwiperSlide key={blog.blog_id} style={{ height: "auto" }}>
-  <div className="video-card">
-    
-    <iframe
-      className="video-card-frame"
-      src={blog.blog_weekend_link}
-      title={blog.blog_name}
-      frameBorder="0"
-      allow="autoplay; encrypted-media"
-      allowFullScreen
-    />
-
-    <div className="video-card-body">
-      <div className="video-card-play-icon">
-        <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 1l10 6-10 6V1z" />
-        </svg>
-      </div>
-
-      <p className="video-card-title">{blog.blog_name}</p>
-
-    </div>
-  </div>
-</SwiperSlide>
+            <div className="video-card">
+              <iframe
+                className="video-card-frame"
+                src={blog.blog_weekend_link}
+                title={blog.blog_name}
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
+              <div className="video-card-body">
+                <div className="video-card-play-icon">
+                  <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1l10 6-10 6V1z" />
+                  </svg>
+                </div>
+                <p className="video-card-title">{blog.blog_name}</p>
+              </div>
+            </div>
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>
@@ -178,10 +175,17 @@ function PdfSwiper({ blogs }) {
 }
 
 /* ─── Main Export ────────────────────────────────────────────────── */
-export default function BlogListClient({ initialData, currentCategory = null }) {
+
+// FIX 1: Accept `currentType` as a prop so the category page can pass it in.
+//         Fall back to useParams() only when not provided (e.g. on the main listing page).
+export default function BlogListClient({ initialData, currentCategory = null, currentType: currentTypeProp = null }) {
   const params = useParams();
   const searchParams = useSearchParams();
-  const currentType = params.type || "all";
+
+  // FIX 1 (continued): Prefer the explicit prop; params.type is the reliable fallback.
+  //                    Never fall back to "all" — that would build broken category URLs.
+  const currentType = currentTypeProp || params.type || "blog";
+
   const currentPage = parseInt(searchParams.get("page") || "1");
 
   const blogs = initialData?.blogsData?.data || [];
@@ -231,7 +235,6 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
 
   return (
     <>
-      {/* Inject scoped styles once */}
       <div className="contactblocks pt-5 pb-0">
         <div className="container">
           <div className="row justify-content-between align-items-center">
@@ -255,241 +258,227 @@ export default function BlogListClient({ initialData, currentCategory = null }) 
       </div>
 
       <section
-  className="sec-pad pt-5"
-  aria-label="Insights and perspectives section"
->
-  <div className="container">
+        className="sec-pad pt-5"
+        aria-label="Insights and perspectives section"
+      >
+        <div className="container">
 
-    {/* TOP CATEGORY NAVIGATION */}
-    <div className="row event-row">
-      <div className="col-lg-5">
-        <h2 className="blog-heading">
-          Insights That Reflect How We Think
-        </h2>
-      </div>
+          {/* TOP CATEGORY NAVIGATION */}
+          <div className="row event-row">
+            <div className="col-lg-5">
+              <h2 className="blog-heading">
+                Insights That Reflect How We Think
+              </h2>
+            </div>
 
-      <div className="col-lg-7">
-        <nav aria-label="Perspective types">
-          <ul className="events-ul">
-            {mainTypes.map((item) => (
-              <li
-                key={item.slug}
-                className={
-                  currentType === item.slug
-                    ? "li-active li-div"
-                    : "li-div"
-                }
-              >
-                <Link
-                  href={`/perspective/${item.slug}`}
-                  className={currentType === item.slug ? "active" : ""}
-                  aria-current={
-                    currentType === item.slug ? "page" : undefined
-                  }
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <div className="row mt30">
-
-      {/* SIDEBAR FILTERS */}
-      <div className="col-lg-3">
-        <h3 className="mb-2">Filter by Category</h3>
-
-        <nav aria-label="Blog categories">
-          <ul className="sidebar-events-ul">
-
-            <li className={currentType === "all" ? "li-active" : ""}>
-              <Link
-                href="/perspective/all"
-                className={currentType === "all" ? "active" : ""}
-                aria-current={
-                  currentType === "all" ? "page" : undefined
-                }
-              >
-                All Categories
-              </Link>
-            </li>
-
-            {categories.map((cat) => (
-              <li
-                key={cat.category_id}
-                className={
-                  currentCategory === cat.category_slug
-                    ? "li-active"
-                    : ""
-                }
-              >
-                <Link
-                  href={`/perspective/${currentType}/category/${cat.category_slug}`}
-                  className={
-                    currentCategory === cat.category_slug
-                      ? "active"
-                      : ""
-                  }
-                  aria-current={
-                    currentCategory === cat.category_slug
-                      ? "page"
-                      : undefined
-                  }
-                >
-                  {cat.category_name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
-      {/* MAIN CONTENT */}
-      <div className="col-lg-9">
-
-        {currentType === "media" ? (
-          <div>
-
-            {articleMedia.length === 0 &&
-            linkMedia.length === 0 &&
-            pdfMedia.length === 0 ? (
-
-              <div className="media-empty">
-                No media found.
-              </div>
-
-            ) : (
-              <>
-                {/* CAROUSEL REGIONS */}
-
-                <section
-                  role="region"
-                  aria-label="Featured article media carousel"
-                >
-                  <ArticleSwiper
-                    blogs={articleMedia}
-                    currentType={currentType}
-                  />
-                </section>
-
-                <section
-                  role="region"
-                  aria-label="Featured video media carousel"
-                >
-                  <VideoSwiper blogs={linkMedia} />
-                </section>
-
-                <section
-                  role="region"
-                  aria-label="Featured PDF media carousel"
-                >
-                  <PdfSwiper blogs={pdfMedia} />
-                </section>
-              </>
-            )}
-          </div>
-        ) : (
-          <>
-            {blogs.length > 0 ? (
-              blogs.map((blog) => (
-                <article
-                  className="sw--card blog-card shadow"
-                  key={blog.blog_id}
-                >
-                  <div className="sw--card-img">
-
-                    <Link
-                      href={
-                        currentType === "stakeholders-letters" &&
-                        blog.blog_pdf !== ""
-                          ? blog.blog_pdf
-                          : currentType === "weekend-reading"
-                          ? blog.blog_weekend_link
-                          : `/perspective/${currentType}/${blog.blog_slug}`
+            <div className="col-lg-7">
+              <nav aria-label="Perspective types">
+                <ul className="events-ul">
+                  {mainTypes.map((item) => (
+                    <li
+                      key={item.slug}
+                      className={
+                        currentType === item.slug
+                          ? "li-active li-div"
+                          : "li-div"
                       }
-                      download={
-                        currentType === "stakeholders-letters" &&
-                        blog.blog_pdf !== ""
-                      }
-                      aria-label={`Open article: ${blog.blog_name}`}
                     >
-                      <img
-                        src={
-                          blog?.blog_image ||
-                          "https://badmin.vallum.in/img/uploads/media/1772871903.png"
+                      <Link
+                        href={`/perspective/${item.slug}`}
+                        className={currentType === item.slug ? "active" : ""}
+                        aria-current={
+                          currentType === item.slug ? "page" : undefined
                         }
-                        alt={blog.blog_name}
-                        className="img-fluid"
-                        onError={(e) => {
-                          e.target.src =
-                            "https://badmin.vallum.in/img/uploads/media/1772871903.png";
-                        }}
-                      />
-                    </Link>
-                  </div>
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </div>
 
-                  <div className="sw--card-content">
+          <div className="row mt30">
 
+            {/* SIDEBAR FILTERS */}
+            <div className="col-lg-3">
+              <h3 className="mb-2">Filter by Category</h3>
+
+              <nav aria-label="Blog categories">
+                <ul className="sidebar-events-ul">
+
+                  {/*
+                    FIX 2: "All Categories" must link back to /perspective/${currentType}
+                    (not the hardcoded "/perspective/all") so the type is preserved
+                    and the category filter is simply removed.
+
+                    Active when no category is selected (currentCategory is null).
+                  */}
+                  <li className={!currentCategory ? "li-active" : ""}>
                     <Link
-                      href={
-                        currentType === "stakeholders-letters" &&
-                        blog.blog_pdf !== ""
-                          ? blog.blog_pdf
-                          : currentType === "weekend-reading"
-                          ? blog.blog_weekend_link
-                          : `/perspective/${currentType}/${blog.blog_slug}`
-                      }
-                      download={
-                        currentType === "stakeholders-letters" &&
-                        blog.blog_pdf !== ""
+                      href={`/perspective/${currentType}`}
+                      className={!currentCategory ? "active" : ""}
+                      aria-current={!currentCategory ? "page" : undefined}
+                    >
+                      All Categories
+                    </Link>
+                  </li>
+
+                  {categories.map((cat) => (
+                    <li
+                      key={cat.category_id}
+                      className={
+                        currentCategory === cat.category_slug
+                          ? "li-active"
+                          : ""
                       }
                     >
-                      <h3 className="mb10 btitle">
-                        {blog.blog_name}
-                      </h3>
-                    </Link>
+                      {/*
+                        FIX 3: currentType is now always the correct type string,
+                        so these URLs like /perspective/blog/category/xyz are built correctly
+                        from both the main page and the category page.
+                      */}
+                      <Link
+                        href={`/perspective/${currentType}/category/${cat.category_slug}`}
+                        className={
+                          currentCategory === cat.category_slug
+                            ? "active"
+                            : ""
+                        }
+                        aria-current={
+                          currentCategory === cat.category_slug
+                            ? "page"
+                            : undefined
+                        }
+                      >
+                        {cat.category_name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
 
-                    <p className="sw--card-desc">
-                      {blog.blog_short_description}
-                    </p>
+            {/* MAIN CONTENT */}
+            <div className="col-lg-9">
 
-                    <Link
-                      className="btn btn-indigo"
-                      aria-label={`Read more about ${blog.blog_name}`}
-                      href={
-                        currentType === "stakeholders-letters" &&
-                        blog.blog_pdf !== ""
-                          ? blog.blog_pdf
-                          : currentType === "weekend-reading"
-                          ? blog.blog_weekend_link
-                          : `/perspective/${currentType}/${blog.blog_slug}`
-                      }
-                      download={
-                        currentType === "stakeholders-letters" &&
-                        blog.blog_pdf !== ""
-                      }
-                    >
-                      Read More
-                    </Link>
+              {currentType === "media" ? (
+                <div>
+                  {articleMedia.length === 0 &&
+                  linkMedia.length === 0 &&
+                  pdfMedia.length === 0 ? (
+                    <div className="media-empty">
+                      No media found.
+                    </div>
+                  ) : (
+                    <>
+                      <section role="region" aria-label="Featured article media carousel">
+                        <ArticleSwiper blogs={articleMedia} currentType={currentType} />
+                      </section>
+                      <section role="region" aria-label="Featured video media carousel">
+                        <VideoSwiper blogs={linkMedia} />
+                      </section>
+                      <section role="region" aria-label="Featured PDF media carousel">
+                        <PdfSwiper blogs={pdfMedia} />
+                      </section>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <>
+                  {blogs.length > 0 ? (
+                    blogs.map((blog) => (
+                      <article
+                        className="sw--card blog-card shadow"
+                        key={blog.blog_id}
+                      >
+                        <div className="sw--card-img">
+                          <Link
+                            href={
+                              currentType === "stakeholders-letters" &&
+                              blog.blog_pdf !== ""
+                                ? blog.blog_pdf
+                                : currentType === "weekend-reading"
+                                ? blog.blog_weekend_link
+                                : `/perspective/${currentType}/${blog.blog_slug}`
+                            }
+                            download={
+                              currentType === "stakeholders-letters" &&
+                              blog.blog_pdf !== ""
+                            }
+                            aria-label={`Open article: ${blog.blog_name}`}
+                          >
+                            <img
+                              src={
+                                blog?.blog_image ||
+                                "https://badmin.vallum.in/img/uploads/media/1772871903.png"
+                              }
+                              alt={blog.blog_name}
+                              className="img-fluid"
+                              onError={(e) => {
+                                e.target.src =
+                                  "https://badmin.vallum.in/img/uploads/media/1772871903.png";
+                              }}
+                            />
+                          </Link>
+                        </div>
 
-                  </div>
-                </article>
-              ))
-            ) : (
-              <div className="text-center py-5 border rounded bg-light">
-                <h4>No articles found in {currentType}.</h4>
-                <p>Check back later for new updates.</p>
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    </div>
-  </div>
-</section>
+                        <div className="sw--card-content">
+                          <Link
+                            href={
+                              currentType === "stakeholders-letters" &&
+                              blog.blog_pdf !== ""
+                                ? blog.blog_pdf
+                                : currentType === "weekend-reading"
+                                ? blog.blog_weekend_link
+                                : `/perspective/${currentType}/${blog.blog_slug}`
+                            }
+                            download={
+                              currentType === "stakeholders-letters" &&
+                              blog.blog_pdf !== ""
+                            }
+                          >
+                            <h3 className="mb10 btitle">{blog.blog_name}</h3>
+                          </Link>
+
+                          <p className="sw--card-desc">
+                            {blog.blog_short_description}
+                          </p>
+
+                          <Link
+                            className="btn btn-indigo"
+                            aria-label={`Read more about ${blog.blog_name}`}
+                            href={
+                              currentType === "stakeholders-letters" &&
+                              blog.blog_pdf !== ""
+                                ? blog.blog_pdf
+                                : currentType === "weekend-reading"
+                                ? blog.blog_weekend_link
+                                : `/perspective/${currentType}/${blog.blog_slug}`
+                            }
+                            download={
+                              currentType === "stakeholders-letters" &&
+                              blog.blog_pdf !== ""
+                            }
+                          >
+                            Read More
+                          </Link>
+                        </div>
+                      </article>
+                    ))
+                  ) : (
+                    <div className="text-center py-5 border rounded bg-light">
+                      <h4>No articles found in {currentType}.</h4>
+                      <p>Check back later for new updates.</p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
