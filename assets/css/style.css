@@ -6937,3 +6937,6 @@ button:focus-visible {
 .btn-gold:hover::after {
   left: 140%;
 }
+.height-heading {
+  height: clamp(23px, 5vw, 39px);
+}
