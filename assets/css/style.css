@@ -6940,3 +6940,6 @@ button:focus-visible {
 .height-heading {
   height: clamp(23px, 5vw, 39px);
 }
+.rc-anchor-container{
+  margin-bottom: 10px;
+}
