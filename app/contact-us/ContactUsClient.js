@@ -1,6 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback, useMemo } from "react";
-
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 /* ─────────── Flag emoji from 2-letter ISO ─────────── */
 function toFlag(iso) {
@@ -26,20 +25,15 @@ function validateField(name, value, formData, hasStates) {
         return "Enter a valid email address";
       return "";
     case "contact_mobile":
-    value = value.trim().replace(/\s/g, "");
-
-    // Remove leading 0 if first digit is 0
-    if (value.startsWith("0")) {
-      value = value.substring(1);
-    }
-
-    if (!value) return "Contact number is required";
-
-    if (!/^\d{9,12}$/.test(value)) {
-      return "Enter a valid mobile number (9–12 digits)";
-    }
-
-    return "";
+      value = value.trim().replace(/\s/g, "");
+      if (value.startsWith("0")) {
+        value = value.substring(1);
+      }
+      if (!value) return "Contact number is required";
+      if (!/^\d{9,12}$/.test(value)) {
+        return "Enter a valid mobile number (9–12 digits)";
+      }
+      return "";
     case "contact_profile":
       if (!value) return "Please select your visitor type";
       return "";
@@ -83,6 +77,11 @@ export default function ContactUsClient() {
   const [errors,    setErrors]    = useState({});
   const [touched,   setTouched]   = useState({});
 
+  /* ─── reCAPTCHA ─── */
+  const recaptchaRef    = useRef(null);   // DOM node for the widget mount point
+  const widgetIdRef     = useRef(null);   // grecaptcha widget id returned by render()
+  const [recaptchaError, setRecaptchaError] = useState("");
+
   const [form, setForm] = useState({
     contact_name:      "",
     contact_email:     "",
@@ -112,7 +111,6 @@ export default function ContactUsClient() {
     { value: "8", label: "Others" },
   ];
 
-  // Backend expects contact_profile in:1,2,3,4
   const profileToBackend = { "1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8" };
 
   /* ─── Progress ─── */
@@ -135,12 +133,40 @@ export default function ContactUsClient() {
       .catch(() => {});
   }, []);
 
-  /* ─── Handlers ───
-     KEY FIX for issue #4:
-     Use functional setForm(prev => ...) so these callbacks
-     never need `form` in their dependency array and never
-     get re-created, which would unmount/remount inputs.
-  ─── */
+  /* ─── Load & render reCAPTCHA v2 widget ─── */
+  useEffect(() => {
+    // Callback that grecaptcha calls once the API is ready
+    window.onRecaptchaReady = () => {
+      if (recaptchaRef.current && widgetIdRef.current === null) {
+        widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
+          sitekey: "6LcVtecsAAAAALK-h94ndOKh6egAyf7geZsmj9IN",
+          theme:   "light",
+          // Optional: auto-clear the error once user ticks the box
+          callback: () => setRecaptchaError(""),
+        });
+      }
+    };
+
+    // Inject the script only once (guard against StrictMode double-mount)
+    if (!document.getElementById("recaptcha-script")) {
+      const script    = document.createElement("script");
+      script.id       = "recaptcha-script";
+      script.src      = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady&render=explicit";
+      script.async    = true;
+      script.defer    = true;
+      document.head.appendChild(script);
+    } else if (window.grecaptcha && window.grecaptcha.render) {
+      // Script already loaded (e.g. hot-reload), render immediately
+      window.onRecaptchaReady();
+    }
+
+    return () => {
+      // Cleanup the global callback on unmount
+      delete window.onRecaptchaReady;
+    };
+  }, []);
+
+  /* ─── Handlers ─── */
   const handleChange = useCallback(async (e) => {
     const { name, value } = e.target;
 
@@ -177,7 +203,6 @@ export default function ContactUsClient() {
       if (!touched[name]) return p;
       return { ...p, [name]: validateField(name, value, form, states.length > 0) };
     });
-  // touched & form are read but we don't want re-creation on every keystroke
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [states.length]);
 
@@ -212,7 +237,7 @@ export default function ContactUsClient() {
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
 
-    // Validate all required fields at once
+    // ── 1. Standard field validation ──
     const requiredSet = ["contact_name","contact_email","contact_mobile","contact_profile","contact_message","contact_country","contact_state"];
     const newErrors = {};
     requiredSet.forEach(k => {
@@ -222,6 +247,19 @@ export default function ContactUsClient() {
     setTouched(Object.fromEntries(requiredSet.map(k => [k, true])));
     if (Object.values(newErrors).some(v => v)) return;
 
+    // ── 2. reCAPTCHA verification ──
+    const recaptchaToken =
+      (window.grecaptcha && widgetIdRef.current !== null)
+        ? window.grecaptcha.getResponse(widgetIdRef.current)
+        : "";
+
+    if (!recaptchaToken) {
+      setRecaptchaError("Please complete the reCAPTCHA verification.");
+      return;
+    }
+    setRecaptchaError("");
+
+    // ── 3. Submit ──
     setStatus({ loading: true, message: "Submitting your request…", type: "info" });
 
     const payload = {
@@ -236,6 +274,7 @@ export default function ContactUsClient() {
       contact_city:      form.contact_city,
       contact_approch:   form.contact_approch,
       business:          form.business,
+      recaptcha_token:   recaptchaToken,   // ← sent to Laravel for server-side verification
     };
 
     try {
@@ -245,15 +284,31 @@ export default function ContactUsClient() {
         body: JSON.stringify(payload),
       });
       const result = await res.json();
+
       if (result.status === "success" || res.ok) {
         setStatus({ loading: false, message: result.message || "Thank you! We'll be in touch shortly.", type: "success" });
-        setForm({ contact_name:"",contact_email:"",contact_phonecode:"+91",contact_phoneflag:"IN",contact_mobile:"",contact_profile:"",others_visitor:"",business:"",contact_message:"",contact_country:"",contact_state:"",contact_city:"",contact_approch:"Website Form" });
+        // Reset form
+        setForm({
+          contact_name:"", contact_email:"", contact_phonecode:"+91",
+          contact_phoneflag:"IN", contact_mobile:"", contact_profile:"",
+          others_visitor:"", business:"", contact_message:"",
+          contact_country:"", contact_state:"", contact_city:"",
+          contact_approch:"Website Form",
+        });
         setTouched({}); setErrors({}); setStates([]); setCities([]);
+        // Reset reCAPTCHA widget
+        if (window.grecaptcha && widgetIdRef.current !== null) {
+          window.grecaptcha.reset(widgetIdRef.current);
+        }
       } else {
         throw new Error(result.message || "Submission failed");
       }
     } catch (err) {
       setStatus({ loading: false, message: err.message || "An error occurred. Please try again.", type: "error" });
+      // Reset reCAPTCHA on error too so user can retry
+      if (window.grecaptcha && widgetIdRef.current !== null) {
+        window.grecaptcha.reset(widgetIdRef.current);
+      }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form, states.length]);
@@ -408,7 +463,7 @@ export default function ContactUsClient() {
                       <input
                         className={ic("contact_name")}
                         name="contact_name"
-                        id="contact_name"                        
+                        id="contact_name"
                         value={form.contact_name}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -573,6 +628,25 @@ export default function ContactUsClient() {
                       </p>
                       <FieldError show={touched.contact_message} msg={errors.contact_message} />
                     </div>
+                  </div>
+
+                  {/* ── reCAPTCHA v2 Widget ── */}
+                  <div className="vc-recaptcha-wrap">
+                    {/*
+                      This div is the mount point.
+                      grecaptcha.render() injects the iframe checkbox widget here.
+                    */}
+                    <div ref={recaptchaRef} />
+
+                    {/* Validation error shown when user tries to submit without ticking */}
+                    {recaptchaError && (
+                      <div className="vc-field-error" style={{marginTop:8}}>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"/>
+                        </svg>
+                        {recaptchaError}
+                      </div>
+                    )}
                   </div>
 
                   {/* Submit */}
