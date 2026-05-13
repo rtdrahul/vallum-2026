@@ -110,10 +110,10 @@ function TabFixed() {
   return (
     <div>
       <AssumptionsGrid>
-        <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (%age p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
-        <Assump label="Other Expenses" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
-        <Assump label="Brokerage and Transaction cost" value={d} onChange={v => setD(v)} suffix="%" step="0.1" />
+        <Assump label="Capital Contribution (Rs.) (a)" value={a} onChange={v => setA(v)} prefix="₹" />
+        <Assump label="Management Fee (%age p.a.) (b)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
+        <Assump label="Other Expenses (c)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
+        <Assump label="Brokerage and Transaction cost (d)" value={d} onChange={v => setD(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
@@ -177,12 +177,12 @@ function TabHybrid({ varOnly = false }) {
   return (
     <div>
       <AssumptionsGrid>
-        <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (%age p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
-        <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
-        <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate of Return (%age p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
-        <Assump label="Brokerage and Transaction cost" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
+        <Assump label="Capital Contribution (Rs.) (a)" value={a} onChange={v => setA(v)} prefix="₹" />
+        <Assump label="Management Fee (%age p.a.) (b)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" min={varOnly ? 0 : undefined} max={varOnly ? 0 : undefined} />
+        <Assump label="Other Expenses (%age per annum) (c)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
+        <Assump label="Performance (%age per annum) (d)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
+        <Assump label="Hurdle Rate of Return (%age p.a.) (e)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Brokerage and Transaction cost (f)" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={["Scenario 1", "Scenario 2", "Scenario 3"]} />
       <TableWrap>
@@ -271,12 +271,12 @@ function TabMultiYear() {
   return (
     <div>
       <AssumptionsGrid>
-        <Assump label="Capital Contribution (Rs.)" value={a} onChange={v => setA(v)} prefix="₹" />
-        <Assump label="Management Fee (%age p.a.)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
-        <Assump label="Other Expenses (%age per annum)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
-        <Assump label="Performance (%age per annum)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
-        <Assump label="Hurdle Rate of Return (%age p.a.)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
-        <Assump label="Brokerage and Transaction cost" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
+        <Assump label="Capital Contribution (Rs.) (a)" value={a} onChange={v => setA(v)} prefix="₹" />
+        <Assump label="Management Fee (%age p.a.) (b)" value={b} onChange={v => setB(v)} suffix="%" step="0.1" />
+        <Assump label="Other Expenses (%age per annum) (c)" value={c} onChange={v => setC(v)} suffix="%" step="0.1" />
+        <Assump label="Performance (%age per annum) (d)" value={d} onChange={v => setD(v)} suffix="%" step="1" />
+        <Assump label="Hurdle Rate of Return (%age p.a.) (e)" value={e} onChange={v => setE(v)} suffix="%" step="0.5" />
+        <Assump label="Brokerage and Transaction cost (f)" value={f} onChange={v => setF(v)} suffix="%" step="0.1" />
       </AssumptionsGrid>
       <ReturnInputs returns={returns} setReturns={setReturns} labels={yrLabels} />
       <TableWrap>
@@ -384,13 +384,13 @@ const fixedNotes = [
 ];
 const hybridNotes = [
   "In the illustration, Management fee is assumed to be charged annually. However, the Portfolio Manager can charge fee at any frequency i.e. Daily, Monthly, Quarterly, Semi-annually, Annually or at any other frequency as defined in the PMS agreement and as permitted under SEBI regulations.",
-  "Portfolio Manager can charge Management Fee on Average portfolio value for the management fee period or the closing portfolio value or in any other manner as defined in the PMS agreement.",
+  "Portfolio Manager can charge Management Fee on Average portfolio value for the management fee period or the closing portfolio value or in any other manner as defined in the PMS agreement and permitted under SEBI regulations.",
   "Returns are assumed to be generated linearly through the year.",
   "Other Expenses includes Account Opening charges, stamp duty /Audit Fee/ Bank charges / Fund Accounting charges / Custody Fee / demat charges or other miscellaneous expense",
   "Brokerage and transaction cost for the illustration purpose is charged on the Average AUM. However, Brokerage and Transaction cost are charged on basis the actuals trades.",
   "All Fees and charges are subject to GST.",
   "For this illustration, High Water Mark for the 1st Year is the Capital invested and from second year onwards if performance fee is charged, it's the year end closing value after all charges and fees, else it remains the same. However, in actual, High Water Mark is defined in the PMS agreement and may differ from this illustration.",
-  "For this illustration, Hurdle rate is calculated on Higher of (HWM or previous year closing capital). However, in actual Hurdle Rate of return is defined in the PMS agreement and may differ from this illustration.",
+  "For this illustration, Hurdle rate is calculated on Higher of (HWM or previous year closing NAV). However, in actual Hurdle Rate of return is defined in the PMS agreement and may differ from this illustration.",
   "Hurdle rate is prorated in case the performance fee period is less than 1 year OR if there are inflow/outflows from the portfolio",
   "The above illustration shows the High Water Mark to be carried forward in different scenario for equal and fair treatment to the investor.",
   "This is only a generic illustration, each portfolio manager can modify the illustration as per the terms and condition of their PMS agreement.",
