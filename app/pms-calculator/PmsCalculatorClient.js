@@ -390,7 +390,7 @@ const hybridNotes = [
   "Brokerage and transaction cost for the illustration purpose is charged on the Average AUM. However, Brokerage and Transaction cost are charged on basis the actuals trades.",
   "All Fees and charges are subject to GST.",
   "For this illustration, High Water Mark for the 1st Year is the Capital invested and from second year onwards if performance fee is charged, it's the year end closing value after all charges and fees, else it remains the same. However, in actual, High Water Mark is defined in the PMS agreement and may differ from this illustration.",
-  "For this illustration, Hurdle rate is calculated on Higher of (NAV or previous year closing). However, in actual Hurdle Rate of return is defined in the PMS agreement and may differ from this illustration.",
+  "For this illustration, Hurdle rate is calculated on Higher of (HWM or previous year closing NAV). However, in actual Hurdle Rate of return is defined in the PMS agreement and may differ from this illustration.",
   "Hurdle rate is prorated in case the performance fee period is less than 1 year OR if there are inflow/outflows from the portfolio",
   "The above illustration shows the High Water Mark to be carried forward in different scenario for equal and fair treatment to the investor.",
   "This is only a generic illustration, each portfolio manager can modify the illustration as per the terms and condition of their PMS agreement.",
