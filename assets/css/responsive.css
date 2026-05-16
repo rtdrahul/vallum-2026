@@ -771,6 +771,10 @@
     .cta-card{
         display: block;
     }
+    .quickcotact ul {
+        list-style: disc;
+        padding-left: 15px;
+    }
     .quickcotact ul li {
         font-size: 16px;
         line-height: 25px;
