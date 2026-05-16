@@ -771,6 +771,10 @@
     .cta-card{
         display: block;
     }
+    .quickcotact ul li {
+        font-size: 16px;
+        line-height: 25px;
+    }
     .stat-l {
         font-size: 0.65rem;
     }
