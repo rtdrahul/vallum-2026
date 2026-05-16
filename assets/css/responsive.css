@@ -771,6 +771,9 @@
     .cta-card{
         display: block;
     }
+    .hero-stats {
+        padding:20px;
+    }
     .founders-body {
         background: var(--white);
         grid-template-columns: 1fr;
