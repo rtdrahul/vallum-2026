@@ -771,6 +771,9 @@
     .cta-card{
         display: block;
     }
+    .social-link{
+      padding: 9px 2px;
+    }
     .hero-stats {
         padding:20px;
     }
