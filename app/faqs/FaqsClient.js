@@ -155,7 +155,7 @@ export default function FaqsClient() {
                 Our team is available to answer any question not covered above with complete candour.
               </p>
             </div>
-            <div className="cta-btn-wrap">
+            <div className="cta-btn-wrap mb-3">
               <a href="/contact-us" className="btn-gold">
                 GET IN TOUCH{" "}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
