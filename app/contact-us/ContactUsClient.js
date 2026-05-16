@@ -346,44 +346,78 @@ export default function ContactUsClient() {
               <p className="vc-info-tagline">Begin with a<br /><em>single conversation.</em></p>
               <p className="vc-info-desc">If you'd like to understand how we work, ask questions, or explore alignment — we're here. Every inquiry is handled with discretion and care.</p>
               <div className="vc-divider" />
-              <div className="vc-contact-cards">
-                {[
-                  {
-                    label:"Office",
-                    value:"B-403, Kanakia Wall Street, Andheri Kurla Road,\nChakala MIDC, Mumbai — 400 093",
-                    icon:<><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></>,
-                  },
-                  {
-                    label:"Phone",
-                    value:"+91 8655664539",
-                    icon:<path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>,
-                  },
-                  {
-                    label:"Email",
-                    value:"connect.vallum@vallum.in",
-                    icon:<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>,
-                  },
-                  {
-                    label:"Client Servicing",
-                    value:"+91 8655966290",
-                    icon:<path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>,
-                  },
-                  {
-                    label:"Careers & Opportunities",
-                    value:"hr@vallum.in",
-                    icon:<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>,
-                  },
-                ].map(c => (
-                  <div key={c.label} className="vc-contact-card">
-                    <div className="vc-card-icon"><svg viewBox="0 0 24 24">{c.icon}</svg></div>
-                    <div>
-                      <p className="vc-card-label">{c.label}</p>
-                      <p className="vc-card-value" style={{whiteSpace:"pre-line"}}>{c.value}</p>
+                <div className="vc-contact-cards">
+                  {[
+                    {
+                      label: "Office",
+                      value: "B-403, Kanakia Wall Street, Andheri Kurla Road,\nChakala MIDC, Mumbai — 400 093",
+                      href: "https://maps.google.com/?q=B-403, Kanakia Wall Street, Andheri Kurla Road, Chakala MIDC, Mumbai 400093",
+                      icon: (
+                        <>
+                          <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </>
+                      ),
+                    },
+                    {
+                      label: "Phone",
+                      value: "+91 8655664539",
+                      href: "tel:+918655664539",
+                      icon: (
+                        <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      ),
+                    },
+                    {
+                      label: "Email",
+                      value: "connect.vallum@vallum.in",
+                      href: "mailto:connect.vallum@vallum.in",
+                      icon: (
+                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      ),
+                    },
+                    {
+                      label: "Client Servicing",
+                      value: "+91 8655966290",
+                      href: "tel:+918655966290",
+                      icon: (
+                        <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      ),
+                    },
+                    {
+                      label: "Careers & Opportunities",
+                      value: "hr@vallum.in",
+                      href: "mailto:hr@vallum.in",
+                      icon: (
+                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      ),
+                    },
+                  ].map((c) => (
+                    <div key={c.label} className="vc-contact-card">
+                      <div className="vc-card-icon">
+                        <svg viewBox="0 0 24 24">{c.icon}</svg>
+                      </div>
+
+                      <div>
+                        <p className="vc-card-label">{c.label}</p>
+
+                        <a
+                          href={c.href}
+                          className="vc-card-value"
+                          style={{
+                            whiteSpace: "pre-line",
+                            textDecoration: "none",
+                            color: "inherit",
+                          }}
+                          target={c.label === "Office" ? "_blank" : undefined}
+                          rel={c.label === "Office" ? "noopener noreferrer" : undefined}
+                        >
+                          {c.value}
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
             {/* Form Card */}
             <div className="vc-form-card">

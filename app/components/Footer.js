@@ -35,10 +35,15 @@ export default function Footer({ settingsData }) {
             
             <div className="footer-col">
               {siteSettings?.admin_support_mobile && (
-                <a href="tel:{siteSettings.admin_support_mobile}">{siteSettings.admin_support_mobile}</a>
+                <a href={`tel:${siteSettings.admin_support_mobile}`}>
+                  {siteSettings.admin_support_mobile}
+                </a>
               )}
+
               {siteSettings?.admin_support_email && (
-                <a href="mailto:{siteSettings.admin_support_email}">{siteSettings.admin_support_email}</a>
+                <a href={`mailto:${siteSettings.admin_support_email}`}>
+                  {siteSettings.admin_support_email}
+                </a>
               )}
                   <a href="https://vallum.in" target="_blank">www.vallum.in</a>
             </div>
