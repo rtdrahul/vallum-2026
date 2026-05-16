@@ -771,6 +771,9 @@
     .cta-card{
         display: block;
     }
+    .stat-l {
+        font-size: 0.65rem;
+    }
     .social-link{
       padding: 9px 2px;
     }
