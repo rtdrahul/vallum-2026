@@ -768,6 +768,9 @@
     .ia-badge { width: 44px; height: 44px; font-size: 1.1rem; }
 }
 @media(max-width:480px){
+    .cta-card{
+        display: block;
+    }
     .founders-body {
         background: var(--white);
         grid-template-columns: 1fr;

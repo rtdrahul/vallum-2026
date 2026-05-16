@@ -63,7 +63,7 @@ export default function Header({ settingsData }) {
     { label: "FAQ on SEBI Validated UPI ID", link: siteSettings?.faq_upi ? basePath + siteSettings.faq_upi : null },
     { label: "SEBI Master Circular for Online Resolution of Disputes", link: siteSettings?.sebi_circular ? basePath + siteSettings.sebi_circular : null },
     { label: "Centralised Reporting Mechanism for Demised Investor", link: siteSettings?.demised_investor ? basePath + siteSettings.demised_investor : null },
-    { label: "PMS Calculator", link: "https://badmin.vallum.in/img/Vallum_Capital_Advisors_Fee_Illustration.xlsx" },
+    { label: "PMS Calculator", link: "https://vallum.in/pms-calculator" },
   ].filter((item) => item.link);
 
   const navData = [
