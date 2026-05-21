@@ -2826,9 +2826,9 @@ body .vertical-centered-box {
 
 .v-sidebar-card-title {
     font-family: var(--font-display);
-    font-size: 0.62rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #3f3e8a;
     margin-bottom: 1rem;
@@ -2897,7 +2897,7 @@ body .vertical-centered-box {
 .v-principle-text {
     font-size: 0.78rem;
     font-weight: 400;
-    color: #6663a8;
+    color: #000;
     line-height: 1.5;
 }
 
