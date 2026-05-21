@@ -6565,8 +6565,8 @@ em {
 }
 .social-link:first-child { border-right: none; }
 .social-link:hover {
-  background: var(--primary);
-  color: var(--white);
+  /* background: var(--primary); */
+  /* color: var(--white); */
   border-color: var(--primary);
 }
 .social-link svg { flex-shrink: 0; }
