@@ -72,10 +72,6 @@ export default async function RootLayout({ children }) {
         <UX4GWidget />
         {/* <AccessibilityWidget /> */}
 
-        <Script
-          src="/assets/js/bootstrap.bundle.min.js"
-          strategy="afterInteractive"
-        />
 
       </body>
 
