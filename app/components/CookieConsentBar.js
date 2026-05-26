@@ -67,14 +67,14 @@ export default function CookieConsentBar() {
           <div className="col-lg-3 col-md-12 text-lg-end text-center d-flex g-3">
             <button
               onClick={rejectCookies}
-              className="btn btn-outline me-2 py-2"              
+              className="btn btn-outline me-2 py-2 w-100 justify-content-center"              
             >
               Reject
             </button>
 
             <button
               onClick={acceptCookies}
-              className="btn btn-indigo py-2"              
+              className="btn btn-indigo py-2 w-100 justify-content-center"              
             >
               Accept
             </button>
