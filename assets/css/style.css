@@ -1160,7 +1160,7 @@ footer p, footer a{ font-weight: 300;}
     border: 1px solid var(--primary);
     border-radius: 50px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     /* width: -webkit-fill-available; */
 }
 .sidebar-events-ul li{
@@ -4249,7 +4249,7 @@ body .vertical-centered-box {
   box-shadow: 0 8px 14px #7276a54d;
   border-color:#A66523;
 }
-.hero h1{font-size:clamp(36px,5vw,56px);font-weight:700;color:#1A1A2E;line-height:1.1;
+.hero h1{font-size:clamp(36px,5vw,54px);font-weight:700;color:#1A1A2E;line-height:1.1;
   margin-bottom:20px;animation:fadeInUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.1s both}
 .hero h1 .accent{color:#3B3D8A}
 .hero-sub{font-size:16px;line-height:1.7;color:var(--ink);max-width:520px;margin-bottom:32px;
@@ -4257,7 +4257,7 @@ body .vertical-centered-box {
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;animation:fadeInUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.3s both}
 .hero-visual{position:relative;animation:fadeIn 1s cubic-bezier(0.25,0.46,0.45,0.94) 0.4s both}
 .hero-img-wrapper{position:relative;overflow:hidden;}
-.hero-img-wrapper img{width:100%;height:500px;display:block}
+.hero-img-wrapper img{width:100%;display:block}
 .hero-float-card{position:absolute;background:#FFFFFF;border-radius:14px;padding:16px 20px;
   box-shadow:0 12px 40px rgba(0,0,0,0.1);animation:float 4s ease-in-out infinite}
 .hero-float-card.card-1{bottom:-20px;left:-30px;animation-delay:0s}

@@ -13,7 +13,7 @@ const Hero = () => (
       </div>
       <div className="hero-visual">
         <div className="hero-img-wrapper">
-          <img src="https://badmin.vallum.in/img/uploads/media/1779788560.webp?w=600&h=500&fit=crop&q=80" alt="Vallum Capital - Disciplined investing approach"/>
+          <img src="https://badmin.vallum.in/img/uploads/media/1779788560.webp?w=600&h=435&fit=crop&q=80" alt="Vallum Capital - Disciplined investing approach"/>
         </div>
       </div>
     </div>
