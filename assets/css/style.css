@@ -1163,6 +1163,10 @@ footer p, footer a{ font-weight: 300;}
     font-weight: 400;
     /* width: -webkit-fill-available; */
 }
+.events-ul .li-div:hover{
+  background: var(--primary);
+  color: #fff;
+}
 .sidebar-events-ul li{
     margin-bottom: 10px;    
     padding: 2px 18px;
