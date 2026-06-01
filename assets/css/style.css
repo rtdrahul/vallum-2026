@@ -5792,7 +5792,7 @@ body .vertical-centered-box {
     left: 0;
     height: 3px;
     background: linear-gradient(90deg, #2B338A 0%, #C28934 100%);
-    transition: width 0.1s linear;
+    /* transition: width 0.1s linear; */
     border-radius: 0 2px 2px 0;
     z-index: 10;
   }
