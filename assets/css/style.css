@@ -1167,6 +1167,9 @@ footer p, footer a{ font-weight: 300;}
   background: var(--primary);
   color: #fff;
 }
+.events-ul .li-div:hover a{
+  color: #fff;
+}
 .sidebar-events-ul li{
     margin-bottom: 10px;    
     padding: 2px 18px;
