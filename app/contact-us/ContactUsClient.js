@@ -484,6 +484,7 @@ export default function ContactUsClient() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="Describe your visitor type"
+                          autoComplete="off"
                         />
                       </div>
                     </div>

@@ -251,7 +251,7 @@ export default function BlogListClient({ initialData, currentCategory = null, cu
                 </div>
                 <div className="col-lg-4 mmt40">
                   <div className="about-img blogcotact-img">
-                    <img src={data.img} className="w-100" alt="" />
+                    <img src={data.img} className="w-100" alt={data.title} />
                   </div>
                 </div>
               </>

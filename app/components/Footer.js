@@ -28,7 +28,7 @@ export default function Footer({ settingsData }) {
             <img
               className="footer-logo"
               src={siteSettings?.site_logo || "/assets/images/logo.png"}
-              alt={siteSettings?.site_title || "Vallum Capital"}
+              alt={siteSettings?.site_title || "Vallum Capital company logo."}
             />
             <p>A research-driven PMS built on GARP, cycle awareness, and risk discipline — designed for HNIs, NRIs, and Family Offices who value clarity over speculation.</p>
 

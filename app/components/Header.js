@@ -118,7 +118,7 @@ export default function Header({ settingsData }) {
 
           {/* Logo */}
           <a href="/" className="vl-logo" aria-label="Vallum Home">
-            <img src="/assets/images/logo.png" alt="Vallum Capital" />
+            <img src="/assets/images/logo.png" alt="Vallum Capital company logo." />
           </a>
 
           {/* ── Desktop Nav ── */}
@@ -156,7 +156,15 @@ export default function Header({ settingsData }) {
                             {child.imgSrc ? (
                               <span className="vl-mob-sub-label">
                                 Vallum
-                                <img src={child.imgSrc} alt="" style={{ height: "13px" }} />
+                                <img
+                                  alt="Vallum JAN Principals"
+                                  src={child.imgSrc}
+                                  style={{
+                                    height: '0.8em',
+                                    width: 'auto',
+                                    verticalAlign: 'baseline'
+                                  }}
+                                />
                                 Principles
                               </span>
                             ) : child.label}
@@ -232,7 +240,7 @@ export default function Header({ settingsData }) {
       >
         {/* Drawer Header */}
         <div className="vl-drawer-head">
-          <img src="/assets/images/logo.png" alt="Vallum Capital" />
+          <img src="/assets/images/logo.png" alt="Vallum Capital company logo." />
           <button
             className="vl-drawer-close"
             onClick={() => setShowMobileMenu(false)}
@@ -286,7 +294,15 @@ export default function Header({ settingsData }) {
                         {child.imgSrc ? (
                           <span className="vl-mob-sub-label">
                             Vallum
-                            <img src={child.imgSrc} alt="" style={{ height: "12px" }} />
+                            <img
+                              alt="Vallum JAN Principals"
+                              src="https://badmin.vallum.in/img/uploads/media/1770088614.png"
+                              style={{
+                                height: '0.8em',
+                                width: 'auto',
+                                verticalAlign: 'baseline'
+                              }}
+                            />
                             Principles
                           </span>
                         ) : child.label}
