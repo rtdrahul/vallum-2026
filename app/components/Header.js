@@ -179,7 +179,7 @@ export default function Header({ settingsData }) {
 
           {/* ── Right CTAs ── */}
           <div className="vl-ctas">
-            <a href="/contact-us" className="btn btn-outline">
+            <a href="/contact-us" aria-label="Contact us" className="btn btn-outline">
               Direct Onboarding
             </a>
             <a

@@ -93,7 +93,7 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                 <div className="mt-5 p-4 bg-light rounded text-center">
                    <h5>Need more info?</h5>
                    <p className="small mb-2">Contact us for professional investment advice.</p>
-                   <Link href="/contact-us" className="btn btn-primary btn-sm px-4 rounded-pill">Contact Us</Link>
+                   <Link href="/contact-us" aria-label="Contact us" className="btn btn-primary btn-sm px-4 rounded-pill">Contact Us</Link>
                 </div>
               </div>
             </div>
