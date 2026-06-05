@@ -98,6 +98,9 @@ function VideoSwiper({ blogs }) {
                 allow="autoplay; encrypted-media"
                 allowFullScreen
               />
+              <div className="visually-hidden">
+              {blog.blog_short_description}
+              </div>
               <div className="video-card-body">
                 <div className="video-card-play-icon">
                   <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">

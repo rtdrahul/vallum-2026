@@ -54,10 +54,13 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-
+      
       <body className={`${cormorant.variable} ${outfit.variable}`}>
+        <a href="#main-content" className="skip-link">
+          Skip to Main Content
+        </a>
         
-        <main>
+        <main id="main-content">
 
           {/* PASS SETTINGS TO HEADER ALSO */}
           <Header settingsData={settingsData} />

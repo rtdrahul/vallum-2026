@@ -44,7 +44,6 @@ export default function CookieConsentBar() {
               className="mb-0"
               style={{
                 fontSize: "16px",
-                color: "#6b7280",
                 lineHeight: "1.7",
               }}
             >
