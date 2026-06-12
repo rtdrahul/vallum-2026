@@ -1,99 +1,99 @@
 import BlogListClient from "./BlogListClient";
 
-/**
- * SERVER-SIDE: Fetch blogs based on the dynamic type
- */
-async function fetchBlogs(type) {
+const TYPES = ["blog", "media", "stakeholders-letters", "weekend-reading"];
+const BASE_URL = "https://badmin.vallum.in/api";
+
+async function fetchBlogs(type, page = 1) {
   try {
-    // Dynamically inserting the 'type' into your API endpoint
-    const response = await fetch(`https://badmin.vallum.in/api/blog-list/${type}`, {
-      headers: { Accept: "application/json" }});
-
-    if (!response.ok) return [];
-
-    const data = await response.json();
-    // Assuming the API returns an object with a 'blogs' array or similar
-    return data.status === "success" ? data : []; 
-  } catch (error) {
-    console.error(`Failed to fetch ${type} blogs:`, error);
-    return [];
-  }
-}
-
-/**
- * SERVER-SIDE: Fetch metadata for SEO
- */
-async function fetchPageData(slug) {
-  try {
-    const response = await fetch(`https://badmin.vallum.in/api/common-meta-data/${slug}`, {
+    const res = await fetch(`${BASE_URL}/blog-list/${type}?page=${page}`, {
       headers: { Accept: "application/json" },
+      next: { revalidate: 60 }, // cache for 60s — adjust as needed
     });
-    
-    if (!response.ok) return null;
-    const data = await response.json();
+    if (!res.ok) return null;
+    const data = await res.json();
     return data.status === "success" ? data : null;
-  } catch (error) {
-    console.error('Failed to fetch page data:', error);
+  } catch (err) {
+    console.error(`Failed to fetch ${type}:`, err);
     return null;
   }
 }
 
-/**
- * SERVER-SIDE: Generate metadata
- */
+async function fetchPageData(slug) {
+  try {
+    const res = await fetch(`${BASE_URL}/common-meta-data/${slug}`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.status === "success" ? data : null;
+  } catch (err) {
+    console.error("Failed to fetch page meta:", err);
+    return null;
+  }
+}
+
 export async function generateMetadata({ params }) {
   const { type } = await params;
-  const pageData = await fetchPageData('blog');
-  
-  const defaultMetadata = {
+  const pageData = await fetchPageData("blog");
+
+  const defaultMeta = {
     title: "VALLUM CAPITAL ADVISORS",
     description: "SEBI Registered Investment Advisors",
     image: "https://badmin.vallum.in/assets/images/logo/logo.webp",
     url: "https://vallum.in",
   };
 
-  if (!pageData) return { title: defaultMetadata.title };
+  if (!pageData) return { title: defaultMeta.title };
 
   const meta = pageData.metaData;
-  // Make the title dynamic based on the category type
   const displayTitle = `${meta.page_meta_title || meta.page_name} | ${type.toUpperCase()}`;
 
   return {
     title: displayTitle,
-    description: meta.page_meta_desc || defaultMetadata.description,
+    description: meta.page_meta_desc || defaultMeta.description,
     keywords: meta.page_meta_keyword || "finance, investment, advisory",
     openGraph: {
       title: displayTitle,
-      description: meta.page_meta_desc || defaultMetadata.description,
-      url: `${defaultMetadata.url}/perspective/${type}`,
+      description: meta.page_meta_desc || defaultMeta.description,
+      url: `${defaultMeta.url}/perspective/${type}`,
       type: "website",
-      images: [{ url: meta.page_header_image || defaultMetadata.image }],
+      images: [{ url: meta.page_header_image || defaultMeta.image }],
     },
     twitter: {
       card: "summary_large_image",
       title: displayTitle,
-      images: [meta.page_header_image || defaultMetadata.image],
+      images: [meta.page_header_image || defaultMeta.image],
     },
     alternates: {
-      canonical: `${defaultMetadata.url}/perspective/${type}`,
+      canonical: `${defaultMeta.url}/perspective/${type}`,
     },
   };
 }
 
-/**
- * MAIN PAGE COMPONENT
- */
 export default async function BlogPage({ params, searchParams }) {
   const { type } = await params;
-  const { page } = await searchParams; // Get ?page= from URL
+  const { page } = await searchParams;
   const currentPage = page || 1;
 
-  // Update fetch to include the page number
-  const response = await fetch(`https://badmin.vallum.in/api/blog-list/${type}?page=${currentPage}`, {
-  });
-  
-  const blogData = await response.json();
-  console.log('response',JSON.stringify(blogData));
+  // Fetch the active type with pagination, and all other types page-1 in parallel
+  const otherTypes = TYPES.filter((t) => t !== type);
 
-  return <BlogListClient initialData={blogData} />;
+  const [activeData, ...otherData] = await Promise.all([
+    fetchBlogs(type, currentPage),
+    ...otherTypes.map((t) => fetchBlogs(t, 1)),
+  ]);
+
+  // Build a map: { blog: data, media: data, ... }
+  const allData = { [type]: activeData };
+  otherTypes.forEach((t, i) => {
+    allData[t] = otherData[i];
+  });
+
+  return (
+    <BlogListClient
+      allData={allData}
+      initialType={type}
+      initialPage={Number(currentPage)}
+    />
+  );
 }
