@@ -1,18 +1,10 @@
-"use client";
+// No need for "use client" if there's zero interactivity.
+// If you have NO click handlers or hooks, make this a pure server component:
 
-import { useEffect, useState } from "react";
-
-export default function DynamicPageClient({ initialData, slug }) {
-  const [pageData, setPageData] = useState(initialData);
-  const [isUpdating, setIsUpdating] = useState(false);
-
-  // Optional: Refresh data on client side if needed
-
+export default function DynamicPageClient({ initialData }) {
   return (
-    <>      
-      <div 
-        dangerouslySetInnerHTML={{ __html: pageData.metaData.page_content }} 
-      />
-    </>
+    <div
+      dangerouslySetInnerHTML={{ __html: initialData.metaData.page_content }}
+    />
   );
 }
