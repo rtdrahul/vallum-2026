@@ -404,6 +404,7 @@ export default function BlogListClient({ allData, initialType, initialPage = 1 }
                         onClick={() => switchTab(item.slug)}
                         aria-current={activeType === item.slug ? "page" : undefined}
                         disabled={isPending}
+                        style={{padding:"0 20px"}}
                       >
                         {item.label}
                       </button>
