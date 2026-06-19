@@ -12,7 +12,7 @@ const fmt = (v, dp = 0) => {
 const fmtPct = (v, dp = 2) => (isNaN(v) ? "—" : `${(v * 100).toFixed(dp)}%`);
 const fmtCr = (v) => `₹ ${fmt(v)}`;
 
-const Input = ({ value, onChange, min, step = "any", prefix, suffix, width = 160 }) => (
+const Input = ({ value, onChange, min, step = "any", prefix, suffix, width = 160, ariaLabel }) => (
   <div style={{ display: "flex", alignItems: "center", border: `1px solid ${BRAND_MED}`, borderRadius: 6, overflow: "hidden", width }}>
     {prefix && <span style={{ padding: "4px 8px", background: BRAND_LIGHT, color: BRAND, fontSize: 15, borderRight: `1px solid ${BRAND_MED}`, whiteSpace: "nowrap" }}>{prefix}</span>}
     <input
@@ -21,6 +21,7 @@ const Input = ({ value, onChange, min, step = "any", prefix, suffix, width = 160
       min={min}
       step={step}
       onChange={onChange}
+      aria-label={ariaLabel}
       style={{ flex: 1, border: "none", outline: "none", padding: "5px 8px", fontSize: 15, minWidth: 0, background: "white" }}
     />
     {suffix && <span style={{ padding: "4px 8px", background: BRAND_LIGHT, color: BRAND, fontSize: 15, borderLeft: `1px solid ${BRAND_MED}` }}>{suffix}</span>}
@@ -325,7 +326,7 @@ function Assump({ label, value, onChange, prefix, suffix, step = "any", min, max
   return (
     <div>
       <div style={{ fontSize: 14, color: BRAND, fontWeight: 500, marginBottom: 4 }}>{label}</div>
-      <Input value={value} onChange={e => onChange(Number(e.target.value))} prefix={prefix} suffix={suffix} step={step} min={min} max={max} width="100%" />
+      <Input value={value} onChange={e => onChange(Number(e.target.value))} prefix={prefix} suffix={suffix} step={step} min={min} max={max} width="100%" ariaLabel={label} />
     </div>
   );
 }
@@ -341,7 +342,7 @@ function ReturnInputs({ returns, setReturns, labels }) {
             <Input
               value={r}
               onChange={e => { const n = [...returns]; n[i] = Number(e.target.value); setReturns(n); }}
-              suffix="%" step="1" width={120}
+              suffix="%" step="1" width={120} ariaLabel={labels[i]}
             />
           </div>
         ))}
@@ -432,7 +433,7 @@ export default function PmsCalculator() {
               <span style={{ fontSize: 22, color: "rgba(255, 255, 255)" }}>(Vallum Capital Advisors Pvt. Ltd.)</span>
             </div>
             <div>
-              <a target="_blank" rel="noreferrer" role="menuitem" style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", border:"1px solid white", marginBottom:"20px" }} href="https://badmin.vallum.in/img/Vallum_Capital_Advisors_Fee_Illustration.xlsx" download className="btn btn-outline">Download Fee Illustration Excel</a>
+              <a target="_blank" rel="noreferrer" aria-label="Download PMS Fee Illustration Excel file" style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", border:"1px solid white", marginBottom:"20px" }} href="https://badmin.vallum.in/img/Vallum_Capital_Advisors_Fee_Illustration.xlsx" download className="btn btn-outline">Download Fee Illustration Excel</a>
             </div>
             {/* Tab bar */}
             <div style={{ display: "flex", gap: 4, overflowX: "auto" }}>
