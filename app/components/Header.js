@@ -184,7 +184,8 @@ export default function Header({ settingsData }) {
                             target={item.isExternal ? "_blank" : "_self"}
                             rel={item.isExternal ? "noreferrer" : undefined}
                             role="menuitem"
-                            prefetch={!item.isExternal} // don't prefetch external PDFs
+                            prefetch={!item.isExternal} 
+                            aria-label={child.label}
                           >
                             {child.imgSrc ? (
                               <span className="vl-mob-sub-label">
@@ -293,6 +294,7 @@ export default function Header({ settingsData }) {
                         rel={item.isExternal ? "noreferrer" : undefined}
                         onClick={closeMobileMenu}
                         prefetch={!item.isExternal}
+                        aria-label={child.label}
                       >
                         {child.imgSrc ? (
                           <span className="vl-mob-sub-label">
