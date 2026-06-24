@@ -333,7 +333,7 @@ export default function Header({ settingsData }) {
         </div>
       </aside>
 
-      <div className="vl-spacer" aria-hidden="true" />
+      {/* <div className="vl-spacer" aria-hidden="true" /> */}
 
       {/* ════════════════ BACK TO TOP ════════════════ */}
       <div className={`vl-btt-wrap${showBackToTop ? " visible" : ""}`}>
