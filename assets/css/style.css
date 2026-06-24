@@ -1175,7 +1175,7 @@ footer p, footer a{ font-weight: 300;}
 }
 .sidebar-events-ul li{
     margin-bottom: 10px;    
-    padding: 2px 18px;
+    /* padding: 2px 18px; */
     font-size: 18px;
 }
 .event-row{
