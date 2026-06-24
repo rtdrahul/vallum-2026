@@ -393,7 +393,7 @@ export default function BlogListClient({ allData, initialType, initialPage = 1 }
                   {MAIN_TYPES.map((item) => (
                     <li
                       key={item.slug}
-                      className={activeType === item.slug ? "li-active li-div" : "li-div"}
+                      className={activeType === item.slug ? "li-active li-div p-0" : "p-0 li-div"}
                     >
                       {/*
                         Use a button instead of Link so clicking never triggers
@@ -423,7 +423,7 @@ export default function BlogListClient({ allData, initialType, initialPage = 1 }
               <nav aria-label="Blog categories">
                 <ul className="sidebar-events-ul">
                   {/* "All Categories" resets to no filter */}
-                  <li className={!activeCategory ? "li-active" : ""}>
+                  <li className={!activeCategory ? "li-active p-0" : "p-0"}>
                     <button
                       className={`category-btn${!activeCategory ? " active" : ""}`}
                       onClick={() => switchCategory(null)}
