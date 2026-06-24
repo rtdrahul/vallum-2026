@@ -7,7 +7,7 @@
   --navy-dark: rgb(26, 26, 46);
   --gold:          #8A5A12;
   --gold-light:    #d4a050;
-  --gold-dark:     #a0701f;
+  --gold-dark:     #8A5A12;
   --white:         #ffffff;
   --bg-cream: #fcfaf7;
   --transition: all 0.3s ease;
@@ -19,7 +19,7 @@
   --cream:         #f5f3ee;
   --text-dark:     #0d1117;
   --text-mid:      #374151;
-  --text-muted:    #6b7280;
+  --text-muted:    #525864;
   --border-focus:rgba(184,148,63,0.7);
   --border:        rgba(43,51,138,.1);
   --shadow:0 20px 60px rgba(13,27,42,0.12),0 4px 20px rgba(13,27,42,0.06);
@@ -3958,7 +3958,7 @@ body .vertical-centered-box {
   .media-section-count {
     margin-left: auto;
     font-size: 11px;
-    color: #9a9590;
+    color: #6B7280;
     font-family: 'Georgia', serif;
     font-style: italic;
     padding-bottom: 3px;
@@ -4200,7 +4200,7 @@ body .vertical-centered-box {
     border: 1px dashed #ddd8ce;
     border-radius: 3px;
     text-align: center;
-    color: #9a9590;
+    color: #6B7280;
     font-family: 'Georgia', serif;
     font-style: italic;
     font-size: 15px;

@@ -51,7 +51,7 @@ const Row = ({ label, formula, values, isBold, isGreen, isRed, isStr }) => (
       <div style={{ fontSize: 14, color: BRAND, marginTop: 1 }}>{formula}</div>
     </td>
     {values.map((v, i) => {
-      const color = isGreen ? "#1a7f4f" : isRed && typeof v === "number" && v < 0 ? "#c0392b" : "#222";
+      const color = isGreen ? "#187347" : isRed && typeof v === "number" && v < 0 ? "#c0392b" : "#222";
       return (
         <td key={i} style={{ padding: "6px 14px", textAlign: "right",verticalAlign: "middle", borderBottom: "1px solid #312e2e", fontSize: 15, fontWeight: isBold ? 500 : 400, color, whiteSpace: "nowrap" }}>
           {isStr ? v : fmtCr(v)}
@@ -68,7 +68,7 @@ const PctRow = ({ label, formula, values }) => (
       <div style={{ fontSize: 14, color: BRAND, marginTop: 1 }}>{formula}</div>
     </td>
     {values.map((v, i) => (
-      <td key={i} style={{ padding: "6px 14px", textAlign: "right", borderBottom: "1px solid #312e2e", fontSize: 15, fontWeight: 500, color: v >= 0 ? "#1a7f4f" : "#c0392b" }}>
+      <td key={i} style={{ padding: "6px 14px", textAlign: "right", borderBottom: "1px solid #312e2e", fontSize: 15, fontWeight: 500, color: v >= 0 ? "#187347" : "#c0392b" }}>
         {fmtPct(v)}
       </td>
     ))}
