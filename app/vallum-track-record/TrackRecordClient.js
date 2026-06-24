@@ -339,7 +339,7 @@ function RecordCard({ record, state }) {
                         width: "6px",
                         height: "6px",
                         borderRadius: "50%",
-                        background: "#C28934",
+                        background: "#8A5A12",
                         display: "inline-block",
                         flexShrink: 0,
                       }}
@@ -370,7 +370,7 @@ function RecordCard({ record, state }) {
                 
                 fontSize: "15px",
                 fontWeight: 700,
-                color: "#C28934",
+                color: "#8A5A12",
                 background: "#fdf5e8",
                 border: "1px solid #e8c87a",
                 borderRadius: "3px",
@@ -407,7 +407,7 @@ function RecordCard({ record, state }) {
                     width: "7px",
                     height: "7px",
                     borderRadius: "50%",
-                    background: "#C28934",
+                    background: "#8A5A12",
                     display: "block",
                     flexShrink: 0,
                   }}
@@ -556,7 +556,7 @@ export default function TrackRecordClient() {
           <p
             style={{
               fontSize: "14px",
-              color: "#7a7368",
+              color: "#6F685D",
               marginTop: "8px",
               lineHeight: 1.6,
             }}
@@ -633,8 +633,8 @@ export default function TrackRecordClient() {
                       width: isActive ? "18px" : "12px",
                       height: isActive ? "18px" : "12px",
                       borderRadius: "50%",
-                      background: isActive ? "#C28934" : "#ccc7bb",
-                      border: `2px solid ${isActive ? "#C28934" : "#ccc7bb"}`,
+                      background: isActive ? "#8A5A12" : "#ccc7bb",
+                      border: `2px solid ${isActive ? "#8A5A12" : "#ccc7bb"}`,
                       boxShadow: isActive ? "0 0 0 5px rgba(194,137,52,0.15)" : "none",
                       transition: "all 0.22s ease",
                     }}
@@ -645,7 +645,7 @@ export default function TrackRecordClient() {
                       
                       fontSize: isActive ? "11px" : "10px",
                       fontWeight: isActive ? 700 : 500,
-                      color: isActive ? "#C28934" : "#aaa69c",
+                      color: isActive ? "#8A5A12" : "#6B7280",
                       letterSpacing: "0.03em",
                       whiteSpace: "nowrap",
                       transition: "color 0.22s ease, font-size 0.22s ease",
