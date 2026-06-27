@@ -49,7 +49,6 @@ export default function WhoWeServe() {
                 key={i}
                 className={`wws-card reveal reveal-d${i}`}
               >
-                <span className="wws-number">0{i + 1}</span>
                 <span className="wws-tag">{item.tag}</span>
                 <div className="wws-img-wrap">
                   <img src={item.img} alt={item.name} />

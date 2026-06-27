@@ -6,7 +6,7 @@
   --navy: #161853;
   --navy-dark: rgb(26, 26, 46);
   --gold:          #8A5A12;
-  --gold-light:    #d4a050;
+  --gold-light:    #8A5A12;
   --gold-dark:     #8A5A12;
   --white:         #ffffff;
   --bg-cream: #fcfaf7;
@@ -4447,7 +4447,7 @@ body .vertical-centered-box {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #d4a050;
+  color: #8A5A12;
   border: .5px solid #8A5A12;
   border-radius: 20px;
   padding: 3px 10px;
@@ -6973,4 +6973,12 @@ button:focus-visible {
   padding: 0;
   color:var(--primary);
   cursor: pointer;
+}
+.blog-content-body a{
+  color: var(--gold);
+  text-decoration: underline;
+  font-weight: 500;
+}
+.blog-content-body a:hover{
+  color: #67430c;
 }
