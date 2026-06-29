@@ -502,7 +502,6 @@ export default function ContactUsClient() {
                         value={form.contact_name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="Hitesh Kumar"
                         autoComplete="name"
                         aria-required="true"
                       />
@@ -518,7 +517,6 @@ export default function ContactUsClient() {
                         value={form.contact_email}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="you@example.com"
                         autoComplete="email"
                         aria-required="true"
                       />
@@ -571,7 +569,6 @@ export default function ContactUsClient() {
                           value={form.contact_mobile}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          placeholder="XXXXX XXXXX"
                           maxLength={12}
                           inputMode="numeric"
                           autoComplete="tel"
@@ -656,7 +653,6 @@ export default function ContactUsClient() {
                         value={form.contact_message}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="Share your thoughts, questions, or any specific context you'd like us to know…"
                         aria-required="true"
                       />
                       <p className={`vc-char-count${form.contact_message.length > 0 && form.contact_message.length < 20 ? " warn" : ""}`}>

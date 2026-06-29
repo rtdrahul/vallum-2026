@@ -81,10 +81,9 @@ export default function Resources() {
 
           return (
             <section
-              key={i}
               className="resource-block"
               role="region"
-              aria-label={`${regionLabel} carousel`}
+              aria-labelledby={`carousel-title-${i}`}
             >
               <div className="resource-header">
 
@@ -95,6 +94,7 @@ export default function Resources() {
 
                 <div
                   className="swiper-nav-group"
+                  role="group"
                   aria-label={`${regionLabel} carousel controls`}
                 >
 

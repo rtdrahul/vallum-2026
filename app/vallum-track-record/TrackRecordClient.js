@@ -633,8 +633,8 @@ export default function TrackRecordClient() {
                       width: isActive ? "18px" : "12px",
                       height: isActive ? "18px" : "12px",
                       borderRadius: "50%",
-                      background: isActive ? "#8A5A12" : "#ccc7bb",
-                      border: `2px solid ${isActive ? "#8A5A12" : "#ccc7bb"}`,
+                      background: isActive ? "#8A5A12" : "#8A8578",
+                      border: `2px solid ${isActive ? "#8A5A12" : "#8A8578"}`,
                       boxShadow: isActive ? "0 0 0 5px rgba(194,137,52,0.15)" : "none",
                       transition: "all 0.22s ease",
                     }}

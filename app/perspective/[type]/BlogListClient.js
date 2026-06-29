@@ -140,7 +140,8 @@ function VideoSwiper({ blogs }) {
                 allow="autoplay; encrypted-media"
                 allowFullScreen
               />
-              <div className="visually-hidden">{blog.blog_short_description}</div>
+              
+              {/* <div className="visually-hidden">{blog.blog_short_description}</div> */}
               <div className="video-card-body">
                 <div className="video-card-play-icon">
                   <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +149,14 @@ function VideoSwiper({ blogs }) {
                   </svg>
                 </div>
                 <p className="video-card-title">{blog.blog_name}</p>
+                
               </div>
+              <details className="video-transcript px-4 pb-2">
+                  <summary>View transcript</summary>
+                  <p style={{fontSize:"14px",lineHeight:"18px"}}>
+                    [{blog.blog_short_description}]
+                  </p>
+                </details>
             </div>
           </SwiperSlide>
         ))}

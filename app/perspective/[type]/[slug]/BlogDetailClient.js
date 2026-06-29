@@ -34,12 +34,16 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                   })}</span>
                   <span><i className="ri-user-follow-line"></i> Vallum Capital</span>
                 </div>
-                <a
-                  href={blogData.blog_pdf}
-                  download
-                  className="pdf-button"
-                  aria-label="Download PDF"
-                >Download PDF</a>
+                {blogData?.blog_pdf && (
+                  <a
+                    href={blogData.blog_pdf}
+                    download
+                    className="pdf-button"
+                    aria-label="Download PDF"
+                  >
+                    Download PDF
+                  </a>
+                )}
                 <div 
                   className="blog-content-body" 
                   dangerouslySetInnerHTML={{ __html: blogData.blog_desc }} 
