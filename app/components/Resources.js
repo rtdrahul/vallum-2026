@@ -241,7 +241,7 @@ export default function Resources() {
                           </p>
                         )}
 
-                        <a
+                        {/* <a
                           href={getHref(item)}
                           download={
                             isDownload(item) || undefined
@@ -273,7 +273,7 @@ export default function Resources() {
                               strokeLinejoin="round"
                             />
                           </svg>
-                        </a>
+                        </a> */}
                       </div>
                     </article>
                   </SwiperSlide>

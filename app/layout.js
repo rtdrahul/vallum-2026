@@ -69,11 +69,12 @@ export default async function RootLayout({ children }) {
           <Header settingsData={settingsData} />
           {children}
           <Footer settingsData={settingsData} />
-        </main>
-
-        <CookieConsentBar />
+          <CookieConsentBar />
         <UIEffects />
         <UX4GWidget />
+        </main>
+
+        
         {/* <AccessibilityWidget /> */}
       </body>
     </html>

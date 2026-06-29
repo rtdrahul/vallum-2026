@@ -511,14 +511,14 @@ export default function BlogListClient({ allData, initialType, initialPage = 1 }
                               <h3 className="mb10 btitle">{blog.blog_name}</h3>
                             </Link>
                             <p className="sw--card-desc">{blog.blog_short_description}</p>
-                            <Link
+                            {/* <Link
                               className="btn btn-indigo"
                               href={blogHref(activeType, blog)}
                               download={isDownload(activeType, blog)}
                               aria-label={`Read more about ${blog.blog_name}`}
                             >
                               Read More
-                            </Link>
+                            </Link> */}
                           </div>
                         </article>
                       ))}
