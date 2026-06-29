@@ -37,8 +37,10 @@ export default function SebiNoticePopup() {
       className="modal fade"
       tabIndex="-1"
       aria-hidden="true"
+      aria-labelledby="impersonationModalTitle"
+      aria-describedby="impersonationModalDescription"
       ref={modalRef}
-      style={{zIndex:"99999"}}
+      style={{ zIndex: "99999" }}
     >
       {/* Smaller popup */}
       <div className="modal-dialog modal-dialog-centered">
@@ -58,7 +60,7 @@ export default function SebiNoticePopup() {
             style={{ background: "#161853" }}
           >
             <div>
-              <h5 className="modal-title mb-1 fw-semibold">
+              <h5 className="modal-title mb-1 fw-semibold" id="impersonationModalTitle">
                 Beware of Impersonation
               </h5>
               <small className="text-light opacity-75">
@@ -77,6 +79,7 @@ export default function SebiNoticePopup() {
           {/* Scrollable Body */}
           <div
             className="modal-body px-4 py-3"
+            id="impersonationModalDescription"
             style={{
               maxHeight: "380px",
               overflowY: "auto",

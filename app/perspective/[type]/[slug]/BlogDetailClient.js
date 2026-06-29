@@ -18,7 +18,8 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                 <div className="mb-4 text-center">
                   <img 
                     src={blogData?.blog_image || "https://badmin.vallum.in/img/uploads/media/1772871903.png"}
-                    alt={blogData.blog_name} 
+                    alt=""
+                    aria-hidden="true"
                     className="img-fluid rounded w-100"
                     style={{ maxHeight: '500px', objectFit: 'cover' }}
                   />

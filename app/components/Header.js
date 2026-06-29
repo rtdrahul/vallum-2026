@@ -10,7 +10,7 @@ const STATIC_NAV = [
   {
     id: 2, label: "About Us", type: "dropdown",
     children: [
-      { label: "About Vallum", link: "/about-us" },
+      { label: "About Us", link: "/about-us" },
       { label: "CSR", link: "/vallum-capital-csr" },
       { label: "Vallum Track Record", link: "/vallum-track-record" },
     ],
@@ -217,7 +217,7 @@ export default function Header({ settingsData }) {
           {/* ── Right CTAs ── */}
           <div className="vl-ctas">
             <Link href="/contact-us" aria-label="Contact us" className="btn btn-outline" prefetch={true}>
-              Direct Onboarding
+              Contact Us
             </Link>
             <Link 
               href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in"
@@ -325,7 +325,7 @@ export default function Header({ settingsData }) {
 
         <div className="vl-drawer-footer">
           <Link href="/contact-us" className="btn btn-outline" onClick={closeMobileMenu} prefetch={true}>
-            Direct Onboarding
+            Contact Us
           </Link>
           <a href="https://onlinefa.icici.bank.in/wealthspectrum/portal/sign-in" target="_blank" rel="noreferrer" className="btn btn-indigo" onClick={closeMobileMenu}>
             Client Login
