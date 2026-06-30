@@ -260,8 +260,6 @@ export default function Header({ settingsData }) {
 
       <aside
         className={`vl-drawer${showMobileMenu ? " open" : ""}`}
-        aria-label="Mobile navigation"
-        role="navigation"
       >
         <div className="vl-drawer-head">
           <img src="/assets/images/logo.png" alt="Vallum Capital company logo." />

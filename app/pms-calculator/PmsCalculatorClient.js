@@ -18,6 +18,7 @@ const Input = ({ value, onChange, min, step = "any", prefix, suffix, width = 160
     <input
       type="number"
       value={value}
+      autocomplete="off"
       min={min}
       step={step}
       onChange={onChange}
@@ -326,7 +327,7 @@ function Assump({ label, value, onChange, prefix, suffix, step = "any", min, max
   return (
     <div>
       <div style={{ fontSize: 14, color: BRAND, fontWeight: 500, marginBottom: 4 }}>{label}</div>
-      <Input value={value} onChange={e => onChange(Number(e.target.value))} prefix={prefix} suffix={suffix} step={step} min={min} max={max} width="100%" ariaLabel={label} />
+      <Input value={value} onChange={e => onChange(Number(e.target.value))} prefix={prefix} suffix={suffix} step={step} min={min} max={max} width="100%" ariaLabel={label} autocomplete="off"/>
     </div>
   );
 }
@@ -342,7 +343,7 @@ function ReturnInputs({ returns, setReturns, labels }) {
             <Input
               value={r}
               onChange={e => { const n = [...returns]; n[i] = Number(e.target.value); setReturns(n); }}
-              suffix="%" step="1" width={120} ariaLabel={labels[i]}
+              suffix="%" step="1" autocomplete="off" width={120} ariaLabel={labels[i]}
             />
           </div>
         ))}

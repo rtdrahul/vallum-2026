@@ -77,7 +77,7 @@ function ArticleSwiper({ blogs }) {
         spaceBetween={20}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 4000, disableOnInteraction: true, pauseOnMouseEnter: true }}
+        // autoplay={{ delay: 4000, disableOnInteraction: true, pauseOnMouseEnter: true }}
         loop={blogs.length > 3}
         breakpoints={{ 576: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }}
       >
@@ -184,7 +184,7 @@ function PdfSwiper({ blogs }) {
         spaceBetween={20}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: true, pauseOnMouseEnter: true }}
+        // autoplay={{ delay: 5000, disableOnInteraction: true, pauseOnMouseEnter: true }}
         loop={blogs.length > 3}
         breakpoints={{ 576: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }}
       >

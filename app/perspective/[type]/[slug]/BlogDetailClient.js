@@ -57,7 +57,7 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
               <div className="sidebar-sticky" style={{ position: 'sticky', top: '120px' }}>
                 {relatedBlogs && relatedBlogs.length > 0 ? (
                   <>
-                    <h4 className="mb-4">Related Articles</h4>
+                    <p className="mb-4">Related Articles</p>
 
                     {relatedBlogs.map((rel) => (
                       <div
@@ -77,11 +77,9 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
                             <div className="card-body p-2">
                               <Link
                                 href={`/perspective/${type || "all"}/${rel.blog_slug}`}
-                                className="text-decoration-none text-dark"
+                                className="text-decoration-none text-dark mb-1 small text-truncate-2"
                               >
-                                <h6 className="card-title mb-1 small fw-bold text-truncate-2">
                                   {rel.blog_name}
-                                </h6>
                               </Link>
                               <p className="card-text small text-muted m-0">
                                 {new Date(rel.created_at).toLocaleDateString()}
@@ -96,7 +94,7 @@ export default function BlogDetailClient({ blogData, relatedBlogs, type }) {
 
                 
                 <div className="mt-5 p-4 bg-light rounded text-center">
-                   <h5>Need more info?</h5>
+                   <p>Need more info?</p>
                    <p className="small mb-2">Contact us for professional investment advice.</p>
                    <Link href="/contact-us" aria-label="Contact us" className="btn btn-primary btn-sm px-4 rounded-pill">Contact Us</Link>
                 </div>

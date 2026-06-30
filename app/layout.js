@@ -61,11 +61,12 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${cormorant.variable} ${outfit.variable}`}>
-        <a href="#main-content" className="skip-link">
-          Skip to Main Content
-        </a>
+        
 
         <main id="main-content">
+          <a href="#main-content" className="skip-link">
+          Skip to Main Content
+        </a>
           <Header settingsData={settingsData} />
           {children}
           <Footer settingsData={settingsData} />
@@ -73,8 +74,7 @@ export default async function RootLayout({ children }) {
         <UIEffects />
         <UX4GWidget />
         </main>
-
-        
+       
         {/* <AccessibilityWidget /> */}
       </body>
     </html>

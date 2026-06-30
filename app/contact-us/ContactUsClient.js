@@ -494,7 +494,7 @@ export default function ContactUsClient() {
                   <div className="vc-section-label" style={{marginTop:8}}>Your Details</div>
                   <div className="vc-row vc-row-2">
                     <div className="vc-field">
-                      <label className="vc-label" htmlFor="contact_name">Full Name <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_name">Full Name <span className="vc-opt">(required)</span></label>
                       <input
                         className={ic("contact_name")}
                         name="contact_name"
@@ -508,7 +508,7 @@ export default function ContactUsClient() {
                       <FieldError show={touched.contact_name} msg={errors.contact_name} />
                     </div>
                     <div className="vc-field">
-                      <label className="vc-label" htmlFor="contact_email">Email Address <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_email">Email Address <span className="vc-opt">(required)</span></label>
                       <input
                         className={ic("contact_email")}
                         type="email"
@@ -527,7 +527,7 @@ export default function ContactUsClient() {
                   <div className="vc-row vc-row-2">
                     {/* Phone with flag + code */}
                     <div className="vc-field">
-                      <label className="vc-label" htmlFor="contact_mobile">Phone Number <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_mobile">Phone Number <span className="vc-opt">(required)</span></label>
                       <div className="vc-phone-group">
                         <div className="vc-phone-flag-wrap">
                           <div className="vc-phone-flag-display">
@@ -580,7 +580,7 @@ export default function ContactUsClient() {
 
                     {/* Country */}
                     <div className="vc-field">
-                      <label className="vc-label" htmlFor="contact_country">Country <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_country">Country <span className="vc-opt">(required)</span></label>
                       <select
                         className={sc("contact_country")}
                         name="contact_country"
@@ -604,7 +604,7 @@ export default function ContactUsClient() {
                       <label className="vc-label" htmlFor="contact_state">
                         State{" "}
                         {statesLoaded
-                          ? <span className="vc-required">*</span>
+                          ? <span className="vc-opt">(required)</span>
                           : <span className="vc-opt">(optional)</span>}
                       </label>
                       <select
@@ -643,7 +643,7 @@ export default function ContactUsClient() {
                   <div className="vc-section-label" style={{marginTop:8}}>Your Message</div>
                   <div className="vc-row vc-row-1">
                     <div className="vc-field">
-                      <label className="vc-label" htmlFor="contact_message">Message <span className="vc-required">*</span></label>
+                      <label className="vc-label" htmlFor="contact_message">Message <span className="vc-opt">(required)</span></label>
                       <textarea
                         className={`vc-textarea${touched.contact_message ? (errors.contact_message ? " error" : " valid") : ""}`}
                         rows={4}

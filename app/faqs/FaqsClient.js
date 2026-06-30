@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 
 export default function FaqsClient() {
+  const [openItems, setOpenItems] = useState({});
   const [faqs, setFaqs]       = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(null);
@@ -18,8 +19,15 @@ export default function FaqsClient() {
       .then(r => r.json())
       .then(d => {
         if (d.status === "success") {
-          setFaqs(d.faqData || []);
-          setOpenIdx(0);
+          const faqData = d.faqData || [];
+          setFaqs(faqData);
+          // open all FAQs by default
+          const initialOpen = {};
+          faqData.forEach((_, idx) => {
+            initialOpen[idx] = true;
+          });
+
+          setOpenItems(initialOpen);
         } else {
           setError("Failed to load FAQs.");
         }
@@ -51,7 +59,12 @@ export default function FaqsClient() {
     );
   });
 
-  const toggle = (idx) => setOpenIdx(prev => prev === idx ? null : idx);
+  const toggle = (idx) => {
+  setOpenItems(prev => ({
+    ...prev,
+    [idx]: !prev[idx]
+  }));
+};
 
   /* ── Render ── */
   return (
@@ -104,7 +117,7 @@ export default function FaqsClient() {
           {!loading && !error && (
             <div className="faq-accordion">
               {filtered.map((faq, idx) => {
-                const isOpen = openIdx === idx;
+                const isOpen = !!openItems[idx];
                 const inputId = `faq-${idx}`;
                 return (
                   <div
@@ -134,7 +147,7 @@ export default function FaqsClient() {
                     {/* Body — must be sibling after input for ~ selector */}
                     <div className="acc-body">
                       <div
-                        className="acc-inner"
+                        className="acc-inner mb-3"
                         dangerouslySetInnerHTML={{ __html: faq.faq_description }}
                       />
                     </div>
