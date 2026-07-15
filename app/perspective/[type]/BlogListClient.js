@@ -371,7 +371,7 @@ export default function BlogListClient({ allData, initialType, initialPage = 1 }
               <>
                 <div className="col-lg-8">
                   <div className="blogcotact">
-                    <h2>{breadcrumb.title}</h2>
+                    <h1 className="heading-main">{breadcrumb.title}</h1>
                     {breadcrumb.desc && <p className="mt10">{breadcrumb.desc}</p>}
                   </div>
                 </div>

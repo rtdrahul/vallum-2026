@@ -258,7 +258,7 @@ export default function Header({ settingsData }) {
         aria-hidden="true"
       />
 
-      <aside
+      <div
         className={`vl-drawer${showMobileMenu ? " open" : ""}`}
       >
         <div className="vl-drawer-head">
@@ -329,7 +329,7 @@ export default function Header({ settingsData }) {
             Client Login
           </a>
         </div>
-      </aside>
+      </div>
 
       {/* <div className="vl-spacer" aria-hidden="true" /> */}
 

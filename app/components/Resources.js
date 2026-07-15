@@ -82,7 +82,6 @@ export default function Resources() {
           return (
             <section
               className="resource-block"
-              role="region"
               aria-labelledby={`carousel-title-${i}`}
             >
               <div className="resource-header">
