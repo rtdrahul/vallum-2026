@@ -724,7 +724,7 @@ export default function TrackRecordClient() {
             style={{
               
               fontSize: "13px",
-              color: "#a09890",
+              color: "#2B338A",
               minWidth: "56px",
               textAlign: "center",
               letterSpacing: "0.05em",
